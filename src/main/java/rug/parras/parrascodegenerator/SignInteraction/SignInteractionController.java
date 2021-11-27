@@ -14,11 +14,11 @@ public class SignInteractionController {
     Sign sign;
 
     @Autowired
-    public SignInteractionController(SignInteractionService signInteractionService, Sign sign) {
+    public SignInteractionController(SignInteractionService signInteractionService) {
         this.signInteractionService = signInteractionService;
-        this.sign = sign;
-    }
+        this.sign = new Sign();
 
+    }
 
     @GetMapping("/sign")
     public String getSignPage(Model model) {
@@ -28,8 +28,9 @@ public class SignInteractionController {
 
     @PostMapping("/sign")
     public String signSubmit(@ModelAttribute Sign signInteraction, Model model) {
-        model.addAttribute("signInteraction", sign);
-        System.out.println(signInteractionService.codeFormatter(signInteraction));
-        return "sign";
+        model.addAttribute("signCreatedInteraction", signInteractionService.createResponse(signInteraction));
+        model.addAttribute("signData", sign);
+        System.out.println(sign.getArea()); //Todo Why is the area null or any value, when it gets rendered a line before
+        return "createdSign";
     }
 }
