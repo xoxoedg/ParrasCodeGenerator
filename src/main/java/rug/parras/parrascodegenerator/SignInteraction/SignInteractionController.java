@@ -29,6 +29,7 @@ public class SignInteractionController {
     @PostMapping("/sign")
     public String signSubmit(@ModelAttribute Sign signInteraction, Model model) {
         model.addAttribute("signInteraction", sign);
+        System.out.println(signInteractionService.codeFormatter(signInteraction));
         return "sign";
     }
 }

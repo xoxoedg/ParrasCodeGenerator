@@ -8,7 +8,9 @@ import org.springframework.stereotype.Component;
 @Setter
 @Component
 public class Sign {
-    public static final String SIGNTEMPLATE =
+
+    @Getter
+    public static final String SIGNCODETEMPLATE =
             "class Sign%sInteraction%s(AbstractInteractionDialog):\n" +
                     "\n" +
                     "    def __init__(self):\n" +
@@ -17,9 +19,15 @@ public class Sign {
                     "    def define_speech(self):\n" +
                     "        return %s.copy()";
 
-    public String signText;
-    public String area;
-    public String map;
-    public String direction;
+    @Getter
+    public static final String SIGNMAPTEMPLATE =
+            "SIGN_%s_INTERACTION_%s_DIALOG";
+
+    private String signText;
+    private String area;
+    private String map;
+    private String direction;
+
+
 
 }
