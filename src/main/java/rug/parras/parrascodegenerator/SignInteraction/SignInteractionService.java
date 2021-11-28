@@ -3,26 +3,12 @@ package rug.parras.parrascodegenerator.SignInteraction;
 import org.springframework.stereotype.Service;
 import rug.parras.parrascodegenerator.Utils.GeneratedCodeToFileConverter;
 
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 
 @Service
 public class SignInteractionService {
 
-    public GeneratedSignResponse createResponse(Sign sign) {
-        GeneratedSignResponse response = new GeneratedSignResponse();
-        response.setGENERATEDPYTHONSIGNCODE(codeFormatter(sign));
-        // Todo Sollte warsch nicht hier aufgerufen werden
-        try {
-            generatedCodeToPythonFile(sign);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return response;
-    }
-
-    public String codeFormatter(Sign sign) {
+    public String createPythonCode(Sign sign) {
         String pythonSignCode  = String.format(Sign.getSIGNCODETEMPLATE(), sign.getDirection(), sign.getMap(),
                 sign.getDirection(), sign.getMap(), createMapName(sign));
         return pythonSignCode;
@@ -34,10 +20,15 @@ public class SignInteractionService {
 
     }
 
-    public void generatedCodeToPythonFile(Sign sign) throws IOException {
+    public void createSignInteraction(Sign sign)  {
         GeneratedCodeToFileConverter converter = new GeneratedCodeToFileConverter();
-        converter.createFile("signInteraction");
-        converter.writeToFile(codeFormatter(sign));
+        try {
+            converter.createFile(sign.getFileName());
+            converter.writeToFile(createPythonCode(sign));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 

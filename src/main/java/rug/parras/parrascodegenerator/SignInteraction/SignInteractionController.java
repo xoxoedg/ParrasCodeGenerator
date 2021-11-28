@@ -28,9 +28,9 @@ public class SignInteractionController {
 
     @PostMapping("/sign")
     public String signSubmit(@ModelAttribute Sign signInteraction, Model model) {
-        model.addAttribute("signCreatedInteraction", signInteractionService.createResponse(signInteraction));
-        model.addAttribute("signData", sign);
-        System.out.println(sign.getArea()); //Todo Why is the area null or any value, when it gets rendered a line before
-        return "createdSign";
+        model.addAttribute("signInteraction", sign);
+        System.out.println(signInteraction.getFileName());
+        signInteractionService.createSignInteraction(signInteraction);
+        return "sign";
     }
 }

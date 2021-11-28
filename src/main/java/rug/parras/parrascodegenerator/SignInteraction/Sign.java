@@ -25,6 +25,7 @@ public class Sign {
     private String area;
     private String map;
     private String direction;
+    private String fileName;
 
 
 
