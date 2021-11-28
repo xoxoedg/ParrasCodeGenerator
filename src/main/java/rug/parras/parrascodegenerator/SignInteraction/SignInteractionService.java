@@ -27,7 +27,6 @@ public class SignInteractionService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }
 

@@ -9,6 +9,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -38,5 +41,7 @@ class SignInteractionControllerTest {
         mvcController.perform(post("/sign"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("index"));
+
+        verify(signInteractionService, times(1)).createSignInteraction(any(Sign.class));
     }
 }

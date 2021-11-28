@@ -19,15 +19,13 @@ public class GeneratedCodeToFileConverter implements CodeConverter{
     public String createFile(String fileName) throws IOException {
         file = new File(fileName);
         if (file.createNewFile()) {
-            return "File created" + file.getCanonicalPath();
+            return "File created";
         }
         return "File already exists";
     }
 
     public void writeToFile(String pythonCode) throws IOException {
         writer.write(pythonCode);
-        writer.flush();
-        writer.close();
 
     };
 
