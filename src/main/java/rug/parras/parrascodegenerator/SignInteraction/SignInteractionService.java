@@ -13,6 +13,12 @@ public class SignInteractionService {
     public GeneratedSignResponse createResponse(Sign sign) {
         GeneratedSignResponse response = new GeneratedSignResponse();
         response.setGENERATEDPYTHONSIGNCODE(codeFormatter(sign));
+        // Todo Sollte warsch nicht hier aufgerufen werden
+        try {
+            generatedCodeToPythonFile(sign);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return response;
     }
 
