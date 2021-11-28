@@ -3,6 +3,7 @@ package rug.parras.parrascodegenerator.SignInteraction;
 import org.springframework.stereotype.Service;
 import rug.parras.parrascodegenerator.Utils.GeneratedCodeToFileConverter;
 
+import java.io.FileWriter;
 import java.io.IOException;
 
 @Service
@@ -14,50 +15,29 @@ public class SignInteractionService {
         return pythonSignCode;
     }
 
-    public String createMapName(Sign sign) {
-        String pythonDictionaryMapName = String.format(Sign.getSIGNMAPTEMPLATE(), sign.getDirection().toUpperCase(), sign.getMap().toUpperCase());
-        return pythonDictionaryMapName;
+    public String createMap(Sign sign) {
+        String pythonDictionary = String.format(createMapName(sign) + " = " + Sign.getSIGNMAPTEXTTEMPLATE(), sign.getSignText());
+        System.out.println(pythonDictionary);
+        return pythonDictionary;
 
     }
 
+    public String createMapName(Sign sign) {
+        String pythonDictionaryName = String.format(Sign.getSIGNMAPNAMETEMPLATE(), sign.getDirection().toUpperCase(), sign.getMap().toUpperCase(), sign.getSignText());
+        return pythonDictionaryName;
+    }
+
     public void createSignInteraction(Sign sign)  {
-        GeneratedCodeToFileConverter converter = new GeneratedCodeToFileConverter();
+
         try {
+            GeneratedCodeToFileConverter converter = new GeneratedCodeToFileConverter(new FileWriter(sign.getFileName()));
             converter.createFile(sign.getFileName());
-            converter.writeToFile(createPythonCode(sign));
+            converter.writeToFile(createMap(sign));
+            converter.appendToFile(createPythonCode(sign));
         } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
-
-
-
-
-//    public void generatedCodeToPythonFile(Sign sign) {
-//        String fileName = "sign_interaction.py";
-//        File onFile = new File(fileName);
-//        FileWriter writer = null;
-//        try {
-//            writer = new FileWriter(fileName);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        try {
-//            writer.write(codeFormatter(sign));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        try {
-//            writer.flush();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        try {
-//            writer.close();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
 }
 

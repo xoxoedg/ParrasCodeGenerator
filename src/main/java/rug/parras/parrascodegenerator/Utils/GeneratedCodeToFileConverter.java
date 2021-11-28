@@ -11,8 +11,10 @@ import java.io.Writer;
 public class GeneratedCodeToFileConverter implements CodeConverter{
 
     private File file;
+    Writer writer;
 
-    public GeneratedCodeToFileConverter() {
+    public GeneratedCodeToFileConverter(Writer writer) {
+        this.writer = writer;
     }
 
     public String createFile(String fileName) throws IOException {
@@ -24,9 +26,13 @@ public class GeneratedCodeToFileConverter implements CodeConverter{
     }
 
     public void writeToFile(String pythonCode) throws IOException {
-        Writer writer = new FileWriter(file);
         writer.write(pythonCode);
+
+    };
+
+    public void appendToFile(String pythonCode) throws  IOException {
+        writer.append("\n\n" + pythonCode);
         writer.flush();
         writer.close();
-    };
+    }
 }
