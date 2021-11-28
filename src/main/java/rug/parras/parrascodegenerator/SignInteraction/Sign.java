@@ -1,10 +1,12 @@
 package rug.parras.parrascodegenerator.SignInteraction;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Sign {
 
     @Getter
@@ -17,11 +19,11 @@ public class Sign {
                     "    def define_speech(self):\n" +
                     "        return %s.copy()";
 
-    @Getter
     public static final String SIGNLISTNAMETEMPLATE =
             "SIGN_%s_INTERACTION_%s_DIALOG";
 
-    @Getter
+    //
+
     public static final String SIGNLISTTEXTTEMPLATE =
             "['%s']" ;
 

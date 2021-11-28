@@ -1,5 +1,6 @@
 package rug.parras.parrascodegenerator.SignInteraction;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rug.parras.parrascodegenerator.Utils.GeneratedCodeToFileConverter;
 
@@ -9,22 +10,11 @@ import java.io.IOException;
 @Service
 public class SignInteractionService {
 
-    public String createPythonCode(Sign sign) {
-        String pythonSignCode  = String.format(Sign.getSIGNCODETEMPLATE(), sign.getDirection(), sign.getMap(),
-                sign.getDirection(), sign.getMap(), createListName(sign));
-        return pythonSignCode;
-    }
+    PythonCodeGenerationService pythonCodeGenerationService;
 
-    public String createListMap(Sign sign) {
-        String pythonDictionary = String.format(createListName(sign) + " = " + Sign.getSIGNLISTTEXTTEMPLATE(), sign.getSignText());
-        System.out.println(pythonDictionary);
-        return pythonDictionary;
-
-    }
-
-    public String createListName(Sign sign) {
-        String pythonDictionaryName = String.format(Sign.getSIGNLISTNAMETEMPLATE(), sign.getDirection().toUpperCase(), sign.getMap().toUpperCase(), sign.getSignText());
-        return pythonDictionaryName;
+    @Autowired
+    public SignInteractionService(PythonCodeGenerationService pythonCodeGenerationService) {
+        this.pythonCodeGenerationService = pythonCodeGenerationService;
     }
 
     public void createSignInteraction(Sign sign)  {
@@ -32,8 +22,8 @@ public class SignInteractionService {
         try {
             GeneratedCodeToFileConverter converter = new GeneratedCodeToFileConverter(new FileWriter(sign.getFileName()));
             converter.createFile(sign.getFileName());
-            converter.writeToFile(createListMap(sign));
-            converter.appendToFile(createPythonCode(sign));
+            converter.writeToFile(pythonCodeGenerationService.createList(sign));
+            converter.appendToFile(pythonCodeGenerationService.createPythonCode(sign));
         } catch (IOException e) {
             e.printStackTrace();
         }

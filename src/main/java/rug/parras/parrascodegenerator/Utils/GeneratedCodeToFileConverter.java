@@ -3,7 +3,6 @@ package rug.parras.parrascodegenerator.Utils;
 import lombok.Getter;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 
@@ -27,6 +26,8 @@ public class GeneratedCodeToFileConverter implements CodeConverter{
 
     public void writeToFile(String pythonCode) throws IOException {
         writer.write(pythonCode);
+        writer.flush();
+        writer.close();
 
     };
 
