@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public interface CodeConverter {
 
-    String createFile(String fileName) throws IOException;
+    String createFile() throws IOException;
 
     void writeToFile(String pythonCode) throws IOException;
 }

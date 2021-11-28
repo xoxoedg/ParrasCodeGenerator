@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rug.parras.parrascodegenerator.Utils.GeneratedCodeToFileConverter;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -20,10 +21,9 @@ public class SignInteractionService {
     public void createSignInteraction(Sign sign)  {
 
         try {
-            GeneratedCodeToFileConverter converter = new GeneratedCodeToFileConverter(new FileWriter(sign.getFileName()));
-            converter.createFile(sign.getFileName());
-            converter.writeToFile(pythonCodeGenerationService.createList(sign));
-            converter.appendToFile(pythonCodeGenerationService.createPythonCode(sign));
+            GeneratedCodeToFileConverter converter = new GeneratedCodeToFileConverter(sign.getFileName());
+            converter.createFile();
+            converter.writeToFile(pythonCodeGenerationService.pythonCodeBuilder(sign));
         } catch (IOException e) {
             e.printStackTrace();
         }

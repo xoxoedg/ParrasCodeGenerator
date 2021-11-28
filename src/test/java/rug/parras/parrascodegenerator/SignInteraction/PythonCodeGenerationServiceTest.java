@@ -1,5 +1,6 @@
 package rug.parras.parrascodegenerator.SignInteraction;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -14,18 +15,43 @@ class PythonCodeGenerationServiceTest {
                     "    def define_speech(self):\n" +
                     "        return SIGN_UP_INTERACTION_CITYMARKET_DIALOG.copy()";
 
+    private final String builtCodeTemplate =
+            "from common.dialogs.abstract_interaction_dialog import AbstractInteractionDialog\n" +
+                    "\n" +
+                    "\n" +
+                    "SIGN_UP_INTERACTION_CITYMARKET_DIALOG = ['Danger']\n" +
+                    "\n" +
+                    "\n" +
+                    "class SignUpInteractionCityMarket(AbstractInteractionDialog):\n" +
+                    "\n" +
+                    "    def __init__(self):\n" +
+                    "        super(SignUpInteractionCityMarket, self).__init__([])\n" +
+                    "\n" +
+                    "    def define_speech(self):\n" +
+                    "        return SIGN_UP_INTERACTION_CITYMARKET_DIALOG.copy()";
+
     PythonCodeGenerationService pythonCodeGenerationService = new PythonCodeGenerationService();
     Sign sign;
 
-
-    @Test
-    void createList() {
+    @BeforeEach
+    void setUp() {
         sign = Sign.builder()
                 .signText("Danger")
                 .area("Rionnagen")
                 .map("CityMarket")
                 .direction("Up")
                 .fileName("signInteraction.py").build();
+    }
+
+    @Test
+    void pythonCodeBuilder() {
+        String builtCode = pythonCodeGenerationService.pythonCodeBuilder(sign);
+        assertEquals(builtCodeTemplate, builtCode);
+
+    }
+
+    @Test
+    void createList() {
 
         String createdList = pythonCodeGenerationService.createList(sign);
         assertEquals("SIGN_UP_INTERACTION_CITYMARKET_DIALOG = ['Danger']", createdList);
@@ -34,13 +60,6 @@ class PythonCodeGenerationServiceTest {
 
     @Test
     void createListName() {
-        sign = Sign.builder()
-                .signText("Danger")
-                .area("Rionnagen")
-                .map("CityMarket")
-                .direction("Up")
-                .fileName("signInteraction.py").build();
-
         String listName = pythonCodeGenerationService.createListName(sign);
         assertEquals("SIGN_UP_INTERACTION_CITYMARKET_DIALOG", listName);
 
@@ -48,14 +67,7 @@ class PythonCodeGenerationServiceTest {
 
     @Test
     void CreatePythonCode() {
-        sign = Sign.builder()
-                .signText("Danger")
-                .area("Rionnagen")
-                .map("CityMarket")
-                .direction("Up")
-                .fileName("signInteraction.py").build();
-
-        String generatedPythonCode = pythonCodeGenerationService.createPythonCode(sign);
+        String generatedPythonCode = pythonCodeGenerationService.createClass(sign);
         assertEquals(generatedPythonCodeTemplate, generatedPythonCode);
     }
 }

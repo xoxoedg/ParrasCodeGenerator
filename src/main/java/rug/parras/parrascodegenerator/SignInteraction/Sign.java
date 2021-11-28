@@ -27,6 +27,9 @@ public class Sign {
     public static final String SIGNLISTTEXTTEMPLATE =
             "['%s']" ;
 
+    public static final String SIGNIMPORTEMPLATE =
+                "from common.dialogs.abstract_interaction_dialog import AbstractInteractionDialog";
+
     private String signText;
     private String area;
     private String map;

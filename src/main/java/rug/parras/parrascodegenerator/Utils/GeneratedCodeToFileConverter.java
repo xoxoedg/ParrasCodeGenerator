@@ -3,21 +3,23 @@ package rug.parras.parrascodegenerator.Utils;
 import lombok.Getter;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 
 @Getter
 public class GeneratedCodeToFileConverter implements CodeConverter{
 
+    private String filename;
     private File file;
-    Writer writer;
+    private Writer writer;
 
-    public GeneratedCodeToFileConverter(Writer writer) {
-        this.writer = writer;
+    public GeneratedCodeToFileConverter(String filename) {
+        this.filename = filename;
+        this.file = new File(filename);
     }
 
-    public String createFile(String fileName) throws IOException {
-        file = new File(fileName);
+    public String createFile() throws IOException {
         if (file.createNewFile()) {
             return "File created";
         }
@@ -25,13 +27,10 @@ public class GeneratedCodeToFileConverter implements CodeConverter{
     }
 
     public void writeToFile(String pythonCode) throws IOException {
+        FileWriter writer = new FileWriter(file);
         writer.write(pythonCode);
-
-    };
-
-    public void appendToFile(String pythonCode) throws  IOException {
-        writer.append("\n\n" + pythonCode);
         writer.flush();
         writer.close();
-    }
+
+    };
 }

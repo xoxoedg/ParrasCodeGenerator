@@ -42,9 +42,9 @@ class SignInteractionServiceTest {
     @Test
     void createSignInteraction() throws IOException {
         when(pythonCodeGenerationService.createList(sign)).thenReturn("TestString1");
-        when(pythonCodeGenerationService.createPythonCode(sign )).thenReturn("TestString2");
+        when(pythonCodeGenerationService.createClass(sign )).thenReturn("TestString2");
         signInteractionService.createSignInteraction(sign);
-        verify(pythonCodeGenerationService, times(1)).createPythonCode(sign);
+        verify(pythonCodeGenerationService, times(1)).createClass(sign);
         verify(pythonCodeGenerationService, times(1)).createList(sign);
     }
 }
