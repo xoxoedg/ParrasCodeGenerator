@@ -18,11 +18,11 @@ public class Sign {
                     "        return %s.copy()";
 
     @Getter
-    public static final String SIGNMAPNAMETEMPLATE =
+    public static final String SIGNLISTNAMETEMPLATE =
             "SIGN_%s_INTERACTION_%s_DIALOG";
 
     @Getter
-    public static final String SIGNMAPTEXTTEMPLATE =
+    public static final String SIGNLISTTEXTTEMPLATE =
             "['%s']" ;
 
     private String signText;
