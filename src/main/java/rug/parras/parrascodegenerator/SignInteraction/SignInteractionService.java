@@ -1,6 +1,7 @@
 package rug.parras.parrascodegenerator.SignInteraction;
 
 import org.springframework.stereotype.Service;
+import rug.parras.parrascodegenerator.Utils.GeneratedCodeToFileConverter;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -12,7 +13,6 @@ public class SignInteractionService {
     public GeneratedSignResponse createResponse(Sign sign) {
         GeneratedSignResponse response = new GeneratedSignResponse();
         response.setGENERATEDPYTHONSIGNCODE(codeFormatter(sign));
-        generatedCodeToPythonFile(sign);
         return response;
     }
 
@@ -28,30 +28,39 @@ public class SignInteractionService {
 
     }
 
-    public void generatedCodeToPythonFile(Sign sign) {
-        String fileName = "sign_interaction.py";
-        File onFile = new File(fileName);
-        FileWriter writer = null;
-        try {
-            writer = new FileWriter(fileName);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-            writer.write(codeFormatter(sign));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-            writer.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void generatedCodeToPythonFile(Sign sign) throws IOException {
+        GeneratedCodeToFileConverter converter = new GeneratedCodeToFileConverter();
+        converter.createFile("signInteraction");
+        converter.writeToFile(codeFormatter(sign));
     }
+
+
+
+
+//    public void generatedCodeToPythonFile(Sign sign) {
+//        String fileName = "sign_interaction.py";
+//        File onFile = new File(fileName);
+//        FileWriter writer = null;
+//        try {
+//            writer = new FileWriter(fileName);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        try {
+//            writer.write(codeFormatter(sign));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        try {
+//            writer.flush();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        try {
+//            writer.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 }
 
