@@ -23,7 +23,7 @@ public class TreasureInteractionController {
 
     @PostMapping("/treasure")
     public String treasureSubmit(@ModelAttribute Treasure treasureInteraction) {
-        treasureInteractionService.doSmth();
+        treasureInteractionService.placeholder();
         return "index";
     }
 
