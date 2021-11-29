@@ -33,7 +33,7 @@ class PythonCodeGenerationServiceTest {
                 .direction("Up")
                 .fileName("signInteraction.py").build();
 
-        String builtCode = pythonCodeGenerationService.pythonCodeBuilder(sign);
+        String builtCode = pythonCodeGenerationService.generateCodeForSignInteraction(sign);
         assertEquals(builtCodeTemplate, builtCode);
 
     }

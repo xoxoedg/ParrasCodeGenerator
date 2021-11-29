@@ -2,7 +2,6 @@ package rug.parras.parrascodegenerator.SignInteraction;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import rug.parras.parrascodegenerator.Utils.DirectoryOperationUtils;
 import rug.parras.parrascodegenerator.Utils.FileOperationUtils;
 
 import java.io.IOException;
@@ -21,7 +20,7 @@ public class SignInteractionService {
 
         try {
             FileOperationUtils converter = new FileOperationUtils("C:\\Users\\rugya\\Desktop\\Prod\\ParrasCodeGenerator\\src\\testPythonDir\\" + sign.getFileName());
-            converter.writeToFile(pythonCodeGenerationService.pythonCodeBuilder(sign));
+            converter.writeToFile(pythonCodeGenerationService.generateCodeForSignInteraction(sign));
 
         } catch (IOException e) {
             e.printStackTrace();

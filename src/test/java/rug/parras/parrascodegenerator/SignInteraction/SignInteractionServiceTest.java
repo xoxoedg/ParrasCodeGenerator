@@ -23,11 +23,12 @@ class SignInteractionServiceTest {
 
     @Test
     void createSignInteraction() {
-        when(pythonCodeGenerationService.pythonCodeBuilder(sign)).thenReturn("TestString1");
+        when(pythonCodeGenerationService.generateCodeForSignInteraction(sign)).thenReturn("TestString1");
         signInteractionService.createSignInteraction(sign);
-        verify(pythonCodeGenerationService, times(1)).pythonCodeBuilder(sign);
+        verify(pythonCodeGenerationService, times(1)).generateCodeForSignInteraction(sign);
 
         File fileToDelete = new File(sign.getFileName());
         fileToDelete.delete();
     }
+
 }

@@ -4,21 +4,21 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class PythonCodeGenerationService {
-    //generateCodeForSignInteraction
-    public String pythonCodeBuilder(Sign sign) {
-        return Sign.SIGNIMPORTEMPLATE  + "\n\n\n" + createList(sign) + "\n\n\n" + createClass(sign);
+
+    public String generateCodeForSignInteraction(Sign sign) {
+        return Sign.SIGN_IMPORT_TEMPLATE + "\n\n\n" + createSignInteractionDialog(sign) + "\n\n\n" + createSignInteractionClass(sign);
     }
-    // Sign Dialog List
-    private String createList(Sign sign) {
-        return String.format(createListName(sign) + " = " + Sign.SIGNLISTTEXTTEMPLATE, sign.getSignText());
+
+    private String createSignInteractionDialog(Sign sign) {
+        return String.format(createSignInteractionListName(sign) + " = " + Sign.SIGN_DIALOG_LIST_TEXT_TEMPLATE, sign.getSignText());
     }
-    // SignInteractionClass
-    private String createClass(Sign sign) {
-        return String.format(Sign.getSIGN_CODE_TEMPLATE(), sign.getDirection(), sign.getMap(),
-                sign.getDirection(), sign.getMap(), createListName(sign));
+
+    private String createSignInteractionClass(Sign sign) {
+        return String.format(Sign.SIGN_DIALOG_CLASS_TEMPLATE, sign.getDirection(), sign.getMap(),
+                sign.getDirection(), sign.getMap(), createSignInteractionListName(sign));
     }
-    // Sign Dialog List Name
-    private String createListName(Sign sign) {
-        return String.format(Sign.SIGNLISTNAMETEMPLATE, sign.getDirection().toUpperCase(), sign.getMap().toUpperCase(), sign.getSignText());
+
+    private String createSignInteractionListName(Sign sign) {
+        return String.format(Sign.SIGN_DIALOG_LIST_NAME_TEMPLATE, sign.getDirection().toUpperCase(), sign.getMap().toUpperCase(), sign.getSignText());
     }
 }
