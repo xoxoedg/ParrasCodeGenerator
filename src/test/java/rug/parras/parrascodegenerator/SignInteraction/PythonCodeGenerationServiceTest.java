@@ -49,25 +49,4 @@ class PythonCodeGenerationServiceTest {
         assertEquals(builtCodeTemplate, builtCode);
 
     }
-
-    @Test
-    void createList() {
-
-        String createdList = pythonCodeGenerationService.createList(sign);
-        assertEquals("SIGN_UP_INTERACTION_CITYMARKET_DIALOG = ['Danger']", createdList);
-
-    }
-
-    @Test
-    void createListName() {
-        String listName = pythonCodeGenerationService.createListName(sign);
-        assertEquals("SIGN_UP_INTERACTION_CITYMARKET_DIALOG", listName);
-
-    }
-
-    @Test
-    void CreatePythonCode() {
-        String generatedPythonCode = pythonCodeGenerationService.createClass(sign);
-        assertEquals(generatedPythonCodeTemplate, generatedPythonCode);
-    }
 }

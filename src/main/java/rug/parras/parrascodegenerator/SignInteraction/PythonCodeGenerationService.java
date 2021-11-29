@@ -5,17 +5,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class PythonCodeGenerationService {
 
-    public String createClass(Sign sign) {
+    private String createClass(Sign sign) {
         return String.format(Sign.getSIGNCODETEMPLATE(), sign.getDirection(), sign.getMap(),
                 sign.getDirection(), sign.getMap(), createListName(sign));
     }
 
-    public String createList(Sign sign) {
+    private String createList(Sign sign) {
         return String.format(createListName(sign) + " = " + Sign.SIGNLISTTEXTTEMPLATE, sign.getSignText());
 
     }
 
-    public String createListName(Sign sign) {
+    private String createListName(Sign sign) {
         return String.format(Sign.SIGNLISTNAMETEMPLATE, sign.getDirection().toUpperCase(), sign.getMap().toUpperCase(), sign.getSignText());
     }
 

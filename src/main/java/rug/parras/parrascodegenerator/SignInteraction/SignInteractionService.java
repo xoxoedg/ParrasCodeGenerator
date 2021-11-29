@@ -22,7 +22,6 @@ public class SignInteractionService {
 
         try {
             GeneratedCodeToFileConverter converter = new GeneratedCodeToFileConverter(sign.getFileName());
-            converter.createFile();
             converter.writeToFile(pythonCodeGenerationService.pythonCodeBuilder(sign));
         } catch (IOException e) {
             e.printStackTrace();
