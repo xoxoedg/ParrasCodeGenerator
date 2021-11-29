@@ -3,7 +3,7 @@ package rug.parras.parrascodegenerator.SignInteraction;
 import org.springframework.stereotype.Component;
 
 @Component
-public class PythonCodeGenerationService {
+public class SignInteractionCodeGenerationService {
 
     public String generateCodeForSignInteraction(Sign sign) {
         return Sign.SIGN_IMPORT_TEMPLATE + "\n\n\n" + createSignInteractionDialog(sign) + "\n\n\n" + createSignInteractionClass(sign);

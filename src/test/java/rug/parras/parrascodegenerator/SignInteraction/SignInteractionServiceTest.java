@@ -16,19 +16,18 @@ class SignInteractionServiceTest {
     private Sign sign = Sign.builder().fileName("signInteraction.py").build();
 
     @Mock
-    private PythonCodeGenerationService pythonCodeGenerationService;
+    private SignInteractionCodeGenerationService signInteractionCodeGenerationService;
 
     @InjectMocks
     private SignInteractionService signInteractionService;
 
     @Test
     void createSignInteraction() {
-        when(pythonCodeGenerationService.generateCodeForSignInteraction(sign)).thenReturn("TestString1");
+        when(signInteractionCodeGenerationService.generateCodeForSignInteraction(sign)).thenReturn("TestString1");
         signInteractionService.createSignInteraction(sign);
-        verify(pythonCodeGenerationService, times(1)).generateCodeForSignInteraction(sign);
+        verify(signInteractionCodeGenerationService, times(1)).generateCodeForSignInteraction(sign);
 
         File fileToDelete = new File(sign.getFileName());
         fileToDelete.delete();
     }
-
 }

@@ -9,18 +9,18 @@ import java.io.IOException;
 @Service
 public class SignInteractionService {
 
-    PythonCodeGenerationService pythonCodeGenerationService;
+    SignInteractionCodeGenerationService signInteractionCodeGenerationService;
 
     @Autowired
-    public SignInteractionService(PythonCodeGenerationService pythonCodeGenerationService) {
-        this.pythonCodeGenerationService = pythonCodeGenerationService;
+    public SignInteractionService(SignInteractionCodeGenerationService signInteractionCodeGenerationService) {
+        this.signInteractionCodeGenerationService = signInteractionCodeGenerationService;
     }
 
     public void createSignInteraction(Sign sign)  {
 
         try {
             FileOperationUtils converter = new FileOperationUtils("C:\\Users\\rugya\\Desktop\\Prod\\ParrasCodeGenerator\\src\\testPythonDir\\" + sign.getFileName());
-            converter.writeToFile(pythonCodeGenerationService.generateCodeForSignInteraction(sign));
+            converter.writeToFile(signInteractionCodeGenerationService.generateCodeForSignInteraction(sign));
 
         } catch (IOException e) {
             e.printStackTrace();

@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class PythonCodeGenerationServiceTest {
+class SignInteractionCodeGenerationServiceTest {
 
     private final String builtCodeTemplate =
             "from common.dialogs.abstract_interaction_dialog import AbstractInteractionDialog\n" +
@@ -21,7 +21,7 @@ class PythonCodeGenerationServiceTest {
                     "    def define_speech(self):\n" +
                     "        return SIGN_UP_INTERACTION_CITYMARKET_DIALOG.copy()";
 
-    private final PythonCodeGenerationService pythonCodeGenerationService = new PythonCodeGenerationService();
+    private final SignInteractionCodeGenerationService signInteractionCodeGenerationService = new SignInteractionCodeGenerationService();
     private Sign sign;
 
     @Test
@@ -33,7 +33,7 @@ class PythonCodeGenerationServiceTest {
                 .direction("Up")
                 .fileName("signInteraction.py").build();
 
-        String builtCode = pythonCodeGenerationService.generateCodeForSignInteraction(sign);
+        String builtCode = signInteractionCodeGenerationService.generateCodeForSignInteraction(sign);
         assertEquals(builtCodeTemplate, builtCode);
 
     }
