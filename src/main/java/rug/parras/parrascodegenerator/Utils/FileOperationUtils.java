@@ -7,14 +7,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 @Getter
-public class GeneratedCodeToFileConverter implements CodeConverter{
+public class FileOperationUtils {
 
-    private String filename;
-    private File file;
+    private final String filePath;
+    private final File file;
 
-    public GeneratedCodeToFileConverter(String filename) {
-        this.filename = filename;
-        this.file = new File(filename);
+    public FileOperationUtils(String filePath) {
+        this.filePath = filePath;
+        this.file = new File(filePath);
     }
 
     public String createFile() throws IOException {

@@ -20,10 +20,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class SignInteractionControllerTest {
 
     @Mock
-    SignInteractionService signInteractionService;
+    private SignInteractionService signInteractionService;
 
     @InjectMocks
-    SignInteractionController signInteractionController;
+    private SignInteractionController signInteractionController;
 
     @Test
     void getSignPage() throws Exception {
@@ -32,7 +32,6 @@ class SignInteractionControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(view().name("signGeneratorPage"))
                 .andExpect(model().attribute("signInteraction", Matchers.any(Sign.class)));
-
     }
 
     @Test

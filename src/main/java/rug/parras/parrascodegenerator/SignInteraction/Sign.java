@@ -10,7 +10,7 @@ import lombok.*;
 public class Sign {
 
     @Getter
-    public static final String SIGNCODETEMPLATE =
+    public static final String SIGN_CODE_TEMPLATE =
             "class Sign%sInteraction%s(AbstractInteractionDialog):\n" +
                     "\n" +
                     "    def __init__(self):\n" +
