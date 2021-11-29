@@ -23,7 +23,7 @@ public class SignInteractionController {
     }
 
     @PostMapping("/sign")
-    public String signSubmit(@ModelAttribute Sign signInteraction, Model model) {
+    public String signSubmit(@ModelAttribute Sign signInteraction) {
         signInteractionService.createSignInteraction(signInteraction);
         return "index";
     }
