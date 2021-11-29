@@ -5,14 +5,12 @@ import lombok.Getter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Writer;
 
 @Getter
 public class GeneratedCodeToFileConverter implements CodeConverter{
 
     private String filename;
     private File file;
-    private Writer writer;
 
     public GeneratedCodeToFileConverter(String filename) {
         this.filename = filename;
