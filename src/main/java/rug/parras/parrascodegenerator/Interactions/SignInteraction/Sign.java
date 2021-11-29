@@ -1,4 +1,4 @@
-package rug.parras.parrascodegenerator.SignInteraction;
+package rug.parras.parrascodegenerator.Interactions.SignInteraction;
 
 import lombok.*;
 
@@ -9,7 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 public class Sign {
 
-    public static final String SIGN_DIALOG_CLASS_TEMPLATE =
+    public static final String SIGN_INTERACTION_CLASS_TEMPLATE =
             "class Sign%sInteraction%s(AbstractInteractionDialog):\n" +
                     "\n" +
                     "    def __init__(self):\n" +
@@ -18,13 +18,13 @@ public class Sign {
                     "    def define_speech(self):\n" +
                     "        return %s.copy()";
 
-    public static final String SIGN_DIALOG_LIST_NAME_TEMPLATE =
+    public static final String SIGN_INTERACTION_LIST_NAME_TEMPLATE =
             "SIGN_%s_INTERACTION_%s_DIALOG";
 
-    public static final String SIGN_DIALOG_LIST_TEXT_TEMPLATE =
+    public static final String SIGN_INTERACTION_LIST_TEXT_TEMPLATE =
             "['%s']" ;
 
-    public static final String SIGN_IMPORT_TEMPLATE =
+    public static final String SIGN_INTERACTION_IMPORT_TEMPLATE =
                 "from common.dialogs.abstract_interaction_dialog import AbstractInteractionDialog";
 
     private String signText;

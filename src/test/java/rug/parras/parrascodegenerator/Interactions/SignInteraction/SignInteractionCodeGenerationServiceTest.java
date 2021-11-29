@@ -1,6 +1,8 @@
-package rug.parras.parrascodegenerator.SignInteraction;
+package rug.parras.parrascodegenerator.Interactions.SignInteraction;
 
 import org.junit.jupiter.api.Test;
+import rug.parras.parrascodegenerator.Interactions.SignInteraction.Sign;
+import rug.parras.parrascodegenerator.Interactions.SignInteraction.SignInteractionCodeGenerationService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

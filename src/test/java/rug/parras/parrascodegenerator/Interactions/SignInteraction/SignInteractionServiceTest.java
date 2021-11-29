@@ -1,10 +1,13 @@
-package rug.parras.parrascodegenerator.SignInteraction;
+package rug.parras.parrascodegenerator.Interactions.SignInteraction;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import rug.parras.parrascodegenerator.Interactions.SignInteraction.Sign;
+import rug.parras.parrascodegenerator.Interactions.SignInteraction.SignInteractionCodeGenerationService;
+import rug.parras.parrascodegenerator.Interactions.SignInteraction.SignInteractionService;
 
 import java.io.File;
 

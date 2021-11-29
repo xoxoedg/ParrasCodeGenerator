@@ -1,6 +1,7 @@
-package rug.parras.parrascodegenerator.SignInteraction;
+package rug.parras.parrascodegenerator.Interactions.common;
 
 import org.apache.commons.lang3.StringUtils;
+import rug.parras.parrascodegenerator.Interactions.SignInteraction.Sign;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;

@@ -1,4 +1,4 @@
-package rug.parras.parrascodegenerator.SignInteraction;
+package rug.parras.parrascodegenerator.Interactions.SignInteraction;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
