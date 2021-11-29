@@ -1,5 +1,6 @@
 package rug.parras.parrascodegenerator.SignInteraction;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -14,8 +15,8 @@ public class SignInteractionCodeGenerationService {
     }
 
     private String createSignInteractionClass(Sign sign) {
-        return String.format(Sign.SIGN_DIALOG_CLASS_TEMPLATE, sign.getDirection(), sign.getMap(),
-                sign.getDirection(), sign.getMap(), createSignInteractionListName(sign));
+        return String.format(Sign.SIGN_DIALOG_CLASS_TEMPLATE, StringUtils.capitalize(sign.getDirection()), MapParser.convertInputToClassName(sign),
+                StringUtils.capitalize(sign.getDirection()), MapParser.convertInputToClassName(sign), createSignInteractionListName(sign));
     }
 
     private String createSignInteractionListName(Sign sign) {
