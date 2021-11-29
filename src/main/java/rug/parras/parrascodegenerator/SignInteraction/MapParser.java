@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public  class MapParser {
 
-    public static String convertInputToClassName(Sign sign) {
+    public static String convertInputToMapName(Sign sign) {
         return Arrays.stream(sign.getMap().split("_")).filter(x -> !x.equals("_")).map(StringUtils::capitalize).collect(Collectors.joining(""));
     }
 }

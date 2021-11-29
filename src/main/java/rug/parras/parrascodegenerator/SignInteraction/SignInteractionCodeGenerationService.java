@@ -15,8 +15,8 @@ public class SignInteractionCodeGenerationService {
     }
 
     private String createSignInteractionClass(Sign sign) {
-        return String.format(Sign.SIGN_DIALOG_CLASS_TEMPLATE, StringUtils.capitalize(sign.getDirection()), MapParser.convertInputToClassName(sign),
-                StringUtils.capitalize(sign.getDirection()), MapParser.convertInputToClassName(sign), createSignInteractionListName(sign));
+        return String.format(Sign.SIGN_DIALOG_CLASS_TEMPLATE, StringUtils.capitalize(sign.getDirection()), MapParser.convertInputToMapName(sign),
+                StringUtils.capitalize(sign.getDirection()), MapParser.convertInputToMapName(sign), createSignInteractionListName(sign));
     }
 
     private String createSignInteractionListName(Sign sign) {
