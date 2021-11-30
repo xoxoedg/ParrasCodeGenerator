@@ -2,40 +2,26 @@ package rug.parras.parrascodegenerator.Interactions.TreasureInteraction;
 
 import lombok.*;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Getter
-@NoArgsConstructor
 @Setter
 @Builder
 @AllArgsConstructor
 public class Treasure {
-//Textblock
+
     public static final String TREASURE_INTERACTION_CLASS_TEMPLATE =
             "class %sChestInteraction(StandardTreasureInteraction):\n" +
                     "\n" +
                     "    def __init__(self, timeline):\n" +
-                    "        super(%sChestInteraction, self).__init__(timeline, 'RECEIVED_%s_CHEST', RECEIVE_%s)\n" +
+                    "        super(%sChestInteraction, self).__init__(timeline, 'RECEIVED_%s_CHEST%s%s%s%s%s%s%s%s)\n" +
                     "\n" +
                     "    def retrieve_chest_content(self, hero):\n" +
-                    "        hero.gold += %s";
-
-    public static final String TREASURE_INTERACTION_CLASS_GOLD_TEMPLATE =
-            "class %sChestInteraction(StandardTreasureInteraction):\n" +
-                    "\n" +
-                    "    def __init__(self, timeline):\n" +
-                    "        super(%sChestInteraction, self).__init__(timeline, 'RECEIVED_%s_CHEST', RECEIVE_GOLD_IN_%s)\n" +
-                    "\n" +
-                    "    def retrieve_chest_content(self, hero):\n" +
-                    "        hero.gold += %s";
-
-    public static final String TREASURE_INTERACTION_CLASS_GOLD_AND_ITEM_TEMPLATE =
-            "class %sChestInteraction(StandardTreasureInteraction):\n" +
-                    "\n" +
-                    "    def __init__(self, timeline):\n" +
-                    "        super(%sChestInteraction, self).__init__(timeline, 'RECEIVED_%s_CHEST', RECEIVE_GOLD_IN_%s, RECEIVE_%s)\n" +
-                    "\n" +
-                    "    def retrieve_chest_content(self, hero):\n" +
-                    "        hero.gold += %s\n" +
-                    "        hero.items.%s.amount += %s";
+                    "        %s\n" +
+                    "        %s\n" +
+                    "        %s\n" +
+                    "        %s";
 
     public static final String TREASURE_INTERACTION_LIST_ITEM_NAME_TEMPLATE =
             "RECEIVE_GOLD_IN_%s";
@@ -56,10 +42,24 @@ public class Treasure {
     private String map;
     private String area;
     private String fileName;
-    private String amountGold;
-    private String itemName;
-    private String amountItems;
+    private int amountGold;
+    private String itemOneName;
+    private int itemOneAmount;
+    private String itemTwoName;
+    private int itemTwoAmount;
+    private String itemThreeName;
+    private int itemThreeAmount;
 
 
 
+    public Treasure() {
+        this.itemOneAmount = 0;
+        this.itemTwoAmount = 0;
+        this.itemThreeAmount = 0;
+        this.itemOneName = "";
+        this.itemTwoName = "";
+        this.itemThreeName = "";
+        this.amountGold = 0;
+    }
 }
+
