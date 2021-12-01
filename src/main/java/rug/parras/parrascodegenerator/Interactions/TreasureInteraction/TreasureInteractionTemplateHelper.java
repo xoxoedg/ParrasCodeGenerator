@@ -1,6 +1,7 @@
 package rug.parras.parrascodegenerator.Interactions.TreasureInteraction;
 
-import java.util.ArrayList;
+import rug.parras.parrascodegenerator.Interactions.common.MapParser;
+
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -69,7 +70,13 @@ public class TreasureInteractionTemplateHelper {
 
         }
     }
-//    public String generateItemTemplate () {
-//
-//    }
+
+    public String generateGoldEarned(Treasure treasure) {
+        return treasure.getAmountGold() > 0 ? String.format(GOLD_TEMPLATE, treasure.getAmountGold()): "";
+    }
+
+    public String generateSuperMethod(Treasure treasure) {
+        return !treasure.getMap().equals("") ? String.format(SUPER_FUNCTION_TEMPLATE, String.format(MapParser.convertInputToMapName(treasure))): "";
+    }
+
 }

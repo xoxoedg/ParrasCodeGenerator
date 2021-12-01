@@ -55,4 +55,28 @@ class TreasureInteractionTemplateHelperTest {
         String actualFunctionArguments = treasureInteractionTemplateHelper.generateFunctionArguments(treasure);
         assertEquals(expectedFunctionArguments, actualFunctionArguments);
     }
+
+    @Test
+    void generateGoldEarned() {
+        final String expectedGold = "hero.gold += 100";
+        treasure.setAmountGold(100);
+        String actualGold = treasureInteractionTemplateHelper.generateGoldEarned(treasure);
+        assertEquals(expectedGold, actualGold);
+    }
+
+    @Test
+    void generateGoldEarnedWith0() {
+        final String expectedGold = "";
+        treasure.setAmountGold(0);
+        String actualGold = treasureInteractionTemplateHelper.generateGoldEarned(treasure);
+        assertEquals(expectedGold, actualGold);
+    }
+
+    @Test
+    void generateSuperMethod() {
+        final String expectedSuperMethod = "super(CityMarketMapChestInteraction, self)";
+        treasure.setMap("city_market_map");
+        String actualSuperMethod = treasureInteractionTemplateHelper.generateSuperMethod(treasure);
+        assertEquals(expectedSuperMethod, actualSuperMethod);
+    }
 }
