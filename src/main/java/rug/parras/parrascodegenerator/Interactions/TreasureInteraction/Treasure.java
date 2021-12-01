@@ -1,9 +1,9 @@
 package rug.parras.parrascodegenerator.Interactions.TreasureInteraction;
 
-import lombok.*;
-
-import java.util.List;
-import java.util.stream.Collectors;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -15,13 +15,10 @@ public class Treasure {
             "class %sChestInteraction(StandardTreasureInteraction):\n" +
                     "\n" +
                     "    def __init__(self, timeline):\n" +
-                    "        super(%sChestInteraction, self).__init__(timeline, 'RECEIVED_%s_CHEST%s%s%s%s%s%s%s%s)\n" +
+                    "        %s.__init__%s\n" +
                     "\n" +
-                    "    def retrieve_chest_content(self, hero):\n" +
-                    "        %s\n" +
-                    "        %s\n" +
-                    "        %s\n" +
-                    "        %s";
+                    "    %s";
+
 
     public static final String TREASURE_INTERACTION_LIST_ITEM_NAME_TEMPLATE =
             "RECEIVE_GOLD_IN_%s";

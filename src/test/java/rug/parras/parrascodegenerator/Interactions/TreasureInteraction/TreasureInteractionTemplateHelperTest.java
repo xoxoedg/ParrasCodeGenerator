@@ -1,5 +1,6 @@
 package rug.parras.parrascodegenerator.Interactions.TreasureInteraction;
 
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -38,7 +39,7 @@ class TreasureInteractionTemplateHelperTest {
         treasure.setItemTwoName("Serum");
         treasure.setItemOneAmount(2);
         treasure.setItemTwoAmount(3);
-        List<String> actualTemplateList = treasureInteractionTemplateHelper.convertMapToFinalTemplateList(treasure);
+        List<String> actualTemplateList = treasureInteractionTemplateHelper.convertItemAmountMapToFinalTemplateList(treasure);
 
         assertEquals(expectedTemplateList.get(0), actualTemplateList.get(0));
         assertEquals(expectedTemplateList.size(), actualTemplateList.size());
@@ -78,5 +79,17 @@ class TreasureInteractionTemplateHelperTest {
         treasure.setMap("city_market_map");
         String actualSuperMethod = treasureInteractionTemplateHelper.generateSuperMethod(treasure);
         assertEquals(expectedSuperMethod, actualSuperMethod);
+    }
+
+    @Test
+    void generateRetrieveChestMethodOnlyGold() {
+        final String expectedRetrieveChestMethod =
+                "def retrieve_chest_content(self, hero):\n" +
+                "    hero.gold += 100";
+        treasure.setAmountGold(100);
+        String actualRetrieveChestMethod = treasureInteractionTemplateHelper.generateRetrieveChestMethod(treasure).trim();
+        System.out.println(actualRetrieveChestMethod);
+        assertEquals(expectedRetrieveChestMethod, actualRetrieveChestMethod);
+
     }
 }
