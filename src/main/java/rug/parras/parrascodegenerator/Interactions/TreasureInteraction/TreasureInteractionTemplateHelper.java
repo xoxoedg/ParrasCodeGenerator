@@ -31,13 +31,13 @@ public class TreasureInteractionTemplateHelper {
 
     public List<String> filterItems(Treasure treasure) {
         List<String> items = List.of(treasure.getItemOneName(), treasure.getItemTwoName(), treasure.getItemThreeName());
-        return items.stream().filter(x -> !x.equals("")).collect(Collectors.toList());
+        return items.stream().filter(x -> !x.equals("")).map(String::toLowerCase).collect(Collectors.toList());
     }
 
     public List<String> convertItemAmountMapToFinalTemplateList(Treasure treasure) {
         Map<String, String> itemAmountMap = convertListToMap(filterItems(treasure), filterAmount(treasure));
         System.out.println(itemAmountMap);
-        return itemAmountMap.entrySet().stream().map(x -> String.format(ITEM_TEMPLATE, x.getKey(), x.getValue())).collect(Collectors.toList());
+        return itemAmountMap.entrySet().stream().map(x -> String.format(ITEM_TEMPLATE, x.getKey(), x.getValue())).map(x -> "\t" + x).collect(Collectors.toList());
     }
 
     //In Common auslagern oder Utils
@@ -46,7 +46,7 @@ public class TreasureInteractionTemplateHelper {
     }
 
     public String generateFunctionArguments(Treasure treasure) {
-        String receiveGoldArgument = String.format(Treasure.TREASURE_INTERACTION_LIST_ITEM_NAME_TEMPLATE, MapParser.convertInputToMapName(treasure.getMap()));
+        String receiveGoldArgument = String.format(Treasure.TREASURE_INTERACTION_LIST_ITEM_NAME_TEMPLATE, MapParser.convertInputToUppercaseMap(treasure.getMap()));
         if (treasure.getAmountGold() == 0) {
             switch (filterItems(treasure).size()) {
                 case 0:
@@ -125,13 +125,13 @@ public class TreasureInteractionTemplateHelper {
                             convertItemAmountMapToFinalTemplateList(treasure).get(0) + "\n", "", "");
                 case 2:
                     return String.format(RETRIEVE_CHEST_CONTENT_TEMPLATE,
-                            "\t" + generateGoldEarned(treasure) + "\n",
+                            generateGoldEarned(treasure) + "\n",
                             convertItemAmountMapToFinalTemplateList(treasure).get(0),
                             convertItemAmountMapToFinalTemplateList(treasure).get(1), "");
                 case 3:
                     return String.format(RETRIEVE_CHEST_CONTENT_TEMPLATE,
                             generateGoldEarned(treasure) + "\n",
-                            convertItemAmountMapToFinalTemplateList(treasure).get(0)+ "\n",
+                            convertItemAmountMapToFinalTemplateList(treasure).get(0),
                             convertItemAmountMapToFinalTemplateList(treasure).get(1), convertItemAmountMapToFinalTemplateList(treasure).get(2));
                 default:
                     return "";
@@ -142,7 +142,7 @@ public class TreasureInteractionTemplateHelper {
 
 
     public String generateGoldEarned(Treasure treasure) {
-        return treasure.getAmountGold() > 0 ? String.format(GOLD_TEMPLATE, treasure.getAmountGold()): "";
+        return treasure.getAmountGold() > 0 ? "\t" + String.format(GOLD_TEMPLATE, treasure.getAmountGold()): "";
     }
 
     public String generateSuperMethod(Treasure treasure) {
