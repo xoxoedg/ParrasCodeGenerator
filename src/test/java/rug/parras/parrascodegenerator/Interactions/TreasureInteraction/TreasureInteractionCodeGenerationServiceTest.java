@@ -9,6 +9,7 @@ class TreasureInteractionCodeGenerationServiceTest {
     @Test
     void createTreasureInteractionClass() {
         Treasure treasure = new Treasure();
+
         treasure.setMap("city_market");
         treasure.setItemOneName("life_serum");
         treasure.setItemOneAmount(3);
@@ -19,6 +20,12 @@ class TreasureInteractionCodeGenerationServiceTest {
         treasure.setItemThreeAmount(10);
 
         TreasureInteractionCodeGenerationService treasureInteractionCodeGenerationService = new TreasureInteractionCodeGenerationService();
-        System.out.println(treasureInteractionCodeGenerationService.createTreasureInteractionClass(treasure));
+        System.out.println(treasureInteractionCodeGenerationService.generateTreasureInteractionClass(treasure));
+    }
+
+
+
+    @Test
+    void testGenerateTreasureInteractionClass() {
     }
 }
