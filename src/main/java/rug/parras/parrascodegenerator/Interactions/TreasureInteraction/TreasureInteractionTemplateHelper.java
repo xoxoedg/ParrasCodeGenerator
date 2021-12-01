@@ -1,5 +1,6 @@
 package rug.parras.parrascodegenerator.Interactions.TreasureInteraction;
 
+import rug.parras.parrascodegenerator.Interactions.common.ItemParser;
 import rug.parras.parrascodegenerator.Interactions.common.MapParser;
 
 import java.util.List;
@@ -42,32 +43,45 @@ public class TreasureInteractionTemplateHelper {
                 case 0:
                     return String.format(FUNCTION_ARGUMENTS_TEMPLATE, MapParser.convertInputToMapName(treasure.getMap()), "", "", "", "", "", "", "", "");
                 case 1:
-                    return String.format(FUNCTION_ARGUMENTS_TEMPLATE, MapParser.convertInputToMapName(treasure.getMap()), ", ", filterItems(treasure).get(0),"", "", "", "", "", "");
+                    return String.format(FUNCTION_ARGUMENTS_TEMPLATE, MapParser.convertInputToMapName(treasure.getMap()), ", ",
+                            ItemParser.convertInputToMethodItemName(filterItems(treasure).get(0)), "", "", "", "", "", "");
                 case 2:
-                    return String.format(FUNCTION_ARGUMENTS_TEMPLATE, MapParser.convertInputToMapName(treasure.getMap()), ", ", filterItems(treasure).get(0), ", ", filterItems(treasure).get(1),
+                    return String.format(FUNCTION_ARGUMENTS_TEMPLATE, MapParser.convertInputToMapName(treasure.getMap()), ", ",
+                            ItemParser.convertInputToMethodItemName(filterItems(treasure).get(0)), ", ",
+                            ItemParser.convertInputToMethodItemName(filterItems(treasure).get(1)),
                             "", "", "", "");
                 case 3:
-                    return String.format(FUNCTION_ARGUMENTS_TEMPLATE, MapParser.convertInputToMapName(treasure.getMap()), ", ", filterItems(treasure).get(0), ", ", filterItems(treasure).get(1),
-                            ", ", filterItems(treasure).get(2), "", "");
+                    return String.format(FUNCTION_ARGUMENTS_TEMPLATE, MapParser.convertInputToMapName(treasure.getMap()), ", ",
+                            ItemParser.convertInputToMethodItemName(filterItems(treasure).get(0)), ", ",
+                            ItemParser.convertInputToMethodItemName(filterItems(treasure).get(1)), ", ",
+                            ItemParser.convertInputToMethodItemName(filterItems(treasure).get(2)), "", "");
                 default:
                     return "";
             }
         } else {
             switch (filterItems(treasure).size()) {
                 case 0:
-                    return String.format(FUNCTION_ARGUMENTS_TEMPLATE, MapParser.convertInputToMapName(treasure.getMap()), ", ", treasure.getAmountGold(), "", "", "", "", "", "");
+                    return String.format(FUNCTION_ARGUMENTS_TEMPLATE, MapParser.convertInputToMapName(treasure.getMap()), ", ",
+                            treasure.getAmountGold(), "", "", "", "", "", "");
                 case 1:
-                    return String.format(FUNCTION_ARGUMENTS_TEMPLATE, MapParser.convertInputToMapName(treasure.getMap()), ", ", treasure.getAmountGold(), ", ", filterItems(treasure).get(0), "", "", "", "");
+                    return String.format(FUNCTION_ARGUMENTS_TEMPLATE, MapParser.convertInputToMapName(treasure.getMap()), ", ",
+                            treasure.getAmountGold(), ", ",
+                            ItemParser.convertInputToMethodItemName(filterItems(treasure).get(0)), "", "", "", "");
                 case 2:
-                    return String.format(FUNCTION_ARGUMENTS_TEMPLATE, MapParser.convertInputToMapName(treasure.getMap()), ", ", treasure.getAmountGold(), ", ", filterItems(treasure).get(0), ", ", filterItems(treasure).get(1),
+                    return String.format(FUNCTION_ARGUMENTS_TEMPLATE, MapParser.convertInputToMapName(treasure.getMap()), ", ",
+                            treasure.getAmountGold(), ", ",
+                            ItemParser.convertInputToMethodItemName(filterItems(treasure).get(0)), ", ",
+                            ItemParser.convertInputToMethodItemName(filterItems(treasure).get(1)),
                             "", "");
                 case 3:
-                    return String.format(FUNCTION_ARGUMENTS_TEMPLATE, MapParser.convertInputToMapName(treasure.getMap()),  ", ", treasure.getAmountGold(), ", ", filterItems(treasure).get(0), ", ", filterItems(treasure).get(1),
-                            ", ", filterItems(treasure).get(2));
+                    return String.format(FUNCTION_ARGUMENTS_TEMPLATE, MapParser.convertInputToMapName(treasure.getMap()), ", ",
+                            treasure.getAmountGold(), ", ",
+                            ItemParser.convertInputToMethodItemName(filterItems(treasure).get(0)), ", ",
+                            ItemParser.convertInputToMethodItemName(filterItems(treasure).get(1)), ", ",
+                            ItemParser.convertInputToMethodItemName(filterItems(treasure).get(2)));
                 default:
                     return "";
             }
-
         }
     }
 

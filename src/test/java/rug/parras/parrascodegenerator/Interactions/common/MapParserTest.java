@@ -7,21 +7,13 @@ import rug.parras.parrascodegenerator.Interactions.TreasureInteraction.Treasure;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MapParserTest {
-    private final String expectedMapName = "CityMarketMap";
 
     @Test
-    void convertSignInputToMapName() {
+    void convertInputToMapName() {
         Sign sign = new Sign();
         sign.setMap("city_market_map");
         String actualMapName = MapParser.convertInputToMapName(sign.getMap());
+        String expectedMapName = "CityMarketMap";
         assertEquals(expectedMapName,actualMapName);
-    }
-
-    @Test
-    void ConvertTreasureInputToMapName() {
-        Treasure treasure = new Treasure();
-        treasure.setMap("city_market_map");
-        String actualMapName = MapParser.convertInputToMapName(treasure.getMap());
-        assertEquals(expectedMapName, actualMapName);
     }
 }
