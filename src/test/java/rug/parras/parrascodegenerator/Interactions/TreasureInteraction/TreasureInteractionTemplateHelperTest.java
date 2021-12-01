@@ -27,7 +27,7 @@ class TreasureInteractionTemplateHelperTest {
     void listToMapConverter() {
         List<String> testAmountList = List.of("3", "4", "5");
         List<String> testItemtList = List.of("Tent", "Potion", "Serum");
-        assertEquals(testMap, treasureInteractionTemplateHelper.listToMapConverter(testItemtList, testAmountList));
+        assertEquals(testMap, treasureInteractionTemplateHelper.convertListToMap(testItemtList, testAmountList));
     }
 
     @Test
@@ -47,10 +47,10 @@ class TreasureInteractionTemplateHelperTest {
 
     @Test
     void generateFunctionArguments() {
-        String expectedFunctionArguments = "(timeline, 'RECEIVED_citymarketmap_CHEST, tent)";
+        String expectedFunctionArguments = "(timeline, 'RECEIVED_CityMarketMap_CHEST, tent)";
         treasure.setAmountGold(0);
         treasure.setItemOneName("tent");
-        treasure.setMap("citymarketmap");
+        treasure.setMap("city_market_map");
         treasure.setItemOneAmount(3);
         String actualFunctionArguments = treasureInteractionTemplateHelper.generateFunctionArguments(treasure);
         assertEquals(expectedFunctionArguments, actualFunctionArguments);

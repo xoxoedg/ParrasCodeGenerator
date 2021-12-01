@@ -26,13 +26,13 @@ public class TreasureInteractionTemplateHelper {
     }
 
     public List<String> convertMapToFinalTemplateList(Treasure treasure) {
-        Map<String, String> itemAmountMap = listToMapConverter(filterItems(treasure), filterAmount(treasure));
+        Map<String, String> itemAmountMap = convertListToMap(filterItems(treasure), filterAmount(treasure));
         System.out.println(itemAmountMap);
         return itemAmountMap.entrySet().stream().map(x -> String.format(ITEM_TEMPLATE, x.getKey(), x.getValue())).collect(Collectors.toList());
     }
 
     //In Common auslagern oder Utils
-    public Map<String, String> listToMapConverter(List<String> filteredItems, List<String> filteredAmounts) {
+    public Map<String, String> convertListToMap(List<String> filteredItems, List<String> filteredAmounts) {
         return IntStream.range(0, filteredItems.size()).boxed().collect(Collectors.toMap(filteredItems::get, filteredAmounts::get));
     }
 
@@ -40,30 +40,30 @@ public class TreasureInteractionTemplateHelper {
         if (treasure.getAmountGold() == 0) {
             switch (filterItems(treasure).size()) {
                 case 0:
-                    return String.format(FUNCTION_ARGUMENTS_TEMPLATE, treasure.getMap(), "", "", "", "", "", "", "", "");
+                    return String.format(FUNCTION_ARGUMENTS_TEMPLATE, MapParser.convertInputToMapName(treasure.getMap()), "", "", "", "", "", "", "", "");
                 case 1:
-                    return String.format(FUNCTION_ARGUMENTS_TEMPLATE, treasure.getMap(), ", ", filterItems(treasure).get(0),"", "", "", "", "", "");
+                    return String.format(FUNCTION_ARGUMENTS_TEMPLATE, MapParser.convertInputToMapName(treasure.getMap()), ", ", filterItems(treasure).get(0),"", "", "", "", "", "");
                 case 2:
-                    return String.format(FUNCTION_ARGUMENTS_TEMPLATE, treasure.getMap(), filterItems(treasure).get(0), filterItems(treasure).get(1),
-                            "", "", "", "", "", "", "");
+                    return String.format(FUNCTION_ARGUMENTS_TEMPLATE, MapParser.convertInputToMapName(treasure.getMap()), ", ", filterItems(treasure).get(0), ", ", filterItems(treasure).get(1),
+                            "", "", "", "");
                 case 3:
-                    return String.format(FUNCTION_ARGUMENTS_TEMPLATE, treasure.getMap(), filterItems(treasure).get(0), filterItems(treasure).get(1),
-                            filterItems(treasure).get(2), "", "", "", "", "");
+                    return String.format(FUNCTION_ARGUMENTS_TEMPLATE, MapParser.convertInputToMapName(treasure.getMap()), ", ", filterItems(treasure).get(0), ", ", filterItems(treasure).get(1),
+                            ", ", filterItems(treasure).get(2), "", "");
                 default:
                     return "";
             }
         } else {
             switch (filterItems(treasure).size()) {
                 case 0:
-                    return String.format(FUNCTION_ARGUMENTS_TEMPLATE, treasure.getMap(), treasure.getAmountGold(), "", "", "", "", "", "", "");
+                    return String.format(FUNCTION_ARGUMENTS_TEMPLATE, MapParser.convertInputToMapName(treasure.getMap()), ", ", treasure.getAmountGold(), "", "", "", "", "", "");
                 case 1:
-                    return String.format(FUNCTION_ARGUMENTS_TEMPLATE, treasure.getMap(), treasure.getAmountGold(), filterItems(treasure).get(0), "", "", "", "", "", "");
+                    return String.format(FUNCTION_ARGUMENTS_TEMPLATE, MapParser.convertInputToMapName(treasure.getMap()), ", ", treasure.getAmountGold(), ", ", filterItems(treasure).get(0), "", "", "", "");
                 case 2:
-                    return String.format(FUNCTION_ARGUMENTS_TEMPLATE, treasure.getMap(), treasure.getAmountGold(), filterItems(treasure).get(0), filterItems(treasure).get(1),
-                            "", "", "", "", "");
+                    return String.format(FUNCTION_ARGUMENTS_TEMPLATE, MapParser.convertInputToMapName(treasure.getMap()), ", ", treasure.getAmountGold(), ", ", filterItems(treasure).get(0), ", ", filterItems(treasure).get(1),
+                            "", "");
                 case 3:
-                    return String.format(FUNCTION_ARGUMENTS_TEMPLATE, treasure.getMap(), treasure.getAmountGold(), filterItems(treasure).get(0), filterItems(treasure).get(1),
-                            filterItems(treasure).get(2), "", "", "", "");
+                    return String.format(FUNCTION_ARGUMENTS_TEMPLATE, MapParser.convertInputToMapName(treasure.getMap()),  ", ", treasure.getAmountGold(), ", ", filterItems(treasure).get(0), ", ", filterItems(treasure).get(1),
+                            ", ", filterItems(treasure).get(2));
                 default:
                     return "";
             }
@@ -76,7 +76,7 @@ public class TreasureInteractionTemplateHelper {
     }
 
     public String generateSuperMethod(Treasure treasure) {
-        return !treasure.getMap().equals("") ? String.format(SUPER_FUNCTION_TEMPLATE, String.format(MapParser.convertInputToMapName(treasure))): "";
+        return !treasure.getMap().equals("") ? String.format(SUPER_FUNCTION_TEMPLATE, String.format(MapParser.convertInputToMapName(treasure.getMap()))): "";
     }
 
 }

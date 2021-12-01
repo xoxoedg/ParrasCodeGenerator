@@ -13,7 +13,7 @@ class MapParserTest {
     void convertSignInputToMapName() {
         Sign sign = new Sign();
         sign.setMap("city_market_map");
-        String actualMapName = MapParser.convertInputToMapName(sign);
+        String actualMapName = MapParser.convertInputToMapName(sign.getMap());
         assertEquals(expectedMapName,actualMapName);
     }
 
@@ -21,7 +21,7 @@ class MapParserTest {
     void ConvertTreasureInputToMapName() {
         Treasure treasure = new Treasure();
         treasure.setMap("city_market_map");
-        String actualMapName = MapParser.convertInputToMapName(treasure);
+        String actualMapName = MapParser.convertInputToMapName(treasure.getMap());
         assertEquals(expectedMapName, actualMapName);
     }
 }
