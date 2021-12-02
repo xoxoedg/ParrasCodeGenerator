@@ -5,6 +5,7 @@ import rug.parras.parrascodegenerator.Interactions.common.ItemParser;
 import rug.parras.parrascodegenerator.Interactions.common.MapParser;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -22,6 +23,45 @@ public class TreasureInteractionTemplateHelper {
                     "    %s\n" +
                     "    %s\n" +
                     "    %s";
+
+
+    public static final String TREASURE_INTERACTION_LIST_RECEIVE_GOLD_NAME_TEMPLATE =
+            "RECEIVE_GOLD_IN_%s";
+
+    public static final String TREASURE_INTERACTION_LIST_ITEM_NAME_TEMPLATE =
+            "RECEIVE_%s";
+
+    public static final String TREASURE_INTERACTION_LIST_ITEM_TEXT_TEMPLATE =
+            "['Received %s']";
+
+    public static final String TREASURE_INTERACTION_LIST_GOLD_TEXT_TEMPLATE =
+            "['You receive %s gold']";
+
+
+    public static final String TREASURE_INTERACTION_IMPORT_TEMPLATE =
+            "from characters.item_interaction.common.standard_treasure_interaction import StandardTreasureInteraction";
+
+
+//    public List<String> generateItemLis1t(Treasure treasure) {
+//        List<String> filteredItemsListName = filterItems(treasure).stream().map(x -> String.format(TREASURE_INTERACTION_LIST_ITEM_NAME_TEMPLATE,
+//                x)).collect(Collectors.toList());
+//        List<String> filteredItemsText = filterItems(treasure).stream().map(x -> String.format(TREASURE_INTERACTION_LIST_ITEM_TEXT_TEMPLATE,
+//                x)).collect(Collectors.toList());
+//        Map<String, String> nameAndContentList = convertListToMap(filteredItemsListName, filteredItemsText);
+//        return nameAndContentList.entrySet().stream().map(x -> x.getKey() + " = " + x.getValue()).map(x -> "\t" + x).collect(Collectors.toList());
+//
+//    }
+
+    public List<String> generateItemList(Treasure treasure) {
+        List<String> filteredItemsListName = filterItems(treasure);
+        return filteredItemsListName.stream().map(x -> ItemParser.convertInputToMethodItemName(x) + " = " +
+                String.format(TREASURE_INTERACTION_LIST_ITEM_TEXT_TEMPLATE, StringUtils.capitalize(x))).collect(Collectors.toList());
+    }
+
+    public String generateGoldList(Treasure treasure) {
+        String listName = String.format(TREASURE_INTERACTION_LIST_RECEIVE_GOLD_NAME_TEMPLATE, MapParser.convertInputToUppercaseMap(treasure.getMap()));
+        return listName + " = " + String.format(TREASURE_INTERACTION_LIST_GOLD_TEXT_TEMPLATE, treasure.getAmountGold());
+    }
 
 
     public List<String> filterAmount(Treasure treasure) {
@@ -51,5 +91,7 @@ public class TreasureInteractionTemplateHelper {
     public String generateSuperMethod(Treasure treasure) {
         return !treasure.getMap().equals("") ? String.format(SUPER_FUNCTION_TEMPLATE, String.format(MapParser.convertInputToMapName(treasure.getMap()))): "";
     }
+
+
 
 }

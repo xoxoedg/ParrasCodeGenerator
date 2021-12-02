@@ -46,17 +46,6 @@ class TreasureInteractionTemplateHelperTest {
         assertEquals(expectedTemplateList.get(1), expectedTemplateList.get(1));
     }
 
-//    @Test
-//    void generateFunctionArguments() {
-//        String expectedFunctionArguments = "(timeline, 'RECEIVED_CityMarketMap_CHEST, tent)";
-//        treasure.setAmountGold(0);
-//        treasure.setItemOneName("tent");
-//        treasure.setMap("city_market_map");
-//        treasure.setItemOneAmount(3);
-//        String actualFunctionArguments = treasureInteractionTemplateHelper.generateFunctionArguments(treasure);
-//        assertEquals(expectedFunctionArguments, actualFunctionArguments);
-
-
     @Test
     void generateGoldEarned() {
         final String expectedGold = "hero.gold += 100";
@@ -79,6 +68,28 @@ class TreasureInteractionTemplateHelperTest {
         treasure.setMap("city_market_map");
         String actualSuperMethod = treasureInteractionTemplateHelper.generateSuperMethod(treasure);
         assertEquals(expectedSuperMethod, actualSuperMethod);
+    }
+
+    @Test
+    void generateGoldList() {
+        String expectedGenerateGoldList = "RECEIVE_GOLD_IN_CITY_MARKET_MAP = ['You receive 100 gold']";
+        treasure.setMap("city_market_map");
+        treasure.setAmountGold(100);
+        String actualGeneratedGoldList = treasureInteractionTemplateHelper.generateGoldList(treasure);
+        System.out.println(actualGeneratedGoldList);
+
+        assertEquals(expectedGenerateGoldList, actualGeneratedGoldList);
+    }
+
+    @Test
+    void generateItemList() {
+        treasure.setItemOneName("Tent");
+        List<String> expectedItemList= List.of("RECEIVE_TENT = ['Received Tent']");
+        List<String> actualItemList = treasureInteractionTemplateHelper.generateItemList(treasure);
+        System.out.println(actualItemList.get(0));
+        assertEquals(expectedItemList.size(), actualItemList.size());
+        assertEquals(expectedItemList.get(0), actualItemList.get(0));
+        assertThrows(IndexOutOfBoundsException.class, () -> actualItemList.get(1));
     }
 }
 

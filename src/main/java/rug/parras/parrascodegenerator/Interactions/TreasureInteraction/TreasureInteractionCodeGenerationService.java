@@ -11,9 +11,13 @@ public class TreasureInteractionCodeGenerationService {
 
     public String generateTreasureInteractionClass(Treasure treasure) {
         treasureInteractionTemplateHelper = new TreasureInteractionTemplateHelper();
-        String receiveGoldArgument = String.format(Treasure.TREASURE_INTERACTION_LIST_ITEM_NAME_TEMPLATE, MapParser.convertInputToUppercaseMap(treasure.getMap()));
+        String receiveGoldArgument = String.format(TreasureInteractionTemplateHelper.TREASURE_INTERACTION_LIST_RECEIVE_GOLD_NAME_TEMPLATE, MapParser.convertInputToUppercaseMap(treasure.getMap()));
         String convertedMapName = MapParser.convertInputToMapName(treasure.getMap());
         String generatedSuperMethod = treasureInteractionTemplateHelper.generateSuperMethod(treasure);
+        String generatedGoldList = treasureInteractionTemplateHelper.generateGoldList(treasure);
+//        String generatedListItemOne = treasureInteractionTemplateHelper.generateItemList(treasure).get(0);
+//        String generatedListItemTwo = treasureInteractionTemplateHelper.generateItemList(treasure).get(1);
+//        String generatedListItemThree = treasureInteractionTemplateHelper.generateItemList(treasure).get(2);
 
 
         if (treasure.getAmountGold() == 0) {
@@ -22,7 +26,9 @@ public class TreasureInteractionCodeGenerationService {
                     String methodArgumentsZeroItem = String.format(TreasureInteractionTemplateHelper.METHOD_ARGUMENTS_TEMPLATE, MapParser.convertInputToMapName(treasure.getMap()), "", "", "", "", "", "", "", "").trim();
                     String retrieveChestMethodZeroItem = String.format(TreasureInteractionTemplateHelper.RETRIEVE_CHEST_CONTENT_TEMPLATE, "", "", "", "");
                     String generatedClassZeroItem = String.format(Treasure.TREASURE_INTERACTION_CLASS_TEMPLATE, convertedMapName, generatedSuperMethod, methodArgumentsZeroItem, retrieveChestMethodZeroItem);
-                    return generatedClassZeroItem;
+                    String generatedTreasureInteractionCodeZeroItem = TreasureInteractionTemplateHelper.TREASURE_INTERACTION_IMPORT_TEMPLATE + "\n\n\n" +
+                            "\n\n\n" + generatedClassZeroItem;
+                    return generatedTreasureInteractionCodeZeroItem;
 
                 case 1:
                     String methodArgumentsOneItem = String.format(TreasureInteractionTemplateHelper.METHOD_ARGUMENTS_TEMPLATE, MapParser.convertInputToMapName(treasure.getMap()), ", ",
@@ -30,7 +36,11 @@ public class TreasureInteractionCodeGenerationService {
                     String retrieveChestMethodOneItem = String.format(TreasureInteractionTemplateHelper.RETRIEVE_CHEST_CONTENT_TEMPLATE,
                             treasureInteractionTemplateHelper.convertItemAmountMapToFinalTemplateList(treasure).get(0), "", "", "");
                     String generatedClassOneItem = String.format(Treasure.TREASURE_INTERACTION_CLASS_TEMPLATE, convertedMapName, generatedSuperMethod, methodArgumentsOneItem, retrieveChestMethodOneItem);
-                    return generatedClassOneItem;
+                    String generatedListItemOne = treasureInteractionTemplateHelper.generateItemList(treasure).get(0);
+                    String generatedTreasureInteractionCodeOneItem = TreasureInteractionTemplateHelper.TREASURE_INTERACTION_IMPORT_TEMPLATE + "\n\n\n" + generatedListItemOne +
+                            "\n" + generatedClassOneItem +
+                            "\n\n\n" + generatedClassOneItem;
+                    return generatedTreasureInteractionCodeOneItem;
                 case 2:
                     String methodArgumentsTwoItem = String.format(TreasureInteractionTemplateHelper.METHOD_ARGUMENTS_TEMPLATE, MapParser.convertInputToMapName(treasure.getMap()), ", ",
                             ItemParser.convertInputToMethodItemName(treasureInteractionTemplateHelper.filterItems(treasure).get(0)), ", ",
@@ -39,7 +49,8 @@ public class TreasureInteractionCodeGenerationService {
                     String retrieveChestMethodTwoItem = String.format(TreasureInteractionTemplateHelper.RETRIEVE_CHEST_CONTENT_TEMPLATE,
                             treasureInteractionTemplateHelper.convertItemAmountMapToFinalTemplateList(treasure).get(0) + "\n",
                             treasureInteractionTemplateHelper.convertItemAmountMapToFinalTemplateList(treasure).get(1), "", "");
-                    String generatedClassTwoItem = String.format(Treasure.TREASURE_INTERACTION_CLASS_TEMPLATE, convertedMapName, generatedSuperMethod, methodArgumentsTwoItem, retrieveChestMethodTwoItem);
+                    String generatedClassTwoItem = String.format(Treasure.TREASURE_INTERACTION_CLASS_TEMPLATE, convertedMapName,
+                            generatedSuperMethod, methodArgumentsTwoItem, retrieveChestMethodTwoItem);
                     return generatedClassTwoItem;
                 case 3:
                     String methodArgumentsThreeItem = String.format(TreasureInteractionTemplateHelper.METHOD_ARGUMENTS_TEMPLATE, MapParser.convertInputToMapName(treasure.getMap()), ", ",
@@ -50,6 +61,7 @@ public class TreasureInteractionCodeGenerationService {
                             treasureInteractionTemplateHelper.convertItemAmountMapToFinalTemplateList(treasure).get(0),
                             treasureInteractionTemplateHelper.convertItemAmountMapToFinalTemplateList(treasure).get(1),
                             treasureInteractionTemplateHelper.convertItemAmountMapToFinalTemplateList(treasure).get(2), "");
+
                     String generatedClassThreeItem = String.format(Treasure.TREASURE_INTERACTION_CLASS_TEMPLATE, convertedMapName, generatedSuperMethod, methodArgumentsThreeItem, retrieveChestMethodThreeItem);
                     return generatedClassThreeItem;
                 default:
@@ -57,6 +69,7 @@ public class TreasureInteractionCodeGenerationService {
             }
         } else {
             switch (treasureInteractionTemplateHelper.filterItems(treasure).size()) {
+
                 case 0:
                     String methodArgumentZeroItemAndGold = String.format(TreasureInteractionTemplateHelper.METHOD_ARGUMENTS_TEMPLATE, MapParser.convertInputToMapName(treasure.getMap()), ", ",
                             receiveGoldArgument, "", "", "", "", "", "").trim();

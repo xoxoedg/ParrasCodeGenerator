@@ -13,11 +13,7 @@ class TreasureInteractionCodeGenerationServiceTest {
         treasure.setMap("city_market");
         treasure.setItemOneName("life_serum");
         treasure.setItemOneAmount(3);
-        treasure.setAmountGold(100);
-        treasure.setItemTwoName("potion");
-        treasure.setItemTwoAmount(8);
-        treasure.setItemThreeName("ether");
-        treasure.setItemThreeAmount(10);
+
 
         TreasureInteractionCodeGenerationService treasureInteractionCodeGenerationService = new TreasureInteractionCodeGenerationService();
         System.out.println(treasureInteractionCodeGenerationService.generateTreasureInteractionClass(treasure));
