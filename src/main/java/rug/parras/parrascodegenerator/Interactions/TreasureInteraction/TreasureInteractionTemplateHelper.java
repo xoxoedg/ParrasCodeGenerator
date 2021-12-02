@@ -23,7 +23,6 @@ public class TreasureInteractionTemplateHelper {
                     "    %s\n" +
                     "    %s";
 
-
     public static final String TREASURE_INTERACTION_LIST_RECEIVE_GOLD_NAME_TEMPLATE =
             "RECEIVE_GOLD_IN_%s";
 
