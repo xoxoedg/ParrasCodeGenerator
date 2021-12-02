@@ -1,6 +1,7 @@
 package rug.parras.parrascodegenerator.Interactions.TreasureInteraction;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Service;
 import rug.parras.parrascodegenerator.Interactions.common.ItemParser;
 import rug.parras.parrascodegenerator.Interactions.common.MapParser;
 
@@ -9,7 +10,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class TreasureInteractionTemplateHelper {
+@Service
+public class TreasureInteractionComponentGenerator {
 
 
     public static final String ITEM_TEMPLATE = "hero.items.%s.amount += %s";

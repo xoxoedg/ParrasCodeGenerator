@@ -1,6 +1,5 @@
 package rug.parras.parrascodegenerator.Interactions.TreasureInteraction;
 
-import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,14 +8,14 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class TreasureInteractionTemplateHelperTest {
-    TreasureInteractionTemplateHelper treasureInteractionTemplateHelper;
+class TreasureInteractionComponentGeneratorTest {
+    TreasureInteractionComponentGenerator treasureInteractionComponentGenerator;
     HashMap<String, String> testMap;
     Treasure treasure;
 
     @BeforeEach
     void setUp() {
-        treasureInteractionTemplateHelper =  new TreasureInteractionTemplateHelper();
+        treasureInteractionComponentGenerator =  new TreasureInteractionComponentGenerator();
         treasure = new Treasure();
         testMap = new HashMap<>();
         testMap.put("Tent", "3");
@@ -28,7 +27,7 @@ class TreasureInteractionTemplateHelperTest {
     void listToMapConverter() {
         List<String> testAmountList = List.of("3", "4", "5");
         List<String> testItemtList = List.of("Tent", "Potion", "Serum");
-        assertEquals(testMap, treasureInteractionTemplateHelper.convertListToMap(testItemtList, testAmountList));
+        assertEquals(testMap, treasureInteractionComponentGenerator.convertListToMap(testItemtList, testAmountList));
     }
 
     @Test
@@ -39,7 +38,7 @@ class TreasureInteractionTemplateHelperTest {
         treasure.setItemTwoName("Serum");
         treasure.setItemOneAmount(2);
         treasure.setItemTwoAmount(3);
-        List<String> actualTemplateList = treasureInteractionTemplateHelper.convertItemAmountMapToFinalTemplateList(treasure);
+        List<String> actualTemplateList = treasureInteractionComponentGenerator.convertItemAmountMapToFinalTemplateList(treasure);
 
         assertEquals(expectedTemplateList.get(0), actualTemplateList.get(0));
         assertEquals(expectedTemplateList.size(), actualTemplateList.size());
@@ -50,7 +49,7 @@ class TreasureInteractionTemplateHelperTest {
     void generateGoldEarned() {
         final String expectedGold = "hero.gold += 100";
         treasure.setAmountGold(100);
-        String actualGold = treasureInteractionTemplateHelper.generateGoldEarned(treasure);
+        String actualGold = treasureInteractionComponentGenerator.generateGoldEarned(treasure);
         assertEquals(expectedGold, actualGold);
     }
 
@@ -58,7 +57,7 @@ class TreasureInteractionTemplateHelperTest {
     void generateGoldEarnedWith0() {
         final String expectedGold = "";
         treasure.setAmountGold(0);
-        String actualGold = treasureInteractionTemplateHelper.generateGoldEarned(treasure);
+        String actualGold = treasureInteractionComponentGenerator.generateGoldEarned(treasure);
         assertEquals(expectedGold, actualGold);
     }
 
@@ -66,7 +65,7 @@ class TreasureInteractionTemplateHelperTest {
     void generateSuperMethod() {
         final String expectedSuperMethod = "super(CityMarketMapChestInteraction, self)";
         treasure.setMap("city_market_map");
-        String actualSuperMethod = treasureInteractionTemplateHelper.generateSuperMethod(treasure);
+        String actualSuperMethod = treasureInteractionComponentGenerator.generateSuperMethod(treasure);
         assertEquals(expectedSuperMethod, actualSuperMethod);
     }
 
@@ -75,7 +74,7 @@ class TreasureInteractionTemplateHelperTest {
         String expectedGenerateGoldList = "RECEIVE_GOLD_IN_CITY_MARKET_MAP = ['You receive 100 gold']";
         treasure.setMap("city_market_map");
         treasure.setAmountGold(100);
-        String actualGeneratedGoldList = treasureInteractionTemplateHelper.generateGoldList(treasure);
+        String actualGeneratedGoldList = treasureInteractionComponentGenerator.generateGoldList(treasure);
         System.out.println(actualGeneratedGoldList);
 
         assertEquals(expectedGenerateGoldList, actualGeneratedGoldList);
@@ -85,7 +84,7 @@ class TreasureInteractionTemplateHelperTest {
     void generateItemList() {
         treasure.setItemOneName("Tent");
         List<String> expectedItemList= List.of("RECEIVE_TENT = ['Received Tent']");
-        List<String> actualItemList = treasureInteractionTemplateHelper.generateItemList(treasure);
+        List<String> actualItemList = treasureInteractionComponentGenerator.generateItemList(treasure);
         System.out.println(actualItemList.get(0));
         assertEquals(expectedItemList.size(), actualItemList.size());
         assertEquals(expectedItemList.get(0), actualItemList.get(0));
