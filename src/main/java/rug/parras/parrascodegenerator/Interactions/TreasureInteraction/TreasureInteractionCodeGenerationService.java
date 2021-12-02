@@ -4,6 +4,9 @@ package rug.parras.parrascodegenerator.Interactions.TreasureInteraction;
 import org.springframework.stereotype.Service;
 import rug.parras.parrascodegenerator.Interactions.common.ItemParser;
 import rug.parras.parrascodegenerator.Interactions.common.MapParser;
+
+import java.util.Locale;
+
 @Service
 public class TreasureInteractionCodeGenerationService {
 
@@ -26,23 +29,22 @@ public class TreasureInteractionCodeGenerationService {
                     String methodArgumentsZeroItem = String.format(TreasureInteractionTemplateHelper.METHOD_ARGUMENTS_TEMPLATE, MapParser.convertInputToMapName(treasure.getMap()), "", "", "", "", "", "", "", "").trim();
                     String retrieveChestMethodZeroItem = String.format(TreasureInteractionTemplateHelper.RETRIEVE_CHEST_CONTENT_TEMPLATE, "", "", "", "");
                     String generatedClassZeroItem = String.format(Treasure.TREASURE_INTERACTION_CLASS_TEMPLATE, convertedMapName, generatedSuperMethod, methodArgumentsZeroItem, retrieveChestMethodZeroItem);
-                    String generatedTreasureInteractionCodeZeroItem = TreasureInteractionTemplateHelper.TREASURE_INTERACTION_IMPORT_TEMPLATE + "\n\n\n" +
+                    return TreasureInteractionTemplateHelper.TREASURE_INTERACTION_IMPORT_TEMPLATE + "\n\n\n" +
                             "\n\n\n" + generatedClassZeroItem;
-                    return generatedTreasureInteractionCodeZeroItem;
 
                 case 1:
-                    String methodArgumentsOneItem = String.format(TreasureInteractionTemplateHelper.METHOD_ARGUMENTS_TEMPLATE, MapParser.convertInputToMapName(treasure.getMap()), ", ",
+                    String methodArgumentsOneItem = String.format(TreasureInteractionTemplateHelper.METHOD_ARGUMENTS_TEMPLATE, treasure.getMap().toUpperCase(), ", ",
                             ItemParser.convertInputToMethodItemName(treasureInteractionTemplateHelper.filterItems(treasure).get(0)), "", "", "", "", "", "").trim();
                     String retrieveChestMethodOneItem = String.format(TreasureInteractionTemplateHelper.RETRIEVE_CHEST_CONTENT_TEMPLATE,
                             treasureInteractionTemplateHelper.convertItemAmountMapToFinalTemplateList(treasure).get(0), "", "", "");
-                    String generatedClassOneItem = String.format(Treasure.TREASURE_INTERACTION_CLASS_TEMPLATE, convertedMapName, generatedSuperMethod, methodArgumentsOneItem, retrieveChestMethodOneItem);
+                    String generatedClassOneItem = String.format(Treasure.TREASURE_INTERACTION_CLASS_TEMPLATE, convertedMapName,
+                            generatedSuperMethod, methodArgumentsOneItem, retrieveChestMethodOneItem);
                     String generatedListItemOne = treasureInteractionTemplateHelper.generateItemList(treasure).get(0);
-                    String generatedTreasureInteractionCodeOneItem = TreasureInteractionTemplateHelper.TREASURE_INTERACTION_IMPORT_TEMPLATE + "\n\n\n" + generatedListItemOne +
-                            "\n" + generatedClassOneItem +
+                    return TreasureInteractionTemplateHelper.TREASURE_INTERACTION_IMPORT_TEMPLATE +
+                            "\n\n\n" + generatedListItemOne +
                             "\n\n\n" + generatedClassOneItem;
-                    return generatedTreasureInteractionCodeOneItem;
                 case 2:
-                    String methodArgumentsTwoItem = String.format(TreasureInteractionTemplateHelper.METHOD_ARGUMENTS_TEMPLATE, MapParser.convertInputToMapName(treasure.getMap()), ", ",
+                     String methodArgumentsTwoItem = String.format(TreasureInteractionTemplateHelper.METHOD_ARGUMENTS_TEMPLATE, MapParser.convertInputToMapName(treasure.getMap()), ", ",
                             ItemParser.convertInputToMethodItemName(treasureInteractionTemplateHelper.filterItems(treasure).get(0)), ", ",
                             ItemParser.convertInputToMethodItemName(treasureInteractionTemplateHelper.filterItems(treasure).get(1)),
                             "", "", "", "").trim();
@@ -51,6 +53,8 @@ public class TreasureInteractionCodeGenerationService {
                             treasureInteractionTemplateHelper.convertItemAmountMapToFinalTemplateList(treasure).get(1), "", "");
                     String generatedClassTwoItem = String.format(Treasure.TREASURE_INTERACTION_CLASS_TEMPLATE, convertedMapName,
                             generatedSuperMethod, methodArgumentsTwoItem, retrieveChestMethodTwoItem);
+                    String generatedListItemOne = treasureInteractionTemplateHelper.generateItemList(treasure).get(0);
+                    String generatedListItemTwo = treasureInteractionTemplateHelper.generateItemList(treasure).get(1);
                     return generatedClassTwoItem;
                 case 3:
                     String methodArgumentsThreeItem = String.format(TreasureInteractionTemplateHelper.METHOD_ARGUMENTS_TEMPLATE, MapParser.convertInputToMapName(treasure.getMap()), ", ",

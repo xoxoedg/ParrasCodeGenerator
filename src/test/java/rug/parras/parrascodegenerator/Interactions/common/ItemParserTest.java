@@ -14,6 +14,5 @@ class ItemParserTest {
         String expectedMethodItemName = "RECEIVE_LIFE_SERUM";
         String actualMethodItemName = ItemParser.convertInputToMethodItemName(treasure.getItemOneName());
         assertEquals(expectedMethodItemName, actualMethodItemName);
-
     }
 }

@@ -8,9 +8,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import rug.parras.parrascodegenerator.Interactions.SignInteraction.Sign;
-import rug.parras.parrascodegenerator.Interactions.SignInteraction.SignInteractionController;
-import rug.parras.parrascodegenerator.Interactions.SignInteraction.SignInteractionService;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
