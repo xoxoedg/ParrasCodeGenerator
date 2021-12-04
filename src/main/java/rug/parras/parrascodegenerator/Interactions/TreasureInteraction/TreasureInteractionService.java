@@ -8,14 +8,14 @@ import java.io.IOException;
 
 @Service
 public class TreasureInteractionService {
-    TreasureInteractionCodeGenerationService treasureInteractionCodeGenerationService;
 
+    private TreasureInteractionCodeGenerationService treasureInteractionCodeGenerationService;
+    //private ValidationService validationService;
 
     @Autowired
     public TreasureInteractionService(TreasureInteractionCodeGenerationService treasureInteractionCodeGenerationService) {
         this.treasureInteractionCodeGenerationService = treasureInteractionCodeGenerationService;
     }
-
 
     public void createTreasureInteraction(Treasure treasure) {
 

@@ -20,7 +20,7 @@ public class TreasureComponentBuilder {
     public static final String SUPER_METHOD_TEMPLATE = "super";
     public static final String SUPER_METHOD_ARGUMENTS = "(ChestInteraction, self)";
     public static final String CLASS_CONSTRUCTOR_TEMPLATE = "def __init__(self, timeline):\n";
-    public static final String INNIT_TEMPLATE = ".__init__.";
+    public static final String INIT_TEMPLATE = ".__init__.";
     public static final String REWARD_LIST_STRING_TEMPLATE = "Received ";
     public static final String ITEM_FINDER_STRING_TEMPLATE = "ItemFinder.add_to_items";
 
@@ -29,28 +29,30 @@ public class TreasureComponentBuilder {
             "def retrieve_chest_content(self, hero):\n";
 
     public static final String TREASURE_INTERACTION_IMPORT_TEMPLATE =
-            "from characters.item_interaction.common.standard_treasure_interaction import StandardTreasureInteraction";
+            "from characters.item_interaction.common.standard_treasure_interaction import StandardTreasureInteraction\n" +
+                    "from characters.items import ItemFinder";
+
 
     public static final String CLASS_NAME_TEMPLATE = "class %sChestInteraction(StandardTreasureInteraction):\n";
 
     public String generateClassName(Treasure treasure) {
-        return  String.format(CLASS_NAME_TEMPLATE, MapParser.convertInputToMapName(treasure.getMap()));
+        return String.format(CLASS_NAME_TEMPLATE, MapParser.convertInputToMapName(treasure.getMap()));
     }
 
     public String generateClassConstructor(Treasure treasure) {
-        StringBuilder generatedClassConstructors = new StringBuilder();
+        StringBuilder generatedClassConstructor = new StringBuilder();
         List<String> classConstructorComponents = List.of(CLASS_CONSTRUCTOR_TEMPLATE, "\t\t" + generateSuperMethod(treasure),
-                INNIT_TEMPLATE, generateConstructorArguments(treasure));
+                INIT_TEMPLATE, generateConstructorArguments(treasure));
 
-        classConstructorComponents.forEach(generatedClassConstructors::append);
-        return generatedClassConstructors.toString();
+        classConstructorComponents.forEach(generatedClassConstructor::append);
+        return generatedClassConstructor.toString();
     }
 
     public String generateConstructorArguments(Treasure treasure) {
         StringBuilder generatedConstructorArguments = new StringBuilder();
         List<String> constructorArgumentsComponents = List.of(CONSTRUCTOR_METHOD_ARGUMENTS_TEMPLATE, generateTimeLineString(treasure), generateRewardsListName(treasure), ")");
         constructorArgumentsComponents.stream().map(x -> !constructorArgumentsComponents.get(0).equals(x) &&
-                !constructorArgumentsComponents.get(constructorArgumentsComponents.size() -1 ).equals(x)? ", " + x: x )
+                !constructorArgumentsComponents.get(constructorArgumentsComponents.size() - 1).equals(x) ? ", " + x : x)
                 .forEach(generatedConstructorArguments::append);
         return generatedConstructorArguments.toString();
     }
@@ -86,19 +88,20 @@ public class TreasureComponentBuilder {
         StringBuilder generatedItemFinderMethod = new StringBuilder();
         List<String> generatedItemFinderComponents = generateItemFinderArguments(treasure);
         generatedItemFinderComponents.stream().map(x -> !x.equals(generatedItemFinderComponents
-                .get(generatedItemFinderComponents.size() - 1)) ? "\t\t" + ITEM_FINDER_STRING_TEMPLATE + x +"\n":"\t\t" + ITEM_FINDER_STRING_TEMPLATE + x )
+                .get(generatedItemFinderComponents.size() - 1)) ? "\t\t" + ITEM_FINDER_STRING_TEMPLATE + x + "\n" : "\t\t" + ITEM_FINDER_STRING_TEMPLATE + x)
                 .forEach(generatedItemFinderMethod::append);
         return generatedItemFinderMethod.toString();
     }
+
     public List<String> generateItemFinderArguments(Treasure treasure) {
         Map<String, String> itemAmountMap = convertListToMap(filterItems(treasure), filterAmount(treasure));
         List<String> itemFinderArgumentsComponents = new ArrayList<>();
-        itemAmountMap.forEach((key, value) -> itemFinderArgumentsComponents.add("(hero" + ", " + key + ", " + value + ")"));
+        itemAmountMap.forEach((key, value) -> itemFinderArgumentsComponents.add("(hero" + ", " + "'" + key + "'" + ", " + value + ")"));
         return itemFinderArgumentsComponents;
     }
 
     public String generateGoldEarned(Treasure treasure) {
-        return  treasure.getAmountGold() > 0 ? "\n\t\t" + String.format(GOLD_TEMPLATE, treasure.getAmountGold()) : "";
+        return treasure.getAmountGold() > 0 ? "\n\t\t" + String.format(GOLD_TEMPLATE, treasure.getAmountGold()) : "";
     }
 
     public String generateRewardList(Treasure treasure) {
@@ -133,19 +136,26 @@ public class TreasureComponentBuilder {
         List<String> itemRewards = filterItems(treasure);
         generatedListMessage.append(REWARD_LIST_STRING_TEMPLATE); // [Gold]
         String rewardGoldText = treasure.getAmountGold() + " Gold";
-        if (treasure.getAmountGold() > 0 && itemRewards.size() == 0 ) {
+        if (treasure.getAmountGold() > 0 && itemRewards.size() == 0) {
             listMessageComponents.add(rewardGoldText);
-        } else if (treasure.getAmountGold() == 0 && itemRewards.size() > 0){
+        } else if (treasure.getAmountGold() == 0 && itemRewards.size() > 0) {
             listMessageComponents.addAll(itemRewards);
         } else if (treasure.getAmountGold() > 0 && itemRewards.size() > 0) {
             listMessageComponents.add(rewardGoldText);
             listMessageComponents.addAll(itemRewards);
         } else
             return "Sorry you have to atleast reward the player with gold or one item";
-        listMessageComponents.stream().map(x -> listMessageComponents.size() < 2 && x.equals(listMessageComponents.get(0))
-                || x.equals(listMessageComponents.get(listMessageComponents.size() - 1))
-       ? StringUtils.capitalize(x) : StringUtils.capitalize(x) + " and ").forEach(generatedListMessage::append);
+        listMessageComponents.stream()
+                .map(component -> generateMessageComponentPiece(listMessageComponents, component))
+                .forEach(generatedListMessage::append);
         return "['" + generatedListMessage + "']";
+    }
+
+    private String generateMessageComponentPiece(List<String> listMessageComponents, String component) {
+        return listMessageComponents.size() < 2
+                && component.equals(listMessageComponents.get(0))
+                || component.equals(listMessageComponents.get(listMessageComponents.size() - 1))
+                ? StringUtils.capitalize(component) : StringUtils.capitalize(component) + " and ";
     }
 
     //Auslagern
@@ -153,6 +163,7 @@ public class TreasureComponentBuilder {
         List<Integer> amounts = List.of(treasure.getItemOneAmount(), treasure.getItemTwoAmount(), treasure.getItemThreeAmount());
         return amounts.stream().filter(x -> x != 0).map(String::valueOf).collect(Collectors.toList());
     }
+
     public List<String> filterItems(Treasure treasure) {
         List<String> items = List.of(treasure.getItemOneName(), treasure.getItemTwoName(), treasure.getItemThreeName());
         return items.stream().filter(x -> !x.equals("")).map(String::toLowerCase).collect(Collectors.toList());

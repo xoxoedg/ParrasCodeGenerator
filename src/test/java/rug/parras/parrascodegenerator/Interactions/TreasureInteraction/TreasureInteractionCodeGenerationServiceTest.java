@@ -8,7 +8,7 @@ class TreasureInteractionCodeGenerationServiceTest {
 
     private final String expectedValue =
     "from characters.item_interaction.common.standard_treasure_interaction import StandardTreasureInteraction\n" +
-            "\n" +
+    "from characters.items import ItemFinder\n\n" +
             "RECEIVE_GOLD_TENT_SERUM = ['Received 100 Gold and Tent and Serum']\n" +
             "\n" +
             "class WayToMountainChestInteraction(StandardTreasureInteraction):\n" +
@@ -30,8 +30,10 @@ class TreasureInteractionCodeGenerationServiceTest {
         treasure.setItemOneName("Tent");
         treasure.setItemTwoName("Serum");
         treasure.setItemTwoAmount(3);
-        treasure.setAmountGold(100);
         treasure.setItemOneAmount(3);
+
+        treasure.setAmountGold(100);
+
         treasure.setMap("way_to_mountain");
 
         String actualMessage = treasureInteractionCodeGenerationService.generateTreasureInteraction(treasure);

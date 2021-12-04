@@ -32,4 +32,5 @@ public class Sign {
     private String map;
     private String direction;
     private String fileName;
+
 }

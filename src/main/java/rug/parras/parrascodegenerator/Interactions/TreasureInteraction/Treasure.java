@@ -11,16 +11,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Treasure {
 
-    public static final String TREASURE_INTERACTION_CLASS_TEMPLATE =
-            "class %sChestInteraction(StandardTreasureInteraction):\n" +
-                    "\n" +
-                    "    def __init__(self, timeline):\n" +
-                    "        %s.__init__%s\n" +
-                    "\n" +
-                    "    %s";
-
-
-
     private String map;
     private String area;
     private String fileName;
