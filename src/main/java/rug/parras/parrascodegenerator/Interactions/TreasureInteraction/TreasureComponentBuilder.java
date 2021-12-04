@@ -48,7 +48,7 @@ public class TreasureComponentBuilder {
         return generatedClassConstructor.toString();
     }
 
-    public String generateConstructorArguments(Treasure treasure) {
+    private String generateConstructorArguments(Treasure treasure) {
         StringBuilder generatedConstructorArguments = new StringBuilder();
         List<String> constructorArgumentsComponents = List.of(CONSTRUCTOR_METHOD_ARGUMENTS_TEMPLATE, generateTimeLineString(treasure), generateRewardsListName(treasure), ")");
         constructorArgumentsComponents.stream().map(x -> !constructorArgumentsComponents.get(0).equals(x) &&
@@ -57,20 +57,20 @@ public class TreasureComponentBuilder {
         return generatedConstructorArguments.toString();
     }
 
-    public String generateSuperMethod(Treasure treasure) {
+    private String generateSuperMethod(Treasure treasure) {
         StringBuilder generatedSuperMethod = new StringBuilder();
         List<String> superMethodComponents = List.of(SUPER_METHOD_TEMPLATE, generateSuperMethodArguments(treasure));
         superMethodComponents.forEach(generatedSuperMethod::append);
         return !treasure.getMap().equals("") ? generatedSuperMethod.toString() : "";
     }
 
-    public String generateSuperMethodArguments(Treasure treasure) {
+    private String generateSuperMethodArguments(Treasure treasure) {
         StringBuilder generatedSuperMethod = new StringBuilder();
         generatedSuperMethod.append(SUPER_METHOD_ARGUMENTS).insert(1, MapParser.convertInputToMapName(treasure.getMap()));
         return generatedSuperMethod.toString();
     }
 
-    public String generateTimeLineString(Treasure treasure) {
+    private String generateTimeLineString(Treasure treasure) {
         StringBuilder generatedTimeLineString = new StringBuilder();
         List<String> timeLineStringComponents = List.of(TIMELINE_METHOD_STRING_TEMPLATE, treasure.getMap().toUpperCase());
         timeLineStringComponents.forEach(generatedTimeLineString::append);
@@ -84,7 +84,7 @@ public class TreasureComponentBuilder {
         return generatedRetrieveChestMethod.toString();
     }
 
-    public String generateItemFinderMethod(Treasure treasure) {
+    private String generateItemFinderMethod(Treasure treasure) {
         StringBuilder generatedItemFinderMethod = new StringBuilder();
         List<String> generatedItemFinderComponents = generateItemFinderArguments(treasure);
         generatedItemFinderComponents.stream().map(x -> !x.equals(generatedItemFinderComponents
@@ -93,14 +93,14 @@ public class TreasureComponentBuilder {
         return generatedItemFinderMethod.toString();
     }
 
-    public List<String> generateItemFinderArguments(Treasure treasure) {
+    private List<String> generateItemFinderArguments(Treasure treasure) {
         Map<String, String> itemAmountMap = convertListToMap(filterItems(treasure), filterAmount(treasure));
         List<String> itemFinderArgumentsComponents = new ArrayList<>();
         itemAmountMap.forEach((key, value) -> itemFinderArgumentsComponents.add("(hero" + ", " + "'" + key + "'" + ", " + value + ")"));
         return itemFinderArgumentsComponents;
     }
 
-    public String generateGoldEarned(Treasure treasure) {
+    private String generateGoldEarned(Treasure treasure) {
         return treasure.getAmountGold() > 0 ? "\n\t\t" + String.format(GOLD_TEMPLATE, treasure.getAmountGold()) : "";
     }
 
@@ -111,7 +111,7 @@ public class TreasureComponentBuilder {
         return generatedRewardList.toString();
     }
 
-    public String generateRewardsListName(Treasure treasure) {
+    private String generateRewardsListName(Treasure treasure) {
         StringBuilder generatedRewardsList = new StringBuilder();
         List<String> rewardsListTemplateComponent;
         List<String> rewardsItemComponents = filterItems(treasure);
@@ -130,7 +130,7 @@ public class TreasureComponentBuilder {
         return generatedRewardsList.toString().toUpperCase();
     }
 
-    public String generateListMessage(Treasure treasure) {
+    private String generateListMessage(Treasure treasure) {
         StringBuilder generatedListMessage = new StringBuilder();
         List<String> listMessageComponents = new ArrayList<>();
         List<String> itemRewards = filterItems(treasure);
