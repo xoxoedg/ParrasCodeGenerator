@@ -25,8 +25,8 @@ class TreasureInteractionCodeGenerationServiceTest {
     @Test
     void createTreasureInteractionClass() {
         Treasure treasure = new Treasure();
-        TreasureComponentBuilder treasureComponentBuilder = new TreasureComponentBuilder();
-        TreasureInteractionCodeGenerationService treasureInteractionCodeGenerationService = new TreasureInteractionCodeGenerationService(treasureComponentBuilder);
+        TreasureComponentGenerator treasureComponentGenerator = new TreasureComponentGenerator();
+        TreasureInteractionCodeGenerationService treasureInteractionCodeGenerationService = new TreasureInteractionCodeGenerationService(treasureComponentGenerator);
         treasure.setItemOneName("Tent");
         treasure.setItemTwoName("Serum");
         treasure.setItemTwoAmount(3);

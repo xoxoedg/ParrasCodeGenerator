@@ -7,20 +7,20 @@ import java.util.List;
 @Service
 public class TreasureInteractionCodeGenerationService {
 
-    private TreasureComponentBuilder treasureComponentBuilder;
+    private TreasureComponentGenerator treasureComponentGenerator;
 
-    public TreasureInteractionCodeGenerationService(TreasureComponentBuilder treasureComponentBuilder) {
-        this.treasureComponentBuilder = treasureComponentBuilder;
+    public TreasureInteractionCodeGenerationService(TreasureComponentGenerator treasureComponentGenerator) {
+        this.treasureComponentGenerator = treasureComponentGenerator;
     }
 
     public String generateTreasureInteraction(Treasure treasure) {
             StringBuilder generatedTreasureInteraction = new StringBuilder();
             List<String> treasureInteractionComponents = List.of(
-                    TreasureComponentBuilder.TREASURE_INTERACTION_IMPORT_TEMPLATE
-                            + "\n\n" ,treasureComponentBuilder.generateRewardList(treasure)
-                            + "\n\n", treasureComponentBuilder.generateClassName(treasure) + "\n\n", "\t"
-                            + treasureComponentBuilder.generateClassConstructor(treasure)
-                            + "\n\n" + "\t" + treasureComponentBuilder.generateRetrieveChestMethod(treasure));
+                    TreasureComponentGenerator.TREASURE_INTERACTION_IMPORT_TEMPLATE
+                            + "\n\n" , treasureComponentGenerator.generateRewardList(treasure)
+                            + "\n\n", treasureComponentGenerator.generateClassName(treasure) + "\n\n", "\t"
+                            + treasureComponentGenerator.generateClassConstructor(treasure)
+                            + "\n\n" + "\t" + treasureComponentGenerator.generateRetrieveChestMethod(treasure));
             treasureInteractionComponents.forEach(generatedTreasureInteraction::append);
             return generatedTreasureInteraction.toString();
         }

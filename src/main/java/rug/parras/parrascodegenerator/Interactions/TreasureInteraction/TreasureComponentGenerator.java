@@ -12,7 +12,7 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 @Service
-public class TreasureComponentBuilder {
+public class TreasureComponentGenerator {
 
     public static final String TIMELINE_METHOD_STRING_TEMPLATE = "RECEIVED_CHEST_";
     public static final String GOLD_TEMPLATE = "hero.gold += %s";
@@ -20,7 +20,7 @@ public class TreasureComponentBuilder {
     public static final String SUPER_METHOD_TEMPLATE = "super";
     public static final String SUPER_METHOD_ARGUMENTS = "(ChestInteraction, self)";
     public static final String CLASS_CONSTRUCTOR_TEMPLATE = "def __init__(self, timeline):\n";
-    public static final String INIT_TEMPLATE = ".__init__.";
+    public static final String INIT_TEMPLATE = ".__init__";
     public static final String REWARD_LIST_STRING_TEMPLATE = "Received ";
     public static final String ITEM_FINDER_STRING_TEMPLATE = "ItemFinder.add_to_items";
 
@@ -96,7 +96,7 @@ public class TreasureComponentBuilder {
     private List<String> generateItemFinderArguments(Treasure treasure) {
         Map<String, String> itemAmountMap = convertListToMap(filterItems(treasure), filterAmount(treasure));
         List<String> itemFinderArgumentsComponents = new ArrayList<>();
-        itemAmountMap.forEach((key, value) -> itemFinderArgumentsComponents.add("(hero" + ", " + "'" + key + "'" + ", " + value + ")"));
+        itemAmountMap.forEach((key, value) -> itemFinderArgumentsComponents.add("(hero" + ", " + "'" + StringUtils.capitalize(key.toLowerCase()) + "'" + ", " + value + ")"));
         return itemFinderArgumentsComponents;
     }
 
