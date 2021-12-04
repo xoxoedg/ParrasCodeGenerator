@@ -2,6 +2,7 @@ package rug.parras.parrascodegenerator.Interactions.TreasureInteraction;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
+import rug.parras.parrascodegenerator.Interactions.common.ItemParser;
 import rug.parras.parrascodegenerator.Interactions.common.MapParser;
 
 import java.util.ArrayList;
@@ -114,7 +115,7 @@ public class TreasureComponentGenerator {
     private String generateRewardsListName(Treasure treasure) {
         StringBuilder generatedRewardsList = new StringBuilder();
         List<String> rewardsListTemplateComponent;
-        List<String> rewardsItemComponents = filterItems(treasure);
+        List<String> rewardsItemComponents = filterItems(treasure).stream().map(ItemParser::convertInputToSuperItemListName).collect(Collectors.toList());
         if (treasure.getAmountGold() > 0) {
             rewardsListTemplateComponent = List.of("Receive", "Gold");
 
@@ -133,8 +134,8 @@ public class TreasureComponentGenerator {
     private String generateListMessage(Treasure treasure) {
         StringBuilder generatedListMessage = new StringBuilder();
         List<String> listMessageComponents = new ArrayList<>();
-        List<String> itemRewards = filterItems(treasure);
-        generatedListMessage.append(REWARD_LIST_STRING_TEMPLATE); // [Gold]
+        List<String> itemRewards = filterItems(treasure).stream().map(ItemParser::convertInputToSuperItemListString).collect(Collectors.toList());
+        generatedListMessage.append(REWARD_LIST_STRING_TEMPLATE);
         String rewardGoldText = treasure.getAmountGold() + " Gold";
         if (treasure.getAmountGold() > 0 && itemRewards.size() == 0) {
             listMessageComponents.add(rewardGoldText);
