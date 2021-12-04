@@ -1,12 +1,10 @@
 package rug.parras.parrascodegenerator.Interactions.TreasureInteraction;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class TreasureInteractionValidationServiceTest {
 
@@ -20,7 +18,7 @@ class TreasureInteractionValidationServiceTest {
         validationService = new TreasureInteractionValidationService();
         treasure.setItemOneName("Tent");
         treasure.setItemOneAmount(5);
-        treasure.setMap("city_market");
+        treasure.setMap("city_market_map");
         treasure.setFileName("interaction.py");
         treasure.setArea("Rionnagen");
     }
@@ -32,12 +30,14 @@ class TreasureInteractionValidationServiceTest {
         boolean isPatternMatchedNotValid2 = validationService.validateMapInput("Test_city_market_Map");
         boolean isPatternMatchedNotValid3 = validationService.validateMapInput("test_City 3");
         boolean isPatternMatchedNotValid4 = validationService.validateMapInput("test map_city");
+        boolean isPatternMatchedNotValid5 = validationService.validateMapInput("Test_city_market");
 
         assertTrue(isPatternMatchedValid);
         assertFalse(isPatternMatchedNotValid1);
         assertFalse(isPatternMatchedNotValid2);
         assertFalse(isPatternMatchedNotValid3);
         assertFalse(isPatternMatchedNotValid4);
+        assertFalse(isPatternMatchedNotValid5);
     }
 
     @Test
@@ -90,11 +90,12 @@ class TreasureInteractionValidationServiceTest {
         assertFalse(isPatternMatchedNotValidItem5);
 
     }
+
     @Test
     void validateAmount() {
 
-        boolean patternMatched = validationService.validateAmount(treasure.getItemOneAmount());
-        assertTrue(patternMatched);
+        boolean isPatternMatchedValid = validationService.validateAmount(treasure.getItemOneAmount());
+        assertTrue(isPatternMatchedValid);
         assertFalse(validationService.validateAmount(10));
         assertFalse(validationService.validateAmount(102));
 
