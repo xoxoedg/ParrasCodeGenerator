@@ -97,7 +97,7 @@ public class TreasureComponentGenerator {
     private List<String> generateItemFinderArguments(Treasure treasure) {
         Map<String, String> itemAmountMap = convertListToMap(filterItems(treasure), filterAmount(treasure));
         List<String> itemFinderArgumentsComponents = new ArrayList<>();
-        itemAmountMap.forEach((key, value) -> itemFinderArgumentsComponents.add("(hero" + ", " + "'" + StringUtils.capitalize(key.toLowerCase()) + "'" + ", " + value + ")"));
+        itemAmountMap.forEach((key, value) -> itemFinderArgumentsComponents.add("(hero" + ", " + "'" + ItemParser.convertInputToSuperItemListString(key.toLowerCase()) + "'" + ", " + value + ")"));
         return itemFinderArgumentsComponents;
     }
 

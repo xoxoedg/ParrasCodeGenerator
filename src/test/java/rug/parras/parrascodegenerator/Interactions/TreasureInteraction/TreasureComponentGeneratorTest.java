@@ -58,6 +58,19 @@ class TreasureComponentGeneratorTest {
         String actualRetrieveChestMethod = treasureComponentGenerator.generateRetrieveChestMethod(treasure);
         assertEquals(expectedCRetrieveChestMethod, actualRetrieveChestMethod);
     }
+
+    @Test
+    void generateRetrieveChestMethodWithSuperItem() {
+        treasure.setMap("city_lake_map");
+        treasure.setItemOneName("super potion");
+        treasure.setItemOneAmount(1);
+        String expectedCRetrieveChestMethod =
+                "def retrieve_chest_content(self, hero):\n" +
+                "\t\tItemFinder.add_to_items(hero, 'Super Potion', 1)";
+        String actualRetrieveChestMethod = treasureComponentGenerator.generateRetrieveChestMethod(treasure);
+        assertEquals(expectedCRetrieveChestMethod, actualRetrieveChestMethod);
+    }
+
     @Test
     void generateRetrieveChestMethodGoldAndTwoItems() {
         treasure.setMap("city_lake_map");
