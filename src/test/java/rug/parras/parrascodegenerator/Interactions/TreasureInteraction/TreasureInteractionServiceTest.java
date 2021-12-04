@@ -6,23 +6,29 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.io.File;
+
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class TreasureInteractionServiceTest {
 
     @Mock
-    TreasureInteractionCodeGenerationService treasureInteractionCodeGenerationService;
+    TreasureComponentBuilder treasureComponentBuilder;
+
     @InjectMocks
     TreasureInteractionService treasureInteractionService;
 
-
     @Test
-    void generateTreasureInteractionClass() {
+    void createTreasureInteraction() {
         Treasure treasure = new Treasure();
+        treasure.setFileName("TreasureInteraction.py");
+        when(treasureComponentBuilder.generateTreasureInteraction(treasure)).thenReturn("TestString1");
+        treasureInteractionService.createTreasureInteraction(treasure);
+        verify(treasureComponentBuilder, times(1)).generateTreasureInteraction(treasure);
 
-        treasure.setMap("city_market");
-        treasure.setItemOneName("life_serum");
-        treasure.setItemOneAmount(3);
+        File fileToDelete = new File(treasure.getFileName());
+        fileToDelete.delete();
     }
 }

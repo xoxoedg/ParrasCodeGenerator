@@ -1,5 +1,6 @@
 package rug.parras.parrascodegenerator.Interactions.TreasureInteraction;
 
+import org.springframework.stereotype.Service;
 import rug.parras.parrascodegenerator.Interactions.common.MapParser;
 
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+@Service
 public class TreasureComponentBuilder {
 
     public static final String ITEM_TEMPLATE = "hero.items.%s.amount += %s";
@@ -30,7 +32,7 @@ public class TreasureComponentBuilder {
     public static final String CLASS_NAME_TEMPLATE = "class %sChestInteraction(StandardTreasureInteraction):\n";
 
     public String generateClassName(Treasure treasure) {
-        return  String.format(CLASS_NAME_TEMPLATE, MapParser.convertInputToUppercaseMap(treasure.getMap()));
+        return  String.format(CLASS_NAME_TEMPLATE, MapParser.convertInputToMapName(treasure.getMap()));
     }
 
 
@@ -59,7 +61,7 @@ public class TreasureComponentBuilder {
             return "Sorry you have to atleast reward the player with gold or one item";
         listMessageComponents.stream().map(x -> x.equals(listMessageComponents.get(0)) || x.equals(listMessageComponents.get(listMessageComponents.size() - 1))? x : " and" + x)
                 .forEach(generatedListMessage::append);
-        return generatedListMessage.toString();
+        return "['" + generatedListMessage.toString() + "']";
     }
     public String generateTimeLineString(Treasure treasure) {
         StringBuilder generatedTimeLineString = new StringBuilder();
@@ -114,7 +116,7 @@ public class TreasureComponentBuilder {
     public String generateRetrieveChestMethod(List<String> items) {
         StringBuilder generatedRewards = new StringBuilder();
         generatedRewards.append(RETRIEVE_CHEST_CONTENT_TEMPLATE);
-        items.forEach(item -> generatedRewards.append("\t" + item + "\n"));
+        items.forEach(item -> generatedRewards.append("\t\t" + item + "\n"));
         return generatedRewards.toString().trim();
     }
     //Refactor
@@ -148,7 +150,7 @@ public class TreasureComponentBuilder {
 
     public String generateClassConstructor(Treasure treasure) {
         StringBuilder generatedClassConstructors = new StringBuilder();
-        List<String> classConstructorComponents = List.of(CLASS_CONSTRUCTOR_TEMPLATE, "\n\t" + generateSuperMethod(treasure),
+        List<String> classConstructorComponents = List.of(CLASS_CONSTRUCTOR_TEMPLATE, "\n\t\t" + generateSuperMethod(treasure),
                 INNIT_TEMPLATE, generateConstructorArguments(treasure));
 
         classConstructorComponents.forEach(generatedClassConstructors::append);

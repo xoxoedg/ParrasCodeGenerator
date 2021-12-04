@@ -1,5 +1,6 @@
 package rug.parras.parrascodegenerator.Interactions.TreasureInteraction;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,7 @@ public class TreasureInteractionController {
 
     TreasureInteractionService treasureInteractionService;
 
+    @Autowired
     public TreasureInteractionController(TreasureInteractionService treasureInteractionService) {
         this.treasureInteractionService = treasureInteractionService;
     }
@@ -23,7 +25,7 @@ public class TreasureInteractionController {
 
     @PostMapping("/treasure")
     public String treasureSubmit(@ModelAttribute Treasure treasureInteraction) {
-//        treasureInteractionService.placeholder();
+        treasureInteractionService.createTreasureInteraction(treasureInteraction);
         return "index";
     }
 

@@ -2,58 +2,31 @@ package rug.parras.parrascodegenerator.Interactions.TreasureInteraction;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import rug.parras.parrascodegenerator.Interactions.SignInteraction.Sign;
 import rug.parras.parrascodegenerator.Interactions.common.MapParser;
+import rug.parras.parrascodegenerator.Utils.FileOperationUtils;
+
+import java.io.IOException;
 
 @Service
 public class TreasureInteractionService {
 
-    TreasureInteractionCodeGenerationService treasureInteractionCodeGenerationService;
-    TreasureInteractionComponentGenerator treasureInteractionComponentGenerator;
+    TreasureComponentBuilder treasureComponentBuilder;
 
     @Autowired
-    public TreasureInteractionService(TreasureInteractionCodeGenerationService treasureInteractionCodeGenerationService) {
-        this.treasureInteractionCodeGenerationService = treasureInteractionCodeGenerationService;
+    public TreasureInteractionService(TreasureComponentBuilder treasureComponentBuilder) {
+        this.treasureComponentBuilder = treasureComponentBuilder;
     }
 
-    public TreasureInteractionService(TreasureInteractionCodeGenerationService treasureInteractionCodeGenerationService, TreasureInteractionComponentGenerator treasureInteractionComponentGenerator) {
-        this.treasureInteractionCodeGenerationService = treasureInteractionCodeGenerationService;
-        this.treasureInteractionComponentGenerator = treasureInteractionComponentGenerator;
-    }
+    public void createTreasureInteraction(Treasure treasure)  {
 
-    public String generateTreasureInteractionClass(Treasure treasure) {
-        String receiveGoldArgument = String.format(TreasureInteractionComponentGenerator.TREASURE_INTERACTION_LIST_RECEIVE_GOLD_NAME_TEMPLATE, MapParser.convertInputToUppercaseMap(treasure.getMap()));
-        String convertedMapName = MapParser.convertInputToMapName(treasure.getMap());
-        String generatedSuperMethod = treasureInteractionComponentGenerator.generateSuperMethod(treasure);
-        String generatedGoldList = treasureInteractionComponentGenerator.generateGoldList(treasure);
+        try {
+            FileOperationUtils converter = new FileOperationUtils("testPythonDir\\" + treasure.getFileName());
+            converter.writeToFile(treasureComponentBuilder.generateTreasureInteraction(treasure));
 
-        if (treasure.getAmountGold() == 0) {
-            switch (treasureInteractionComponentGenerator.filterItems(treasure).size()) {
-                case 0:
-                    return treasureInteractionCodeGenerationService.generateTreasureInteractionCodeForZeroItem(treasure, convertedMapName, generatedSuperMethod);
-
-                case 1:
-                    return treasureInteractionCodeGenerationService.generateTreasureInteractionCodeForOneItem(treasure, convertedMapName, generatedSuperMethod);
-                case 2:
-                    return treasureInteractionCodeGenerationService.generateTreasureInteractionCodeForTwoItem(treasure, convertedMapName, generatedSuperMethod);
-                case 3:
-                    return treasureInteractionCodeGenerationService.generateTreasureInteractionCodeForThreeItems(treasure, convertedMapName, generatedSuperMethod);
-                default:
-                    return "";
-            }
-        } else {
-            switch (treasureInteractionComponentGenerator.filterItems(treasure).size()) {
-
-                case 0:
-                    return treasureInteractionCodeGenerationService.generateTreasureInteractionCodeForZeroItemsAndGold(treasure, receiveGoldArgument, convertedMapName, generatedSuperMethod);
-                case 1:
-                    return treasureInteractionCodeGenerationService.generateTreasureInteractionCodeForOneItemsAndGold(treasure, receiveGoldArgument, convertedMapName, generatedSuperMethod);
-                case 2:
-                    return treasureInteractionCodeGenerationService.generateTreasureInteractionForTwoItemsAndGold(treasure, receiveGoldArgument, convertedMapName, generatedSuperMethod);
-                case 3:
-                    return treasureInteractionCodeGenerationService.generateTreasureInteractionForThreeItemsAndGold(treasure, receiveGoldArgument, convertedMapName, generatedSuperMethod);
-                default:
-                    return "";
-            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
+
