@@ -19,25 +19,25 @@ class TreasureComponentBuilderTest {
         treasureComponentBuilder = new TreasureComponentBuilder();
     }
 
-    @Test
-    void generateWeirdPythonFunction() {
-        String expectedMethod =
-                "def retrieve_chest_content(self, hero):\n"+
-                "\thero.items.tents.amount += 1\n"+
-                "\thero.gold += 150";
+//    @Test
+//    void generateWeirdPythonFunction() {
+//        String expectedMethod =
+//                "def retrieve_chest_content(self, hero):\n"+
+//                "\thero.items.tents.amount += 1\n"+
+//                "\thero.gold += 150";
+//
+//        TreasureComponentBuilder treasureComponentBuilder = new TreasureComponentBuilder();
+//
+//        treasure.setItemOneName("tents");
+//        treasure.setItemOneAmount(1);
+//        treasure.setAmountGold(150);
+//        List<String> testList = treasureComponentBuilder.ge(treasure);
+//        System.out.println(testList.size());
+//        String actualMethod = treasureComponentBuilder.generateRetrieveChestMethod(treasureComponentBuilder.generateCompleteRewards(treasure)).trim();
+//        System.out.println(actualMethod);
+//        assertEquals(expectedMethod, actualMethod);
 
-        TreasureComponentBuilder treasureComponentBuilder = new TreasureComponentBuilder();
 
-        treasure.setItemOneName("tents");
-        treasure.setItemOneAmount(1);
-        treasure.setAmountGold(150);
-        List<String> testList = treasureComponentBuilder.generateCompleteRewards(treasure);
-        System.out.println(testList.size());
-        String actualMethod = treasureComponentBuilder.generateRetrieveChestMethod(treasureComponentBuilder.generateCompleteRewards(treasure)).trim();
-        System.out.println(actualMethod);
-        assertEquals(expectedMethod, actualMethod);
-
-    }
 
     @Test
     void generateTimeLineString() {
@@ -150,6 +150,8 @@ class TreasureComponentBuilderTest {
     @Test
     void generateTreasureInteraction() {
         treasure.setItemOneName("Tent");
+        treasure.setItemTwoName("Serum");
+        treasure.setItemTwoAmount(3);
         treasure.setAmountGold(100);
         treasure.setItemOneAmount(3);
         treasure.setMap("way_to_balcony");
