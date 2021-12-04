@@ -34,7 +34,7 @@
                    th:field="*{fileName}">
         </div>
 
-        <button type="submit" name="submit" value="value" class="btn btn-dark btn-lg">Submit</button>
+
 
         <h3> Select Item </h3>
         <div>
@@ -75,7 +75,18 @@
                            th:field="*{itemThreeAmount}">
                 </div>
             </div>
+
+            <div>
+                <h3>Enter Gold: </h3>
+                <div class="mb-3 w-25 p-3">
+                    <label for="exampleFormControlTextarea10" class="form-label">Enter Gold Amount</label>
+                    <input type="text" class="form-control" id="exampleFormControlTextarea10"
+                           th:field="*{amountGold}">
+                </div>
+            </div>
         </div>
+
+        <button type="submit" name="submit" value="value" class="btn btn-dark btn-lg">Submit</button>
     </form>
 </div>
 <script th:replace="/fragments/masterTemplate :: bootstrapJs"></script>
