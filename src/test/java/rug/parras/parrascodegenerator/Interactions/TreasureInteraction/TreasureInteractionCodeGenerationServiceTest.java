@@ -15,11 +15,11 @@ class TreasureInteractionCodeGenerationServiceTest {
             "\n" +
             "\n" +
             "\tdef __init__(self, timeline):\n" +
-            "\t\tsuper(WayToMountainChestInteraction, self).__init__.(timeline, 'RECEIVED_CHEST_WAY_TO_MOUNTAIN', RECEIVE_GOLD_TENT_SERUM)\n" +
+            "\t\tsuper(WayToMountainChestInteraction, self).__init__(timeline, 'RECEIVED_CHEST_WAY_TO_MOUNTAIN', RECEIVE_GOLD_TENT_SERUM)\n" +
             "\n" +
             "\tdef retrieve_chest_content(self, hero):\n" +
-            "\t\tItemFinder.add_to_items(hero, tent, 3)\n" +
-            "\t\tItemFinder.add_to_items(hero, serum, 3)\n" +
+            "\t\tItemFinder.add_to_items(hero, 'Tent', 3)\n" +
+            "\t\tItemFinder.add_to_items(hero, 'Serum', 3)\n" +
             "\t\thero.gold += 100";
 
     @Test
@@ -37,7 +37,6 @@ class TreasureInteractionCodeGenerationServiceTest {
         treasure.setMap("way_to_mountain");
 
         String actualMessage = treasureInteractionCodeGenerationService.generateTreasureInteraction(treasure);
-        System.out.println(actualMessage);
         assertEquals(expectedValue, actualMessage);
     }
 }
