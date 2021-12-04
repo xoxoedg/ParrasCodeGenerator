@@ -16,14 +16,11 @@ public class TreasureInteractionComponentGenerator {
 
     public static final String ITEM_TEMPLATE = "hero.items.%s.amount += %s";
     public static final String GOLD_TEMPLATE = "hero.gold += %s";
-    public static final String METHOD_ARGUMENTS_TEMPLATE ="(timeline, 'RECEIVED_%s_CHEST'%s%s%s%s%s%s%s%s)"; // 9
+    public static final String METHOD_ARGUMENTS_TEMPLATE ="(timeline,)";
     public static final String SUPER_FUNCTION_TEMPLATE ="super(%sChestInteraction, self)";
     public static final String RETRIEVE_CHEST_CONTENT_TEMPLATE =
-            "def retrieve_chest_content(self, hero):\n" +
-                    "    %s" +
-                    "    %s\n" +
-                    "    %s\n" +
-                    "    %s";
+            "def retrieve_chest_content(self, hero):\n";
+
 
     public static final String TREASURE_INTERACTION_LIST_RECEIVE_GOLD_NAME_TEMPLATE =
             "RECEIVE_GOLD_IN_%s";
@@ -32,7 +29,7 @@ public class TreasureInteractionComponentGenerator {
             "['Received %s']";
 
     public static final String TREASURE_INTERACTION_LIST_GOLD_TEXT_TEMPLATE =
-            "['You receive %s gold']";
+            "[%s]";
 
 
     public static final String TREASURE_INTERACTION_IMPORT_TEMPLATE =

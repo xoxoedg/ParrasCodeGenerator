@@ -24,7 +24,5 @@ class TreasureInteractionServiceTest {
         treasure.setMap("city_market");
         treasure.setItemOneName("life_serum");
         treasure.setItemOneAmount(3);
-
-        System.out.println(treasureInteractionService.generateTreasureInteractionClass(treasure);
     }
 }

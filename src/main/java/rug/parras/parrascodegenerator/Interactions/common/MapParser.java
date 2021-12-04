@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 public  class MapParser {
 
     public static String convertInputToMapName(String map) {
-        return Arrays.stream(map.split("_")).filter(x -> !x.equals("_")).map(StringUtils::capitalize).collect(Collectors.joining(""));
+        return Arrays.stream(map.split("_")).filter(x -> !x.equals("_")).map(x -> StringUtils.capitalize(x.toLowerCase())).collect(Collectors.joining(""));
     }
 
     public static String convertInputToUppercaseMap(String map) {
