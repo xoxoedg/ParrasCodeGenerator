@@ -19,23 +19,7 @@ class TreasureComponentBuilderTest {
         treasureComponentBuilder = new TreasureComponentBuilder();
     }
 
-//    @Test
-//    void generateWeirdPythonFunction() {
-//        String expectedMethod =
-//                "def retrieve_chest_content(self, hero):\n"+
-//                "\thero.items.tents.amount += 1\n"+
-//                "\thero.gold += 150";
-//
-//        TreasureComponentBuilder treasureComponentBuilder = new TreasureComponentBuilder();
-//
-//        treasure.setItemOneName("tents");
-//        treasure.setItemOneAmount(1);
-//        treasure.setAmountGold(150);
-//        List<String> testList = treasureComponentBuilder.ge(treasure);
-//        System.out.println(testList.size());
-//        String actualMethod = treasureComponentBuilder.generateRetrieveChestMethod(treasureComponentBuilder.generateCompleteRewards(treasure)).trim();
-//        System.out.println(actualMethod);
-//        assertEquals(expectedMethod, actualMethod);
+
 
 
 
@@ -158,4 +142,45 @@ class TreasureComponentBuilderTest {
         String actualMessage =  treasureComponentBuilder.generateTreasureInteraction(treasure);
         System.out.println(actualMessage);
     }
-}
+
+    @Test
+    void testGenerateTreasureInteraction() {
+    }
+
+    @Test
+    void generateItemFinderArguments() {
+        treasure.setItemOneName("Tent");
+        treasure.setItemTwoName("Serum");
+        treasure.setItemTwoAmount(3);
+        treasure.setAmountGold(100);
+        treasure.setItemOneAmount(3);
+        treasure.setMap("way_to_balcony");
+        treasureComponentBuilder.generateItemFinderArguments(treasure);
+    }
+
+    @Test
+    void generateItemFinderMethod() {
+        String expectedValue =" ItemFinder.add_to_items(hero, 'Tent', 1)";
+        treasure.setItemOneName("Tent");
+        treasure.setItemTwoName("Serum");
+        treasure.setItemTwoAmount(3);
+        treasure.setAmountGold(100);
+        treasure.setItemOneAmount(3);
+        treasure.setMap("way_to_balcony");
+        String actualValue = treasureComponentBuilder.generateItemFinderMethod(treasure);
+        System.out.println(actualValue);
+    }
+
+    @Test
+    void generateRetrieveChestMethod() {
+        String expectedValue =" ItemFinder.add_to_items(hero, 'Tent', 1)";
+        treasure.setItemOneName("Tent");
+        treasure.setItemTwoName("Serum");
+        treasure.setItemTwoAmount(3);
+        treasure.setAmountGold(100);
+        treasure.setItemOneAmount(3);
+        treasure.setMap("way_to_balcony");
+        String actualRetrieveChestMethod = treasureComponentBuilder.generateRetrieveChestMethod(treasure);
+        System.out.println(actualRetrieveChestMethod);
+        }
+    }

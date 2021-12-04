@@ -36,7 +36,7 @@ public class TreasureComponentBuilder {
     public String generateTreasureInteraction(Treasure treasure) {
         StringBuilder generatedTreasureInteraction = new StringBuilder();
         List<String> treasureInteractionComponents = List.of(TREASURE_INTERACTION_IMPORT_TEMPLATE + "\n\n" ,generateRewardList(treasure) + "\n\n", generateClassName(treasure) + "\n\n",
-                "\t" + generateClassConstructor(treasure) + "\n\n" + "\t" +generateRetrieveChestMethod(treasure));
+                "\t" + generateClassConstructor(treasure) + "\n\n" + "\t" + generateRetrieveChestMethod(treasure));
         treasureInteractionComponents.forEach(generatedTreasureInteraction::append);
         return generatedTreasureInteraction.toString();
     }
@@ -80,33 +80,33 @@ public class TreasureComponentBuilder {
         StringBuilder generatedTimeLineString = new StringBuilder();
         List<String> timeLineStringComponents = List.of(TIMELINE_METHOD_STRING_TEMPLATE, treasure.getMap().toUpperCase());
         timeLineStringComponents.forEach(generatedTimeLineString::append);
-        return "'" + generatedTimeLineString.toString() + "'";
+        return "'" + generatedTimeLineString + "'";
     }
 
     public String generateRetrieveChestMethod(Treasure treasure) {
         StringBuilder generatedRetrieveChestMethod = new StringBuilder();
-        List<String> retrieveChestMethodComponents = List.of(RETRIEVE_CHEST_CONTENT_TEMPLATE, "\t\t" + generateItemFinderMethod(treasure), "\n\t\t" + generateGoldEarned(treasure));
+        List<String> retrieveChestMethodComponents = List.of(RETRIEVE_CHEST_CONTENT_TEMPLATE, generateItemFinderMethod(treasure), generateGoldEarned(treasure));
         retrieveChestMethodComponents.forEach(generatedRetrieveChestMethod::append);
         return generatedRetrieveChestMethod.toString();
     }
 
     public String generateItemFinderMethod(Treasure treasure) {
         StringBuilder generatedItemFinderMethod = new StringBuilder();
-        List<String> itemFinderMethodComponents = List.of(ITEM_FINDER_STRING_TEMPLATE, generateItemFinderArguments(treasure));
-        itemFinderMethodComponents.forEach(generatedItemFinderMethod::append);
+        List<String> generatedItemFinderComponents = generateItemFinderArguments(treasure);
+        generatedItemFinderComponents.stream().map(x -> !x.equals(generatedItemFinderComponents
+                .get(generatedItemFinderComponents.size() - 1)) ? "\t\t" + ITEM_FINDER_STRING_TEMPLATE + x +"\n":"\t\t" + ITEM_FINDER_STRING_TEMPLATE + x )
+                .forEach(generatedItemFinderMethod::append);
         return generatedItemFinderMethod.toString();
     }
-    public String generateItemFinderArguments(Treasure treasure) {
-        StringBuilder generatedItemFinderMethod = new StringBuilder();
+    public List<String> generateItemFinderArguments(Treasure treasure) {
         Map<String, String> itemAmountMap = convertListToMap(filterItems(treasure), filterAmount(treasure));
-        List<String> itemFinderArgumentsComponents = new ArrayList<>(List.of("hero"));
-        itemFinderArgumentsComponents.addAll(itemAmountMap.entrySet().stream().map(x -> ", " + x.getKey() + ", " + x.getValue()).collect(Collectors.toList()));
-        itemFinderArgumentsComponents.forEach(generatedItemFinderMethod::append);
-        return "(" +generatedItemFinderMethod.toString() + ")";
+        List<String> itemFinderArgumentsComponents = new ArrayList<>();
+        itemAmountMap.forEach((key, value) -> itemFinderArgumentsComponents.add("(hero" + ", " + key + ", " + value + ")"));
+        return itemFinderArgumentsComponents;
     }
 
     public String generateGoldEarned(Treasure treasure) {
-        return  treasure.getAmountGold() > 0 ? String.format(GOLD_TEMPLATE, treasure.getAmountGold()) : "";
+        return  treasure.getAmountGold() > 0 ? "\n\t\t" + String.format(GOLD_TEMPLATE, treasure.getAmountGold()) : "";
     }
 
     public String generateRewardList(Treasure treasure) {
@@ -150,9 +150,10 @@ public class TreasureComponentBuilder {
             listMessageComponents.addAll(itemRewards);
         } else
             return "Sorry you have to atleast reward the player with gold or one item";
-        listMessageComponents.stream().map(x -> listMessageComponents.size() < 2 && x.equals(listMessageComponents.get(0)) || x.equals(listMessageComponents.get(listMessageComponents.size() - 1))
+        listMessageComponents.stream().map(x -> listMessageComponents.size() < 2 && x.equals(listMessageComponents.get(0))
+                || x.equals(listMessageComponents.get(listMessageComponents.size() - 1))
        ? StringUtils.capitalize(x) : StringUtils.capitalize(x) + " and ").forEach(generatedListMessage::append);
-        return "['" + generatedListMessage.toString() + "']";
+        return "['" + generatedListMessage + "']";
     }
 
     //Auslagern
