@@ -19,7 +19,7 @@ public class SignInteractionService {
     public void createSignInteraction(Sign sign)  {
 
         try {
-            FileOperationUtils converter = new FileOperationUtils("C:\\Users\\rugya\\Desktop\\Prod\\ParrasCodeGenerator\\src\\testPythonDir\\" + sign.getFileName());
+            FileOperationUtils converter = new FileOperationUtils("testPythonDir\\" + sign.getFileName());
             converter.writeToFile(signInteractionCodeGenerationService.generateCodeForSignInteraction(sign));
 
         } catch (IOException e) {
