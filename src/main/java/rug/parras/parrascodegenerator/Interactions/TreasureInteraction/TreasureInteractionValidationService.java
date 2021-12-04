@@ -1,30 +1,14 @@
 package rug.parras.parrascodegenerator.Interactions.TreasureInteraction;
 
 import org.springframework.stereotype.Service;
-import rug.parras.parrascodegenerator.Interactions.ValidationService;
+import rug.parras.parrascodegenerator.Interactions.InteractionValidationService;
 
 import java.util.List;
 
 @Service
-public class TreasureInteractionValidationService implements ValidationService {
+public class TreasureInteractionValidationService extends InteractionValidationService {
 
     List<String> validItems = List.of("Potion", "Ether", "Serum", "Herb", "Tent", "Super Potion", "Super Ether");
-
-
-    @Override
-    public boolean validateMapInput(String map) {
-        return map.matches("[a-z]+(_[a-z]+)+_map");
-    }
-
-    @Override
-    public boolean validateAreaInput(String area) {
-        return area.matches("[A-Z][a-z]+");
-    }
-
-    @Override
-    public boolean validateFileNameInput(String filename) {
-        return filename.matches("[a-z]+\\.py");
-    }
 
 
     public boolean validateItem(String item) {
