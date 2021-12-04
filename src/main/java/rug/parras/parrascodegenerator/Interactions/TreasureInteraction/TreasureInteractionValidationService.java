@@ -9,7 +9,7 @@ import java.util.List;
 public class TreasureInteractionValidationService implements ValidationService {
 
     List<String> validItems = List.of("Potion", "Ether", "Serum", "Herb", "Tent", "Super Potion", "Super Ether");
-    String itemPattern = "^[A-Z][a-z]{4,6}(\\s[A-Z][a-z]{5})?";
+    String itemPattern = "^[A-Z][a-z]{3,6}(\\s[A-Z][a-z]{5})?";
     String amountPattern = "^[1-9]";
 
     @Override
