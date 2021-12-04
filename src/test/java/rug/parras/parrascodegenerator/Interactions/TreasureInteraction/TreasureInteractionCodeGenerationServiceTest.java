@@ -26,6 +26,7 @@ class TreasureInteractionCodeGenerationServiceTest {
     void createTreasureInteractionClass() {
         Treasure treasure = new Treasure();
         TreasureComponentBuilder treasureComponentBuilder = new TreasureComponentBuilder();
+        TreasureInteractionCodeGenerationService treasureInteractionCodeGenerationService = new TreasureInteractionCodeGenerationService(treasureComponentBuilder);
         treasure.setItemOneName("Tent");
         treasure.setItemTwoName("Serum");
         treasure.setItemTwoAmount(3);
@@ -33,7 +34,7 @@ class TreasureInteractionCodeGenerationServiceTest {
         treasure.setItemOneAmount(3);
         treasure.setMap("way_to_mountain");
 
-        String actualMessage = treasureComponentBuilder.generateTreasureInteraction(treasure);
+        String actualMessage = treasureInteractionCodeGenerationService.generateTreasureInteraction(treasure);
         System.out.println(actualMessage);
         assertEquals(expectedValue, actualMessage);
     }

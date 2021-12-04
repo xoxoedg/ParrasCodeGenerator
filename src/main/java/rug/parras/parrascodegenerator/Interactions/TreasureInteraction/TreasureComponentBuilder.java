@@ -33,14 +33,6 @@ public class TreasureComponentBuilder {
 
     public static final String CLASS_NAME_TEMPLATE = "class %sChestInteraction(StandardTreasureInteraction):\n";
 
-    public String generateTreasureInteraction(Treasure treasure) {
-        StringBuilder generatedTreasureInteraction = new StringBuilder();
-        List<String> treasureInteractionComponents = List.of(TREASURE_INTERACTION_IMPORT_TEMPLATE + "\n\n" ,generateRewardList(treasure) + "\n\n", generateClassName(treasure) + "\n\n",
-                "\t" + generateClassConstructor(treasure) + "\n\n" + "\t" + generateRetrieveChestMethod(treasure));
-        treasureInteractionComponents.forEach(generatedTreasureInteraction::append);
-        return generatedTreasureInteraction.toString();
-    }
-
     public String generateClassName(Treasure treasure) {
         return  String.format(CLASS_NAME_TEMPLATE, MapParser.convertInputToMapName(treasure.getMap()));
     }

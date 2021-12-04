@@ -13,7 +13,7 @@ public class TreasureInteractionCodeGenerationService {
         this.treasureComponentBuilder = treasureComponentBuilder;
     }
 
-    public String createTreasureInteraction(Treasure treasure) {
+    public String generateTreasureInteraction(Treasure treasure) {
             StringBuilder generatedTreasureInteraction = new StringBuilder();
             List<String> treasureInteractionComponents = List.of(
                     TreasureComponentBuilder.TREASURE_INTERACTION_IMPORT_TEMPLATE

@@ -8,14 +8,13 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.io.File;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class TreasureInteractionServiceTest {
 
     @Mock
-    TreasureComponentBuilder treasureComponentBuilder;
+    TreasureInteractionCodeGenerationService treasureInteractionCodeGenerationService;
 
     @InjectMocks
     TreasureInteractionService treasureInteractionService;
@@ -24,10 +23,9 @@ class TreasureInteractionServiceTest {
     void createTreasureInteraction() {
         Treasure treasure = new Treasure();
         treasure.setFileName("TreasureInteraction.py");
-        when(treasureComponentBuilder.generateTreasureInteraction(treasure)).thenReturn("TestString1");
+        when(treasureInteractionCodeGenerationService.generateTreasureInteraction(treasure)).thenReturn("String123");
         treasureInteractionService.createTreasureInteraction(treasure);
-        verify(treasureComponentBuilder, times(1)).generateTreasureInteraction(treasure);
-
+        verify(treasureInteractionCodeGenerationService).generateTreasureInteraction(treasure);
         File fileToDelete = new File(treasure.getFileName());
         fileToDelete.delete();
     }

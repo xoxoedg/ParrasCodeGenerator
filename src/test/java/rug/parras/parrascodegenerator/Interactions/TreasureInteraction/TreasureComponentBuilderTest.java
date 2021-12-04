@@ -131,17 +131,17 @@ class TreasureComponentBuilderTest {
 
     }
 
-    @Test
-    void generateTreasureInteraction() {
-        treasure.setItemOneName("Tent");
-        treasure.setItemTwoName("Serum");
-        treasure.setItemTwoAmount(3);
-        treasure.setAmountGold(100);
-        treasure.setItemOneAmount(3);
-        treasure.setMap("way_to_balcony");
-        String actualMessage =  treasureComponentBuilder.generateTreasureInteraction(treasure);
-        System.out.println(actualMessage);
-    }
+//    @Test
+//    void generateTreasureInteraction() {
+//        treasure.setItemOneName("Tent");
+//        treasure.setItemTwoName("Serum");
+//        treasure.setItemTwoAmount(3);
+//        treasure.setAmountGold(100);
+//        treasure.setItemOneAmount(3);
+//        treasure.setMap("way_to_balcony");
+//        String actualMessage =  treasureComponentBuilder.generateTreasureInteraction(treasure);
+//        System.out.println(actualMessage);
+//    }
 
     @Test
     void testGenerateTreasureInteraction() {
