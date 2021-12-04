@@ -10,7 +10,7 @@ import java.io.IOException;
 public class TreasureInteractionService {
 
     private TreasureInteractionCodeGenerationService treasureInteractionCodeGenerationService;
-    //private ValidationService validationService;
+    private TreasureInteractionValidationService validationService;
 
     @Autowired
     public TreasureInteractionService(TreasureInteractionCodeGenerationService treasureInteractionCodeGenerationService) {
@@ -18,6 +18,7 @@ public class TreasureInteractionService {
     }
 
     public void createTreasureInteraction(Treasure treasure) {
+
 
         try {
             FileOperationUtils converter = new FileOperationUtils("testPythonDir\\" + treasure.getFileName());
