@@ -90,7 +90,7 @@ class TreasureComponentGeneratorTest {
 
     @Test
     void generateRewardListWithSuperItem() {
-        treasure.setItemOneName("Super Potion");
+        treasure.setItemOneName("Super potion");
         treasure.setItemTwoName("Tent");
         String expectedRewardList = "RECEIVE_SUPER_POTION_TENT = ['Received Super Potion and Tent']";
         String actualRewardList = treasureComponentGenerator.generateRewardList(treasure);
