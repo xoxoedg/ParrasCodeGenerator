@@ -4,7 +4,7 @@ import rug.parras.parrascodegenerator.Interactions.TreasureInteraction.Treasure;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
+//ToDo Testcases
 public class ItemAmountListConverter {
 
     public static List<String> filterAmount(Treasure treasure) {
