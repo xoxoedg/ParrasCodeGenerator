@@ -1,13 +1,11 @@
 package rug.parras.parrascodegenerator.Interactions;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import rug.parras.parrascodegenerator.Interactions.common.ValidationFieldResult;
 import rug.parras.parrascodegenerator.Interactions.common.ValidationStatus;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
 class InteractionValidationServiceTest {
@@ -27,7 +25,7 @@ class InteractionValidationServiceTest {
     void validateMapInputValid(String map) {
         Enum<ValidationStatus> actualValue = interactionValidationService.validateMapInput(map).getValidationStatus();
         Enum<ValidationStatus> expectedValue = ValidationStatus.SUCCESS;
-        assertSame(expectedValue,actualValue);
+        assertSame(expectedValue, actualValue);
     }
 
     @ParameterizedTest
