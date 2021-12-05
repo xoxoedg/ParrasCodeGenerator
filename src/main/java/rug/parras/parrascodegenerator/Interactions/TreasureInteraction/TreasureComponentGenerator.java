@@ -2,6 +2,7 @@ package rug.parras.parrascodegenerator.Interactions.TreasureInteraction;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
+import rug.parras.parrascodegenerator.Interactions.common.ItemAmountListConverter;
 import rug.parras.parrascodegenerator.Interactions.common.ItemParser;
 import rug.parras.parrascodegenerator.Interactions.common.MapParser;
 
@@ -95,7 +96,7 @@ public class TreasureComponentGenerator {
     }
 
     private List<String> generateItemFinderArguments(Treasure treasure) {
-        Map<String, String> itemAmountMap = convertListToMap(filterItems(treasure), filterAmount(treasure));
+        Map<String, String> itemAmountMap = convertListToMap(ItemAmountListConverter.filterItems(treasure), ItemAmountListConverter.filterAmount(treasure));
         List<String> itemFinderArgumentsComponents = new ArrayList<>();
         itemAmountMap.forEach((key, value) -> itemFinderArgumentsComponents.add("(hero" + ", " + "'" + ItemParser.convertInputToSuperItemListString(key.toLowerCase()) + "'" + ", " + value + ")"));
         return itemFinderArgumentsComponents;
@@ -115,7 +116,7 @@ public class TreasureComponentGenerator {
     private String generateRewardsListName(Treasure treasure) {
         StringBuilder generatedRewardsList = new StringBuilder();
         List<String> rewardsListTemplateComponent;
-        List<String> rewardsItemComponents = filterItems(treasure).stream().map(ItemParser::convertInputToSuperItemListName).collect(Collectors.toList());
+        List<String> rewardsItemComponents = ItemAmountListConverter.filterItems(treasure).stream().map(ItemParser::convertInputToSuperItemListName).collect(Collectors.toList());
         if (treasure.getAmountGold() > 0) {
             rewardsListTemplateComponent = List.of("Receive", "Gold");
 
@@ -134,7 +135,7 @@ public class TreasureComponentGenerator {
     private String generateListMessage(Treasure treasure) {
         StringBuilder generatedListMessage = new StringBuilder();
         List<String> listMessageComponents = new ArrayList<>();
-        List<String> itemRewards = filterItems(treasure).stream().map(ItemParser::convertInputToSuperItemListString).collect(Collectors.toList());
+        List<String> itemRewards = ItemAmountListConverter.filterItems(treasure).stream().map(ItemParser::convertInputToSuperItemListString).collect(Collectors.toList());
         generatedListMessage.append(REWARD_LIST_STRING_TEMPLATE);
         String rewardGoldText = treasure.getAmountGold() + " Gold";
         if (treasure.getAmountGold() > 0 && itemRewards.size() == 0) {
@@ -160,15 +161,7 @@ public class TreasureComponentGenerator {
     }
 
     //Auslagern
-    public List<String> filterAmount(Treasure treasure) {
-        List<Integer> amounts = List.of(treasure.getItemOneAmount(), treasure.getItemTwoAmount(), treasure.getItemThreeAmount());
-        return amounts.stream().filter(x -> x != 0).map(String::valueOf).collect(Collectors.toList());
-    }
 
-    public List<String> filterItems(Treasure treasure) {
-        List<String> items = List.of(treasure.getItemOneName(), treasure.getItemTwoName(), treasure.getItemThreeName());
-        return items.stream().filter(x -> !x.equals("")).map(String::toLowerCase).collect(Collectors.toList());
-    }
 
     public Map<String, String> convertListToMap(List<String> filteredItems, List<String> filteredAmounts) {
         return IntStream.range(0, filteredItems.size()).boxed().collect(Collectors.toMap(filteredItems::get, filteredAmounts::get));

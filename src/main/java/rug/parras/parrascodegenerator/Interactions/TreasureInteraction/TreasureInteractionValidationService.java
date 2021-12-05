@@ -2,11 +2,13 @@ package rug.parras.parrascodegenerator.Interactions.TreasureInteraction;
 
 import org.springframework.stereotype.Service;
 import rug.parras.parrascodegenerator.Interactions.InteractionValidationService;
+import rug.parras.parrascodegenerator.Interactions.common.ItemAmountListConverter;
 import rug.parras.parrascodegenerator.Interactions.common.ValidationFieldResult;
 import rug.parras.parrascodegenerator.Interactions.common.ValidationResult;
 import rug.parras.parrascodegenerator.Interactions.common.ValidationStatus;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static rug.parras.parrascodegenerator.Interactions.common.ValidationStatus.ERROR;
 import static rug.parras.parrascodegenerator.Interactions.common.ValidationStatus.SUCCESS;
@@ -14,13 +16,14 @@ import static rug.parras.parrascodegenerator.Interactions.common.ValidationStatu
 @Service
 public class TreasureInteractionValidationService extends InteractionValidationService {
     private ValidationFieldResult validationFieldResult;
-    private List<String> validItems = List.of("Potion", "Ether", "Serum", "Herb", "Tent", "Super Potion", "Super Ether");
+    private final List<String> validItems = List.of("Potion", "potion", "Ether","ether",
+            "Serum","serum", "Herb","herb", "Tent","tent",
+            "Super Potion", "super potion", "Super Ether", "super ether");
 
-
-    public ValidationFieldResult validateItem(String item) {
+    public ValidationFieldResult validateItem(List<String> items) {
         validationFieldResult = new ValidationFieldResult();
-        boolean validItem = validItems.contains(item);
-        if (validItem) {
+        boolean itemsValid = items.stream().allMatch(validItems::contains);
+        if (itemsValid) {
             validationFieldResult.setValidationStatus(ValidationStatus.SUCCESS);
             validationFieldResult.setMessage("Valid Item Input");
         } else {
@@ -31,11 +34,11 @@ public class TreasureInteractionValidationService extends InteractionValidationS
         return validationFieldResult;
     }
 
-    public ValidationFieldResult validateAmount(int itemAmount) {
+    public ValidationFieldResult validateAmount(List<String> itemAmount) {
         validationFieldResult = new ValidationFieldResult();
         String amountPattern = "^[1-9]";
-        boolean validItemAmount = String.valueOf(itemAmount).matches(amountPattern);
-        if (validItemAmount && itemAmount != 0) {
+        boolean validItemAmount = itemAmount.stream().allMatch(x -> x.matches(amountPattern));
+        if (validItemAmount) {
             validationFieldResult.setValidationStatus(ValidationStatus.SUCCESS);
             validationFieldResult.setMessage("Valid Amount");
         } else {
@@ -49,8 +52,8 @@ public class TreasureInteractionValidationService extends InteractionValidationS
         validationResult.getValidationFieldResultList().add(validateMapInput(treasure.getMap()));
         validationResult.getValidationFieldResultList().add(validateAreaInput(treasure.getArea()));
         validationResult.getValidationFieldResultList().add(validateFileNameInput(treasure.getFileName()));
-        validationResult.getValidationFieldResultList().add(validateItem(treasure.getItemOneName()));
-        validationResult.getValidationFieldResultList().add(validateAmount(treasure.getItemOneAmount()));
+        validationResult.getValidationFieldResultList().add(validateItem(ItemAmountListConverter.filterItems(treasure)));
+        validationResult.getValidationFieldResultList().add(validateAmount(ItemAmountListConverter.filterAmount(treasure)));
         boolean allFieldsValid = validationResult.getValidationFieldResultList().stream().allMatch(x -> x.getValidationStatus() == SUCCESS);
 
         if (allFieldsValid) {
