@@ -7,16 +7,16 @@
 
 <h1 class="welcome_message">An Error occured</h1>
 <table>
-    <tr>
-        <th>Error</th>
-    </tr>
-    <tr th:each="errorReason: ${errorReasons}">
-        <td>
-            <p th:each="errorMsg: ${errorReasons.validationFieldResultList}">
-                <span th:text="${errorMsg.message}">Street</span>
-            </p>
-        </td>
-    </tr>
+  <tr>
+    <th>Error</th>
+  </tr>
+  <tr th:each="errorReason: ${errorReasons}">
+    <td>
+      <p th:each="errorMsg: ${errorReasons.validationFieldResultList}">
+        <span th:text="${errorMsg.message}"></span>
+      </p>
+    </td>
+  </tr>
 </table>
 
 <script th:replace="/fragments/masterTemplate :: bootstrapJs"></script>

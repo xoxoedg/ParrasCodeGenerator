@@ -20,12 +20,10 @@ public class TreasureInteractionService {
         this.validationService = validationService;
     }
 
-    public ValidationResult createErrorModel(Treasure treasure) {
-        return validationService.validateInput(treasure);
-    }
-
-    public String createTreasureInteraction(Treasure treasure) {
-        if (validationService.validateInput(treasure).getValidationStatus() == ValidationStatus.SUCCESS) {
+    public ValidationResult createTreasureInteraction(Treasure treasure) {
+        ValidationResult validationResult = validationService.validateInput(treasure);
+        if (validationResult.getValidationStatus() == ValidationStatus.SUCCESS) {
+            validationResult.setUrl("index");
             try {
                 FileOperationUtils converter = new FileOperationUtils("testPythonDir\\" + treasure.getFileName());
                 converter.writeToFile(treasureInteractionCodeGenerationService.generateTreasureInteraction(treasure));
@@ -33,9 +31,10 @@ public class TreasureInteractionService {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            return "index";
+            return validationResult;
         } else {
-            return "error";
+            validationResult.setUrl("treasureError");
+            return validationResult;
         }
     }
 }

@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import rug.parras.parrascodegenerator.Interactions.common.ValidationResult;
 
 @Controller
 public class TreasureInteractionController {
@@ -26,8 +27,9 @@ public class TreasureInteractionController {
 
     @PostMapping("/treasure")
     public String treasureSubmit(@ModelAttribute Treasure treasureInteraction, Model model) {
-        model.addAttribute("errorReasons", treasureInteractionService.createErrorModel(treasureInteraction));
-        return treasureInteractionService.createTreasureInteraction(treasureInteraction);
+        ValidationResult result = treasureInteractionService.createTreasureInteraction(treasureInteraction);
+        model.addAttribute("errorReasons", result);
+        return result.getUrl();
 
     }
 }

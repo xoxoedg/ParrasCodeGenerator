@@ -12,4 +12,5 @@ public class ValidationResult {
 
     private ValidationStatus validationStatus;
     private List<ValidationFieldResult> validationFieldResultList = new ArrayList<>();
+    private String url;
 }

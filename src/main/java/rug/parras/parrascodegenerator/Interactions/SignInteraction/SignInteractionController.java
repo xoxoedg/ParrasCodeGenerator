@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import rug.parras.parrascodegenerator.Interactions.common.ValidationResult;
 
 @Controller
 public class SignInteractionController {
@@ -24,8 +25,9 @@ public class SignInteractionController {
     }
 
     @PostMapping("/sign")
-    public String signSubmit(@ModelAttribute Sign signInteraction) {
-        signInteractionService.createSignInteraction(signInteraction);
-        return "index";
+    public String signSubmit(@ModelAttribute Sign signInteraction, Model model) {
+        ValidationResult result = signInteractionService.createSignInteraction(signInteraction);
+        model.addAttribute("errorReasons", result);
+        return result.getUrl();
     }
 }

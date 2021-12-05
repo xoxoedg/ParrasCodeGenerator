@@ -2,6 +2,8 @@ package rug.parras.parrascodegenerator.Interactions.SignInteraction;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import rug.parras.parrascodegenerator.Interactions.common.ValidationResult;
+import rug.parras.parrascodegenerator.Interactions.common.ValidationStatus;
 import rug.parras.parrascodegenerator.Utils.FileOperationUtils;
 
 import java.io.IOException;
@@ -10,20 +12,30 @@ import java.io.IOException;
 public class SignInteractionService {
 
     SignInteractionCodeGenerationService signInteractionCodeGenerationService;
+    SignInteractionValidationService validationService;
 
     @Autowired
-    public SignInteractionService(SignInteractionCodeGenerationService signInteractionCodeGenerationService) {
+    public SignInteractionService(SignInteractionCodeGenerationService signInteractionCodeGenerationService, SignInteractionValidationService validationService) {
         this.signInteractionCodeGenerationService = signInteractionCodeGenerationService;
+        this.validationService = validationService;
     }
 
-    public void createSignInteraction(Sign sign)  {
 
-        try {
-            FileOperationUtils converter = new FileOperationUtils("testPythonDir\\" + sign.getFileName());
-            converter.writeToFile(signInteractionCodeGenerationService.generateCodeForSignInteraction(sign));
+    public ValidationResult createSignInteraction(Sign sign) {
+        ValidationResult validationResult = validationService.validateInput(sign);
+        if (validationResult.getValidationStatus() == ValidationStatus.SUCCESS) {
+            validationResult.setUrl("index");
+            try {
+                FileOperationUtils converter = new FileOperationUtils("testPythonDir\\" + sign.getFileName());
+                converter.writeToFile(signInteractionCodeGenerationService.generateCodeForSignInteraction(sign));
 
-        } catch (IOException e) {
-            e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return validationResult;
+        } else {
+            validationResult.setUrl("signError");
+            return validationResult;
         }
     }
 }

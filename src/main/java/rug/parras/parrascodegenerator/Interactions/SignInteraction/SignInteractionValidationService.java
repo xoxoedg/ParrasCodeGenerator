@@ -7,7 +7,7 @@ import rug.parras.parrascodegenerator.Interactions.common.ValidationResult;
 import rug.parras.parrascodegenerator.Interactions.common.ValidationStatus;
 
 import java.util.List;
-
+import java.util.stream.Collectors;
 
 
 @Service
@@ -56,6 +56,8 @@ public class SignInteractionValidationService extends InteractionValidationServi
         if (allFieldsValid) {
             validationResult.setValidationStatus(ValidationStatus.SUCCESS);
         } else {
+            List<ValidationFieldResult> errors = validationResult.getValidationFieldResultList().stream().filter(x -> x.getValidationStatus() == ValidationStatus.ERROR).collect(Collectors.toList());
+            validationResult.setValidationFieldResultList(errors);
             validationResult.setValidationStatus(ValidationStatus.ERROR);
         } return  validationResult;
     }
