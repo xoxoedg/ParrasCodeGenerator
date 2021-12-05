@@ -10,12 +10,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class TreasureInteractionController {
 
-    TreasureInteractionService treasureInteractionService;
+    private TreasureInteractionService treasureInteractionService;
 
     @Autowired
     public TreasureInteractionController(TreasureInteractionService treasureInteractionService) {
         this.treasureInteractionService = treasureInteractionService;
     }
+
 
     @GetMapping("/treasure")
     public String getTreasurePage(Model model) {
@@ -24,9 +25,9 @@ public class TreasureInteractionController {
     }
 
     @PostMapping("/treasure")
-    public String treasureSubmit(@ModelAttribute Treasure treasureInteraction) {
-        treasureInteractionService.createTreasureInteraction(treasureInteraction);
-        return "index";
-    }
+    public String treasureSubmit(@ModelAttribute Treasure treasureInteraction, Model model) {
+        model.addAttribute("errorReasons", treasureInteractionService.createErrorModel(treasureInteraction));
+        return treasureInteractionService.createTreasureInteraction(treasureInteraction);
 
+    }
 }

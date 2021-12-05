@@ -38,7 +38,7 @@ public class TreasureInteractionValidationService extends InteractionValidationS
         Set<String> compareItemSet = items.stream().map(String::toLowerCase).collect(Collectors.toSet());
         if (items.size() == compareItemSet.size()) {
             validationFieldResult.setValidationStatus(ValidationStatus.SUCCESS);
-            validationFieldResult.setMessage("No Duplicate Items");
+            validationFieldResult.setMessage("Valid Items Quantity");
         } else {
             validationFieldResult.setValidationStatus(ValidationStatus.ERROR);
             validationFieldResult.setMessage("You have Duplicate Items entered. You can only enter an Item once");
@@ -90,6 +90,8 @@ public class TreasureInteractionValidationService extends InteractionValidationS
         if (allFieldsValid) {
             validationResult.setValidationStatus(ValidationStatus.SUCCESS);
         } else {
+            List<ValidationFieldResult> errors = validationResult.getValidationFieldResultList().stream().filter(x -> x.getValidationStatus() == ValidationStatus.ERROR).collect(Collectors.toList());
+            validationResult.setValidationFieldResultList(errors);
             validationResult.setValidationStatus(ValidationStatus.ERROR);
         }
         return validationResult;

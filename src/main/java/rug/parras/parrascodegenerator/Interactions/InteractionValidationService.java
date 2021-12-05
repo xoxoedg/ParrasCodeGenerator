@@ -16,7 +16,7 @@ public class InteractionValidationService {
             validationFieldResult.setMessage("Valid Map Input");
         } else {
             validationFieldResult.setValidationStatus(ValidationStatus.ERROR);
-            validationFieldResult.setMessage("Invalid Map Input: Map Input must be lowercase and the delimiter must be an underscore <_>");
+            validationFieldResult.setMessage("Invalid Map Input: Map Input must be lowercase and the delimiter must be an underscore");
         }
         return validationFieldResult;
     }
@@ -30,7 +30,7 @@ public class InteractionValidationService {
         } else {
             validationFieldResult.setValidationStatus(ValidationStatus.ERROR);
             validationFieldResult.setMessage("Invalid Area Input: Area Input must start with a Uppercase letter and the " +
-                    "delimiter must be a whitespace < >");
+                    "delimiter must be a whitespace ");
         }
         return validationFieldResult;
     }
@@ -43,7 +43,7 @@ public class InteractionValidationService {
             validationFieldResult.setMessage("Valid Filename");
         } else {
             validationFieldResult.setValidationStatus(ValidationStatus.ERROR);
-            validationFieldResult.setMessage("Invalid Filename Input: Filename must be lowercase and end with <.py>");
+            validationFieldResult.setMessage("Invalid Filename Input: Filename must be lowercase and end with .py");
         } return validationFieldResult;
     }
 }
