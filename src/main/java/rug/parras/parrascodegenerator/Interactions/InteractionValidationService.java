@@ -1,14 +1,16 @@
 package rug.parras.parrascodegenerator.Interactions;
 
+import org.springframework.stereotype.Service;
 import rug.parras.parrascodegenerator.Interactions.common.ValidationFieldResult;
 import rug.parras.parrascodegenerator.Interactions.common.ValidationStatus;
 
+@Service
 public class InteractionValidationService {
     ValidationFieldResult validationFieldResult;
 
     public ValidationFieldResult validateMapInput(String map) {
         validationFieldResult = new ValidationFieldResult();
-        boolean validMapInput = map.matches("[a-z]+(_[a-z]+)+_map_[a-z]{1,9}");
+        boolean validMapInput = map.matches("[a-z]+((_[a-z]+)+)?_map_[a-z]{1,9}");
         if (validMapInput) {
             validationFieldResult.setValidationStatus(ValidationStatus.SUCCESS);
             validationFieldResult.setMessage("Valid Map Input");
@@ -21,7 +23,7 @@ public class InteractionValidationService {
 
     public ValidationFieldResult validateAreaInput(String area) {
         validationFieldResult = new ValidationFieldResult();
-        boolean validAreaInput = area.matches("[A-Z](\\s[A-Z])?[a-z]+");
+        boolean validAreaInput = area.matches("^[A-Z][a-z]+(\\s[A-Z][a-z]+)?");
         if (validAreaInput) {
             validationFieldResult.setValidationStatus(ValidationStatus.SUCCESS);
             validationFieldResult.setMessage("Valid Area Input");
@@ -35,7 +37,7 @@ public class InteractionValidationService {
 
     public ValidationFieldResult validateFileNameInput(String filename) {
         validationFieldResult = new ValidationFieldResult();
-        boolean validFilename = filename.matches("[a-z]+\\.py");
+        boolean validFilename = filename.matches("[a-z]+_?[a-z]+\\.py");
         if (validFilename) {
             validationFieldResult.setValidationStatus(ValidationStatus.SUCCESS);
             validationFieldResult.setMessage("Valid Filename");
