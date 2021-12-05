@@ -23,7 +23,6 @@ public class Treasure {
     private int itemThreeAmount;
 
 
-
     public Treasure() {
         this.itemOneAmount = 0;
         this.itemTwoAmount = 0;

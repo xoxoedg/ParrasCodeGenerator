@@ -22,36 +22,36 @@ class TreasureInteractionValidationServiceTest {
         treasure.setFileName("interaction.py");
         treasure.setArea("Rionnagen");
     }
-
-    @Test
-    void validateItem() {
-        boolean isPatternMatchedValidItem1 = validationService.validateItem(treasure.getItemOneName());
-        boolean isPatternMatchedValidItem2 = validationService.validateItem("Super Potion");
-        boolean isPatternMatchedNotValidItem1 = validationService.validateItem("super Potion");
-        boolean isPatternMatchedNotValidItem2 = validationService.validateItem("super_potion");
-        boolean isPatternMatchedNotValidItem3 = validationService.validateItem("1dau");
-        boolean isPatternMatchedNotValidItem4 = validationService.validateItem("Supe Potion");
-        boolean isPatternMatchedNotValidItem5 = validationService.validateItem("Super Potions");
-
-
-        assertTrue(isPatternMatchedValidItem1);
-        assertTrue(isPatternMatchedValidItem2);
-        assertFalse(isPatternMatchedNotValidItem1);
-        assertFalse(isPatternMatchedNotValidItem2);
-        assertFalse(isPatternMatchedNotValidItem3);
-        assertFalse(isPatternMatchedNotValidItem4);
-        assertFalse(isPatternMatchedNotValidItem5);
-
-    }
-
-    @Test
-    void validateAmount() {
-
-        boolean isPatternMatchedValid = validationService.validateAmount(treasure.getItemOneAmount());
-        assertTrue(isPatternMatchedValid);
-        assertFalse(validationService.validateAmount(10));
-        assertFalse(validationService.validateAmount(102));
-
-
-    }
 }
+//    @Test
+//    void validateItem() {
+//        boolean isPatternMatchedValidItem1 = validationService.validateItem(treasure.getItemOneName());
+//        boolean isPatternMatchedValidItem2 = validationService.validateItem("Super Potion");
+//        boolean isPatternMatchedNotValidItem1 = validationService.validateItem("super Potion");
+//        boolean isPatternMatchedNotValidItem2 = validationService.validateItem("super_potion");
+//        boolean isPatternMatchedNotValidItem3 = validationService.validateItem("1dau");
+//        boolean isPatternMatchedNotValidItem4 = validationService.validateItem("Supe Potion");
+//        boolean isPatternMatchedNotValidItem5 = validationService.validateItem("Super Potions");
+//
+//
+//        assertTrue(isPatternMatchedValidItem1);
+//        assertTrue(isPatternMatchedValidItem2);
+//        assertFalse(isPatternMatchedNotValidItem1);
+//        assertFalse(isPatternMatchedNotValidItem2);
+//        assertFalse(isPatternMatchedNotValidItem3);
+//        assertFalse(isPatternMatchedNotValidItem4);
+//        assertFalse(isPatternMatchedNotValidItem5);
+//
+//    }
+//
+//    @Test
+//    void validateAmount() {
+//
+//        boolean isPatternMatchedValid = validationService.validateAmount(treasure.getItemOneAmount());
+//        assertTrue(isPatternMatchedValid);
+//        assertFalse(validationService.validateAmount(10));
+//        assertFalse(validationService.validateAmount(102));
+//
+//
+//    }
+//}

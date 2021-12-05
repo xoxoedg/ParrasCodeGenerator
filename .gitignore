@@ -37,3 +37,5 @@ mvnw
 mvnw.cmd
 
 testPythonDir
+application-local.properties
+application-test.properties
