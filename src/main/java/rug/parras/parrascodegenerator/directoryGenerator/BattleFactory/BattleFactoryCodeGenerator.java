@@ -1,11 +1,10 @@
 package rug.parras.parrascodegenerator.directoryGenerator.BattleFactory;
 
 import lombok.Getter;
-import lombok.Setter;
-import rug.parras.parrascodegenerator.directoryGenerator.Area;
-@Setter
+import rug.parras.parrascodegenerator.directoryGenerator.FactoryCodeGenerator;
+
 @Getter
-public class BattleFactoryCodeGenerator {
+public class BattleFactoryCodeGenerator implements FactoryCodeGenerator {
 
     private final String BATTLE_FACTORY_CODE_TEMPLATE =
             "class RionnagenDungeonBattleFactory:\n" +
@@ -14,8 +13,8 @@ public class BattleFactoryCodeGenerator {
                     "    def create_battle(cls, hero):\n" +
                     "          pass";
 
-    public String generateBattleFactoryCode() {
-        Area area = new Area();
-        return String.format(BATTLE_FACTORY_CODE_TEMPLATE, area.getArea());
+    @Override
+    public String generateFactoryCode(String areaName) {
+        return String.format(BATTLE_FACTORY_CODE_TEMPLATE, areaName);
     }
 }
