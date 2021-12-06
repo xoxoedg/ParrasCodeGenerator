@@ -146,7 +146,7 @@ class TreasureInteractionValidationServiceTest {
 
 
     @ParameterizedTest
-    @ValueSource(ints = {1, 4, 10, 999})
+    @ValueSource(ints = {1, 4, 10, 999, 9999})
     void validateGoldAmountValid(int gold) {
         Enum<ValidationStatus> actualValue = treasureInteractionValidationService.validateGoldAmount(gold).getValidationStatus();
         Enum<ValidationStatus> expectedValue = ValidationStatus.SUCCESS;
@@ -154,7 +154,7 @@ class TreasureInteractionValidationServiceTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1000, 383123})
+    @ValueSource(ints = {10000, 383123})
     void validateGoldAmountNotValid(int gold) {
         Enum<ValidationStatus> actualValue = treasureInteractionValidationService.validateGoldAmount(gold).getValidationStatus();
         Enum<ValidationStatus> expectedValue = ValidationStatus.ERROR;

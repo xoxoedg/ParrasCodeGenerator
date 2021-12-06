@@ -7,5 +7,5 @@ import lombok.*;
 public class ValidationFieldResult {
 
     private ValidationStatus validationStatus;
-    public String message;
+    private String message;
 }

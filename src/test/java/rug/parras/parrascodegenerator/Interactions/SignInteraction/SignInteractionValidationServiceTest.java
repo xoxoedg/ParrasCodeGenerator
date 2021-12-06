@@ -46,14 +46,6 @@ class SignInteractionValidationServiceTest {
         assertSame(expectedValue, actualValue);
     }
 
-    @Test
-    void validateSignTextInvalid() {
-        String testSignText = "i 3_d8KDaslsdmasdisaddasdasdasd"; //> 20
-        Enum<ValidationStatus> actualValue = signInteractionValidationService.validateSignText(testSignText).getValidationStatus();
-        Enum<ValidationStatus> expectedValue = ValidationStatus.ERROR;
-
-        assertSame(expectedValue, actualValue);
-    }
 
     @Test
     void validateInputValid() {

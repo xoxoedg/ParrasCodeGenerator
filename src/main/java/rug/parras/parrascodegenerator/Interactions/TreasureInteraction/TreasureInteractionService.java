@@ -11,8 +11,8 @@ import java.io.IOException;
 @Service
 public class TreasureInteractionService {
 
-    private TreasureInteractionCodeGenerationService treasureInteractionCodeGenerationService;
-    private TreasureInteractionValidationService validationService;
+    private final TreasureInteractionCodeGenerationService treasureInteractionCodeGenerationService;
+    private final TreasureInteractionValidationService validationService;
 
     @Autowired
     public TreasureInteractionService(TreasureInteractionCodeGenerationService treasureInteractionCodeGenerationService, TreasureInteractionValidationService validationService) {

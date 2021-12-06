@@ -32,7 +32,7 @@ public class SignInteractionValidationService extends InteractionValidationServi
 
     public ValidationFieldResult validateSignText(String signText) {
         validationFieldResult  = new ValidationFieldResult();
-        boolean validSignText = signText.matches(".{1,20}");
+        boolean validSignText = signText.matches(".{0,200}");
         if (validSignText) {
             validationFieldResult.setMessage("Valid Sign Input");
             validationFieldResult.setValidationStatus(ValidationStatus.SUCCESS);

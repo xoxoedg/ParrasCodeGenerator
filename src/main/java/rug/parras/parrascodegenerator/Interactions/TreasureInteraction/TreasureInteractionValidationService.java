@@ -63,7 +63,7 @@ public class TreasureInteractionValidationService extends InteractionValidationS
 
     public ValidationFieldResult validateGoldAmount(int gold) {
         validationFieldResult = new ValidationFieldResult();
-        String goldPattern = "0|[1-9][0-9]?[0-9]?";
+        String goldPattern = "0|[1-9]([0-9]{0,3})?";
         if (String.valueOf(gold).matches(goldPattern)) {
             validationFieldResult.setValidationStatus(ValidationStatus.SUCCESS);
             validationFieldResult.setMessage("Valid Gold Input");
