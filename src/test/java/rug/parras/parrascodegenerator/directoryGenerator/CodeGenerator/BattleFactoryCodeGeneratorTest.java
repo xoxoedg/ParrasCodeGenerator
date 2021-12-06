@@ -2,6 +2,7 @@ package rug.parras.parrascodegenerator.directoryGenerator.CodeGenerator;
 
 import org.junit.jupiter.api.Test;
 import rug.parras.parrascodegenerator.directoryGenerator.Area;
+import rug.parras.parrascodegenerator.directoryGenerator.BattleFactory.BattleFactoryCodeGenerator;
 
 import static org.junit.jupiter.api.Assertions.*;
 

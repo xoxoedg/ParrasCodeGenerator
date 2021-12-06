@@ -1,4 +1,4 @@
-package rug.parras.parrascodegenerator.directoryGenerator.FileGenerator;
+package rug.parras.parrascodegenerator.directoryGenerator.BattleFactory;
 
 import rug.parras.parrascodegenerator.directoryGenerator.BattleFactoryCodeGenerator;
 

@@ -1,4 +1,4 @@
-package rug.parras.parrascodegenerator.directoryGenerator.CodeGenerator;
+package rug.parras.parrascodegenerator.directoryGenerator.BattleFactory;
 
 import lombok.Getter;
 import rug.parras.parrascodegenerator.directoryGenerator.Area;
@@ -6,7 +6,7 @@ import rug.parras.parrascodegenerator.directoryGenerator.Area;
 @Getter
 public class BattleFactoryCodeGenerator {
 
-    private String BATTLE_FACTORY_CODE_TEMPLATE =
+    private final String BATTLE_FACTORY_CODE_TEMPLATE =
             "class RionnagenDungeonBattleFactory:\n" +
                     "\n" +
                     "    @classmethod\n" +
