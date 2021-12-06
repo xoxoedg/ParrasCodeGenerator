@@ -1,6 +1,5 @@
 package rug.parras.parrascodegenerator.directoryGenerator.ItemInteractionFactory;
 
-import rug.parras.parrascodegenerator.directoryGenerator.BattleFactory.BattleFactoryCodeGenerator;
 import rug.parras.parrascodegenerator.directoryGenerator.FactoryFileGenerator;
 
 import java.io.File;
@@ -8,7 +7,6 @@ import java.io.File;
 public class ItemInteractionFactoryFileGenerator implements FactoryFileGenerator {
 
     private static final String ITEM_INTERACTION_FACTORY_FILE_TEMPLATE = "%s_item_interaction_factory.py";
-    private BattleFactoryCodeGenerator battleFactoryCodeGenerator;
 
     @Override
     public String generateFilename(String areaName) {

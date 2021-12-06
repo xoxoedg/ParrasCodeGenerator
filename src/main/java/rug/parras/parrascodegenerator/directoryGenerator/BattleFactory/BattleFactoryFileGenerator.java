@@ -1,6 +1,5 @@
 package rug.parras.parrascodegenerator.directoryGenerator.BattleFactory;
 
-import rug.parras.parrascodegenerator.directoryGenerator.Area;
 import rug.parras.parrascodegenerator.directoryGenerator.FactoryFileGenerator;
 
 import java.io.File;
@@ -8,7 +7,6 @@ import java.io.File;
 public class BattleFactoryFileGenerator implements FactoryFileGenerator {
 
     private static final String BATTLE_FACTORY_FILE_TEMPLATE = "%s_battle_factory.py";
-    private BattleFactoryCodeGenerator battleFactoryCodeGenerator;
 
     @Override
     public String generateFilename(String areaName) {

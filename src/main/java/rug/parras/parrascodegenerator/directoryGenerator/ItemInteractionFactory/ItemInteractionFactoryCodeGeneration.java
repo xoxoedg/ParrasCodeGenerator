@@ -1,7 +1,6 @@
 package rug.parras.parrascodegenerator.directoryGenerator.ItemInteractionFactory;
 
 import lombok.Getter;
-import rug.parras.parrascodegenerator.directoryGenerator.Area;
 import rug.parras.parrascodegenerator.directoryGenerator.FactoryCodeGenerator;
 
 @Getter
