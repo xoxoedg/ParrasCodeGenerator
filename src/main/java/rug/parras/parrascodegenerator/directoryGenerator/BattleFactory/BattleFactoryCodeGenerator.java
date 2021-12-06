@@ -1,8 +1,9 @@
 package rug.parras.parrascodegenerator.directoryGenerator.BattleFactory;
 
 import lombok.Getter;
+import lombok.Setter;
 import rug.parras.parrascodegenerator.directoryGenerator.Area;
-
+@Setter
 @Getter
 public class BattleFactoryCodeGenerator {
 
@@ -17,7 +18,4 @@ public class BattleFactoryCodeGenerator {
         Area area = new Area();
         return String.format(BATTLE_FACTORY_CODE_TEMPLATE, area.getArea());
     }
-
-
-
 }
