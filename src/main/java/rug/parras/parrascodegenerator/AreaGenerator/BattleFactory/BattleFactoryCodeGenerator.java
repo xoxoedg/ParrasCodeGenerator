@@ -6,6 +6,7 @@ import rug.parras.parrascodegenerator.AreaGenerator.FactoryCodeGenerator;
 @Getter
 public class BattleFactoryCodeGenerator implements FactoryCodeGenerator {
 
+
     private final String BATTLE_FACTORY_CODE_TEMPLATE =
             "class RionnagenDungeonBattleFactory:\n" +
                     "\n" +
