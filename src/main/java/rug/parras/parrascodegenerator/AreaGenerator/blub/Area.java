@@ -7,5 +7,5 @@ import lombok.Setter;
 @Setter
 public class Area {
 
-    private String area;
+    private String areaName;
 }

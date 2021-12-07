@@ -38,4 +38,13 @@ public class FileGenerationService {
     NextMapFactoryFileGenerator nextMapFactoryFileGenerator;
     SceneFactoryFileGenerator sceneFactoryFileGenerator;
 
+    public void createFiles(String areaName) {
+        battleFactoryFileGenerator.createFile(areaName);
+        configurationFileGenerator.createFile();
+        initialMapFactoryFileGenerator.createFile(areaName);
+        itemInteractionFactoryFileGenerator.createFile(areaName);
+        mapAfterInteractionFactoryFileGenerator.createFile(areaName);
+        nextMapFactoryFileGenerator.generateFilename(areaName);
+        sceneFactoryFileGenerator.createFile(areaName);
+    }
 }
