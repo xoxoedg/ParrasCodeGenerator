@@ -5,7 +5,7 @@ import rug.parras.parrascodegenerator.AreaGenerator.DirectoryPathGenerator;
 import rug.parras.parrascodegenerator.AreaGenerator.GamePath;
 
 @Component
-public class ScenceFactoryDirectoryPathGenerator extends GamePath implements DirectoryPathGenerator {
+public class SceneFactoryDirectoryPathGenerator extends GamePath implements DirectoryPathGenerator {
 
     private final String PARRAS_DIRECTIORY_PATH = "%s\\src\\characters\\scenes\\%s";
 
