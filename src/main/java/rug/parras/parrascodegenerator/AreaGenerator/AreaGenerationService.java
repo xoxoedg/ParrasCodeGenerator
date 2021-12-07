@@ -1,15 +1,16 @@
 package rug.parras.parrascodegenerator.AreaGenerator;
 
-import rug.parras.parrascodegenerator.AreaGenerator.blub.Area;
-import rug.parras.parrascodegenerator.AreaGenerator.blub.CodeGenerationService;
-import rug.parras.parrascodegenerator.AreaGenerator.blub.FileGenerationService;
-import rug.parras.parrascodegenerator.AreaGenerator.blub.GameDirectoryGeneratorService;
+import rug.parras.parrascodegenerator.AreaGenerator.blub.*;
+import rug.parras.parrascodegenerator.AreaGenerator.blub.common.ValidationAreaResult;
+import rug.parras.parrascodegenerator.AreaGenerator.blub.common.ValidationAreaStatus;
+
 
 public class AreaGenerationService {
 
     GameDirectoryGeneratorService gameDirectoryGeneratorService;
     FileGenerationService fileGenerationService;
     CodeGenerationService codeGenerationService;
+    AreaValidationService validationService;
 
     public AreaGenerationService(GameDirectoryGeneratorService gameDirectoryGeneratorService, FileGenerationService fileGenerationService, CodeGenerationService codeGenerationService) {
         this.gameDirectoryGeneratorService = gameDirectoryGeneratorService;
@@ -17,10 +18,17 @@ public class AreaGenerationService {
         this.codeGenerationService = codeGenerationService;
     }
 
-    public String createArea(Area area) {
-        gameDirectoryGeneratorService.createAllDirectories(area.getAreaName());
-        fileGenerationService.createFiles(area.getAreaName());
-        codeGenerationService.createCode(area.getAreaName());
-        return "";
+    public ValidationAreaResult createArea(Area area) {
+
+        ValidationAreaResult validationAreaResult = validationService.validateAreaInput(area.getAreaName());
+        if (validationAreaResult.getValidationStatus() == ValidationAreaStatus.SUCCESS) {
+            gameDirectoryGeneratorService.createAllDirectories(area.getAreaName());
+            fileGenerationService.createFiles(area.getAreaName());
+            codeGenerationService.createCode(area.getAreaName());
+            validationAreaResult.setUrl("index");
+            return validationAreaResult;
+        }
+        validationAreaResult.setUrl("error");
+        return validationAreaResult;
     }
 }

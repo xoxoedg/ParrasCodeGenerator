@@ -1,7 +1,7 @@
 package rug.parras.parrascodegenerator.AreaGenerator.blub.ItemInteractionFactory;
 
 import lombok.Getter;
-import rug.parras.parrascodegenerator.AreaGenerator.blub.FactoryCodeGenerator;
+import rug.parras.parrascodegenerator.AreaGenerator.blub.AreaGeneratorInterfaces.FactoryCodeGenerator;
 
 @Getter
 public class ItemInteractionFactoryCodeGeneration implements FactoryCodeGenerator {

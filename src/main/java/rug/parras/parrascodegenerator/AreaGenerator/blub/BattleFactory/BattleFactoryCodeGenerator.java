@@ -1,7 +1,7 @@
 package rug.parras.parrascodegenerator.AreaGenerator.blub.BattleFactory;
 
 import lombok.Getter;
-import rug.parras.parrascodegenerator.AreaGenerator.blub.FactoryCodeGenerator;
+import rug.parras.parrascodegenerator.AreaGenerator.blub.AreaGeneratorInterfaces.FactoryCodeGenerator;
 
 @Getter
 public class BattleFactoryCodeGenerator implements FactoryCodeGenerator {

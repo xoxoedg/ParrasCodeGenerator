@@ -1,6 +1,6 @@
 package rug.parras.parrascodegenerator.AreaGenerator.blub.InitialMapFactory;
 
-import rug.parras.parrascodegenerator.AreaGenerator.blub.FactoryCodeGenerator;
+import rug.parras.parrascodegenerator.AreaGenerator.blub.AreaGeneratorInterfaces.FactoryCodeGenerator;
 
 public class InitialMapFactoryCodeGenerator implements FactoryCodeGenerator {
 

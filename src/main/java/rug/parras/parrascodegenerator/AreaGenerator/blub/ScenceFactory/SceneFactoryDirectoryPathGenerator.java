@@ -1,7 +1,7 @@
 package rug.parras.parrascodegenerator.AreaGenerator.blub.ScenceFactory;
 
 import org.springframework.stereotype.Component;
-import rug.parras.parrascodegenerator.AreaGenerator.blub.DirectoryPathGenerator;
+import rug.parras.parrascodegenerator.AreaGenerator.blub.AreaGeneratorInterfaces.DirectoryPathGenerator;
 import rug.parras.parrascodegenerator.AreaGenerator.blub.GamePath;
 
 @Component

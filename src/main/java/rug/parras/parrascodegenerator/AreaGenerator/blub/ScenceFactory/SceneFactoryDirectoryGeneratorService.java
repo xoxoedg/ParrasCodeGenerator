@@ -2,7 +2,7 @@ package rug.parras.parrascodegenerator.AreaGenerator.blub.ScenceFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import rug.parras.parrascodegenerator.AreaGenerator.blub.DirectoryGenerator;
+import rug.parras.parrascodegenerator.AreaGenerator.blub.AreaGeneratorInterfaces.DirectoryGenerator;
 
 import java.io.File;
 

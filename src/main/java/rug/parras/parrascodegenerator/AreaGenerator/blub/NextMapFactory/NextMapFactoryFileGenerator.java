@@ -1,7 +1,7 @@
 package rug.parras.parrascodegenerator.AreaGenerator.blub.NextMapFactory;
 
 import org.springframework.stereotype.Component;
-import rug.parras.parrascodegenerator.AreaGenerator.blub.FactoryFileGenerator;
+import rug.parras.parrascodegenerator.AreaGenerator.blub.AreaGeneratorInterfaces.FactoryFileGenerator;
 
 import java.io.File;
 

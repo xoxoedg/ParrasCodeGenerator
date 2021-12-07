@@ -1,4 +1,4 @@
-package rug.parras.parrascodegenerator.AreaGenerator.blub;
+package rug.parras.parrascodegenerator.AreaGenerator.blub.AreaGeneratorInterfaces;
 
 public interface DirectoryGenerator {
 
