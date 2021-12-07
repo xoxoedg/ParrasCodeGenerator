@@ -1,8 +1,11 @@
 package rug.parras.parrascodegenerator.AreaGenerator.ConfigurationCodeGenerator;
 
+import org.springframework.stereotype.Service;
+
 import java.io.FileWriter;
 import java.io.IOException;
 
+@Service
 public class ConfigurationService {
 
     public void writeToFile(String areaName) throws IOException {

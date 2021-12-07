@@ -11,6 +11,6 @@ import org.springframework.context.annotation.Configuration;
 public abstract class GamePath {
 
     @Value("${path.to.parras}")
-    private String path;
+    protected String path;
 
 }

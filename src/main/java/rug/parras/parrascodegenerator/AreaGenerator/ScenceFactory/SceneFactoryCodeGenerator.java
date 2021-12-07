@@ -2,9 +2,9 @@ package rug.parras.parrascodegenerator.AreaGenerator.ScenceFactory;
 
 import rug.parras.parrascodegenerator.AreaGenerator.FactoryCodeGenerator;
 
-public class ScenceFactoryCodeGenerator implements FactoryCodeGenerator {
+public class SceneFactoryCodeGenerator implements FactoryCodeGenerator {
 
-    private final String SCENCE_FACTORY_CODE_TEMPLATE =
+    private final String SCENE_FACTORY_CODE_TEMPLATE =
             "class %sSceneFactory:\n" +
                     "\n" +
                     "    @classmethod\n" +
@@ -13,7 +13,7 @@ public class ScenceFactoryCodeGenerator implements FactoryCodeGenerator {
 
     @Override
     public String generateFactoryCode(String areaName) {
-        return String.format(SCENCE_FACTORY_CODE_TEMPLATE, areaName);
+        return String.format(SCENE_FACTORY_CODE_TEMPLATE, areaName);
     }
 }
 
