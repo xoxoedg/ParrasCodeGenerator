@@ -8,7 +8,7 @@ public class BattleFactoryCodeGenerator implements FactoryCodeGenerator {
 
 
     private final String BATTLE_FACTORY_CODE_TEMPLATE =
-            "class RionnagenDungeonBattleFactory:\n" +
+            "class %sDungeonBattleFactory:\n" +
                     "\n" +
                     "    @classmethod\n" +
                     "    def create_battle(cls, hero):\n" +

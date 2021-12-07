@@ -11,7 +11,7 @@ public class BattleFactoryFileGenerator implements FactoryFileGenerator {
     @Override
     public String generateFilename(String areaName) {
 
-        return String.format(BATTLE_FACTORY_FILE_TEMPLATE, areaName);
+        return String.format(BATTLE_FACTORY_FILE_TEMPLATE, areaName.toLowerCase());
     }
 
     @Override
