@@ -54,7 +54,7 @@ class InteractionValidationServiceTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"test.py", "sign_interaction.py"})
+    @ValueSource(strings = {"test.txt.py", "sign_interaction.py"})
     void validateFileNameInputValid(String filename) {
         Enum<ValidationStatus> actualValue = interactionValidationService.validateFileNameInput(filename).getValidationStatus();
         Enum<ValidationStatus> expectedValue = ValidationStatus.SUCCESS;
