@@ -9,7 +9,6 @@ import rug.parras.parrascodegenerator.Area.AreaGenerator.ItemInteractionFactory.
 import rug.parras.parrascodegenerator.Area.AreaGenerator.MapInteractionFactoryCodeGenerator.MapAfterInteractionFactoryFileGenerator;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.NextMapFactory.NextMapFactoryFileGenerator;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.ScenceFactory.SceneFactoryFileGenerator;
-import rug.parras.parrascodegenerator.Utils.FileOperationUtils;
 
 import java.io.IOException;
 

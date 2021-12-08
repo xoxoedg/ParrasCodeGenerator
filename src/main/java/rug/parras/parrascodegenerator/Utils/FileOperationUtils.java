@@ -30,4 +30,11 @@ public class FileOperationUtils {
         writer.flush();
         writer.close();
     }
+
+    public static void writeCodeToFile(String Code, String filepath) throws IOException {
+        FileWriter writer = new FileWriter(filepath);
+        writer.write(Code);
+        writer.flush();
+        writer.close();
+    }
 }

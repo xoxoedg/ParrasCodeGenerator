@@ -1,4 +1,4 @@
-package rug.parras.parrascodegenerator.Area.AreaGenerator;
+package rug.parras.parrascodegenerator.Area.AreaGenerator.BattleFactory;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,14 +11,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @ActiveProfiles("it")
-class FileGenerationServiceTest {
+class BattleFactoryCodeGeneratorWriterTest {
 
     @Autowired
-    FileGenerationService fileGenerationService;
-
-
+    BattleFactoryCodeGeneratorWriter battleFactoryCodeGeneratorWriter;
     @Test
-    void createFiles() throws IOException {
-        fileGenerationService.createFiles("Rionnagen");
+    void writeToFile() throws IOException {
+        battleFactoryCodeGeneratorWriter.writeToFile("Rionnagen");
     }
 }

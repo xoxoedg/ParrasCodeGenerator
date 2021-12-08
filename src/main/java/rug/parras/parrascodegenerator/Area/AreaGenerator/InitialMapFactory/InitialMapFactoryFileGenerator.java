@@ -1,24 +1,24 @@
 package rug.parras.parrascodegenerator.Area.AreaGenerator.InitialMapFactory;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.AreaGeneratorInterfaces.FactoryFileGenerator;
-import rug.parras.parrascodegenerator.Area.AreaGenerator.GamePath;
 
 import java.io.File;
 import java.io.IOException;
 
 @Component
-public class InitialMapFactoryFileGenerator extends GamePath implements FactoryFileGenerator {
+public class InitialMapFactoryFileGenerator implements FactoryFileGenerator {
 
-    private static final String INITIAL_MAP_FACTORY_FILE_TEMPLATE = "%s\\src\\worldmap\\%s\\maps\\factories\\%s_initial_map_factory.py";
+    InitialMapFactoryFilepathGenerator initialMapFactoryFilepathGenerator;
 
-    @Override
-    public String generateFilename(String areaName) {
-        return String.format(INITIAL_MAP_FACTORY_FILE_TEMPLATE, path, areaName, areaName);
+    @Autowired
+    public InitialMapFactoryFileGenerator(InitialMapFactoryFilepathGenerator initialMapFactoryFilepathGenerator) {
+        this.initialMapFactoryFilepathGenerator = initialMapFactoryFilepathGenerator;
     }
 
     @Override
     public boolean createFile(String areaName) throws IOException {
-        return new File(generateFilename(areaName)).createNewFile();
+        return new File(initialMapFactoryFilepathGenerator.generateFilename(areaName)).createNewFile();
     }
 }

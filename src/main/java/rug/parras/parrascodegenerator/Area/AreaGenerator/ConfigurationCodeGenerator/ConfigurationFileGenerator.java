@@ -1,21 +1,22 @@
 package rug.parras.parrascodegenerator.Area.AreaGenerator.ConfigurationCodeGenerator;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import rug.parras.parrascodegenerator.Area.AreaGenerator.GamePath;
 
 import java.io.File;
 import java.io.IOException;
 
 @Component
-public class ConfigurationFileGenerator extends GamePath {
+public class ConfigurationFileGenerator {
 
-    private final String CONFIGURATION_FILE_TEMPLATE = "%s\\src\\worldmap\\%s\\configuration.py";
+    ConfigurationFilepathGenerator configurationFilepathGenerator;
 
-    public String generateFilePath(String areaName) {
-        return String.format(CONFIGURATION_FILE_TEMPLATE, path, areaName);
+    @Autowired
+    public ConfigurationFileGenerator(ConfigurationFilepathGenerator configurationFilepathGenerator) {
+        this.configurationFilepathGenerator = configurationFilepathGenerator;
     }
 
     public boolean createFile(String areaName) throws IOException {
-        return new File(generateFilePath(areaName)).createNewFile();
+        return new File(configurationFilepathGenerator.generateFilename(areaName)).createNewFile();
     }
 }

@@ -1,7 +1,9 @@
 package rug.parras.parrascodegenerator.Area.AreaGenerator.MapInteractionFactoryCodeGenerator;
 
+import org.springframework.stereotype.Component;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.AreaGeneratorInterfaces.FactoryCodeGenerator;
 
+@Component
 public class MapAfterInteractionFactoryCodeGenerator implements FactoryCodeGenerator {
 
     private final String MAP_AFTER_INTERACTION_FACTORY_CODE_TEMPLATE =

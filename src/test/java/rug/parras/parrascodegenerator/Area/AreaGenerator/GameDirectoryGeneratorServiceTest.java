@@ -14,6 +14,6 @@ class GameDirectoryGeneratorServiceTest {
 
     @Test
     void createAllDirectories() {
-        gameDirectoryGeneratorService.createAllDirectories("Seann");
+        gameDirectoryGeneratorService.createAllDirectories("Rionnagen");
     }
 }

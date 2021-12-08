@@ -1,24 +1,28 @@
 package rug.parras.parrascodegenerator.Area;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.*;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.common.ValidationAreaResult;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.common.ValidationAreaStatus;
-
-import java.io.IOException;
 
 @Service
 public class AreaGenerationService {
 
     GameDirectoryGeneratorService gameDirectoryGeneratorService;
     FileGenerationService fileGenerationService;
-    CodeGenerationService codeGenerationService;
+    CodeWriterService codeWriterService;
     AreaValidationService validationService;
 
-    public AreaGenerationService(GameDirectoryGeneratorService gameDirectoryGeneratorService, FileGenerationService fileGenerationService, CodeGenerationService codeGenerationService) {
+    @Autowired
+    public AreaGenerationService(GameDirectoryGeneratorService gameDirectoryGeneratorService,
+                                 FileGenerationService fileGenerationService,
+                                 CodeWriterService codeWriterService,
+                                 AreaValidationService validationService) {
         this.gameDirectoryGeneratorService = gameDirectoryGeneratorService;
         this.fileGenerationService = fileGenerationService;
-        this.codeGenerationService = codeGenerationService;
+        this.codeWriterService = codeWriterService;
+        this.validationService = validationService;
     }
 
     public ValidationAreaResult createArea(Area area) {
@@ -27,10 +31,9 @@ public class AreaGenerationService {
         if (validationAreaResult.getValidationStatus() == ValidationAreaStatus.SUCCESS) {
             gameDirectoryGeneratorService.createAllDirectories(area.getAreaName());
             fileGenerationService.createFiles(area.getAreaName());
+            codeWriterService.writeCodeToFile(area.getAreaName());
             validationAreaResult.setUrl("index");
             return validationAreaResult;
-
-//            codeGenerationService.createCode(area.getAreaName());
         }
         validationAreaResult.setUrl("error");
         return validationAreaResult;

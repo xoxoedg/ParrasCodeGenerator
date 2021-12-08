@@ -1,5 +1,8 @@
 package rug.parras.parrascodegenerator.Area.AreaGenerator.ConfigurationCodeGenerator;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class ConfigurationCodeGenerator  {
 
     private final String CONFIGURATION_CODE_TEMPLATE = "ALL_%s_MAPS=[]";

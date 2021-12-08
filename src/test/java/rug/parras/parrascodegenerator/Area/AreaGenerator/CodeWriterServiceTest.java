@@ -5,20 +5,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
-import java.io.IOException;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @ActiveProfiles("it")
-class FileGenerationServiceTest {
+class CodeWriterServiceTest {
 
     @Autowired
-    FileGenerationService fileGenerationService;
-
+    CodeWriterService codeWriterService;
 
     @Test
-    void createFiles() throws IOException {
-        fileGenerationService.createFiles("Rionnagen");
+    void writeCodeToFile() {
+        Area area = new Area();
+        area.setAreaName("Rionnagen");
+        codeWriterService.writeCodeToFile(area.getAreaName());
     }
 }

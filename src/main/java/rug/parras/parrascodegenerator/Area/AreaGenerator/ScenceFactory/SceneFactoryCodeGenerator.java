@@ -1,7 +1,9 @@
 package rug.parras.parrascodegenerator.Area.AreaGenerator.ScenceFactory;
 
+import org.springframework.stereotype.Component;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.AreaGeneratorInterfaces.FactoryCodeGenerator;
 
+@Component
 public class SceneFactoryCodeGenerator implements FactoryCodeGenerator {
 
     private final String SCENE_FACTORY_CODE_TEMPLATE =

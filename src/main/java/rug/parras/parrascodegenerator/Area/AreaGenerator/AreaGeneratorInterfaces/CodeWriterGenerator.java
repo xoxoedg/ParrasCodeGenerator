@@ -2,7 +2,6 @@ package rug.parras.parrascodegenerator.Area.AreaGenerator.AreaGeneratorInterface
 
 import java.io.IOException;
 
-public interface FactoryFileGenerator {
-
-    boolean createFile(String areaName) throws IOException;
+public interface CodeWriterGenerator {
+    void writeToFile(String areaName) throws IOException;
 }
