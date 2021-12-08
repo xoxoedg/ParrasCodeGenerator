@@ -8,12 +8,12 @@ import java.io.IOException;
 @Service
 public class SceneFactoryService {
 
-    public void writeToFile(String areaName) throws IOException {
-        SceneFactoryCodeGenerator sceneFactoryCodeGenerator = new SceneFactoryCodeGenerator();
-        SceneFactoryFileGenerator sceneFactoryFileGenerator = new SceneFactoryFileGenerator();
-        FileWriter writer = new FileWriter(sceneFactoryFileGenerator.createFile(areaName));
-        writer.write(sceneFactoryCodeGenerator.generateFactoryCode(areaName));
-
-
-    }
+//    public void writeToFile(String areaName) throws IOException {
+//        SceneFactoryCodeGenerator sceneFactoryCodeGenerator = new SceneFactoryCodeGenerator();
+//        SceneFactoryFileGenerator sceneFactoryFileGenerator = new SceneFactoryFileGenerator();
+//        FileWriter writer = new FileWriter(sceneFactoryFileGenerator.createFile(areaName));
+//        writer.write(sceneFactoryCodeGenerator.generateFactoryCode(areaName));
+//
+//
+//    }
 }

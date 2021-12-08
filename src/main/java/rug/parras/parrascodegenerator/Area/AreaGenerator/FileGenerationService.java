@@ -9,6 +9,9 @@ import rug.parras.parrascodegenerator.Area.AreaGenerator.ItemInteractionFactory.
 import rug.parras.parrascodegenerator.Area.AreaGenerator.MapInteractionFactoryCodeGenerator.MapAfterInteractionFactoryFileGenerator;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.NextMapFactory.NextMapFactoryFileGenerator;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.ScenceFactory.SceneFactoryFileGenerator;
+import rug.parras.parrascodegenerator.Utils.FileOperationUtils;
+
+import java.io.IOException;
 
 @Service
 public class FileGenerationService {
@@ -39,12 +42,16 @@ public class FileGenerationService {
     SceneFactoryFileGenerator sceneFactoryFileGenerator;
 
     public void createFiles(String areaName) {
-        battleFactoryFileGenerator.createFile(areaName);
-        configurationFileGenerator.createFile();
-        initialMapFactoryFileGenerator.createFile(areaName);
-        itemInteractionFactoryFileGenerator.createFile(areaName);
-        mapAfterInteractionFactoryFileGenerator.createFile(areaName);
-        nextMapFactoryFileGenerator.generateFilename(areaName);
-        sceneFactoryFileGenerator.createFile(areaName);
+        try {
+            battleFactoryFileGenerator.createFile(areaName);
+            configurationFileGenerator.createFile(areaName);
+            initialMapFactoryFileGenerator.createFile(areaName);
+            itemInteractionFactoryFileGenerator.createFile(areaName);
+            mapAfterInteractionFactoryFileGenerator.createFile(areaName);
+            nextMapFactoryFileGenerator.createFile(areaName);
+            sceneFactoryFileGenerator.createFile(areaName);
+        } catch (IOException e) {
+            throw new RuntimeException("Blub exception");
+        }
     }
 }

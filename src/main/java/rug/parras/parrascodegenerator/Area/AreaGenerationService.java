@@ -5,6 +5,8 @@ import rug.parras.parrascodegenerator.Area.AreaGenerator.*;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.common.ValidationAreaResult;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.common.ValidationAreaStatus;
 
+import java.io.IOException;
+
 @Service
 public class AreaGenerationService {
 
@@ -25,9 +27,10 @@ public class AreaGenerationService {
         if (validationAreaResult.getValidationStatus() == ValidationAreaStatus.SUCCESS) {
             gameDirectoryGeneratorService.createAllDirectories(area.getAreaName());
             fileGenerationService.createFiles(area.getAreaName());
-            codeGenerationService.createCode(area.getAreaName());
             validationAreaResult.setUrl("index");
             return validationAreaResult;
+
+//            codeGenerationService.createCode(area.getAreaName());
         }
         validationAreaResult.setUrl("error");
         return validationAreaResult;

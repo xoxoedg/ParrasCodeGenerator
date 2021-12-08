@@ -8,11 +8,11 @@ import java.io.IOException;
 @Service
 public class InitialMapFactoryService {
 
-    public void writeToFile(String areaName) throws IOException {
-        InitialMapFactoryCodeGenerator initialMapFactoryCodeGenerator = new InitialMapFactoryCodeGenerator();
-        InitialMapFactoryFileGenerator initialMapFactoryFileGenerator = new InitialMapFactoryFileGenerator();
-        FileWriter writer = new FileWriter(initialMapFactoryFileGenerator.createFile(areaName));
-        writer.write(initialMapFactoryCodeGenerator.generateFactoryCode(areaName));
+//    public void writeToFile(String areaName) throws IOException {
+//        InitialMapFactoryCodeGenerator initialMapFactoryCodeGenerator = new InitialMapFactoryCodeGenerator();
+//        InitialMapFactoryFileGenerator initialMapFactoryFileGenerator = new InitialMapFactoryFileGenerator();
+//        FileWriter writer = new FileWriter(initialMapFactoryFileGenerator.createFile(areaName));
+//        writer.write(initialMapFactoryCodeGenerator.generateFactoryCode(areaName));
     }
-}
+
 

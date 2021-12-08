@@ -1,10 +1,10 @@
 package rug.parras.parrascodegenerator.Area.AreaGenerator.AreaGeneratorInterfaces;
 
-import java.io.File;
+import java.io.IOException;
 
 public interface FactoryFileGenerator {
 
     String generateFilename(String areaName);
 
-    File createFile(String areaName);
+    boolean createFile(String areaName) throws IOException;
 }

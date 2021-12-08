@@ -12,5 +12,4 @@ public abstract class GamePath {
 
     @Value("${path.to.parras}")
     protected String path;
-
 }
