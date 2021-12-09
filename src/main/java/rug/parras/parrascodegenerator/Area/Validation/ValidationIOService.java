@@ -1,5 +1,6 @@
 package rug.parras.parrascodegenerator.Area.Validation;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.BattleFactory.BattleFactoryFilepathGenerator;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.ConfigurationCodeGenerator.ConfigurationFilepathGenerator;
@@ -9,8 +10,6 @@ import rug.parras.parrascodegenerator.Area.AreaGenerator.MapInteractionFactoryCo
 import rug.parras.parrascodegenerator.Area.AreaGenerator.NextMapFactory.NextMapFactoryFilepathGenerator;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.ScenceFactory.SceneFactoryFilepathGenerator;
 import rug.parras.parrascodegenerator.Area.FileOperations;
-
-import java.util.List;
 
 @Service
 public class ValidationIOService {
@@ -23,6 +22,7 @@ public class ValidationIOService {
     NextMapFactoryFilepathGenerator nextMapFactoryFilepathGenerator;
     SceneFactoryFilepathGenerator sceneFactoryFilepathGenerator;
 
+    @Autowired
     public ValidationIOService(BattleFactoryFilepathGenerator battleFactoryFilepathGenerator,
                                ConfigurationFilepathGenerator configurationFilepathGenerator,
                                InitialMapFactoryFilepathGenerator initialMapFactoryFilepathGenerator,
@@ -175,7 +175,7 @@ public class ValidationIOService {
             validationIOResult.getValidationFileResultsList().add(validationStatusNextMapFactoryFileResult);
         }
         if (validationStatusSceneFactoryFileResult.validationStatus == ValidationStatus.WARNING) {
-        validationIOResult.getValidationFileResultsList().add(validationStatusSceneFactoryFileResult);
+            validationIOResult.getValidationFileResultsList().add(validationStatusSceneFactoryFileResult);
         } else {
             validationIOResult.setValidationStatus(ValidationStatus.SUCCESS);
             validationIOResult.getValidationFileResultsList().add(validationStatusSceneFactoryFileResult);
