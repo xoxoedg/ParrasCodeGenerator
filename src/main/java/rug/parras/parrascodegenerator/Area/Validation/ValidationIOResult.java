@@ -8,8 +8,6 @@ import java.util.List;
 
 @Getter
 @Setter
-public class ValidationIOResult {
-    private ValidationAreaStatus validationAreaStatus;
-    private String message;
+public class ValidationIOResult extends ValidationResult{
     private List<ValidationFileResult> validationFileResultsList = new ArrayList<>();
 }

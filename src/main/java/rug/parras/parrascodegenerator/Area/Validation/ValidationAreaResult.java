@@ -5,8 +5,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ValidationAreaResult {
-    private ValidationAreaStatus validationStatus;
-    private String message;
+public class ValidationAreaResult extends ValidationResult{
     private String url;
 }

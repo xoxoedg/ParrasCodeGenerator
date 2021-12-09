@@ -5,5 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ValidationFileResult extends ValidationResult {
+public abstract class ValidationResult {
+    protected ValidationStatus validationStatus;
+    protected String message;
 }

@@ -10,7 +10,7 @@ import java.util.List;
 @Setter
 public class ValidationResult {
 
-    private ValidationStatus validationStatus;
+    private InteractionValidationStatus interactionValidationStatus;
     private List<ValidationFieldResult> validationFieldResultList = new ArrayList<>();
     private String url;
 }

@@ -1,8 +1,8 @@
-package rug.parras.parrascodegenerator.Interactions;
+package rug.parras.parrascodegenerator.Interactions.Validation;
 
 import org.springframework.stereotype.Service;
 import rug.parras.parrascodegenerator.Interactions.Validation.ValidationFieldResult;
-import rug.parras.parrascodegenerator.Interactions.Validation.ValidationStatus;
+import rug.parras.parrascodegenerator.Interactions.Validation.InteractionValidationStatus;
 
 @Service
 public class InteractionValidationService {
@@ -12,10 +12,10 @@ public class InteractionValidationService {
         validationFieldResult = new ValidationFieldResult();
         boolean validMapInput = map.matches("[a-z]+((_[a-z]+)+)?_map_[a-z]{1,9}");
         if (validMapInput) {
-            validationFieldResult.setValidationStatus(ValidationStatus.SUCCESS);
+            validationFieldResult.setInteractionValidationStatus(InteractionValidationStatus.SUCCESS);
             validationFieldResult.setMessage("Valid Map Input");
         } else {
-            validationFieldResult.setValidationStatus(ValidationStatus.ERROR);
+            validationFieldResult.setInteractionValidationStatus(InteractionValidationStatus.ERROR);
             validationFieldResult.setMessage("Invalid Map Input: Map Input must be lowercase and the delimiter must be an underscore");
         }
         return validationFieldResult;
@@ -25,10 +25,10 @@ public class InteractionValidationService {
         validationFieldResult = new ValidationFieldResult();
         boolean validAreaInput = area.matches("^[A-Z][a-z]+(\\s[A-Z][a-z]+)?");
         if (validAreaInput) {
-            validationFieldResult.setValidationStatus(ValidationStatus.SUCCESS);
+            validationFieldResult.setInteractionValidationStatus(InteractionValidationStatus.SUCCESS);
             validationFieldResult.setMessage("Valid Area Input");
         } else {
-            validationFieldResult.setValidationStatus(ValidationStatus.ERROR);
+            validationFieldResult.setInteractionValidationStatus(InteractionValidationStatus.ERROR);
             validationFieldResult.setMessage("Invalid Area Input: Area Input must start with a Uppercase letter and the " +
                     "delimiter must be a whitespace ");
         }
@@ -39,10 +39,10 @@ public class InteractionValidationService {
         validationFieldResult = new ValidationFieldResult();
         boolean validFilename = filename.matches("[a-z]+_?[a-z]+\\.py");
         if (validFilename) {
-            validationFieldResult.setValidationStatus(ValidationStatus.SUCCESS);
+            validationFieldResult.setInteractionValidationStatus(InteractionValidationStatus.SUCCESS);
             validationFieldResult.setMessage("Valid Filename");
         } else {
-            validationFieldResult.setValidationStatus(ValidationStatus.ERROR);
+            validationFieldResult.setInteractionValidationStatus(InteractionValidationStatus.ERROR);
             validationFieldResult.setMessage("Invalid Filename Input: Filename must be lowercase and end with .py");
         } return validationFieldResult;
     }

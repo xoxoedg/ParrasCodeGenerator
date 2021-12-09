@@ -6,6 +6,6 @@ import lombok.*;
 @Setter
 public class ValidationFieldResult {
 
-    private ValidationStatus validationStatus;
+    private InteractionValidationStatus interactionValidationStatus;
     private String message;
 }

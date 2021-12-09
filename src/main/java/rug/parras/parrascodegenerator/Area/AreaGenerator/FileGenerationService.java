@@ -9,9 +9,7 @@ import rug.parras.parrascodegenerator.Area.AreaGenerator.ItemInteractionFactory.
 import rug.parras.parrascodegenerator.Area.AreaGenerator.MapInteractionFactoryCodeGenerator.MapAfterInteractionFactoryFileGenerator;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.NextMapFactory.NextMapFactoryFileGenerator;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.ScenceFactory.SceneFactoryFileGenerator;
-import rug.parras.parrascodegenerator.Area.Validation.ValidationFileResult;
 import rug.parras.parrascodegenerator.Area.Validation.ValidationIOResult;
-import rug.parras.parrascodegenerator.Interactions.Validation.ValidationStatus;
 
 import java.io.IOException;
 
@@ -47,14 +45,17 @@ public class FileGenerationService {
         ValidationIOResult validationIOResult = new ValidationIOResult();
         try {
             battleFactoryFileGenerator.createFile(areaName);
+            configurationFileGenerator.createFile(areaName);
             initialMapFactoryFileGenerator.createFile(areaName);
             itemInteractionFactoryFileGenerator.createFile(areaName);
             mapAfterInteractionFactoryFileGenerator.createFile(areaName);
             nextMapFactoryFileGenerator.createFile(areaName);
             sceneFactoryFileGenerator.createFile(areaName);
+
         } catch (IOException e) {
             throw new RuntimeException("Blub exception");
-        } return validationIOResult;
+        }
+        return validationIOResult;
     }
 }
 

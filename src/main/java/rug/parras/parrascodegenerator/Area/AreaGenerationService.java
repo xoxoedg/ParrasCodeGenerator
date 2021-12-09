@@ -3,9 +3,10 @@ package rug.parras.parrascodegenerator.Area;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.*;
-import rug.parras.parrascodegenerator.Area.Validation.AreaValidationService;
-import rug.parras.parrascodegenerator.Area.Validation.ValidationAreaResult;
-import rug.parras.parrascodegenerator.Area.Validation.ValidationAreaStatus;
+import rug.parras.parrascodegenerator.Area.Validation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class AreaGenerationService {
@@ -14,29 +15,35 @@ public class AreaGenerationService {
     FileGenerationService fileGenerationService;
     CodeWriterService codeWriterService;
     AreaValidationService validationService;
+    ValidationIOService validationIOService;
 
     @Autowired
     public AreaGenerationService(GameDirectoryGeneratorService gameDirectoryGeneratorService,
                                  FileGenerationService fileGenerationService,
                                  CodeWriterService codeWriterService,
-                                 AreaValidationService validationService) {
+                                 AreaValidationService validationService,
+                                 ValidationIOService validationIOService) {
         this.gameDirectoryGeneratorService = gameDirectoryGeneratorService;
         this.fileGenerationService = fileGenerationService;
         this.codeWriterService = codeWriterService;
         this.validationService = validationService;
+        this.validationIOService = validationIOService;
     }
 
-    public ValidationAreaResult createArea(Area area) {
+    public List<ValidationResult> createArea(Area area) {
 
         ValidationAreaResult validationAreaResult = validationService.validateAreaInput(area.getAreaName());
-        if (validationAreaResult.getValidationStatus() == ValidationAreaStatus.SUCCESS) {
+        List<ValidationResult> validationResults = List.of(validationAreaResult);
+        ValidationStatus validationStatus = validationAreaResult.getValidationStatus();
+        if (validationStatus == ValidationStatus.SUCCESS) {
+            validationResults.add(validationIOService.validateFiles(area.getAreaName()));
             gameDirectoryGeneratorService.createAllDirectories(area.getAreaName());
             fileGenerationService.createFiles(area.getAreaName());
             codeWriterService.writeCodeToFile(area.getAreaName());
             validationAreaResult.setUrl("index");
-            return validationAreaResult;
+            return validationResults;
         }
         validationAreaResult.setUrl("error");
-        return validationAreaResult;
+        return validationResults;
     }
 }

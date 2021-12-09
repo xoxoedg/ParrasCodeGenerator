@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import rug.parras.parrascodegenerator.Interactions.Validation.ValidationStatus;
+import rug.parras.parrascodegenerator.Interactions.Validation.InteractionValidationStatus;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 
@@ -22,8 +22,8 @@ class SignInteractionValidationServiceTest {
     @ParameterizedTest
     @ValueSource(strings = {"left", "Left", "right", "Right", "up", "Up", "uP", "down", "Down", "DOWN", "LEFT"})
     void validateDirectionInputValid(String direction) {
-        Enum<ValidationStatus> actualValue = signInteractionValidationService.validateDirectionInput(direction).getValidationStatus();
-        Enum<ValidationStatus> expectedValue = ValidationStatus.SUCCESS;
+        Enum<InteractionValidationStatus> actualValue = signInteractionValidationService.validateDirectionInput(direction).getInteractionValidationStatus();
+        Enum<InteractionValidationStatus> expectedValue = InteractionValidationStatus.SUCCESS;
 
         assertSame(expectedValue, actualValue);
     }
@@ -31,8 +31,8 @@ class SignInteractionValidationServiceTest {
     @ParameterizedTest
     @ValueSource(strings = {"lft", "3", "MountaIn"})
     void validateDirectionInputInvalid(String direction) {
-        Enum<ValidationStatus> actualValue = signInteractionValidationService.validateDirectionInput(direction).getValidationStatus();
-        Enum<ValidationStatus> expectedValue = ValidationStatus.ERROR;
+        Enum<InteractionValidationStatus> actualValue = signInteractionValidationService.validateDirectionInput(direction).getInteractionValidationStatus();
+        Enum<InteractionValidationStatus> expectedValue = InteractionValidationStatus.ERROR;
 
         assertSame(expectedValue, actualValue);
     }
@@ -40,8 +40,8 @@ class SignInteractionValidationServiceTest {
     @ParameterizedTest
     @ValueSource(strings = {"i 3_d8KDaslsdmasdisa", "Hallo wie gehts"})
     void validateSignTextValid(String testSignText) {
-        Enum<ValidationStatus> actualValue = signInteractionValidationService.validateSignText(testSignText).getValidationStatus();
-        Enum<ValidationStatus> expectedValue = ValidationStatus.SUCCESS;
+        Enum<InteractionValidationStatus> actualValue = signInteractionValidationService.validateSignText(testSignText).getInteractionValidationStatus();
+        Enum<InteractionValidationStatus> expectedValue = InteractionValidationStatus.SUCCESS;
 
         assertSame(expectedValue, actualValue);
     }
@@ -54,8 +54,8 @@ class SignInteractionValidationServiceTest {
         sign.setFileName("sign_interaction.py");
         sign.setDirection("UP");
         sign.setSignText("Hello");
-        Enum<ValidationStatus> actualValue = signInteractionValidationService.validateInput(sign).getValidationStatus();
-        Enum<ValidationStatus> expectedValue = ValidationStatus.SUCCESS;
+        Enum<InteractionValidationStatus> actualValue = signInteractionValidationService.validateInput(sign).getInteractionValidationStatus();
+        Enum<InteractionValidationStatus> expectedValue = InteractionValidationStatus.SUCCESS;
 
         assertSame(expectedValue, actualValue);
     }
@@ -67,8 +67,8 @@ class SignInteractionValidationServiceTest {
         sign.setFileName("signInteraction.py"); //Error here
         sign.setDirection("UP");
         sign.setSignText("Hello");
-        Enum<ValidationStatus> actualValue = signInteractionValidationService.validateInput(sign).getValidationStatus();
-        Enum<ValidationStatus> expectedValue = ValidationStatus.ERROR;
+        Enum<InteractionValidationStatus> actualValue = signInteractionValidationService.validateInput(sign).getInteractionValidationStatus();
+        Enum<InteractionValidationStatus> expectedValue = InteractionValidationStatus.ERROR;
 
         assertSame(expectedValue, actualValue);
     }

@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import rug.parras.parrascodegenerator.Interactions.Validation.ValidationStatus;
+import rug.parras.parrascodegenerator.Interactions.Validation.InteractionValidationStatus;
 
 import java.util.List;
 
@@ -25,16 +25,16 @@ class TreasureInteractionValidationServiceTest {
     @Test
     void validateItemValid() {
         List<String> testItem = List.of("Tent", "Potion", "Super Potion", "serum");
-        Enum<ValidationStatus> actualValue = treasureInteractionValidationService.validateItem(testItem).getValidationStatus();
-        Enum<ValidationStatus> expectedValue = ValidationStatus.SUCCESS;
+        Enum<InteractionValidationStatus> actualValue = treasureInteractionValidationService.validateItem(testItem).getInteractionValidationStatus();
+        Enum<InteractionValidationStatus> expectedValue = InteractionValidationStatus.SUCCESS;
         assertSame(expectedValue, actualValue);
     }
 
     @Test
     void validateItemInvalid() {
         List<String> testItem = List.of("Tent", "Potion", "Super Potion", "Tomate");
-        Enum<ValidationStatus> actualValue = treasureInteractionValidationService.validateItem(testItem).getValidationStatus();
-        Enum<ValidationStatus> expectedValue = ValidationStatus.ERROR;
+        Enum<InteractionValidationStatus> actualValue = treasureInteractionValidationService.validateItem(testItem).getInteractionValidationStatus();
+        Enum<InteractionValidationStatus> expectedValue = InteractionValidationStatus.ERROR;
         assertSame(expectedValue, actualValue);
     }
 
@@ -42,24 +42,24 @@ class TreasureInteractionValidationServiceTest {
     @Test
     void validateAmountValid() {
         List<String> testAmountValid = List.of("3", "4", "8", "7");
-        Enum<ValidationStatus> actualValue = treasureInteractionValidationService.validateItemAmount(testAmountValid).getValidationStatus();
-        Enum<ValidationStatus> expectedValue = ValidationStatus.SUCCESS;
+        Enum<InteractionValidationStatus> actualValue = treasureInteractionValidationService.validateItemAmount(testAmountValid).getInteractionValidationStatus();
+        Enum<InteractionValidationStatus> expectedValue = InteractionValidationStatus.SUCCESS;
         assertSame(expectedValue, actualValue);
     }
 
     @Test
     void validateAmountInvalid1() {
         List<String> testAmountValid = List.of("3", "4", "8", "10");
-        Enum<ValidationStatus> actualValue = treasureInteractionValidationService.validateItemAmount(testAmountValid).getValidationStatus();
-        Enum<ValidationStatus> expectedValue = ValidationStatus.ERROR;
+        Enum<InteractionValidationStatus> actualValue = treasureInteractionValidationService.validateItemAmount(testAmountValid).getInteractionValidationStatus();
+        Enum<InteractionValidationStatus> expectedValue = InteractionValidationStatus.ERROR;
         assertSame(expectedValue, actualValue);
     }
 
     @Test
     void validateAmountInvalid2() {
         List<String> testAmountValid = List.of("3", "4", "8", "a");
-        Enum<ValidationStatus> actualValue = treasureInteractionValidationService.validateItemAmount(testAmountValid).getValidationStatus();
-        Enum<ValidationStatus> expectedValue = ValidationStatus.ERROR;
+        Enum<InteractionValidationStatus> actualValue = treasureInteractionValidationService.validateItemAmount(testAmountValid).getInteractionValidationStatus();
+        Enum<InteractionValidationStatus> expectedValue = InteractionValidationStatus.ERROR;
         assertSame(expectedValue, actualValue);
     }
 
@@ -73,8 +73,8 @@ class TreasureInteractionValidationServiceTest {
         treasure.setAmountGold(5);
 
 
-        Enum<ValidationStatus> actualValue = treasureInteractionValidationService.validateInput(treasure).getValidationStatus();
-        Enum<ValidationStatus> expectedValue = ValidationStatus.SUCCESS;
+        Enum<InteractionValidationStatus> actualValue = treasureInteractionValidationService.validateInput(treasure).getInteractionValidationStatus();
+        Enum<InteractionValidationStatus> expectedValue = InteractionValidationStatus.SUCCESS;
 
         assertSame(expectedValue, actualValue);
     }
@@ -89,8 +89,8 @@ class TreasureInteractionValidationServiceTest {
         treasure.setItemOneAmount(4);
         treasure.setAmountGold(ints);
 
-        Enum<ValidationStatus> actualValue = treasureInteractionValidationService.validateInput(treasure).getValidationStatus();
-        Enum<ValidationStatus> expectedValue = ValidationStatus.ERROR;
+        Enum<InteractionValidationStatus> actualValue = treasureInteractionValidationService.validateInput(treasure).getInteractionValidationStatus();
+        Enum<InteractionValidationStatus> expectedValue = InteractionValidationStatus.ERROR;
 
         assertSame(expectedValue, actualValue);
     }
@@ -108,8 +108,8 @@ class TreasureInteractionValidationServiceTest {
         treasure.setItemThreeName(itemTwo);
         treasure.setItemThreeAmount(2);
 
-        Enum<ValidationStatus> actualValue = treasureInteractionValidationService.validateInput(treasure).getValidationStatus();
-        Enum<ValidationStatus> expectedValue = ValidationStatus.ERROR;
+        Enum<InteractionValidationStatus> actualValue = treasureInteractionValidationService.validateInput(treasure).getInteractionValidationStatus();
+        Enum<InteractionValidationStatus> expectedValue = InteractionValidationStatus.ERROR;
 
         assertSame(expectedValue, actualValue);
     }
@@ -122,8 +122,8 @@ class TreasureInteractionValidationServiceTest {
         treasure.setItemOneName("Tent");
         treasure.setItemOneAmount(4);
 
-        Enum<ValidationStatus> actualValue = treasureInteractionValidationService.validateInput(treasure).getValidationStatus();
-        Enum<ValidationStatus> expectedValue = ValidationStatus.SUCCESS;
+        Enum<InteractionValidationStatus> actualValue = treasureInteractionValidationService.validateInput(treasure).getInteractionValidationStatus();
+        Enum<InteractionValidationStatus> expectedValue = InteractionValidationStatus.SUCCESS;
 
         assertSame(expectedValue, actualValue);
     }
@@ -131,16 +131,16 @@ class TreasureInteractionValidationServiceTest {
     @Test
     void validateQuantityOfItemsValid() {
         List<String> testItem = List.of("Tent", "Potion", "Super Potion", "Tent");
-        Enum<ValidationStatus> actualValue = treasureInteractionValidationService.validateQuantityOfItems(testItem).getValidationStatus();
-        Enum<ValidationStatus> expectedValue = ValidationStatus.ERROR;
+        Enum<InteractionValidationStatus> actualValue = treasureInteractionValidationService.validateQuantityOfItems(testItem).getInteractionValidationStatus();
+        Enum<InteractionValidationStatus> expectedValue = InteractionValidationStatus.ERROR;
         assertSame(expectedValue, actualValue);
     }
 
     @Test
     void validateQuantityOfItemsInvalid() {
         List<String> testItem = List.of("Tent", "Potion", "Super Potion");
-        Enum<ValidationStatus> actualValue = treasureInteractionValidationService.validateQuantityOfItems(testItem).getValidationStatus();
-        Enum<ValidationStatus> expectedValue = ValidationStatus.SUCCESS;
+        Enum<InteractionValidationStatus> actualValue = treasureInteractionValidationService.validateQuantityOfItems(testItem).getInteractionValidationStatus();
+        Enum<InteractionValidationStatus> expectedValue = InteractionValidationStatus.SUCCESS;
         assertSame(expectedValue, actualValue);
     }
 
@@ -148,16 +148,16 @@ class TreasureInteractionValidationServiceTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 4, 10, 999, 9999})
     void validateGoldAmountValid(int gold) {
-        Enum<ValidationStatus> actualValue = treasureInteractionValidationService.validateGoldAmount(gold).getValidationStatus();
-        Enum<ValidationStatus> expectedValue = ValidationStatus.SUCCESS;
+        Enum<InteractionValidationStatus> actualValue = treasureInteractionValidationService.validateGoldAmount(gold).getInteractionValidationStatus();
+        Enum<InteractionValidationStatus> expectedValue = InteractionValidationStatus.SUCCESS;
         assertSame(expectedValue, actualValue);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {10000, 383123})
     void validateGoldAmountNotValid(int gold) {
-        Enum<ValidationStatus> actualValue = treasureInteractionValidationService.validateGoldAmount(gold).getValidationStatus();
-        Enum<ValidationStatus> expectedValue = ValidationStatus.ERROR;
+        Enum<InteractionValidationStatus> actualValue = treasureInteractionValidationService.validateGoldAmount(gold).getInteractionValidationStatus();
+        Enum<InteractionValidationStatus> expectedValue = InteractionValidationStatus.ERROR;
         assertSame(expectedValue, actualValue);
     }
 }

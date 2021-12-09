@@ -6,7 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.Area;
 import rug.parras.parrascodegenerator.Area.Validation.ValidationAreaResult;
-import rug.parras.parrascodegenerator.Area.Validation.ValidationAreaStatus;
+import rug.parras.parrascodegenerator.Area.Validation.ValidationStatus;
 
 @SpringBootTest
 @ActiveProfiles("it")
@@ -20,7 +20,7 @@ class AreaGenerationServiceTest {
     @Test
     void createArea() {
         ValidationAreaResult areaResult = new ValidationAreaResult();
-        areaResult.setValidationStatus(ValidationAreaStatus.SUCCESS);
+        areaResult.setValidationStatus(ValidationStatus.SUCCESS);
         Area area = new Area();
         area.setAreaName("Rionnagen");
 

@@ -3,9 +3,9 @@ package rug.parras.parrascodegenerator.Area.AreaGenerator.ItemInteractionFactory
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.AreaGeneratorInterfaces.FactoryFileGenerator;
-import rug.parras.parrascodegenerator.Area.AreaGenerator.GamePath;
 import rug.parras.parrascodegenerator.Area.Validation.ValidationFileResult;
-import rug.parras.parrascodegenerator.Interactions.Validation.ValidationStatus;
+import rug.parras.parrascodegenerator.Area.Validation.ValidationStatus;
+import rug.parras.parrascodegenerator.Interactions.Validation.InteractionValidationStatus;
 
 import java.io.File;
 import java.io.IOException;

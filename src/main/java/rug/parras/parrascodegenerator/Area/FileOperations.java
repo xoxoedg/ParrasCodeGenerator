@@ -16,4 +16,8 @@ public class FileOperations {
     public static boolean checkIfFileIsEmpty(File file) {
         return file.length() == 0;
     }
+
+    public static boolean checkIfFileExist(String filepath) {
+        return new File(filepath).exists();
+    }
 }
