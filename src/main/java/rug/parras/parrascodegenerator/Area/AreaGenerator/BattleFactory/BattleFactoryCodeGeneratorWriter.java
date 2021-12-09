@@ -12,8 +12,8 @@ import java.io.IOException;
 @Component
 public class BattleFactoryCodeGeneratorWriter implements CodeWriterGenerator {
 
-    BattleFactoryFilepathGenerator battleFactoryFilepathGenerator;
-    BattleFactoryCodeGenerator battleFactoryCodeGenerator;
+    private final BattleFactoryFilepathGenerator battleFactoryFilepathGenerator;
+    private final BattleFactoryCodeGenerator battleFactoryCodeGenerator;
 
     @Autowired
     public BattleFactoryCodeGeneratorWriter(BattleFactoryFilepathGenerator battleFactoryFilepathGenerator,
