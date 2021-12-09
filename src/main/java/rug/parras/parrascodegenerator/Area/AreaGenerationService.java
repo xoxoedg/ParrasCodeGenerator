@@ -3,8 +3,9 @@ package rug.parras.parrascodegenerator.Area;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.*;
-import rug.parras.parrascodegenerator.Area.AreaGenerator.common.ValidationAreaResult;
-import rug.parras.parrascodegenerator.Area.AreaGenerator.common.ValidationAreaStatus;
+import rug.parras.parrascodegenerator.Area.Validation.AreaValidationService;
+import rug.parras.parrascodegenerator.Area.Validation.ValidationAreaResult;
+import rug.parras.parrascodegenerator.Area.Validation.ValidationAreaStatus;
 
 @Service
 public class AreaGenerationService {

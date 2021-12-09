@@ -1,8 +1,8 @@
 package rug.parras.parrascodegenerator.Interactions;
 
 import org.springframework.stereotype.Service;
-import rug.parras.parrascodegenerator.Interactions.common.ValidationFieldResult;
-import rug.parras.parrascodegenerator.Interactions.common.ValidationStatus;
+import rug.parras.parrascodegenerator.Interactions.Validation.ValidationFieldResult;
+import rug.parras.parrascodegenerator.Interactions.Validation.ValidationStatus;
 
 @Service
 public class InteractionValidationService {

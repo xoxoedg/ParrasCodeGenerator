@@ -1,4 +1,4 @@
-package rug.parras.parrascodegenerator.Interactions.common;
+package rug.parras.parrascodegenerator.Interactions.Validation;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -2,6 +2,8 @@ package rug.parras.parrascodegenerator.Area.AreaGenerator.ConfigurationCodeGener
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import rug.parras.parrascodegenerator.Area.Validation.ValidationFileResult;
+import rug.parras.parrascodegenerator.Interactions.Validation.ValidationStatus;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,7 +18,13 @@ public class ConfigurationFileGenerator {
         this.configurationFilepathGenerator = configurationFilepathGenerator;
     }
 
-    public boolean createFile(String areaName) throws IOException {
-        return new File(configurationFilepathGenerator.generateFilename(areaName)).createNewFile();
+    public ValidationFileResult createFile(String areaName) throws IOException {
+        ValidationFileResult validationFileResult = new ValidationFileResult();
+        if (new File(configurationFilepathGenerator.generateFilename(areaName)).createNewFile()) {
+            validationFileResult.setValidationStatus(ValidationStatus.SUCCESS);
+        } else {
+            validationFileResult.setValidationStatus(ValidationStatus.WARNING);
+            validationFileResult.setMessage("Configuration File already exist");
+        }  return  validationFileResult;
     }
 }

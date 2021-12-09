@@ -9,7 +9,7 @@ import rug.parras.parrascodegenerator.Area.AreaGenerator.AreaGeneratorInterfaces
 public class BattleFactoryCodeGenerator implements FactoryCodeGenerator {
 
     private BattleFactoryDirectoryPathGenerator pathGenerator;
-    private String BATTLE_FACTORY_FILE_TEMPLATE = "%s\\%s_battle_factory.py";
+    private final String BATTLE_FACTORY_FILE_TEMPLATE = "%s\\%s_battle_factory.py";
     private final String BATTLE_FACTORY_CODE_TEMPLATE =
             "class %sBattleFactory:\n" +
                     "\n" +

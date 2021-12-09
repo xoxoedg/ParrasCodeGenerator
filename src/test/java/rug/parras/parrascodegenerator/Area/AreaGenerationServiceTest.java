@@ -5,11 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.Area;
-import rug.parras.parrascodegenerator.Area.AreaGenerator.AreaValidationService;
-import rug.parras.parrascodegenerator.Area.AreaGenerator.common.ValidationAreaResult;
-import rug.parras.parrascodegenerator.Area.AreaGenerator.common.ValidationAreaStatus;
-
-import static org.junit.jupiter.api.Assertions.*;
+import rug.parras.parrascodegenerator.Area.Validation.ValidationAreaResult;
+import rug.parras.parrascodegenerator.Area.Validation.ValidationAreaStatus;
 
 @SpringBootTest
 @ActiveProfiles("it")

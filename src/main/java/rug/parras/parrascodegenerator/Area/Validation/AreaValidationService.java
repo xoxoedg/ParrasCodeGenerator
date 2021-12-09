@@ -1,10 +1,10 @@
-package rug.parras.parrascodegenerator.Area.AreaGenerator;
+package rug.parras.parrascodegenerator.Area.Validation;
 
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Service;
-import rug.parras.parrascodegenerator.Area.AreaGenerator.common.ValidationAreaResult;
-import rug.parras.parrascodegenerator.Area.AreaGenerator.common.ValidationAreaStatus;
+import rug.parras.parrascodegenerator.Area.Validation.ValidationAreaResult;
+import rug.parras.parrascodegenerator.Area.Validation.ValidationAreaStatus;
 
 
 @Getter

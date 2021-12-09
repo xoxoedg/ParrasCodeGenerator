@@ -3,8 +3,8 @@ package rug.parras.parrascodegenerator.Interactions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import rug.parras.parrascodegenerator.Interactions.common.ValidationFieldResult;
-import rug.parras.parrascodegenerator.Interactions.common.ValidationStatus;
+import rug.parras.parrascodegenerator.Interactions.Validation.ValidationFieldResult;
+import rug.parras.parrascodegenerator.Interactions.Validation.ValidationStatus;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 
