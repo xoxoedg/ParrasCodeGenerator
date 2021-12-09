@@ -15,6 +15,6 @@ public class BattleFactoryFilepathGenerator extends GamePath implements FactoryF
 
     @Override
     public String generateFilename(String areaName) {
-        return String.format(BATTLE_FACTORY_FILE_TEMPLATE, path, areaName, areaName.toLowerCase());
+        return String.format(BATTLE_FACTORY_FILE_TEMPLATE, path, areaName.toLowerCase(), areaName.toLowerCase());
     }
 }

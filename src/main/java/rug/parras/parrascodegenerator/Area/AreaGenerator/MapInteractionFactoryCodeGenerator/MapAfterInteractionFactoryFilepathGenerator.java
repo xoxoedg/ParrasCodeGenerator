@@ -15,6 +15,6 @@ public class MapAfterInteractionFactoryFilepathGenerator extends GamePath implem
 
     @Override
     public String generateFilename(String areaName) {
-        return String.format(MAP_AFTER_INTERACTION_FACTORY_FILE_GENERATOR, path, areaName, areaName.toLowerCase());
+        return String.format(MAP_AFTER_INTERACTION_FACTORY_FILE_GENERATOR, path, areaName.toLowerCase(), areaName.toLowerCase());
     }
 }

@@ -16,6 +16,6 @@ public class NextMapFactoryFilepathGenerator extends GamePath implements Factory
 
     @Override
     public String generateFilename(String areaName) {
-        return String.format(NEXT_MAP_FACTORY_FILE_TEMPLATE, path, areaName, areaName.toLowerCase());
+        return String.format(NEXT_MAP_FACTORY_FILE_TEMPLATE, path, areaName.toLowerCase(), areaName.toLowerCase());
     }
 }

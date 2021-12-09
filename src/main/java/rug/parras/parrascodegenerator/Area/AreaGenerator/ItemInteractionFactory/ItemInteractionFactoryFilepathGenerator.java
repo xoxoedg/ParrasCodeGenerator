@@ -15,6 +15,6 @@ public class ItemInteractionFactoryFilepathGenerator extends GamePath implements
 
     @Override
     public String generateFilename(String areaName) {
-        return String.format(ITEM_INTERACTION_FACTORY_FILE_TEMPLATE, path, areaName, areaName.toLowerCase());
+        return String.format(ITEM_INTERACTION_FACTORY_FILE_TEMPLATE, path, areaName.toLowerCase(), areaName.toLowerCase());
     }
 }

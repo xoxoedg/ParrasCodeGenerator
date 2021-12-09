@@ -15,7 +15,7 @@ public class ConfigurationFilepathGenerator extends GamePath implements FactoryF
 
     @Override
     public String generateFilename(String areaName) {
-        return String.format(CONFIGURATION_FILE_TEMPLATE, path, areaName);
+        return String.format(CONFIGURATION_FILE_TEMPLATE, path, areaName.toLowerCase());
     }
 }
 
