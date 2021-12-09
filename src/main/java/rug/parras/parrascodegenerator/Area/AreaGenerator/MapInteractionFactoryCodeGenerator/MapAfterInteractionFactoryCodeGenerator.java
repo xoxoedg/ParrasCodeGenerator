@@ -11,7 +11,7 @@ public class MapAfterInteractionFactoryCodeGenerator implements FactoryCodeGener
                     "\n" +
                     "    @classmethod\n" +
                     "    def change_map_on_interaction(cls, after, hero):\n" +
-                    "             pass";
+                    "        pass";
 
     @Override
     public String generateFactoryCode(String areaName) {

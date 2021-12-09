@@ -11,7 +11,7 @@ public class SceneFactoryCodeGenerator implements FactoryCodeGenerator {
                     "\n" +
                     "    @classmethod\n" +
                     "    def create_scene(cls, hero):\n" +
-                    "           pass";
+                    "        pass";
 
     @Override
     public String generateFactoryCode(String areaName) {

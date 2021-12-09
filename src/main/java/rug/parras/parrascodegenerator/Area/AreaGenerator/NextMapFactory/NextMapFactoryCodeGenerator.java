@@ -11,7 +11,7 @@ public class NextMapFactoryCodeGenerator implements FactoryCodeGenerator {
                     "\n" +
                     "    @classmethod\n" +
                     "    def next_map(cls, hero):\n" +
-                    "           pass";
+                    "        pass";
 
 
     @Override

@@ -13,7 +13,7 @@ public class ItemInteractionFactoryCodeGenerator implements FactoryCodeGenerator
                     "\n" +
                     "    @classmethod\n" +
                     "    def create_interaction(cls, hero):\n" +
-                    "          pass";
+                    "        pass";
 
     @Override
     public String generateFactoryCode(String areaName) {

@@ -15,7 +15,7 @@ public class BattleFactoryCodeGenerator implements FactoryCodeGenerator {
                     "\n" +
                     "    @classmethod\n" +
                     "    def create_battle(cls, hero):\n" +
-                    "          pass";
+                    "        pass";
 
     @Override
     public String generateFactoryCode(String areaName) {
