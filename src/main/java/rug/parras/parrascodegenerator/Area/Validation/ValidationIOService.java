@@ -140,27 +140,55 @@ public class ValidationIOService {
 
         if (validationStatusBattleFactoryFileResult.getValidationStatus() == ValidationStatus.WARNING) {
             validationIOResult.getValidationFileResultsList().add(validationStatusBattleFactoryFileResult);
+        } else {
+            validationIOResult.setValidationStatus(ValidationStatus.SUCCESS);
+            validationIOResult.getValidationFileResultsList().add(validationStatusBattleFactoryFileResult);
         }
         if (validationStatusConfigurationFileResult.validationStatus == ValidationStatus.WARNING) {
+            validationIOResult.getValidationFileResultsList().add(validationStatusConfigurationFileResult);
+        } else {
+            validationIOResult.setValidationStatus(ValidationStatus.SUCCESS);
             validationIOResult.getValidationFileResultsList().add(validationStatusConfigurationFileResult);
         }
         if (validationStatusInitialMapFactoryFileResult.validationStatus == ValidationStatus.WARNING) {
             validationIOResult.getValidationFileResultsList().add(validationStatusInitialMapFactoryFileResult);
+        } else {
+            validationIOResult.setValidationStatus(ValidationStatus.SUCCESS);
+            validationIOResult.getValidationFileResultsList().add(validationStatusInitialMapFactoryFileResult);
         }
         if (validationStatusItemInteractionFactoryFileResult.validationStatus == ValidationStatus.WARNING) {
+            validationIOResult.getValidationFileResultsList().add(validationStatusItemInteractionFactoryFileResult);
+        } else {
+            validationIOResult.setValidationStatus(ValidationStatus.SUCCESS);
             validationIOResult.getValidationFileResultsList().add(validationStatusItemInteractionFactoryFileResult);
         }
         if (validationStatusMapAfterInteractionFactoryFileResult.validationStatus == ValidationStatus.WARNING) {
             validationIOResult.getValidationFileResultsList().add(validationStatusMapAfterInteractionFactoryFileResult);
+        } else {
+            validationIOResult.setValidationStatus(ValidationStatus.SUCCESS);
+            validationIOResult.getValidationFileResultsList().add(validationStatusMapAfterInteractionFactoryFileResult);
         }
         if (validationStatusNextMapFactoryFileResult.validationStatus == ValidationStatus.WARNING) {
             validationIOResult.getValidationFileResultsList().add(validationStatusNextMapFactoryFileResult);
+        } else {
+            validationIOResult.setValidationStatus(ValidationStatus.SUCCESS);
+            validationIOResult.getValidationFileResultsList().add(validationStatusNextMapFactoryFileResult);
         }
         if (validationStatusSceneFactoryFileResult.validationStatus == ValidationStatus.WARNING) {
+        validationIOResult.getValidationFileResultsList().add(validationStatusSceneFactoryFileResult);
+        } else {
+            validationIOResult.setValidationStatus(ValidationStatus.SUCCESS);
             validationIOResult.getValidationFileResultsList().add(validationStatusSceneFactoryFileResult);
         }
 
-        validationIOResult.setValidationStatus(ValidationStatus.WARNING);
+        boolean areFilesCreated = validationIOResult.getValidationFileResultsList().stream().allMatch(x -> x.getValidationStatus() == ValidationStatus.SUCCESS);
+        if (areFilesCreated) {
+            validationIOResult.setValidationStatus(ValidationStatus.SUCCESS);
+            validationIOResult.setMessage("All files successfully created");
+        } else {
+            validationIOResult.setValidationStatus(ValidationStatus.WARNING);
+            validationIOResult.setMessage("There are files which already exist");
+        }
         return validationIOResult;
     }
 }
