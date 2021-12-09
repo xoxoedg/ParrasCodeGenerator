@@ -3,6 +3,7 @@ package rug.parras.parrascodegenerator.Area.AreaGenerator.ItemInteractionFactory
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.AreaGeneratorInterfaces.CodeWriterGenerator;
+import rug.parras.parrascodegenerator.Area.FileOperations;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -25,10 +26,9 @@ public class ItemInteractionFactoryCodeWriter implements CodeWriterGenerator {
     @Override
     public void writeToFile(String areaName) throws IOException {
         File itemInteractionFactoryPythonFile = new File(itemInteractionFactoryFilepathGenerator.generateFilename(areaName));
-        FileWriter writer = new FileWriter(itemInteractionFactoryPythonFile);
-        writer.write(itemInteractionFactoryCodeGenerator.generateFactoryCode(areaName));
-        writer.flush();
-        writer.close();
+        if (FileOperations.checkIfFileIsEmpty(itemInteractionFactoryPythonFile)) {
+            FileOperations.writeToFile(itemInteractionFactoryCodeGenerator.generateFactoryCode(areaName), itemInteractionFactoryPythonFile);
+        }
     }
 }
 

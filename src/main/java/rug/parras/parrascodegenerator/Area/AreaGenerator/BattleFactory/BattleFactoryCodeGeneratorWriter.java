@@ -3,6 +3,7 @@ package rug.parras.parrascodegenerator.Area.AreaGenerator.BattleFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.AreaGeneratorInterfaces.CodeWriterGenerator;
+import rug.parras.parrascodegenerator.Area.FileOperations;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -24,11 +25,8 @@ public class BattleFactoryCodeGeneratorWriter implements CodeWriterGenerator {
     @Override
     public void writeToFile(String areaName) throws IOException {
         File battleFactoryPythonFile = new File(battleFactoryFilepathGenerator.generateFilename(areaName));
-        System.out.println(battleFactoryFilepathGenerator.generateFilename(areaName));
-        FileWriter writer = new FileWriter(battleFactoryPythonFile);
-        System.out.println(battleFactoryCodeGenerator.generateFactoryCode(areaName));
-        writer.write(battleFactoryCodeGenerator.generateFactoryCode(areaName));
-        writer.flush();
-        writer.close();
+        if (FileOperations.checkIfFileIsEmpty(battleFactoryPythonFile)) {
+            FileOperations.writeToFile(battleFactoryCodeGenerator.generateFactoryCode(areaName), battleFactoryPythonFile);
+        }
     }
 }

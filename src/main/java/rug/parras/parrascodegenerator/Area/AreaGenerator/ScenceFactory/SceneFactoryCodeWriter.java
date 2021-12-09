@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.AreaGeneratorInterfaces.CodeWriterGenerator;
+import rug.parras.parrascodegenerator.Area.FileOperations;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -24,9 +25,8 @@ public class SceneFactoryCodeWriter implements CodeWriterGenerator {
     @Override
     public void writeToFile(String areaName) throws IOException {
         File sceneFactoryPythonFile = new File(sceneFactoryFilepathGenerator.generateFilename(areaName));
-        FileWriter writer = new FileWriter(sceneFactoryPythonFile);
-        writer.write(sceneFactoryCodeGenerator.generateFactoryCode(areaName));
-        writer.flush();
-        writer.close();
+        if (FileOperations.checkIfFileIsEmpty(sceneFactoryPythonFile)) {
+            FileOperations.writeToFile(sceneFactoryCodeGenerator.generateFactoryCode(areaName), sceneFactoryPythonFile);
+        }
     }
 }

@@ -3,9 +3,9 @@ package rug.parras.parrascodegenerator.Area.AreaGenerator.NextMapFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.AreaGeneratorInterfaces.CodeWriterGenerator;
+import rug.parras.parrascodegenerator.Area.FileOperations;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 
 @Component
@@ -24,10 +24,9 @@ public class NextMapFactoryCodeWriter implements CodeWriterGenerator {
 
     @Override
     public void writeToFile(String areaName) throws IOException {
-        File nextMapFactoryPythonNFile = new File(nextMapFactoryFilepathGenerator.generateFilename(areaName));
-        FileWriter writer = new FileWriter(nextMapFactoryPythonNFile);
-        writer.write(nextMapFactoryCodeGenerator.generateFactoryCode(areaName));
-        writer.flush();
-        writer.close();
+        File nextMapFactoryPythonFile = new File(nextMapFactoryFilepathGenerator.generateFilename(areaName));
+        if (FileOperations.checkIfFileIsEmpty(nextMapFactoryPythonFile)) {
+            FileOperations.writeToFile(nextMapFactoryCodeGenerator.generateFactoryCode(areaName), nextMapFactoryPythonFile);
+        }
     }
 }

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.AreaGeneratorInterfaces.CodeWriterGenerator;
+import rug.parras.parrascodegenerator.Area.FileOperations;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -25,10 +26,9 @@ public class InitialMapFactoryCodeWriter implements CodeWriterGenerator {
     @Override
     public void writeToFile(String areaName) throws IOException {
         File initialMapFactoryPythonFile = new File(initialMapFactoryFilepathGenerator.generateFilename(areaName));
-        FileWriter writer = new FileWriter(initialMapFactoryPythonFile);
-        writer.write(initialMapFactoryCodeGenerator.generateFactoryCode(areaName));
-        writer.flush();
-        writer.close();
+        if (FileOperations.checkIfFileIsEmpty(initialMapFactoryPythonFile)) {
+            FileOperations.writeToFile(initialMapFactoryCodeGenerator.generateFactoryCode(areaName), initialMapFactoryPythonFile);
+        }
 
     }
 }

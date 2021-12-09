@@ -19,10 +19,10 @@ public class AreaGenerationController {
     @GetMapping("/area")
     public String getAreaPage(Model model) {
         model.addAttribute("area", new Area());
-        return "area";
+        return "areaGenerator";
     }
 
-    @PostMapping
+    @PostMapping("/area")
     public String areaSubmit(@ModelAttribute Area area, Model model) {
         areaGenerationService.createArea(area);
         return "index";

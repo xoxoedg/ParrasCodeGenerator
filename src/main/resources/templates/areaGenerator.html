@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="/fragments/masterTemplate :: head">
+
+</head>
+<body>
+<!--navbar -->
+<nav th:replace="/fragments/masterTemplate :: navbar"></nav>
+
+<!--Form-->
+
+<div class="form_data">
+    <h4>Area: </h4>
+    <form th:action="@{/area}" th:object="${area}" method="post">
+        <div class="mb-3 w-50 p-3 h-75">
+            <div>
+                <label for="exampleFormControlTextarea1" class="form-label">Enter Area</label>
+            </div>
+            <div>
+                <input type="text" class="form-control" id="exampleFormControlTextarea1"
+                       th:field="*{areaName}">
+            </div>
+        </div>
+
+
+        <button type="submit" name="submit" value="value" class="btn btn-dark btn-lg">Submit</button>
+    </form>
+
+</div>
+<script th:replace="/fragments/masterTemplate :: bootstrapJs"></script>
+</body>
+</html>
