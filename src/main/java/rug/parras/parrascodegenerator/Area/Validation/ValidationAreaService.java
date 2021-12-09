@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Getter
 @Setter
 @Service
-public class AreaValidationService {
+public class ValidationAreaService {
 
     public ValidationAreaResult validateAreaInput(String areaName) {
 

@@ -138,13 +138,6 @@ public class ValidationIOService {
         ValidationFileResult validationStatusNextMapFactoryFileResult = validateNextMapFactoryFile(areaName);
         ValidationFileResult validationStatusSceneFactoryFileResult = validateSceneFactoryFile(areaName);
 
-        List<ValidationFileResult> listFiles = List.of(validateBattleFactoryFile(areaName), validateConfigurationFile(areaName), validateInitialMapFactoryFile(areaName),
-                validateItemInteractionFactoryFile(areaName), validateMapAfterInteractionFactoryFile(areaName),
-                validateNextMapFactoryFile(areaName), validateSceneFactoryFile(areaName));
-
-        listFiles.stream().filter(x -> x.getValidationStatus() == ValidationStatus.WARNING).forEach(x ->validationIOResult.getValidationFileResultsList().add(x));
-
-
         if (validationStatusBattleFactoryFileResult.getValidationStatus() == ValidationStatus.WARNING) {
             validationIOResult.getValidationFileResultsList().add(validationStatusBattleFactoryFileResult);
         }
@@ -171,5 +164,14 @@ public class ValidationIOService {
         return validationIOResult;
     }
 }
+
+//Solution with Streams
+//        List<ValidationFileResult> listFiles = List.of(validateBattleFactoryFile(areaName), validateConfigurationFile(areaName), validateInitialMapFactoryFile(areaName),
+//                validateItemInteractionFactoryFile(areaName), validateMapAfterInteractionFactoryFile(areaName),
+//                validateNextMapFactoryFile(areaName), validateSceneFactoryFile(areaName));
+//
+//        listFiles.stream().filter(x -> x.getValidationStatus() == ValidationStatus.WARNING).forEach(x ->validationIOResult.getValidationFileResultsList().add(x));
+
+
 
 
