@@ -6,5 +6,4 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ValidationAreaResult extends ValidationResult{
-    private String url;
 }

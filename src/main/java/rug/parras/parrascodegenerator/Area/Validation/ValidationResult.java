@@ -8,4 +8,5 @@ import lombok.Setter;
 public abstract class ValidationResult {
     protected ValidationStatus validationStatus;
     protected String message;
+    protected String url;
 }

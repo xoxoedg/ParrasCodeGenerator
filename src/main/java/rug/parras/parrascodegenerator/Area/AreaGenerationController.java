@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.Area;
+import rug.parras.parrascodegenerator.Area.Validation.ValidationResult;
 
 @Controller
 public class AreaGenerationController {
@@ -24,8 +25,9 @@ public class AreaGenerationController {
 
     @PostMapping("/area")
     public String areaSubmit(@ModelAttribute Area area, Model model) {
-        areaGenerationService.createArea(area);
-        return "index";
+        ValidationResult result = areaGenerationService.createArea(area);
+        model.addAttribute("errorReasons", result);
+        System.out.println(result.getUrl());
+        return result.getUrl();
     }
-
 }

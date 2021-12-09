@@ -10,6 +10,8 @@ import rug.parras.parrascodegenerator.Area.AreaGenerator.NextMapFactory.NextMapF
 import rug.parras.parrascodegenerator.Area.AreaGenerator.ScenceFactory.SceneFactoryFilepathGenerator;
 import rug.parras.parrascodegenerator.Area.FileOperations;
 
+import java.util.List;
+
 @Service
 public class ValidationIOService {
 
@@ -136,6 +138,13 @@ public class ValidationIOService {
         ValidationFileResult validationStatusNextMapFactoryFileResult = validateNextMapFactoryFile(areaName);
         ValidationFileResult validationStatusSceneFactoryFileResult = validateSceneFactoryFile(areaName);
 
+        List<ValidationFileResult> listFiles = List.of(validateBattleFactoryFile(areaName), validateConfigurationFile(areaName), validateInitialMapFactoryFile(areaName),
+                validateItemInteractionFactoryFile(areaName), validateMapAfterInteractionFactoryFile(areaName),
+                validateNextMapFactoryFile(areaName), validateSceneFactoryFile(areaName));
+
+        listFiles.stream().filter(x -> x.getValidationStatus() == ValidationStatus.WARNING).forEach(x ->validationIOResult.getValidationFileResultsList().add(x));
+
+
         if (validationStatusBattleFactoryFileResult.getValidationStatus() == ValidationStatus.WARNING) {
             validationIOResult.getValidationFileResultsList().add(validationStatusBattleFactoryFileResult);
         }
@@ -143,20 +152,22 @@ public class ValidationIOService {
             validationIOResult.getValidationFileResultsList().add(validationStatusConfigurationFileResult);
         }
         if (validationStatusInitialMapFactoryFileResult.validationStatus == ValidationStatus.WARNING) {
-            validationIOResult.getValidationFileResultsList().add(validationStatusConfigurationFileResult);
+            validationIOResult.getValidationFileResultsList().add(validationStatusInitialMapFactoryFileResult);
         }
         if (validationStatusItemInteractionFactoryFileResult.validationStatus == ValidationStatus.WARNING) {
-            validationIOResult.getValidationFileResultsList().add(validationStatusConfigurationFileResult);
+            validationIOResult.getValidationFileResultsList().add(validationStatusItemInteractionFactoryFileResult);
         }
         if (validationStatusMapAfterInteractionFactoryFileResult.validationStatus == ValidationStatus.WARNING) {
-            validationIOResult.getValidationFileResultsList().add(validationStatusConfigurationFileResult);
+            validationIOResult.getValidationFileResultsList().add(validationStatusMapAfterInteractionFactoryFileResult);
         }
         if (validationStatusNextMapFactoryFileResult.validationStatus == ValidationStatus.WARNING) {
-            validationIOResult.getValidationFileResultsList().add(validationStatusConfigurationFileResult);
+            validationIOResult.getValidationFileResultsList().add(validationStatusNextMapFactoryFileResult);
         }
         if (validationStatusSceneFactoryFileResult.validationStatus == ValidationStatus.WARNING) {
-            validationIOResult.getValidationFileResultsList().add(validationStatusConfigurationFileResult);
+            validationIOResult.getValidationFileResultsList().add(validationStatusSceneFactoryFileResult);
         }
+
+        validationIOResult.setValidationStatus(ValidationStatus.WARNING);
         return validationIOResult;
     }
 }

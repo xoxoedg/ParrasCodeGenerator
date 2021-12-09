@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/fragments/masterTemplate :: head">
+</head>
+<body>
+<nav th:replace="/fragments/masterTemplate :: navbar"></nav>
+
+<h1 class="welcome_message">Warnings</h1>
+<table>
+    <tr>
+        <th>Warning</th>
+    </tr>
+    <tr th:each="errorReason: ${errorReasons}">
+        <td>
+            <p th:each="errorMsg: ${errorReasons.validationFileResultsList}">
+                <span th:text="${errorMsg.message}"></span>
+            </p>
+        </td>
+    </tr>
+</table>
+
+<script th:replace="/fragments/masterTemplate :: bootstrapJs"></script>
+</body>
+</html>

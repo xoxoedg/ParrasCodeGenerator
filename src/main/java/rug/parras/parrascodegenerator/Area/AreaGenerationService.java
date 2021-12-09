@@ -14,36 +14,34 @@ public class AreaGenerationService {
     GameDirectoryGeneratorService gameDirectoryGeneratorService;
     FileGenerationService fileGenerationService;
     CodeWriterService codeWriterService;
-    AreaValidationService validationService;
+    AreaValidationService areaValidationService;
     ValidationIOService validationIOService;
 
     @Autowired
     public AreaGenerationService(GameDirectoryGeneratorService gameDirectoryGeneratorService,
                                  FileGenerationService fileGenerationService,
                                  CodeWriterService codeWriterService,
-                                 AreaValidationService validationService,
+                                 AreaValidationService areaValidationService,
                                  ValidationIOService validationIOService) {
         this.gameDirectoryGeneratorService = gameDirectoryGeneratorService;
         this.fileGenerationService = fileGenerationService;
         this.codeWriterService = codeWriterService;
-        this.validationService = validationService;
+        this.areaValidationService = areaValidationService;
         this.validationIOService = validationIOService;
     }
 
-    public List<ValidationResult> createArea(Area area) {
+    public ValidationResult createArea(Area area) {
 
-        ValidationAreaResult validationAreaResult = validationService.validateAreaInput(area.getAreaName());
-        List<ValidationResult> validationResults = List.of(validationAreaResult);
-        ValidationStatus validationStatus = validationAreaResult.getValidationStatus();
-        if (validationStatus == ValidationStatus.SUCCESS) {
-            validationResults.add(validationIOService.validateFiles(area.getAreaName()));
+        ValidationAreaResult validationAreaResult = areaValidationService.validateAreaInput(area.getAreaName());
+        ValidationIOResult validationIOResult =  validationIOService.validateFiles(area.getAreaName());
+        if (validationAreaResult.getValidationStatus() == ValidationStatus.SUCCESS) {
             gameDirectoryGeneratorService.createAllDirectories(area.getAreaName());
             fileGenerationService.createFiles(area.getAreaName());
             codeWriterService.writeCodeToFile(area.getAreaName());
-            validationAreaResult.setUrl("index");
-            return validationResults;
+            validationIOResult.setUrl("areaGeneratorResult");
+            return validationIOResult;
         }
         validationAreaResult.setUrl("error");
-        return validationResults;
+        return validationAreaResult;
     }
 }
