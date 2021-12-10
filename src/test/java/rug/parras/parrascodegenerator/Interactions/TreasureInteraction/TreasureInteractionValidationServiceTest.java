@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import rug.parras.parrascodegenerator.Interactions.Validation.InteractionValidationStatus;
+import rug.parras.parrascodegenerator.Interactions.Validation.TreasureInteractionValidationService;
 
 import java.util.List;
 

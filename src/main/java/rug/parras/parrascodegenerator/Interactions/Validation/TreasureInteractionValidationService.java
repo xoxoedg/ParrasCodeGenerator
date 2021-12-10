@@ -1,6 +1,7 @@
-package rug.parras.parrascodegenerator.Interactions.TreasureInteraction;
+package rug.parras.parrascodegenerator.Interactions.Validation;
 
 import org.springframework.stereotype.Service;
+import rug.parras.parrascodegenerator.Interactions.TreasureInteraction.Treasure;
 import rug.parras.parrascodegenerator.Interactions.Validation.InteractionValidationService;
 import rug.parras.parrascodegenerator.Interactions.common.ItemAmountListConverter;
 import rug.parras.parrascodegenerator.Interactions.Validation.ValidationFieldResult;

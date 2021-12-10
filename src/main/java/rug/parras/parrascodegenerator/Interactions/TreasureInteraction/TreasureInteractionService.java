@@ -2,6 +2,7 @@ package rug.parras.parrascodegenerator.Interactions.TreasureInteraction;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import rug.parras.parrascodegenerator.Interactions.Validation.TreasureInteractionValidationService;
 import rug.parras.parrascodegenerator.Interactions.Validation.ValidationResult;
 import rug.parras.parrascodegenerator.Interactions.Validation.InteractionValidationStatus;
 import rug.parras.parrascodegenerator.Utils.FileOperationUtils;
@@ -23,7 +24,6 @@ public class TreasureInteractionService {
     public ValidationResult createTreasureInteraction(Treasure treasure) {
         ValidationResult validationResult = validationService.validateInput(treasure);
         if (validationResult.getInteractionValidationStatus() == InteractionValidationStatus.SUCCESS) {
-            validationResult.setUrl("index");
             try {
                 FileOperationUtils converter = new FileOperationUtils("testPythonDir\\" + treasure.getFileName());
                 converter.writeToFile(treasureInteractionCodeGenerationService.generateTreasureInteraction(treasure));
@@ -31,6 +31,7 @@ public class TreasureInteractionService {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            validationResult.setUrl("index");
             return validationResult;
         } else {
             validationResult.setUrl("treasureError");

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="/fragments/masterTemplate :: head">
+
+</head>
+<body>
+<!--navbar -->
+<nav th:replace="/fragments/masterTemplate :: navbar"></nav>
+
+<!--Form-->
+
+<div class="form_data">
+    <h4>Sign Text: </h4>
+    <form th:action="@{/map}" th:object="${generatedMap}" method="post">
+
+        <h3>Enter Code Specification</h3>
+        <div class="mb-3 w-25 p-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Enter Map</label>
+            <input type="text" class="form-control" id="exampleFormControlTextarea1"
+                   th:field="*{mapName}">
+        </div>
+
+        <div class="mb-3 w-25 p-3">
+            <label for="exampleFormControlTextarea2" class="form-label">X-Coordinate</label>
+            <input type="text" class="form-control" id="exampleFormControlTextarea2"
+                   th:field="*{xCoordinate}">
+        </div>
+
+        <div class="mb-3 w-25 p-3">
+            <label for="exampleFormControlTextarea3" class="form-label">Y-Coordinate</label>
+            <input type="text" class="form-control" id="exampleFormControlTextarea3"
+                   th:field="*{yCoordinate}">
+        </div>
+
+        <h3>Filename</h3>
+
+        <div class="mb-3 w-25 p-3">
+            <label for="exampleFormControlTextarea4" class="form-label">Enter Filename</label>
+            <input type="text" class="form-control" id="exampleFormControlTextarea4"
+                   th:field="*{filename}">
+        </div>
+
+        <button type="submit" name="submit" value="value" class="btn btn-dark btn-lg">Submit</button>
+    </form>
+
+</div>
+<script th:replace="/fragments/masterTemplate :: bootstrapJs"></script>
+</body>
+</html>
