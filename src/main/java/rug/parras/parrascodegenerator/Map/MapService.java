@@ -2,10 +2,9 @@ package rug.parras.parrascodegenerator.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import rug.parras.parrascodegenerator.Area.FileOperations;
+import rug.parras.parrascodegenerator.Map.Validation.MapValidationService;
 import rug.parras.parrascodegenerator.Map.Validation.MapValidationStatus;
 import rug.parras.parrascodegenerator.Map.Validation.ValidationResult;
-import rug.parras.parrascodegenerator.Map.Validation.MapValidationService;
 import rug.parras.parrascodegenerator.Utils.FileOperationUtils;
 
 import java.io.IOException;
@@ -36,6 +35,7 @@ public class MapService {
             return validationResult;
         } else {
             validationResult.setUrl("mapError");
-        } return validationResult;
+        }
+        return validationResult;
     }
 }

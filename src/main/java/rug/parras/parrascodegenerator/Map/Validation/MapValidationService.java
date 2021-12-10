@@ -20,7 +20,7 @@ public class MapValidationService {
 
     private ValidationFieldResult validateFilenameInput(String filename) {
         ValidationFieldResult validationFieldResult = new ValidationFieldResult();
-        boolean validFilename = filename.matches("[a-z]+.py");
+        boolean validFilename = filename.matches("[a-z]+\\.py");
         if (validFilename) {
             validationFieldResult.setValidationStatus(MapValidationStatus.SUCCESS);
             validationFieldResult.setMessage("Valid Filename Input");
@@ -33,7 +33,7 @@ public class MapValidationService {
 
     private ValidationFieldResult validateCoordinates(int x, int y) {
         ValidationFieldResult validationFieldResult = new ValidationFieldResult();
-        boolean validCoordinateInput = String.valueOf(x).matches("[0-9]+") && String.valueOf(y).matches("[0-9]+");
+        boolean validCoordinateInput = String.valueOf(x).matches("-?[0-9]+") && String.valueOf(y).matches("-?[0-9]+");
         if (validCoordinateInput) {
             validationFieldResult.setValidationStatus(MapValidationStatus.SUCCESS);
             validationFieldResult.setMessage("Valid Coordinate Input");

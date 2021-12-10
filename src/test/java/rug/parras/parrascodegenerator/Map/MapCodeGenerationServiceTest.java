@@ -41,7 +41,7 @@ class MapCodeGenerationServiceTest {
     @Test
     void generateMap() {
         Map map = new Map();
-        map.setMapName("Rionnagen");
+        map.setMapName("Rionnagen_Map");
         map.setXCoordinate(5);
         map.setYCoordinate(10);
         MapComponentGenerator mapComponentGenerator = new MapComponentGenerator();
@@ -50,4 +50,5 @@ class MapCodeGenerationServiceTest {
         System.out.println(actualMapCode);
         assertEquals(expectedMapCode, actualMapCode);
     }
+
 }
