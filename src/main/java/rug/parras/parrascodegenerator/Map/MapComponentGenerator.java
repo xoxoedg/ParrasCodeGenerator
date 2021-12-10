@@ -1,12 +1,13 @@
 package rug.parras.parrascodegenerator.Map;
 
 import org.springframework.stereotype.Component;
+import rug.parras.parrascodegenerator.Utils.StringOperationUtils;
 
 @Component
 public class MapComponentGenerator {
 
     private final String TILE_MAP_TEMPLATE =
-            "%s_MAP = [\n" +
+            "%s = [\n" +
                     "    '....................',\n" +
                     "    '....................',\n" +
                     "    '....................',\n" +
@@ -30,7 +31,7 @@ public class MapComponentGenerator {
                     "from common.sprites.ground import *";
 
     private final String CLASS_TEMPLATE =
-            "class %sMap(AbstractMap):\n" +
+            "class %s(AbstractMap):\n" +
                     "\n" +
                     "    def create_sprites(self, game, col, j, i, initial_hero):\n" +
                     "        Marsh(game, j, i)\n" +
@@ -44,7 +45,7 @@ public class MapComponentGenerator {
     }
 
     public String generateClass(Map map) {
-        return String.format(CLASS_TEMPLATE, map.getMapName(), map.getXCoordinate(), map.getYCoordinate());
+        return String.format(CLASS_TEMPLATE, StringOperationUtils.convertUnderscoreToCamelCase(map.getMapName()), map.getXCoordinate(), map.getYCoordinate());
     }
 
 }
