@@ -10,4 +10,8 @@ public class StringOperationUtils {
     public static String convertUnderscoreToCamelCase(String input) {
         return Arrays.stream(input.toLowerCase().split("_")).map(StringUtils::capitalize).collect(Collectors.joining());
     }
+
+    public static String convertSpaceToCamelCase(String input) {
+        return Arrays.stream(input.toLowerCase().split(" ")).map(StringUtils::capitalize).collect(Collectors.joining());
+    }
 }

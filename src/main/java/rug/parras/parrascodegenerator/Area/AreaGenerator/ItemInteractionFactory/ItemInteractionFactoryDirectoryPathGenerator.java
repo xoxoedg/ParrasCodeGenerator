@@ -13,8 +13,4 @@ public class ItemInteractionFactoryDirectoryPathGenerator extends GamePath imple
     public String createDirectoryPath(String areaName) {
         return String.format(PARRAS_DIRECTIORY_PATH, path, areaName.toLowerCase());
     }
-
-
-
-
 }

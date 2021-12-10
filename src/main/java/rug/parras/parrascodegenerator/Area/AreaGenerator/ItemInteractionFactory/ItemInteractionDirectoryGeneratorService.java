@@ -18,7 +18,6 @@ public class ItemInteractionDirectoryGeneratorService implements DirectoryGenera
 
     @Override
     public void createDirectories(String areaName) {
-        System.out.println(itemInteractionFactoryDirectoryPathGenerator.createDirectoryPath(areaName));
         File directory = new File(itemInteractionFactoryDirectoryPathGenerator.createDirectoryPath(areaName));
         directory.mkdirs();
     }

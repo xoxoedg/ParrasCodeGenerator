@@ -2,6 +2,7 @@ package rug.parras.parrascodegenerator.Area.AreaGenerator.InitialMapFactory;
 
 import org.springframework.stereotype.Component;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.AreaGeneratorInterfaces.FactoryCodeGenerator;
+import rug.parras.parrascodegenerator.Utils.StringOperationUtils;
 
 @Component
 public class InitialMapFactoryCodeGenerator implements FactoryCodeGenerator {
@@ -15,6 +16,6 @@ public class InitialMapFactoryCodeGenerator implements FactoryCodeGenerator {
 
     @Override
     public String generateFactoryCode(String areaName) {
-        return String.format(INITIAL_MAP_FACTORY_CODE_TEMPLATE, areaName);
+        return String.format(INITIAL_MAP_FACTORY_CODE_TEMPLATE, StringOperationUtils.convertSpaceToCamelCase(areaName));
     }
 }

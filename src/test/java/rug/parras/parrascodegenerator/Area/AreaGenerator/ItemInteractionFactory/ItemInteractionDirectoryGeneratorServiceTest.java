@@ -1,20 +1,33 @@
 package rug.parras.parrascodegenerator.Area.AreaGenerator.ItemInteractionFactory;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-@SpringBootTest
-@ActiveProfiles("it")
+import java.io.File;
+
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+@ExtendWith(MockitoExtension.class)
 class ItemInteractionDirectoryGeneratorServiceTest {
 
+    @Mock
+    ItemInteractionFactoryDirectoryPathGenerator itemInteractionFactoryDirectoryPathGenerator;
 
-    @Autowired
+
+    @InjectMocks
     ItemInteractionDirectoryGeneratorService itemInteractionDirectoryGeneratorService;
 
     @Test
     void createDirectories() {
-        itemInteractionDirectoryGeneratorService.createDirectories("Wuffti");
+        File dirToDelete = new File("wuffl");
+        when(itemInteractionFactoryDirectoryPathGenerator.createDirectoryPath("wuffl"))
+                .thenReturn("wuffl");
+        itemInteractionDirectoryGeneratorService.createDirectories("wuffl");
+        verify(itemInteractionFactoryDirectoryPathGenerator).createDirectoryPath("wuffl");
+        dirToDelete.delete();
     }
 }

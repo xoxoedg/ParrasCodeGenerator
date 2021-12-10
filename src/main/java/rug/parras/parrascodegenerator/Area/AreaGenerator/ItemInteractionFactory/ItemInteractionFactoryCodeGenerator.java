@@ -3,6 +3,7 @@ package rug.parras.parrascodegenerator.Area.AreaGenerator.ItemInteractionFactory
 import lombok.Getter;
 import org.springframework.stereotype.Component;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.AreaGeneratorInterfaces.FactoryCodeGenerator;
+import rug.parras.parrascodegenerator.Utils.StringOperationUtils;
 
 @Getter
 @Component
@@ -17,6 +18,6 @@ public class ItemInteractionFactoryCodeGenerator implements FactoryCodeGenerator
 
     @Override
     public String generateFactoryCode(String areaName) {
-        return String.format(ITEM_INTERACTION_CODE_TEMPLATE, areaName);
+        return String.format(ITEM_INTERACTION_CODE_TEMPLATE, StringOperationUtils.convertSpaceToCamelCase(areaName));
     }
 }
