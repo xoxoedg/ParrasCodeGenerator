@@ -13,8 +13,8 @@ import java.io.IOException;
 @Component
 public class SceneFactoryCodeWriter implements CodeWriterGenerator {
 
-    SceneFactoryFilepathGenerator sceneFactoryFilepathGenerator;
-    SceneFactoryCodeGenerator sceneFactoryCodeGenerator;
+    private final SceneFactoryFilepathGenerator sceneFactoryFilepathGenerator;
+    private final SceneFactoryCodeGenerator sceneFactoryCodeGenerator;
 
     @Autowired
     public SceneFactoryCodeWriter(SceneFactoryFilepathGenerator sceneFactoryFilepathGenerator, SceneFactoryCodeGenerator sceneFactoryCodeGenerator) {

@@ -8,5 +8,15 @@ class NextMapFactoryCodeGeneratorTest {
 
     @Test
     void generateFactoryCode() {
+
+        String expectedNextMapFactoryCode =
+                "class MalaicheTestNextMapFactory:\n" +
+                        "\n" +
+                        "    @classmethod\n" +
+                        "    def next_map(cls, hero):\n" +
+                        "        pass";
+
+        String actualNextMapFactoryCode = new NextMapFactoryCodeGenerator().generateFactoryCode("malaiche test");
+        assertEquals(expectedNextMapFactoryCode, actualNextMapFactoryCode);
     }
 }

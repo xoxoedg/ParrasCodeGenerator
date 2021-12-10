@@ -7,12 +7,12 @@ import rug.parras.parrascodegenerator.Area.AreaGenerator.GamePath;
 @Component
 public class SceneFactoryDirectoryPathGenerator extends GamePath implements DirectoryPathGenerator {
 
-    private final String PARRAS_DIRECTIORY_PATH = "%s\\src\\characters\\scenes\\%s";
+    private final String PARRAS_DIRECTORY_PATH = "%s\\src\\characters\\scenes\\%s";
 
 
     @Override
     public String createDirectoryPath(String areaName) {
-        return String.format(PARRAS_DIRECTIORY_PATH, path, areaName.toLowerCase());
+        return String.format(PARRAS_DIRECTORY_PATH, path, areaName.toLowerCase());
     }
 
     public String createSubDirectoryConversationsPath(String areaName) {

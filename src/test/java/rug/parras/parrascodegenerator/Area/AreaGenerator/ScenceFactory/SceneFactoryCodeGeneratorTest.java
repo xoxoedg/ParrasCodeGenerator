@@ -8,5 +8,15 @@ class SceneFactoryCodeGeneratorTest {
 
     @Test
     void generateFactoryCode() {
+
+         String expectedSceneFactoryCode =
+                "class WuffOmgSceneFactory:\n" +
+                        "\n" +
+                        "    @classmethod\n" +
+                        "    def create_scene(cls, hero):\n" +
+                        "        pass";
+
+        String actualSceneFactoryCode = new SceneFactoryCodeGenerator().generateFactoryCode("WuFf OMG");
+        assertEquals(expectedSceneFactoryCode, actualSceneFactoryCode);
     }
 }
