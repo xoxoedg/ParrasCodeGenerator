@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.AreaGeneratorInterfaces.FactoryFileGenerator;
 import rug.parras.parrascodegenerator.Area.Validation.ValidationFileResult;
 import rug.parras.parrascodegenerator.Area.Validation.ValidationStatus;
-import rug.parras.parrascodegenerator.Interactions.Validation.InteractionValidationStatus;
 
 import java.io.File;
 import java.io.IOException;
@@ -28,6 +27,7 @@ public class InitialMapFactoryFileGenerator implements FactoryFileGenerator {
         } else {
             validationFileResult.setValidationStatus(ValidationStatus.WARNING);
             validationFileResult.setMessage("Initial Map Factory File already exists");
-        } return validationFileResult;
+        }
+        return validationFileResult;
     }
 }
