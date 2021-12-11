@@ -8,11 +8,11 @@ import rug.parras.parrascodegenerator.Area.Validation.*;
 @Service
 public class AreaGenerationService {
 
-    GameDirectoryGeneratorService gameDirectoryGeneratorService;
-    FileGenerationService fileGenerationService;
-    CodeWriterService codeWriterService;
-    ValidationAreaService validationAreaService;
-    ValidationIOService validationIOService;
+    private final GameDirectoryGeneratorService gameDirectoryGeneratorService;
+    private final FileGenerationService fileGenerationService;
+    private final CodeWriterService codeWriterService;
+    private final ValidationAreaService validationAreaService;
+    private final ValidationIOService validationIOService;
 
     @Autowired
     public AreaGenerationService(GameDirectoryGeneratorService gameDirectoryGeneratorService,
