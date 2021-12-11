@@ -12,12 +12,12 @@ import static org.junit.jupiter.api.Assertions.*;
 class ItemInteractionFactoryFilepathGeneratorTest {
 
     @Autowired
-    ItemInteractionFactoryFilepathGenerator itemInteractionFactoryFilepathGenerator;
+    private ItemInteractionFactoryFilepathGenerator itemInteractionFactoryFilepathGenerator;
 
     @Test
     void generateFilename() {
-        String expectedFilename = "src\\test\\codeGeneratorTest\\src\\characters\\item_interaction\\malaiche\\malaiche_item_interaction_factory.py";
-        String actualFilename = itemInteractionFactoryFilepathGenerator.generateFilename("malaiche");
+        String expectedFilename = "src\\test\\codeGeneratorTest\\src\\characters\\item_interaction\\malaichehills\\malaiche_hills_item_interaction_factory.py";
+        String actualFilename = itemInteractionFactoryFilepathGenerator.generateFilename("malaiche hills");
         assertEquals(expectedFilename, actualFilename);
     }
 }

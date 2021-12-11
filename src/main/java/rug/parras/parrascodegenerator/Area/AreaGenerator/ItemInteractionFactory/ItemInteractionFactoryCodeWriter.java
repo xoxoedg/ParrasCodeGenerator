@@ -11,9 +11,9 @@ import java.io.IOException;
 @Component
 public class ItemInteractionFactoryCodeWriter implements CodeWriterGenerator {
 
-    ItemInteractionFactoryFilepathGenerator itemInteractionFactoryFilepathGenerator;
+    private final ItemInteractionFactoryFilepathGenerator itemInteractionFactoryFilepathGenerator;
 
-    ItemInteractionFactoryCodeGenerator itemInteractionFactoryCodeGenerator;
+    private final ItemInteractionFactoryCodeGenerator itemInteractionFactoryCodeGenerator;
 
     @Autowired
     public ItemInteractionFactoryCodeWriter(ItemInteractionFactoryFilepathGenerator itemInteractionFactoryFilepathGenerator, ItemInteractionFactoryCodeGenerator itemInteractionFactoryCodeGenerator) {

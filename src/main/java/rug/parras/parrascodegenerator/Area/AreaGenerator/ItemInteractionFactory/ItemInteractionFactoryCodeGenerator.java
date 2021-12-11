@@ -1,15 +1,14 @@
 package rug.parras.parrascodegenerator.Area.AreaGenerator.ItemInteractionFactory;
 
-import lombok.Getter;
 import org.springframework.stereotype.Component;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.AreaGeneratorInterfaces.FactoryCodeGenerator;
 import rug.parras.parrascodegenerator.Utils.StringOperationUtils;
 
-@Getter
+
 @Component
 public class ItemInteractionFactoryCodeGenerator implements FactoryCodeGenerator {
 
-    private final String ITEM_INTERACTION_CODE_TEMPLATE =
+    private static final String ITEM_INTERACTION_CODE_TEMPLATE =
             "class %sItemInteractionFactory:\n" +
                     "\n" +
                     "    @classmethod\n" +

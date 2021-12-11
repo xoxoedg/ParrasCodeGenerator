@@ -12,7 +12,7 @@ import java.io.IOException;
 @Component
 public class ItemInteractionFactoryFileGenerator implements FactoryFileGenerator {
 
-    ItemInteractionFactoryFilepathGenerator itemInteractionFactoryFilepathGenerator;
+    private final ItemInteractionFactoryFilepathGenerator itemInteractionFactoryFilepathGenerator;
 
     @Autowired
     public ItemInteractionFactoryFileGenerator(ItemInteractionFactoryFilepathGenerator itemInteractionFactoryFilepathGenerator) {

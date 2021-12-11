@@ -15,11 +15,11 @@ import static org.mockito.Mockito.when;
 class ItemInteractionDirectoryGeneratorServiceTest {
 
     @Mock
-    ItemInteractionFactoryDirectoryPathGenerator itemInteractionFactoryDirectoryPathGenerator;
+    private ItemInteractionFactoryDirectoryPathGenerator itemInteractionFactoryDirectoryPathGenerator;
 
 
     @InjectMocks
-    ItemInteractionDirectoryGeneratorService itemInteractionDirectoryGeneratorService;
+    private ItemInteractionDirectoryGeneratorService itemInteractionDirectoryGeneratorService;
 
     @Test
     void createDirectories() {

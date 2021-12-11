@@ -9,8 +9,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.io.File;
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -18,10 +16,10 @@ import static org.mockito.Mockito.when;
 class ItemInteractionFactoryFileGeneratorTest {
 
     @Mock
-    ItemInteractionFactoryFilepathGenerator itemInteractionFactoryFilepathGenerator;
+    private ItemInteractionFactoryFilepathGenerator itemInteractionFactoryFilepathGenerator;
 
     @InjectMocks
-    ItemInteractionFactoryFileGenerator itemInteractionFactoryFileGenerator;
+    private ItemInteractionFactoryFileGenerator itemInteractionFactoryFileGenerator;
 
 
     @Test

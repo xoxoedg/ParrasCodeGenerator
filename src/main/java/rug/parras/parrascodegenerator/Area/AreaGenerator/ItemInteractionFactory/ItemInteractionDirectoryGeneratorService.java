@@ -9,7 +9,7 @@ import java.io.File;
 @Service
 public class ItemInteractionDirectoryGeneratorService implements DirectoryGenerator {
 
-    ItemInteractionFactoryDirectoryPathGenerator itemInteractionFactoryDirectoryPathGenerator;
+    private final ItemInteractionFactoryDirectoryPathGenerator itemInteractionFactoryDirectoryPathGenerator;
 
     @Autowired
     public ItemInteractionDirectoryGeneratorService(ItemInteractionFactoryDirectoryPathGenerator itemInteractionFactoryDirectoryPathGenerator) {

@@ -2,7 +2,7 @@ package rug.parras.parrascodegenerator.Area.AreaGenerator.ItemInteractionFactory
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ItemInteractionFactoryCodeGeneratorTest {
 

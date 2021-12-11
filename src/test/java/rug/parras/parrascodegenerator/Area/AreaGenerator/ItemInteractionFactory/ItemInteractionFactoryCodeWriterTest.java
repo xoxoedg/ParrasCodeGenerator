@@ -9,7 +9,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.io.File;
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -17,13 +16,13 @@ import static org.mockito.Mockito.when;
 class ItemInteractionFactoryCodeWriterTest {
 
     @Mock
-    ItemInteractionFactoryFilepathGenerator itemInteractionFactoryFilepathGenerator;
+    private ItemInteractionFactoryFilepathGenerator itemInteractionFactoryFilepathGenerator;
 
     @Mock
-    ItemInteractionFactoryCodeGenerator itemInteractionFactoryCodeGenerator;
+    private ItemInteractionFactoryCodeGenerator itemInteractionFactoryCodeGenerator;
 
     @InjectMocks
-    ItemInteractionFactoryCodeWriter itemInteractionFactoryCodeWriter;
+    private ItemInteractionFactoryCodeWriter itemInteractionFactoryCodeWriter;
 
     @Test
     void writeToFile() throws IOException {

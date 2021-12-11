@@ -1,13 +1,11 @@
 package rug.parras.parrascodegenerator.Area.AreaGenerator.ItemInteractionFactory;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.stereotype.Component;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.AreaGeneratorInterfaces.FactoryFilepathGenerator;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.GamePath;
+import rug.parras.parrascodegenerator.Utils.StringOperationUtils;
 
-@Getter
-@Setter
+
 @Component
 public class ItemInteractionFactoryFilepathGenerator extends GamePath implements FactoryFilepathGenerator {
 
@@ -15,6 +13,7 @@ public class ItemInteractionFactoryFilepathGenerator extends GamePath implements
 
     @Override
     public String generateFilename(String areaName) {
-        return String.format(ITEM_INTERACTION_FACTORY_FILE_TEMPLATE, path, areaName.toLowerCase(), areaName.toLowerCase());
+        return String.format(ITEM_INTERACTION_FACTORY_FILE_TEMPLATE, path, StringOperationUtils.convertSpaceToLowercase(areaName),
+                StringOperationUtils.convertSpaceToLowercaseAndUnderscore(areaName));
     }
 }
