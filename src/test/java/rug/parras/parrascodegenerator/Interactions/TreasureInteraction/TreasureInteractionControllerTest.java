@@ -51,4 +51,18 @@ class TreasureInteractionControllerTest {
 
         verify(treasureInteractionService).createTreasureInteraction(any(Treasure.class));
     }
+
+    @Test
+    void treasureSubmitError() throws Exception {
+        ValidationResult validationResult = new ValidationResult();
+        validationResult.setUrl("error");
+        MockMvc controller = MockMvcBuilders.standaloneSetup(treasureInteractionController).build();
+        when(treasureInteractionService.createTreasureInteraction(any(Treasure.class))).thenReturn(validationResult);
+        controller.perform(post("/treasure"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("error"))
+                .andExpect(model().attribute("errorReasons", Matchers.any(ValidationResult.class)));
+
+        verify(treasureInteractionService).createTreasureInteraction(any(Treasure.class));
+    }
 }

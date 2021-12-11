@@ -27,7 +27,7 @@ public class MapController {
     @PostMapping("/map")
     public String mapSubmit(@ModelAttribute Map map, Model model) {
         ValidationResult result = mapService.createMap(map);
-        model.addAttribute("errorReasons", map);
+        model.addAttribute("errorReasons", result);
         return result.getUrl();
     }
 }

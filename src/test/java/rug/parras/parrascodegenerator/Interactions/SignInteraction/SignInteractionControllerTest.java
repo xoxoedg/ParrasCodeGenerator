@@ -48,4 +48,19 @@ class SignInteractionControllerTest {
 
         verify(signInteractionService).createSignInteraction(any(Sign.class));
     }
+
+    @Test
+    void signSubmitError() throws Exception {
+        ValidationResult validationResult = new ValidationResult();
+        validationResult.setUrl("error");
+        MockMvc mvcController = MockMvcBuilders.standaloneSetup(signInteractionController).build();
+        validationResult.setInteractionValidationStatus(InteractionValidationStatus.SUCCESS);
+        when(signInteractionService.createSignInteraction(any(Sign.class))).thenReturn(validationResult);
+        mvcController.perform(post("/sign"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("error"))
+                .andExpect(model().attribute("errorReasons", Matchers.any(ValidationResult.class)));
+
+        verify(signInteractionService).createSignInteraction(any(Sign.class));
+    }
 }
