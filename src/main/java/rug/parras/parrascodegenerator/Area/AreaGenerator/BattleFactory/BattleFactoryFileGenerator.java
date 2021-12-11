@@ -13,7 +13,7 @@ import java.io.IOException;
 @Component
 public class BattleFactoryFileGenerator implements FactoryFileGenerator {
 
-    BattleFactoryFilepathGenerator battleFactoryFilepathGenerator;
+    private final BattleFactoryFilepathGenerator battleFactoryFilepathGenerator;
 
     @Autowired
     public BattleFactoryFileGenerator(BattleFactoryFilepathGenerator battleFactoryFilepathGenerator) {

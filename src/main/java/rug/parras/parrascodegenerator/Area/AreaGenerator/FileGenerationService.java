@@ -16,6 +16,14 @@ import java.io.IOException;
 @Service
 public class FileGenerationService {
 
+    private final BattleFactoryFileGenerator battleFactoryFileGenerator;
+    private final  ConfigurationFileGenerator configurationFileGenerator;
+    private final InitialMapFactoryFileGenerator initialMapFactoryFileGenerator;
+    private final ItemInteractionFactoryFileGenerator itemInteractionFactoryFileGenerator;
+    private final MapAfterInteractionFactoryFileGenerator mapAfterInteractionFactoryFileGenerator;
+    private final NextMapFactoryFileGenerator nextMapFactoryFileGenerator;
+    private final SceneFactoryFileGenerator sceneFactoryFileGenerator;
+
     @Autowired
     public FileGenerationService(BattleFactoryFileGenerator battleFactoryFileGenerator,
                                  ConfigurationFileGenerator configurationFileGenerator,
@@ -32,14 +40,6 @@ public class FileGenerationService {
         this.nextMapFactoryFileGenerator = nextMapFactoryFileGenerator;
         this.sceneFactoryFileGenerator = sceneFactoryFileGenerator;
     }
-
-    BattleFactoryFileGenerator battleFactoryFileGenerator;
-    ConfigurationFileGenerator configurationFileGenerator;
-    InitialMapFactoryFileGenerator initialMapFactoryFileGenerator;
-    ItemInteractionFactoryFileGenerator itemInteractionFactoryFileGenerator;
-    MapAfterInteractionFactoryFileGenerator mapAfterInteractionFactoryFileGenerator;
-    NextMapFactoryFileGenerator nextMapFactoryFileGenerator;
-    SceneFactoryFileGenerator sceneFactoryFileGenerator;
 
     public ValidationIOResult createFiles(String areaName) {
         ValidationIOResult validationIOResult = new ValidationIOResult();
