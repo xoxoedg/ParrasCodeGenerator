@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import rug.parras.parrascodegenerator.Area.Validation.ValidationFileResult;
 import rug.parras.parrascodegenerator.Area.Validation.ValidationStatus;
-import rug.parras.parrascodegenerator.Interactions.Validation.InteractionValidationStatus;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,7 +11,7 @@ import java.io.IOException;
 @Component
 public class ConfigurationFileGenerator {
 
-    ConfigurationFilepathGenerator configurationFilepathGenerator;
+    private final ConfigurationFilepathGenerator configurationFilepathGenerator;
 
     @Autowired
     public ConfigurationFileGenerator(ConfigurationFilepathGenerator configurationFilepathGenerator) {
@@ -26,6 +25,7 @@ public class ConfigurationFileGenerator {
         } else {
             validationFileResult.setValidationStatus(ValidationStatus.WARNING);
             validationFileResult.setMessage("Configuration File already exist");
-        }  return  validationFileResult;
+        }
+        return validationFileResult;
     }
 }

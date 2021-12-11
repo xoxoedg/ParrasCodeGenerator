@@ -22,13 +22,13 @@ import static org.mockito.Mockito.when;
 class BattleFactoryCodeGeneratorWriterTest {
 
     @Mock
-    BattleFactoryCodeGenerator battleFactoryCodeGenerator;
+    private BattleFactoryCodeGenerator battleFactoryCodeGenerator;
 
     @Mock
-    BattleFactoryFilepathGenerator battleFactoryFilepathGenerator;
+    private BattleFactoryFilepathGenerator battleFactoryFilepathGenerator;
 
     @InjectMocks
-    BattleFactoryCodeGeneratorWriter battleFactoryCodeGeneratorWriter;
+    private BattleFactoryCodeGeneratorWriter battleFactoryCodeGeneratorWriter;
 
     @Test
     void writeToFile() throws IOException {

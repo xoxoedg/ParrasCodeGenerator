@@ -14,10 +14,11 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class BattleFactoryDirectoryGeneratorServiceTest {
+
     @Mock
-    BattleFactoryDirectoryPathGenerator battleFactoryDirectoryPathGenerator;
+    private BattleFactoryDirectoryPathGenerator battleFactoryDirectoryPathGenerator;
     @InjectMocks
-    BattleFactoryDirectoryGeneratorService battleFactoryDirectoryGeneratorService;
+    private BattleFactoryDirectoryGeneratorService battleFactoryDirectoryGeneratorService;
 
     @Test
     void createDirectories() {

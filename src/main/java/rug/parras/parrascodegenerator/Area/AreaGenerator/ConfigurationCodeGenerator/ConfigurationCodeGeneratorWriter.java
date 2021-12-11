@@ -20,7 +20,6 @@ public class ConfigurationCodeGeneratorWriter implements CodeWriterGenerator {
         this.configurationCodeGenerator = configurationCodeGenerator;
     }
 
-
     @Override
     public void writeToFile(String areaName) throws IOException {
         File configurationPythonFile = new File(configurationFilepathGenerator.generateFilename(areaName));
