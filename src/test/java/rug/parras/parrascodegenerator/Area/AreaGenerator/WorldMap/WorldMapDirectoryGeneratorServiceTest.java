@@ -8,7 +8,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.io.File;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -34,9 +33,9 @@ class WorldMapDirectoryGeneratorServiceTest {
         worldMapDirectoryGeneratorService.createDirectories("wuffti");
         verify(worldMapDirectoryPathGenerator).createDirectoryPath("wuffti");
 
-       subDirMapsFactoriesToDelete.delete();
-       subDirSpritesToDelete.delete();
-       subDirMapsToDelete.delete();
-       dirToDelete.delete();
+        subDirMapsFactoriesToDelete.delete();
+        subDirSpritesToDelete.delete();
+        subDirMapsToDelete.delete();
+        dirToDelete.delete();
     }
 }
