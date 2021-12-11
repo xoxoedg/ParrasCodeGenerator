@@ -13,7 +13,7 @@ class MapValidationServiceTest {
     void validateInputValidFilename(String filename) {
         Map map = new Map();
         map.setFilename(filename);
-        map.setYCoordinate("5");
+        map.setXCoordinate("5");
         map.setYCoordinate("5");
         map.setMapName("rionnagen_test_map");
 
@@ -28,7 +28,7 @@ class MapValidationServiceTest {
     void validateInputInvalidFilename(String filename) {
         Map map = new Map();
         map.setFilename(filename);
-        map.setYCoordinate("5");
+        map.setXCoordinate("5");
         map.setYCoordinate("5");
         map.setMapName("rionnagen_test_map");
 
@@ -44,7 +44,7 @@ class MapValidationServiceTest {
     void validateInputValidMaps(String mapName) {
         Map map = new Map();
         map.setFilename("test.py");
-        map.setYCoordinate("5");
+        map.setXCoordinate("5");
         map.setYCoordinate("5");
         map.setMapName(mapName);
 
@@ -59,7 +59,7 @@ class MapValidationServiceTest {
     void validateInputInvalidMaps(String mapName) {
         Map map = new Map();
         map.setFilename("test.py");
-        map.setYCoordinate("5");
+        map.setXCoordinate("5");
         map.setYCoordinate("5");
         map.setMapName(mapName);
 

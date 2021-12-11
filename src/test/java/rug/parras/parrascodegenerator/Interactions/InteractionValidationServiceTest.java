@@ -47,7 +47,7 @@ class InteractionValidationServiceTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"rionnagen", "Mountain_Great", "Malaiche_map", "Mountain great"})
+    @ValueSource(strings = {"rionnagen", "Mountain_Great", "Malaiche_wuff", "Mountain great"})
     void validateAreaInputInvalid(String area) {
         Enum<InteractionValidationStatus> actualValue = interactionValidationService.validateAreaInput(area).getInteractionValidationStatus();
         Enum<InteractionValidationStatus> expectedValue = InteractionValidationStatus.ERROR;
@@ -55,7 +55,7 @@ class InteractionValidationServiceTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"test.txt.py", "sign_interaction.py"})
+    @ValueSource(strings = {"testtxt.py", "sign_interaction.py"})
     void validateFileNameInputValid(String filename) {
         Enum<InteractionValidationStatus> actualValue = interactionValidationService.validateFileNameInput(filename).getInteractionValidationStatus();
         Enum<InteractionValidationStatus> expectedValue = InteractionValidationStatus.SUCCESS;

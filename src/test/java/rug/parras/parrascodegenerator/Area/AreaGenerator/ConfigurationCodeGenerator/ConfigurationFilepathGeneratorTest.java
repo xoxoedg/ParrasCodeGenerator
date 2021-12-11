@@ -18,7 +18,7 @@ class ConfigurationFilepathGeneratorTest {
     @Test
     void generateFilename() {
         String expectedFilepath = "src\\test\\codeGeneratorTest\\src\\worldmap\\rionnagen\\configuration.py";
-        String actualFilepath = configurationFilepathGenerator.generateFilename("Deeangead");
+        String actualFilepath = configurationFilepathGenerator.generateFilename("Rionnagen");
         assertEquals(expectedFilepath, actualFilepath);
         }
     }
