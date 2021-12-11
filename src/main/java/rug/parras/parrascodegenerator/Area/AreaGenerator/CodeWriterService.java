@@ -14,13 +14,13 @@ import java.io.IOException;
 @Service
 public class CodeWriterService {
 
-    BattleFactoryCodeGeneratorWriter battleFactoryCodeGeneratorWriter;
-    ConfigurationCodeGeneratorWriter configurationCodeGeneratorWriter;
-    InitialMapFactoryCodeWriter initialMapFactoryCodeWriter;
-    ItemInteractionFactoryCodeWriter itemInteractionFactoryCodeWriter;
-    MapAfterInteractionFactoryCodeWriter mapAfterInteractionFactoryCodeWriter;
-    NextMapFactoryCodeWriter nextMapFactoryCodeWriter;
-    SceneFactoryCodeWriter sceneFactoryCodeWriter;
+    private final BattleFactoryCodeGeneratorWriter battleFactoryCodeGeneratorWriter;
+    private final ConfigurationCodeGeneratorWriter configurationCodeGeneratorWriter;
+    private final InitialMapFactoryCodeWriter initialMapFactoryCodeWriter;
+    private final ItemInteractionFactoryCodeWriter itemInteractionFactoryCodeWriter;
+    private final MapAfterInteractionFactoryCodeWriter mapAfterInteractionFactoryCodeWriter;
+    private final NextMapFactoryCodeWriter nextMapFactoryCodeWriter;
+    private final SceneFactoryCodeWriter sceneFactoryCodeWriter;
 
     public CodeWriterService(BattleFactoryCodeGeneratorWriter battleFactoryCodeGeneratorWriter,
                              ConfigurationCodeGeneratorWriter configurationCodeGeneratorWriter,

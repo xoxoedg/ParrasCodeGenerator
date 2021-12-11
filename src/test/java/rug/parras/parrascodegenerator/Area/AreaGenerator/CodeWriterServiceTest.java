@@ -1,23 +1,53 @@
 package rug.parras.parrascodegenerator.Area.AreaGenerator;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.internal.stubbing.answers.DoesNothing;
+import org.mockito.junit.jupiter.MockitoExtension;
+import rug.parras.parrascodegenerator.Area.AreaGenerator.BattleFactory.BattleFactoryCodeGeneratorWriter;
+import rug.parras.parrascodegenerator.Area.AreaGenerator.ConfigurationCodeGenerator.ConfigurationCodeGeneratorWriter;
+import rug.parras.parrascodegenerator.Area.AreaGenerator.InitialMapFactory.InitialMapFactoryCodeWriter;
+import rug.parras.parrascodegenerator.Area.AreaGenerator.ItemInteractionFactory.ItemInteractionFactoryCodeWriter;
+import rug.parras.parrascodegenerator.Area.AreaGenerator.MapInteractionFactoryCodeGenerator.MapAfterInteractionFactoryCodeWriter;
+import rug.parras.parrascodegenerator.Area.AreaGenerator.NextMapFactory.NextMapFactoryCodeWriter;
+import rug.parras.parrascodegenerator.Area.AreaGenerator.ScenceFactory.SceneFactoryCodeWriter;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.io.File;
+import java.io.IOException;
 
-@SpringBootTest
-@ActiveProfiles("it")
+import static org.mockito.Mockito.when;
+
+@ExtendWith(MockitoExtension.class)
 class CodeWriterServiceTest {
 
-    @Autowired
-    CodeWriterService codeWriterService;
+    @Mock
+    private BattleFactoryCodeGeneratorWriter battleFactoryCodeGeneratorWriter;
+
+    @Mock
+    private ConfigurationCodeGeneratorWriter configurationCodeGeneratorWriter;
+
+    @Mock
+    private InitialMapFactoryCodeWriter initialMapFactoryCodeWriter;
+
+    @Mock
+    private ItemInteractionFactoryCodeWriter itemInteractionFactoryCodeWriter;
+
+    @Mock
+    private MapAfterInteractionFactoryCodeWriter mapAfterInteractionFactoryCodeWriter;
+
+    @Mock
+    private NextMapFactoryCodeWriter nextMapFactoryCodeWriter;
+
+    @Mock
+    private SceneFactoryCodeWriter sceneFactoryCodeWriter;
+
+    @InjectMocks
+    private CodeWriterService codeWriterService;
 
     @Test
-    void writeCodeToFile() {
-        Area area = new Area();
-        area.setAreaName("Rionnagen");
-        codeWriterService.writeCodeToFile(area.getAreaName());
+    void writeCodeToFile() throws IOException {
+
     }
 }
