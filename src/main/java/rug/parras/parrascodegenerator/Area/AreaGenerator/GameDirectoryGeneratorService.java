@@ -10,10 +10,10 @@ import rug.parras.parrascodegenerator.Area.AreaGenerator.WorldMap.WorldMapDirect
 @Service
 public class GameDirectoryGeneratorService {
 
-    BattleFactoryDirectoryGeneratorService battleFactoryDirectoryGeneratorService;
-    ItemInteractionDirectoryGeneratorService itemInteractionDirectoryGeneratorService;
-    SceneFactoryDirectoryGeneratorService sceneFactoryDirectoryGeneratorService;
-    WorldMapDirectoryGeneratorService worldMapDirectoryPathGeneratorService;
+    private final BattleFactoryDirectoryGeneratorService battleFactoryDirectoryGeneratorService;
+    private final ItemInteractionDirectoryGeneratorService itemInteractionDirectoryGeneratorService;
+    private final SceneFactoryDirectoryGeneratorService sceneFactoryDirectoryGeneratorService;
+    private final WorldMapDirectoryGeneratorService worldMapDirectoryPathGeneratorService;
 
     @Autowired
     public GameDirectoryGeneratorService(WorldMapDirectoryGeneratorService worldMapDirectoryPathGeneratorService, ItemInteractionDirectoryGeneratorService itemInteractionDirectoryGeneratorService, SceneFactoryDirectoryGeneratorService sceneFactoryDirectoryGeneratorService, BattleFactoryDirectoryGeneratorService battleFactoryDirectoryGeneratorService) {
