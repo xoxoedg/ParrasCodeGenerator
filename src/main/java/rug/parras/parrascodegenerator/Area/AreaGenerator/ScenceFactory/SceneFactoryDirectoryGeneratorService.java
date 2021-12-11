@@ -9,7 +9,7 @@ import java.io.File;
 @Service
 public class SceneFactoryDirectoryGeneratorService implements DirectoryGenerator {
 
-    private SceneFactoryDirectoryPathGenerator sceneFactoryDirectoryPathGenerator;
+    private final SceneFactoryDirectoryPathGenerator sceneFactoryDirectoryPathGenerator;
 
     @Autowired
     public SceneFactoryDirectoryGeneratorService(SceneFactoryDirectoryPathGenerator sceneFactoryDirectoryPathGenerator) {

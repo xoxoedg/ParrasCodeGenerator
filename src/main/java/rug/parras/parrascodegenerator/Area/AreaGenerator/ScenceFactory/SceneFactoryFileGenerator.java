@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.AreaGeneratorInterfaces.FactoryFileGenerator;
 import rug.parras.parrascodegenerator.Area.Validation.ValidationFileResult;
 import rug.parras.parrascodegenerator.Area.Validation.ValidationStatus;
-import rug.parras.parrascodegenerator.Interactions.Validation.InteractionValidationStatus;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,7 +12,7 @@ import java.io.IOException;
 @Component
 public class SceneFactoryFileGenerator implements FactoryFileGenerator {
 
-    SceneFactoryFilepathGenerator sceneFactoryFilepathGenerator;
+    private final SceneFactoryFilepathGenerator sceneFactoryFilepathGenerator;
 
     @Autowired
     public SceneFactoryFileGenerator(SceneFactoryFilepathGenerator sceneFactoryFilepathGenerator) {

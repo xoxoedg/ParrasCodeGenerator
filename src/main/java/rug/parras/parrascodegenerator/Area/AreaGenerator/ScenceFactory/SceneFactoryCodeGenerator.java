@@ -7,7 +7,7 @@ import rug.parras.parrascodegenerator.Utils.StringOperationUtils;
 @Component
 public class SceneFactoryCodeGenerator implements FactoryCodeGenerator {
 
-    private final String SCENE_FACTORY_CODE_TEMPLATE =
+    private static final String SCENE_FACTORY_CODE_TEMPLATE =
             "class %sSceneFactory:\n" +
                     "\n" +
                     "    @classmethod\n" +

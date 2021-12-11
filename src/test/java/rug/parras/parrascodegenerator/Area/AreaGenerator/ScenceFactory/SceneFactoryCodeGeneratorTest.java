@@ -2,14 +2,14 @@ package rug.parras.parrascodegenerator.Area.AreaGenerator.ScenceFactory;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SceneFactoryCodeGeneratorTest {
 
     @Test
     void generateFactoryCode() {
 
-         String expectedSceneFactoryCode =
+        String expectedSceneFactoryCode =
                 "class WuffOmgSceneFactory:\n" +
                         "\n" +
                         "    @classmethod\n" +
