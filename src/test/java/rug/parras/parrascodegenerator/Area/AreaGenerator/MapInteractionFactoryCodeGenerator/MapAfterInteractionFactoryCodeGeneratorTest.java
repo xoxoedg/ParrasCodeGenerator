@@ -2,14 +2,14 @@ package rug.parras.parrascodegenerator.Area.AreaGenerator.MapInteractionFactoryC
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MapAfterInteractionFactoryCodeGeneratorTest {
 
     @Test
     void generateFactoryCode() {
 
-       String expectedMapAfterInteractionFactoryClass =
+        String expectedMapAfterInteractionFactoryClass =
                 "class DeadMountainMapAfterInteractionFactory:\n" +
                         "\n" +
                         "    @classmethod\n" +

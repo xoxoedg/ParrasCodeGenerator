@@ -16,13 +16,13 @@ import static org.mockito.Mockito.when;
 class MapAfterInteractionFactoryCodeWriterTest {
 
     @Mock
-    MapAfterInteractionFactoryFilepathGenerator mapAfterInteractionFactoryFilepathGenerator;
+    private MapAfterInteractionFactoryFilepathGenerator mapAfterInteractionFactoryFilepathGenerator;
 
     @Mock
-    MapAfterInteractionFactoryCodeGenerator mapAfterInteractionFactoryCodeGenerator;
+    private MapAfterInteractionFactoryCodeGenerator mapAfterInteractionFactoryCodeGenerator;
 
     @InjectMocks
-    MapAfterInteractionFactoryCodeWriter mapAfterInteractionFactoryCodeWriter;
+    private MapAfterInteractionFactoryCodeWriter mapAfterInteractionFactoryCodeWriter;
 
     @Test
     void writeToFile() throws IOException {

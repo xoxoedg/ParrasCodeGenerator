@@ -13,7 +13,7 @@ import java.io.IOException;
 @Component
 public class MapAfterInteractionFactoryFileGenerator implements FactoryFileGenerator {
 
-    MapAfterInteractionFactoryFilepathGenerator mapAfterInteractionFactoryFilepathGenerator;
+    private final MapAfterInteractionFactoryFilepathGenerator mapAfterInteractionFactoryFilepathGenerator;
 
     @Autowired
     public MapAfterInteractionFactoryFileGenerator(MapAfterInteractionFactoryFilepathGenerator mapAfterInteractionFactoryFilepathGenerator) {

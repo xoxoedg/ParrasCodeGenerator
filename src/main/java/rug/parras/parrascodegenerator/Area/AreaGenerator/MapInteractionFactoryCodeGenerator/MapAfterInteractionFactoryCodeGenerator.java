@@ -7,7 +7,7 @@ import rug.parras.parrascodegenerator.Utils.StringOperationUtils;
 @Component
 public class MapAfterInteractionFactoryCodeGenerator implements FactoryCodeGenerator {
 
-    private final String MAP_AFTER_INTERACTION_FACTORY_CODE_TEMPLATE =
+    private static final String MAP_AFTER_INTERACTION_FACTORY_CODE_TEMPLATE =
             "class %sMapAfterInteractionFactory:\n" +
                     "\n" +
                     "    @classmethod\n" +

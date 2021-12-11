@@ -11,9 +11,9 @@ import java.io.IOException;
 @Component
 public class MapAfterInteractionFactoryCodeWriter implements CodeWriterGenerator {
 
-    MapAfterInteractionFactoryFilepathGenerator mapAfterInteractionFactoryFilepathGenerator;
+    private final MapAfterInteractionFactoryFilepathGenerator mapAfterInteractionFactoryFilepathGenerator;
 
-    MapAfterInteractionFactoryCodeGenerator mapAfterInteractionFactoryCodeGenerator;
+    private final MapAfterInteractionFactoryCodeGenerator mapAfterInteractionFactoryCodeGenerator;
 
     @Autowired
     public MapAfterInteractionFactoryCodeWriter(MapAfterInteractionFactoryFilepathGenerator mapAfterInteractionFactoryFilepathGenerator, MapAfterInteractionFactoryCodeGenerator mapAfterInteractionFactoryCodeGenerator) {
