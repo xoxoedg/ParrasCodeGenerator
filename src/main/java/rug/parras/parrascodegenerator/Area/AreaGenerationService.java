@@ -7,6 +7,7 @@ import rug.parras.parrascodegenerator.Area.AreaGenerator.CodeWriterService;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.FileGenerationService;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.GameDirectoryGeneratorService;
 import rug.parras.parrascodegenerator.Area.Validation.*;
+import rug.parras.parrascodegenerator.common.ValidationStatus;
 
 @Service
 public class AreaGenerationService {

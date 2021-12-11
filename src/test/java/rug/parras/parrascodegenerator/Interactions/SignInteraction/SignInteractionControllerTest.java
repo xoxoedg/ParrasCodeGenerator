@@ -8,8 +8,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import rug.parras.parrascodegenerator.Interactions.Validation.InteractionValidationStatus;
 import rug.parras.parrascodegenerator.Interactions.Validation.ValidationResult;
+import rug.parras.parrascodegenerator.common.ValidationStatus;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
@@ -40,7 +40,7 @@ class SignInteractionControllerTest {
         ValidationResult validationResult = new ValidationResult();
         validationResult.setUrl("index");
         MockMvc mvcController = MockMvcBuilders.standaloneSetup(signInteractionController).build();
-        validationResult.setInteractionValidationStatus(InteractionValidationStatus.SUCCESS);
+        validationResult.setValidationStatus(ValidationStatus.SUCCESS);
         when(signInteractionService.createSignInteraction(any(Sign.class))).thenReturn(validationResult);
         mvcController.perform(post("/sign"))
                 .andExpect(status().isOk())
@@ -54,7 +54,7 @@ class SignInteractionControllerTest {
         ValidationResult validationResult = new ValidationResult();
         validationResult.setUrl("error");
         MockMvc mvcController = MockMvcBuilders.standaloneSetup(signInteractionController).build();
-        validationResult.setInteractionValidationStatus(InteractionValidationStatus.SUCCESS);
+        validationResult.setValidationStatus(ValidationStatus.SUCCESS);
         when(signInteractionService.createSignInteraction(any(Sign.class))).thenReturn(validationResult);
         mvcController.perform(post("/sign"))
                 .andExpect(status().isOk())

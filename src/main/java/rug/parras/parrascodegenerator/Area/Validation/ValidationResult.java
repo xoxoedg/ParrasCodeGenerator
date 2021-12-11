@@ -2,6 +2,7 @@ package rug.parras.parrascodegenerator.Area.Validation;
 
 import lombok.Getter;
 import lombok.Setter;
+import rug.parras.parrascodegenerator.common.ValidationStatus;
 
 @Getter
 @Setter

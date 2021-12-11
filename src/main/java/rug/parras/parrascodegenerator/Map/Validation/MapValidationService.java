@@ -2,6 +2,7 @@ package rug.parras.parrascodegenerator.Map.Validation;
 
 import org.springframework.stereotype.Service;
 import rug.parras.parrascodegenerator.Map.Map;
+import rug.parras.parrascodegenerator.common.ValidationStatus;
 
 @Service
 public class MapValidationService {
@@ -10,10 +11,10 @@ public class MapValidationService {
         ValidationFieldResult validationFieldResult = new ValidationFieldResult();
         boolean validMapName = mapName.matches("^[a-z]+((_[a-z]+)+)?");
         if (validMapName) {
-            validationFieldResult.setValidationStatus(MapValidationStatus.SUCCESS);
+            validationFieldResult.setValidationStatus(ValidationStatus.SUCCESS);
             validationFieldResult.setMessage("Valid Map Input");
         } else {
-            validationFieldResult.setValidationStatus(MapValidationStatus.ERROR);
+            validationFieldResult.setValidationStatus(ValidationStatus.ERROR);
             validationFieldResult.setMessage("Invalid Map Input: Only lowercase letters and separated by an _ and has to end with 'map'");
         } return validationFieldResult;
     }
@@ -22,10 +23,10 @@ public class MapValidationService {
         ValidationFieldResult validationFieldResult = new ValidationFieldResult();
         boolean validFilename = filename.matches("[a-z]+\\.py");
         if (validFilename) {
-            validationFieldResult.setValidationStatus(MapValidationStatus.SUCCESS);
+            validationFieldResult.setValidationStatus(ValidationStatus.SUCCESS);
             validationFieldResult.setMessage("Valid Filename Input");
         } else {
-            validationFieldResult.setValidationStatus(MapValidationStatus.ERROR);
+            validationFieldResult.setValidationStatus(ValidationStatus.ERROR);
             validationFieldResult.setMessage("Invalid Filename Input: Must be Lowercase letter and end with a .py");
         }
         return validationFieldResult;
@@ -35,10 +36,10 @@ public class MapValidationService {
         ValidationFieldResult validationFieldResult = new ValidationFieldResult();
         boolean validCoordinateInput = x.matches("-?[0-9]+") && y.matches("-?[0-9]+");
         if (validCoordinateInput) {
-            validationFieldResult.setValidationStatus(MapValidationStatus.SUCCESS);
+            validationFieldResult.setValidationStatus(ValidationStatus.SUCCESS);
             validationFieldResult.setMessage("Valid Coordinate Input");
         } else {
-            validationFieldResult.setValidationStatus(MapValidationStatus.ERROR);
+            validationFieldResult.setValidationStatus(ValidationStatus.ERROR);
             validationFieldResult.setMessage("Invalid Coordinate Input: Coordinate must be an Integer");
         } return validationFieldResult;
 
@@ -49,19 +50,19 @@ public class MapValidationService {
         ValidationFieldResult validateMapInputResult = validateMapInput(map.getMapName());
         ValidationFieldResult validationFilenameResult = validateFilenameInput(map.getFilename());
         ValidationFieldResult validationCoordinatesResult = validateCoordinates(map.getXCoordinate(), map.getYCoordinate());
-        if (validationFilenameResult.getValidationStatus() == MapValidationStatus.ERROR) {
+        if (validationFilenameResult.getValidationStatus() == ValidationStatus.ERROR) {
             validationResult.getValidationFieldResultList().add(validateMapInputResult);
         }
-        if (validationFilenameResult.getValidationStatus() == MapValidationStatus.ERROR) {
+        if (validationFilenameResult.getValidationStatus() == ValidationStatus.ERROR) {
             validationResult.getValidationFieldResultList().add(validationFilenameResult);
         }
-        if (validationCoordinatesResult.getValidationStatus() == MapValidationStatus.ERROR) {
+        if (validationCoordinatesResult.getValidationStatus() == ValidationStatus.ERROR) {
             validationResult.getValidationFieldResultList().add(validationCoordinatesResult);
         }
         if (validationResult.getValidationFieldResultList().size() > 0) {
-            validationResult.setMapValidationStatus(MapValidationStatus.ERROR);
+            validationResult.setValidationStatus(ValidationStatus.ERROR);
         } else {
-            validationResult.setMapValidationStatus(MapValidationStatus.SUCCESS);
+            validationResult.setValidationStatus(ValidationStatus.SUCCESS);
         } return validationResult;
     }
 }

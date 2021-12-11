@@ -6,8 +6,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import rug.parras.parrascodegenerator.Map.Validation.MapValidationService;
-import rug.parras.parrascodegenerator.Map.Validation.MapValidationStatus;
 import rug.parras.parrascodegenerator.Map.Validation.ValidationResult;
+import rug.parras.parrascodegenerator.common.ValidationStatus;
 
 import java.io.File;
 
@@ -30,7 +30,7 @@ class MapServiceTest {
     void createMap() {
         Map map = new Map();
         ValidationResult validationResult = new ValidationResult();
-        validationResult.setMapValidationStatus(MapValidationStatus.SUCCESS);
+        validationResult.setValidationStatus(ValidationStatus.SUCCESS);
         map.setFilename("mapgenerator.py");
         when(mapCodeGenerationService.generateMap(map)).thenReturn("Test123");
         when(mapValidationService.validateInput(map)).thenReturn(validationResult);

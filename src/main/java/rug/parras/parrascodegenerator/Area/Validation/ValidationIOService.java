@@ -10,17 +10,18 @@ import rug.parras.parrascodegenerator.Area.AreaGenerator.MapInteractionFactoryCo
 import rug.parras.parrascodegenerator.Area.AreaGenerator.NextMapFactory.NextMapFactoryFilepathGenerator;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.ScenceFactory.SceneFactoryFilepathGenerator;
 import rug.parras.parrascodegenerator.Utils.FileOperationsUtils;
+import rug.parras.parrascodegenerator.common.ValidationStatus;
 
 @Service
 public class ValidationIOService {
 
-    BattleFactoryFilepathGenerator battleFactoryFilepathGenerator;
-    ConfigurationFilepathGenerator configurationFilepathGenerator;
-    InitialMapFactoryFilepathGenerator initialMapFactoryFilepathGenerator;
-    ItemInteractionFactoryFilepathGenerator itemInteractionFactoryFilepathGenerator;
-    MapAfterInteractionFactoryFilepathGenerator mapAfterInteractionFactoryFilepathGenerator;
-    NextMapFactoryFilepathGenerator nextMapFactoryFilepathGenerator;
-    SceneFactoryFilepathGenerator sceneFactoryFilepathGenerator;
+    private final BattleFactoryFilepathGenerator battleFactoryFilepathGenerator;
+    private final ConfigurationFilepathGenerator configurationFilepathGenerator;
+    private final InitialMapFactoryFilepathGenerator initialMapFactoryFilepathGenerator;
+    private final ItemInteractionFactoryFilepathGenerator itemInteractionFactoryFilepathGenerator;
+    private final MapAfterInteractionFactoryFilepathGenerator mapAfterInteractionFactoryFilepathGenerator;
+    private final NextMapFactoryFilepathGenerator nextMapFactoryFilepathGenerator;
+    private final SceneFactoryFilepathGenerator sceneFactoryFilepathGenerator;
 
     @Autowired
     public ValidationIOService(BattleFactoryFilepathGenerator battleFactoryFilepathGenerator,

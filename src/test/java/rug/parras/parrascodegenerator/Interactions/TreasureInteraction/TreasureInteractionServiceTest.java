@@ -5,9 +5,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import rug.parras.parrascodegenerator.Interactions.Validation.InteractionValidationStatus;
 import rug.parras.parrascodegenerator.Interactions.Validation.TreasureInteractionValidationService;
 import rug.parras.parrascodegenerator.Interactions.Validation.ValidationResult;
+import rug.parras.parrascodegenerator.common.ValidationStatus;
 
 import java.io.File;
 
@@ -30,7 +30,7 @@ class TreasureInteractionServiceTest {
     @Test
     void createTreasureInteraction() {
         ValidationResult validationResult = new ValidationResult();
-        validationResult.setInteractionValidationStatus(InteractionValidationStatus.SUCCESS);
+        validationResult.setValidationStatus(ValidationStatus.SUCCESS);
         treasure = new Treasure();
         treasure.setFileName("TreasureInteraction.py");
         when(validationService.validateInput(treasure)).thenReturn(validationResult);

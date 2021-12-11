@@ -2,6 +2,7 @@ package rug.parras.parrascodegenerator.Interactions.Validation;
 
 import lombok.Getter;
 import lombok.Setter;
+import rug.parras.parrascodegenerator.common.ValidationStatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
 @Setter
 public class ValidationResult {
 
-    private InteractionValidationStatus interactionValidationStatus;
+    private ValidationStatus validationStatus;
     private List<ValidationFieldResult> validationFieldResultList = new ArrayList<>();
     private String url;
     private String message;

@@ -4,8 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.AreaGeneratorInterfaces.FactoryFileGenerator;
 import rug.parras.parrascodegenerator.Area.Validation.ValidationFileResult;
-import rug.parras.parrascodegenerator.Area.Validation.ValidationStatus;
-import rug.parras.parrascodegenerator.Interactions.Validation.InteractionValidationStatus;
+import rug.parras.parrascodegenerator.common.ValidationStatus;
 
 import java.io.File;
 import java.io.IOException;

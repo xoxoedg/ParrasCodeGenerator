@@ -3,6 +3,7 @@ package rug.parras.parrascodegenerator.Area.Validation;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Service;
+import rug.parras.parrascodegenerator.common.ValidationStatus;
 
 
 @Getter

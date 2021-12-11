@@ -3,9 +3,9 @@ package rug.parras.parrascodegenerator.Interactions.SignInteraction;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import rug.parras.parrascodegenerator.Interactions.Validation.InteractionValidationStatus;
 import rug.parras.parrascodegenerator.Interactions.Validation.ValidationResult;
 import rug.parras.parrascodegenerator.Utils.FileOperationsUtils;
+import rug.parras.parrascodegenerator.common.ValidationStatus;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,7 +26,7 @@ public class SignInteractionService {
 
     public ValidationResult createSignInteraction(Sign sign) {
         ValidationResult validationResult = validationService.validateInput(sign);
-        if (validationResult.getInteractionValidationStatus() == InteractionValidationStatus.SUCCESS) {
+        if (validationResult.getValidationStatus() == ValidationStatus.SUCCESS) {
 
             try {
                 FileOperationsUtils.writeToFile(signInteractionCodeGenerationService.generateCodeForSignInteraction(sign),

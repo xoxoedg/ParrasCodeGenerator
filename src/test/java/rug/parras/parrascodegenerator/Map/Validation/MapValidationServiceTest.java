@@ -3,6 +3,7 @@ package rug.parras.parrascodegenerator.Map.Validation;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import rug.parras.parrascodegenerator.Map.Map;
+import rug.parras.parrascodegenerator.common.ValidationStatus;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 
@@ -17,8 +18,8 @@ class MapValidationServiceTest {
         map.setYCoordinate("5");
         map.setMapName("rionnagen_test_map");
 
-        Enum<MapValidationStatus> expectedValidationStatus = MapValidationStatus.SUCCESS;
-        Enum<MapValidationStatus> actualValidationStatus = new MapValidationService().validateInput(map).getMapValidationStatus();
+        Enum<ValidationStatus> expectedValidationStatus = ValidationStatus.SUCCESS;
+        Enum<ValidationStatus> actualValidationStatus = new MapValidationService().validateInput(map).getValidationStatus();
 
         assertSame(expectedValidationStatus, actualValidationStatus);
     }
@@ -32,8 +33,8 @@ class MapValidationServiceTest {
         map.setYCoordinate("5");
         map.setMapName("rionnagen_test_map");
 
-        Enum<MapValidationStatus> expectedValidationStatus = MapValidationStatus.ERROR;
-        Enum<MapValidationStatus> actualValidationStatus = new MapValidationService().validateInput(map).getMapValidationStatus();
+        Enum<ValidationStatus> expectedValidationStatus = ValidationStatus.ERROR;
+        Enum<ValidationStatus> actualValidationStatus = new MapValidationService().validateInput(map).getValidationStatus();
 
         assertSame(expectedValidationStatus, actualValidationStatus);
     }
@@ -48,8 +49,8 @@ class MapValidationServiceTest {
         map.setYCoordinate("5");
         map.setMapName(mapName);
 
-        Enum<MapValidationStatus> expectedValidationStatus = MapValidationStatus.SUCCESS;
-        Enum<MapValidationStatus> actualValidationStatus = new MapValidationService().validateInput(map).getMapValidationStatus();
+        Enum<ValidationStatus> expectedValidationStatus = ValidationStatus.SUCCESS;
+        Enum<ValidationStatus> actualValidationStatus = new MapValidationService().validateInput(map).getValidationStatus();
 
         assertSame(expectedValidationStatus, actualValidationStatus);
     }
@@ -63,8 +64,8 @@ class MapValidationServiceTest {
         map.setYCoordinate("5");
         map.setMapName(mapName);
 
-        Enum<MapValidationStatus> expectedValidationStatus = MapValidationStatus.SUCCESS;
-        Enum<MapValidationStatus> actualValidationStatus = new MapValidationService().validateInput(map).getMapValidationStatus();
+        Enum<ValidationStatus> expectedValidationStatus = ValidationStatus.SUCCESS;
+        Enum<ValidationStatus> actualValidationStatus = new MapValidationService().validateInput(map).getValidationStatus();
 
         assertSame(expectedValidationStatus, actualValidationStatus);
     }
@@ -78,8 +79,8 @@ class MapValidationServiceTest {
         map.setYCoordinate("5");
         map.setMapName("rionnagen_map");
 
-        Enum<MapValidationStatus> expectedValidationStatus = MapValidationStatus.SUCCESS;
-        Enum<MapValidationStatus> actualValidationStatus = new MapValidationService().validateInput(map).getMapValidationStatus();
+        Enum<ValidationStatus> expectedValidationStatus = ValidationStatus.SUCCESS;
+        Enum<ValidationStatus> actualValidationStatus = new MapValidationService().validateInput(map).getValidationStatus();
 
         assertSame(expectedValidationStatus, actualValidationStatus);
     }
@@ -93,8 +94,8 @@ class MapValidationServiceTest {
         map.setYCoordinate(y);
         map.setMapName("rionnagen_map");
 
-        Enum<MapValidationStatus> expectedValidationStatus = MapValidationStatus.SUCCESS;
-        Enum<MapValidationStatus> actualValidationStatus = new MapValidationService().validateInput(map).getMapValidationStatus();
+        Enum<ValidationStatus> expectedValidationStatus = ValidationStatus.SUCCESS;
+        Enum<ValidationStatus> actualValidationStatus = new MapValidationService().validateInput(map).getValidationStatus();
 
         assertSame(expectedValidationStatus, actualValidationStatus);
     }

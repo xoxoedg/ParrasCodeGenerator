@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 import rug.parras.parrascodegenerator.Interactions.Validation.InteractionValidationService;
 import rug.parras.parrascodegenerator.Interactions.Validation.ValidationFieldResult;
 import rug.parras.parrascodegenerator.Interactions.Validation.ValidationResult;
-import rug.parras.parrascodegenerator.Interactions.Validation.InteractionValidationStatus;
+import rug.parras.parrascodegenerator.common.ValidationStatus;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,10 +21,10 @@ public class SignInteractionValidationService extends InteractionValidationServi
         boolean isValid = validDirections.contains(direction.toLowerCase());
         if (isValid) {
             validationFieldResult.setMessage("Valid Input");
-            validationFieldResult.setInteractionValidationStatus(InteractionValidationStatus.SUCCESS);
+            validationFieldResult.setValidationStatus(ValidationStatus.SUCCESS);
         } else {
             validationFieldResult.setMessage("Direction must be one of the following: left, right, up, down");
-            validationFieldResult.setInteractionValidationStatus(InteractionValidationStatus.ERROR);
+            validationFieldResult.setValidationStatus(ValidationStatus.ERROR);
         }
         return validationFieldResult;
     }
@@ -35,10 +35,10 @@ public class SignInteractionValidationService extends InteractionValidationServi
         boolean validSignText = signText.matches(".{0,200}");
         if (validSignText) {
             validationFieldResult.setMessage("Valid Sign Input");
-            validationFieldResult.setInteractionValidationStatus(InteractionValidationStatus.SUCCESS);
+            validationFieldResult.setValidationStatus(ValidationStatus.SUCCESS);
         } else {
             validationFieldResult.setMessage("Invalid Sign Input: Sign Text can contain at most of 20 character");
-            validationFieldResult.setInteractionValidationStatus(InteractionValidationStatus.ERROR);
+            validationFieldResult.setValidationStatus(ValidationStatus.ERROR);
         }
         return validationFieldResult;
     }
@@ -51,14 +51,14 @@ public class SignInteractionValidationService extends InteractionValidationServi
         validationResult.getValidationFieldResultList().add(validateDirectionInput(sign.getDirection()));
         validationResult.getValidationFieldResultList().add(validateSignText(sign.getSignText()));
 
-        boolean allFieldsValid = validationResult.getValidationFieldResultList().stream().allMatch(x -> x.getInteractionValidationStatus() == InteractionValidationStatus.SUCCESS);
+        boolean allFieldsValid = validationResult.getValidationFieldResultList().stream().allMatch(x -> x.getValidationStatus() == ValidationStatus.ERROR.SUCCESS);
 
         if (allFieldsValid) {
-            validationResult.setInteractionValidationStatus(InteractionValidationStatus.SUCCESS);
+            validationResult.setValidationStatus(ValidationStatus.SUCCESS);
         } else {
-            List<ValidationFieldResult> errors = validationResult.getValidationFieldResultList().stream().filter(x -> x.getInteractionValidationStatus() == InteractionValidationStatus.ERROR).collect(Collectors.toList());
+            List<ValidationFieldResult> errors = validationResult.getValidationFieldResultList().stream().filter(x -> x.getValidationStatus() == ValidationStatus.ERROR).collect(Collectors.toList());
             validationResult.setValidationFieldResultList(errors);
-            validationResult.setInteractionValidationStatus(InteractionValidationStatus.ERROR);
+            validationResult.setValidationStatus(ValidationStatus.ERROR);
         } return  validationResult;
     }
 }

@@ -6,7 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.Area;
 import rug.parras.parrascodegenerator.Area.Validation.ValidationAreaResult;
-import rug.parras.parrascodegenerator.Area.Validation.ValidationStatus;
+import rug.parras.parrascodegenerator.common.ValidationStatus;
 
 @SpringBootTest
 @ActiveProfiles("it")
