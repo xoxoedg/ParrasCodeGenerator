@@ -6,8 +6,9 @@ import org.springframework.stereotype.Service;
 import rug.parras.parrascodegenerator.Interactions.Validation.TreasureInteractionValidationService;
 import rug.parras.parrascodegenerator.Interactions.Validation.ValidationResult;
 import rug.parras.parrascodegenerator.Interactions.Validation.InteractionValidationStatus;
-import rug.parras.parrascodegenerator.Utils.FileOperationUtils;
+import rug.parras.parrascodegenerator.Utils.FileOperationsUtils;
 
+import java.io.File;
 import java.io.IOException;
 
 @Slf4j
@@ -27,8 +28,8 @@ public class TreasureInteractionService {
         ValidationResult validationResult = validationService.validateInput(treasure);
         if (validationResult.getInteractionValidationStatus() == InteractionValidationStatus.SUCCESS) {
             try {
-                FileOperationUtils converter = new FileOperationUtils("testPythonDir\\" + treasure.getFileName());
-                converter.writeToFile(treasureInteractionCodeGenerationService.generateTreasureInteraction(treasure));
+                FileOperationsUtils.writeToFile(treasureInteractionCodeGenerationService.generateTreasureInteraction(treasure),
+                        new File("testPythonDir\\" + treasure.getFileName()));
                 validationResult.setUrl("index");
                 return validationResult;
             } catch (IOException e) {

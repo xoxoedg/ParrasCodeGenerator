@@ -4,8 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rug.parras.parrascodegenerator.Interactions.Validation.ValidationResult;
 import rug.parras.parrascodegenerator.Interactions.Validation.InteractionValidationStatus;
-import rug.parras.parrascodegenerator.Utils.FileOperationUtils;
+import rug.parras.parrascodegenerator.Utils.FileOperationsUtils;
 
+import java.io.File;
 import java.io.IOException;
 
 @Service
@@ -26,9 +27,8 @@ public class SignInteractionService {
         if (validationResult.getInteractionValidationStatus() == InteractionValidationStatus.SUCCESS) {
             validationResult.setUrl("index");
             try {
-                FileOperationUtils converter = new FileOperationUtils("testPythonDir\\" + sign.getFileName());
-                converter.writeToFile(signInteractionCodeGenerationService.generateCodeForSignInteraction(sign));
-
+                FileOperationsUtils.writeToFile(signInteractionCodeGenerationService.generateCodeForSignInteraction(sign),
+                        new File("testPythonDir\\" + sign.getFileName()));
             } catch (IOException e) {
                 e.printStackTrace();
             }

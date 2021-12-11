@@ -9,7 +9,7 @@ import rug.parras.parrascodegenerator.Area.AreaGenerator.ItemInteractionFactory.
 import rug.parras.parrascodegenerator.Area.AreaGenerator.MapInteractionFactoryCodeGenerator.MapAfterInteractionFactoryFilepathGenerator;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.NextMapFactory.NextMapFactoryFilepathGenerator;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.ScenceFactory.SceneFactoryFilepathGenerator;
-import rug.parras.parrascodegenerator.Area.FileOperations;
+import rug.parras.parrascodegenerator.Utils.FileOperationsUtils;
 
 @Service
 public class ValidationIOService {
@@ -42,7 +42,7 @@ public class ValidationIOService {
 
     private ValidationFileResult validateBattleFactoryFile(String areaName) {
         ValidationFileResult validationFileResult = new ValidationFileResult();
-        if (FileOperations.checkIfFileExist(battleFactoryFilepathGenerator.generateFilename(areaName))) {
+        if (FileOperationsUtils.checkIfFileExist(battleFactoryFilepathGenerator.generateFilename(areaName))) {
             validationFileResult.setValidationStatus(ValidationStatus.WARNING);
             validationFileResult.setMessage("BattleFactory File already exist");
         } else {
@@ -54,7 +54,7 @@ public class ValidationIOService {
 
     private ValidationFileResult validateConfigurationFile(String areaName) {
         ValidationFileResult validationFileResult = new ValidationFileResult();
-        if (FileOperations.checkIfFileExist(configurationFilepathGenerator.generateFilename(areaName))) {
+        if (FileOperationsUtils.checkIfFileExist(configurationFilepathGenerator.generateFilename(areaName))) {
             validationFileResult.setValidationStatus(ValidationStatus.WARNING);
             validationFileResult.setMessage("Configuration File already exist");
         } else {
@@ -66,7 +66,7 @@ public class ValidationIOService {
 
     private ValidationFileResult validateInitialMapFactoryFile(String areaName) {
         ValidationFileResult validationFileResult = new ValidationFileResult();
-        if (FileOperations.checkIfFileExist(initialMapFactoryFilepathGenerator.generateFilename(areaName))) {
+        if (FileOperationsUtils.checkIfFileExist(initialMapFactoryFilepathGenerator.generateFilename(areaName))) {
             validationFileResult.setValidationStatus(ValidationStatus.WARNING);
             validationFileResult.setMessage("InitialMapFactory File already exist");
         } else {
@@ -79,7 +79,7 @@ public class ValidationIOService {
 
     private ValidationFileResult validateItemInteractionFactoryFile(String areaName) {
         ValidationFileResult validationFileResult = new ValidationFileResult();
-        if (FileOperations.checkIfFileExist(itemInteractionFactoryFilepathGenerator.generateFilename(areaName))) {
+        if (FileOperationsUtils.checkIfFileExist(itemInteractionFactoryFilepathGenerator.generateFilename(areaName))) {
             validationFileResult.setValidationStatus(ValidationStatus.WARNING);
             validationFileResult.setMessage("ItemInteractionFactory File already exist");
         } else {
@@ -92,7 +92,7 @@ public class ValidationIOService {
 
     private ValidationFileResult validateMapAfterInteractionFactoryFile(String areaName) {
         ValidationFileResult validationFileResult = new ValidationFileResult();
-        if (FileOperations.checkIfFileExist(mapAfterInteractionFactoryFilepathGenerator.generateFilename(areaName))) {
+        if (FileOperationsUtils.checkIfFileExist(mapAfterInteractionFactoryFilepathGenerator.generateFilename(areaName))) {
             validationFileResult.setValidationStatus(ValidationStatus.WARNING);
             validationFileResult.setMessage("MapAfterInteractionFactory File already exist");
         } else {
@@ -105,7 +105,7 @@ public class ValidationIOService {
 
     private ValidationFileResult validateNextMapFactoryFile(String areaName) {
         ValidationFileResult validationFileResult = new ValidationFileResult();
-        if (FileOperations.checkIfFileExist(nextMapFactoryFilepathGenerator.generateFilename(areaName))) {
+        if (FileOperationsUtils.checkIfFileExist(nextMapFactoryFilepathGenerator.generateFilename(areaName))) {
             validationFileResult.setValidationStatus(ValidationStatus.WARNING);
             validationFileResult.setMessage("NextMapFactory File already exist");
         } else {
@@ -117,7 +117,7 @@ public class ValidationIOService {
 
     private ValidationFileResult validateSceneFactoryFile(String areaName) {
         ValidationFileResult validationFileResult = new ValidationFileResult();
-        if (FileOperations.checkIfFileExist(sceneFactoryFilepathGenerator.generateFilename(areaName))) {
+        if (FileOperationsUtils.checkIfFileExist(sceneFactoryFilepathGenerator.generateFilename(areaName))) {
             validationFileResult.setValidationStatus(ValidationStatus.WARNING);
             validationFileResult.setMessage("SceneFactory File already exist");
         } else {

@@ -3,7 +3,6 @@ package rug.parras.parrascodegenerator.Area.AreaGenerator.BattleFactory;
 import lombok.Getter;
 import org.springframework.stereotype.Component;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.AreaGeneratorInterfaces.FactoryCodeGenerator;
-import rug.parras.parrascodegenerator.Utils.FileOperationUtils;
 import rug.parras.parrascodegenerator.Utils.StringOperationUtils;
 
 @Component

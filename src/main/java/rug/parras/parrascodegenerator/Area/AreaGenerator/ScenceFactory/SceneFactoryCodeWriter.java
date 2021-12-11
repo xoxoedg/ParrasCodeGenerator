@@ -2,12 +2,10 @@ package rug.parras.parrascodegenerator.Area.AreaGenerator.ScenceFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.AreaGeneratorInterfaces.CodeWriterGenerator;
-import rug.parras.parrascodegenerator.Area.FileOperations;
+import rug.parras.parrascodegenerator.Utils.FileOperationsUtils;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 
 @Component
@@ -25,8 +23,8 @@ public class SceneFactoryCodeWriter implements CodeWriterGenerator {
     @Override
     public void writeToFile(String areaName) throws IOException {
         File sceneFactoryPythonFile = new File(sceneFactoryFilepathGenerator.generateFilename(areaName));
-        if (FileOperations.checkIfFileIsEmpty(sceneFactoryPythonFile)) {
-            FileOperations.writeToFile(sceneFactoryCodeGenerator.generateFactoryCode(areaName), sceneFactoryPythonFile);
+        if (FileOperationsUtils.checkIfFileIsEmpty(sceneFactoryPythonFile)) {
+            FileOperationsUtils.writeToFile(sceneFactoryCodeGenerator.generateFactoryCode(areaName), sceneFactoryPythonFile);
         }
     }
 }

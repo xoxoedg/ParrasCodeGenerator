@@ -3,7 +3,7 @@ package rug.parras.parrascodegenerator.Area.AreaGenerator.ConfigurationCodeGener
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.AreaGeneratorInterfaces.CodeWriterGenerator;
-import rug.parras.parrascodegenerator.Area.FileOperations;
+import rug.parras.parrascodegenerator.Utils.FileOperationsUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,8 +24,8 @@ public class ConfigurationCodeGeneratorWriter implements CodeWriterGenerator {
     @Override
     public void writeToFile(String areaName) throws IOException {
         File configurationPythonFile = new File(configurationFilepathGenerator.generateFilename(areaName));
-        if (FileOperations.checkIfFileIsEmpty(configurationPythonFile)) {
-            FileOperations.writeToFile(configurationCodeGenerator.generateConfigListCode(areaName), configurationPythonFile);
+        if (FileOperationsUtils.checkIfFileIsEmpty(configurationPythonFile)) {
+            FileOperationsUtils.writeToFile(configurationCodeGenerator.generateConfigListCode(areaName), configurationPythonFile);
         }
     }
 }
