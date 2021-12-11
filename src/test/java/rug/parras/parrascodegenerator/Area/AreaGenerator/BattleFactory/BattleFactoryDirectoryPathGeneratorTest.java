@@ -18,8 +18,8 @@ class BattleFactoryDirectoryPathGeneratorTest {
 
     @Test
     void createDirectoryPath() {
-        String expectedDirPath = "src\\test\\codeGeneratorTest\\src\\characters\\battles\\rionnagen";
-        String actualDirPath = directoryPathGenerator.createDirectoryPath("Rionnagen");
+        String expectedDirPath = "src\\test\\codeGeneratorTest\\src\\characters\\battles\\rionnagentest";
+        String actualDirPath = directoryPathGenerator.createDirectoryPath("Rionnagen test");
         assertEquals(expectedDirPath,actualDirPath);
     }
 }

@@ -18,4 +18,8 @@ public class StringOperationUtils {
     public static String convertSpaceToLowercase(String input) {
         return Arrays.stream(input.toLowerCase().split(" ")).map(String::toLowerCase).collect(Collectors.joining());
     }
+
+    public static String convertSpaceToLowercaseAndUnderscore(String input) {
+        return Arrays.stream(input.toLowerCase().split(" ")).map(String::toLowerCase).collect(Collectors.joining("_"));
+    }
 }

@@ -3,6 +3,7 @@ package rug.parras.parrascodegenerator.Area.AreaGenerator.BattleFactory;
 import org.springframework.stereotype.Component;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.AreaGeneratorInterfaces.DirectoryPathGenerator;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.GamePath;
+import rug.parras.parrascodegenerator.Utils.StringOperationUtils;
 
 @Component
 public class BattleFactoryDirectoryPathGenerator extends GamePath implements DirectoryPathGenerator {
@@ -11,7 +12,7 @@ public class BattleFactoryDirectoryPathGenerator extends GamePath implements Dir
 
     @Override
     public String createDirectoryPath(String areaName) {
-        return String.format(PARRAS_DIRECTIORY_PATH, path ,areaName.toLowerCase());
+        return String.format(PARRAS_DIRECTIORY_PATH, path, StringOperationUtils.convertSpaceToLowercase(areaName));
     }
 }
 
