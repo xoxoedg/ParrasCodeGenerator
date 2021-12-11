@@ -32,7 +32,6 @@ class FileGenerationServiceTest {
     @Mock
     private ConfigurationFileGenerator configurationFileGenerator;
 
-
     @Mock
     private InitialMapFactoryFileGenerator initialMapFactoryFileGenerator;
 
