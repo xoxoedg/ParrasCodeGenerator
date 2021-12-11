@@ -12,7 +12,7 @@ import java.io.IOException;
 @Component
 public class InitialMapFactoryFileGenerator implements FactoryFileGenerator {
 
-    InitialMapFactoryFilepathGenerator initialMapFactoryFilepathGenerator;
+    private final InitialMapFactoryFilepathGenerator initialMapFactoryFilepathGenerator;
 
     @Autowired
     public InitialMapFactoryFileGenerator(InitialMapFactoryFilepathGenerator initialMapFactoryFilepathGenerator) {
