@@ -9,7 +9,7 @@ import java.io.File;
 @Service
 public class WorldMapDirectoryGeneratorService implements DirectoryGenerator {
 
-    WorldMapDirectoryPathGenerator worldMapDirectoryPathGenerator;
+    private final WorldMapDirectoryPathGenerator worldMapDirectoryPathGenerator;
 
     @Autowired
     public WorldMapDirectoryGeneratorService(WorldMapDirectoryPathGenerator worldMapDirectoryPathGenerator) {
