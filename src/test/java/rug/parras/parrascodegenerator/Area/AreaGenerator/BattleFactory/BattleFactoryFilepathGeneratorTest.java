@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class BattleFactoryFilepathGeneratorTest {
 
     @Autowired
-    BattleFactoryFilepathGenerator battleFactoryFilepathGenerator;
+    private BattleFactoryFilepathGenerator battleFactoryFilepathGenerator;
 
     @Test
     void generateFilename() {

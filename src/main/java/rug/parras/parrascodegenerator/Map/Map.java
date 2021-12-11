@@ -8,7 +8,7 @@ import lombok.Setter;
 public class Map {
 
     private String mapName;
-    private int xCoordinate;
-    private int yCoordinate;
+    private String xCoordinate;
+    private String yCoordinate;
     private String filename;
 }

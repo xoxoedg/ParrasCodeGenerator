@@ -13,4 +13,5 @@ public class ValidationResult {
     private InteractionValidationStatus interactionValidationStatus;
     private List<ValidationFieldResult> validationFieldResultList = new ArrayList<>();
     private String url;
+    private String message;
 }

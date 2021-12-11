@@ -11,8 +11,8 @@ import java.io.IOException;
 @Component
 public class ConfigurationCodeGeneratorWriter implements CodeWriterGenerator {
 
-    ConfigurationFilepathGenerator configurationFilepathGenerator;
-    ConfigurationCodeGenerator configurationCodeGenerator;
+    private final ConfigurationFilepathGenerator configurationFilepathGenerator;
+    private final ConfigurationCodeGenerator configurationCodeGenerator;
 
     @Autowired
     public ConfigurationCodeGeneratorWriter(ConfigurationFilepathGenerator configurationFilepathGenerator, ConfigurationCodeGenerator configurationCodeGenerator) {

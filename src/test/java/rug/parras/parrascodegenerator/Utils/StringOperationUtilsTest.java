@@ -22,4 +22,11 @@ class StringOperationUtilsTest {
         assertEquals(expectedValue, actualValue);
 
     }
+
+    @Test
+    void convertSpaceToLowercase() {
+        String expectedValue = "wuffmountain";
+        String actualValue = StringOperationUtils.convertSpaceToLowercase("wuff Mountain");
+        assertEquals(expectedValue, actualValue);
+    }
 }

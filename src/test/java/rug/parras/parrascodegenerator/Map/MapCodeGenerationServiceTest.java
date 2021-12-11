@@ -42,8 +42,8 @@ class MapCodeGenerationServiceTest {
     void generateMap() {
         Map map = new Map();
         map.setMapName("Rionnagen_Map");
-        map.setXCoordinate(5);
-        map.setYCoordinate(10);
+        map.setXCoordinate("5");
+        map.setYCoordinate("10");
         MapComponentGenerator mapComponentGenerator = new MapComponentGenerator();
         MapCodeGenerationService mapCodeGenerationService = new MapCodeGenerationService(mapComponentGenerator);
         String actualMapCode = mapCodeGenerationService.generateMap(map);

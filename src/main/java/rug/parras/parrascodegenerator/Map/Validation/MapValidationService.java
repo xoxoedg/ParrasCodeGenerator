@@ -8,7 +8,7 @@ public class MapValidationService {
 
     private ValidationFieldResult validateMapInput(String mapName) {
         ValidationFieldResult validationFieldResult = new ValidationFieldResult();
-        boolean validMapName = mapName.matches("^[a-z]+((_[a-z]+)+)+_map");
+        boolean validMapName = mapName.matches("^[a-z]+((_[a-z]+)+)?");
         if (validMapName) {
             validationFieldResult.setValidationStatus(MapValidationStatus.SUCCESS);
             validationFieldResult.setMessage("Valid Map Input");
@@ -31,9 +31,9 @@ public class MapValidationService {
         return validationFieldResult;
     }
 
-    private ValidationFieldResult validateCoordinates(int x, int y) {
+    private ValidationFieldResult validateCoordinates(String x,String y) {
         ValidationFieldResult validationFieldResult = new ValidationFieldResult();
-        boolean validCoordinateInput = String.valueOf(x).matches("-?[0-9]+") && String.valueOf(y).matches("-?[0-9]+");
+        boolean validCoordinateInput = x.matches("-?[0-9]+") && y.matches("-?[0-9]+");
         if (validCoordinateInput) {
             validationFieldResult.setValidationStatus(MapValidationStatus.SUCCESS);
             validationFieldResult.setMessage("Valid Coordinate Input");

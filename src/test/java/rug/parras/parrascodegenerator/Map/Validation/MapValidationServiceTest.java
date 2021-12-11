@@ -13,8 +13,8 @@ class MapValidationServiceTest {
     void validateInputValidFilename(String filename) {
         Map map = new Map();
         map.setFilename(filename);
-        map.setYCoordinate(5);
-        map.setYCoordinate(5);
+        map.setYCoordinate("5");
+        map.setYCoordinate("5");
         map.setMapName("rionnagen_test_map");
 
         Enum<MapValidationStatus> expectedValidationStatus = MapValidationStatus.SUCCESS;
@@ -28,8 +28,8 @@ class MapValidationServiceTest {
     void validateInputInvalidFilename(String filename) {
         Map map = new Map();
         map.setFilename(filename);
-        map.setYCoordinate(5);
-        map.setYCoordinate(5);
+        map.setYCoordinate("5");
+        map.setYCoordinate("5");
         map.setMapName("rionnagen_test_map");
 
         Enum<MapValidationStatus> expectedValidationStatus = MapValidationStatus.ERROR;
@@ -44,8 +44,8 @@ class MapValidationServiceTest {
     void validateInputValidMaps(String mapName) {
         Map map = new Map();
         map.setFilename("test.py");
-        map.setYCoordinate(5);
-        map.setYCoordinate(5);
+        map.setYCoordinate("5");
+        map.setYCoordinate("5");
         map.setMapName(mapName);
 
         Enum<MapValidationStatus> expectedValidationStatus = MapValidationStatus.SUCCESS;
@@ -59,8 +59,8 @@ class MapValidationServiceTest {
     void validateInputInvalidMaps(String mapName) {
         Map map = new Map();
         map.setFilename("test.py");
-        map.setYCoordinate(5);
-        map.setYCoordinate(5);
+        map.setYCoordinate("5");
+        map.setYCoordinate("5");
         map.setMapName(mapName);
 
         Enum<MapValidationStatus> expectedValidationStatus = MapValidationStatus.SUCCESS;
@@ -70,12 +70,12 @@ class MapValidationServiceTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {0, 10, 30000000, -1, -500})
-    void validateInputValidCoordinatesX(int x) {
+    @ValueSource(strings = {"0", "10", "30000000", "-1", "-500"})
+    void validateInputValidCoordinatesX(String x) {
         Map map = new Map();
         map.setFilename("test.py");
         map.setXCoordinate(x);
-        map.setYCoordinate(5);
+        map.setYCoordinate("5");
         map.setMapName("rionnagen_map");
 
         Enum<MapValidationStatus> expectedValidationStatus = MapValidationStatus.SUCCESS;
@@ -85,11 +85,11 @@ class MapValidationServiceTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {0, 10, 30000000, -1, -500})
-    void validateInputValidCoordinatesY(int y) {
+    @ValueSource(strings = {"0", "10", "30000000", "-1", "-500"})
+    void validateInputValidCoordinatesY(String y) {
         Map map = new Map();
         map.setFilename("test.py");
-        map.setXCoordinate(5);
+        map.setXCoordinate("5");
         map.setYCoordinate(y);
         map.setMapName("rionnagen_map");
 

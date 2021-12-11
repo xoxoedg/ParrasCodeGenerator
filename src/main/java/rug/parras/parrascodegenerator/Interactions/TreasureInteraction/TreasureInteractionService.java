@@ -1,5 +1,6 @@
 package rug.parras.parrascodegenerator.Interactions.TreasureInteraction;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rug.parras.parrascodegenerator.Interactions.Validation.TreasureInteractionValidationService;
@@ -9,6 +10,7 @@ import rug.parras.parrascodegenerator.Utils.FileOperationUtils;
 
 import java.io.IOException;
 
+@Slf4j
 @Service
 public class TreasureInteractionService {
 
@@ -27,12 +29,15 @@ public class TreasureInteractionService {
             try {
                 FileOperationUtils converter = new FileOperationUtils("testPythonDir\\" + treasure.getFileName());
                 converter.writeToFile(treasureInteractionCodeGenerationService.generateTreasureInteraction(treasure));
-
+                validationResult.setUrl("index");
+                return validationResult;
             } catch (IOException e) {
-                e.printStackTrace();
+                log.error("Error"); // Logger
+                validationResult.setInteractionValidationStatus(InteractionValidationStatus.ERROR);
+                validationResult.setUrl("error");
+                validationResult.setMessage("Following Exception occured" + e.getMessage());
+                return validationResult;
             }
-            validationResult.setUrl("index");
-            return validationResult;
         } else {
             validationResult.setUrl("treasureError");
             return validationResult;

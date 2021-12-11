@@ -15,8 +15,8 @@ class MapComponentGeneratorTest {
         mapComponentGenerator = new MapComponentGenerator();
         map = new Map();
         map.setMapName("teSt_wuFf_map");
-        map.setYCoordinate(5);
-        map.setXCoordinate(5);
+        map.setYCoordinate("5");
+        map.setXCoordinate("5");
 
     }
 

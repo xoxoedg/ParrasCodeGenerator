@@ -9,7 +9,7 @@ import java.io.File;
 @Service
 public class BattleFactoryDirectoryGeneratorService implements DirectoryGenerator {
 
-    BattleFactoryDirectoryPathGenerator battleFactoryDirectoryPathGenerator;
+    private final BattleFactoryDirectoryPathGenerator battleFactoryDirectoryPathGenerator;
 
     @Autowired
     public BattleFactoryDirectoryGeneratorService(BattleFactoryDirectoryPathGenerator battleFactoryDirectoryPathGenerator) {
