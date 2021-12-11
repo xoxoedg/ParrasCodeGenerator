@@ -11,9 +11,9 @@ import java.io.IOException;
 @Component
 public class NextMapFactoryCodeWriter implements CodeWriterGenerator {
 
-    NextMapFactoryFilepathGenerator nextMapFactoryFilepathGenerator;
+    private final NextMapFactoryFilepathGenerator nextMapFactoryFilepathGenerator;
 
-    NextMapFactoryCodeGenerator nextMapFactoryCodeGenerator;
+    private final NextMapFactoryCodeGenerator nextMapFactoryCodeGenerator;
 
     @Autowired
     public NextMapFactoryCodeWriter(NextMapFactoryFilepathGenerator nextMapFactoryFilepathGenerator, NextMapFactoryCodeGenerator nextMapFactoryCodeGenerator) {

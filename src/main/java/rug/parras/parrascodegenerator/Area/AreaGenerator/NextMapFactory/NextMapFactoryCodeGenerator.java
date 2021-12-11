@@ -7,7 +7,7 @@ import rug.parras.parrascodegenerator.Utils.StringOperationUtils;
 @Component
 public class NextMapFactoryCodeGenerator implements FactoryCodeGenerator {
 
-    private final String NEXT_MAP_FACTORY_CODE_TEMPLATE =
+    private static final String NEXT_MAP_FACTORY_CODE_TEMPLATE =
             "class %sNextMapFactory:\n" +
                     "\n" +
                     "    @classmethod\n" +

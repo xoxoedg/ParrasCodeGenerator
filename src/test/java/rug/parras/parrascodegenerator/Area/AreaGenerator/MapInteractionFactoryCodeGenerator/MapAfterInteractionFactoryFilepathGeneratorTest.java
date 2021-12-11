@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class MapAfterInteractionFactoryFilepathGeneratorTest {
 
     @Autowired
-    MapAfterInteractionFactoryFilepathGenerator mapAfterInteractionFactoryFilepathGenerator;
+    private MapAfterInteractionFactoryFilepathGenerator mapAfterInteractionFactoryFilepathGenerator;
 
     @Test
     void generateFilename() {

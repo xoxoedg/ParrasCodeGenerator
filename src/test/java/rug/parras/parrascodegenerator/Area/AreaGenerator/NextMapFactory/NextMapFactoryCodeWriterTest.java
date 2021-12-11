@@ -9,7 +9,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.io.File;
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -17,13 +16,13 @@ import static org.mockito.Mockito.when;
 class NextMapFactoryCodeWriterTest {
 
     @Mock
-    NextMapFactoryFilepathGenerator nextMapFactoryFilepathGenerator;
+    private NextMapFactoryFilepathGenerator nextMapFactoryFilepathGenerator;
 
     @Mock
-    NextMapFactoryCodeGenerator nextMapFactoryCodeGenerator;
+    private NextMapFactoryCodeGenerator nextMapFactoryCodeGenerator;
 
     @InjectMocks
-    NextMapFactoryCodeWriter nextMapFactoryCodeWriter;
+    private NextMapFactoryCodeWriter nextMapFactoryCodeWriter;
 
     @Test
     void writeToFile() throws IOException {

@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.AreaGeneratorInterfaces.FactoryFileGenerator;
 import rug.parras.parrascodegenerator.Area.Validation.ValidationFileResult;
 import rug.parras.parrascodegenerator.Area.Validation.ValidationStatus;
-import rug.parras.parrascodegenerator.Interactions.Validation.InteractionValidationStatus;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,7 +12,7 @@ import java.io.IOException;
 @Component
 public class NextMapFactoryFileGenerator implements FactoryFileGenerator {
 
-    NextMapFactoryFilepathGenerator nextMapFactoryFilepathGenerator;
+    private final NextMapFactoryFilepathGenerator nextMapFactoryFilepathGenerator;
 
     @Autowired
     public NextMapFactoryFileGenerator(NextMapFactoryFilepathGenerator nextMapFactoryFilepathGenerator) {
@@ -29,6 +28,7 @@ public class NextMapFactoryFileGenerator implements FactoryFileGenerator {
         } else {
             validationFileResult.setValidationStatus(ValidationStatus.WARNING);
             validationFileResult.setMessage("Next Map Factory already exist");
-        } return validationFileResult;
+        }
+        return validationFileResult;
     }
 }
