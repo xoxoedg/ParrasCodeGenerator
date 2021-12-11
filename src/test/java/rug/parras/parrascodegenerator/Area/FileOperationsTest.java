@@ -4,30 +4,28 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class FileOperationsTest {
+    File file;
 
-    private final String filepath = "C:\\Users\\rugya\\Desktop\\Prod\\ParrasCodeGenerator\\src\\test\\codeGeneratorTest\\src\\characters\\battles\\Rionnagen\\rionnagen_battle_factory.py";
-
-
-    @BeforeEach
-    void setUp() {
+    @Test
+    void checkIfFileIsEmpty() throws IOException {
+        file = new File("test");
+        String testInput = "wuff";
+        FileOperations.writeToFile(testInput, file);
+        assertFalse(FileOperations.checkIfFileIsEmpty(file));
+        file.delete();
     }
 
     @Test
-    void writeToFile() {
-    }
-
-    @Test
-    void checkIfFileIsEmpty() {
-        String filepath = "C:\\Users\\rugya\\Desktop\\Prod\\ParrasCodeGenerator\\src\\test\\codeGeneratorTest\\src\\characters\\battles\\Rionnagen\\rionnagen_battle_factory.py";
-        assertFalse(FileOperations.checkIfFileIsEmpty(new File(filepath)));
-    }
-
-    @Test
-    void checkIfFileExist() {
-        assertTrue(FileOperations.checkIfFileExist(filepath));
+    void checkIfFileExist() throws IOException {
+        file = new File("test");
+        file.createNewFile();
+        assertTrue(FileOperations.checkIfFileExist("test"));
+        file.delete();
     }
 }
