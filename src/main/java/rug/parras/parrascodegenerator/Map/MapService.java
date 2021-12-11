@@ -1,5 +1,6 @@
 package rug.parras.parrascodegenerator.Map;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rug.parras.parrascodegenerator.Map.Validation.MapValidationService;
@@ -10,11 +11,12 @@ import rug.parras.parrascodegenerator.Utils.FileOperationsUtils;
 import java.io.File;
 import java.io.IOException;
 
+@Slf4j
 @Service
 public class MapService {
 
-    MapCodeGenerationService mapCodeGenerationService;
-    MapValidationService mapValidationService;
+    private final MapCodeGenerationService mapCodeGenerationService;
+    private final MapValidationService mapValidationService;
 
     @Autowired
     public MapService(MapCodeGenerationService mapCodeGenerationService,
@@ -27,15 +29,18 @@ public class MapService {
         ValidationResult validationResult = mapValidationService.validateInput(map);
         if (validationResult.getMapValidationStatus() == MapValidationStatus.SUCCESS) {
             try {
-                FileOperationsUtils.writeToFile(mapCodeGenerationService.generateMap(map),new File("testPythonDir/" + map.getFilename()));
+                FileOperationsUtils.writeToFile(mapCodeGenerationService.generateMap(map), new File("testPythonDir\\" + map.getFilename()));
+                validationResult.setUrl("index");
+                return validationResult;
             } catch (IOException e) {
-                e.printStackTrace();
+                log.error("Error" + e.getMessage());
+                validationResult.setUrl("error");
+                validationResult.setMessage("Following Exception occurred" + e.getMessage());
+                return validationResult;
             }
-            validationResult.setUrl("index");
-            return validationResult;
         } else {
             validationResult.setUrl("mapError");
+            return validationResult;
         }
-        return validationResult;
     }
 }

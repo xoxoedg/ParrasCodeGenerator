@@ -33,10 +33,10 @@ public class TreasureInteractionService {
                 validationResult.setUrl("index");
                 return validationResult;
             } catch (IOException e) {
-                log.error("Error"); // Logger
+                log.error("Error" + e.getMessage()); // Logger
                 validationResult.setInteractionValidationStatus(InteractionValidationStatus.ERROR);
                 validationResult.setUrl("error");
-                validationResult.setMessage("Following Exception occured" + e.getMessage());
+                validationResult.setMessage("Following Exception occurred" + e.getMessage());
                 return validationResult;
             }
         } else {

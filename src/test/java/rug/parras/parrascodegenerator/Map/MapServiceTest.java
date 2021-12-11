@@ -11,8 +11,6 @@ import rug.parras.parrascodegenerator.Map.Validation.ValidationResult;
 
 import java.io.File;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -33,14 +31,14 @@ class MapServiceTest {
         Map map = new Map();
         ValidationResult validationResult = new ValidationResult();
         validationResult.setMapValidationStatus(MapValidationStatus.SUCCESS);
-        map.setFilename("mapgenerater.py");
+        map.setFilename("mapgenerator.py");
         when(mapCodeGenerationService.generateMap(map)).thenReturn("Test123");
         when(mapValidationService.validateInput(map)).thenReturn(validationResult);
         mapService.createMap(map);
         verify(mapCodeGenerationService).generateMap(map);
         verify(mapValidationService).validateInput(map);
 
-        File fileToDelete = new File("mapgenerator.py");
+        File fileToDelete = new File("testPythonDir/mapgenerator.py");
         fileToDelete.delete();
 
     }

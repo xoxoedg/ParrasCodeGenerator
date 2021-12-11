@@ -13,5 +13,6 @@ public class ValidationResult {
     private MapValidationStatus mapValidationStatus;
     private List<ValidationFieldResult> validationFieldResultList = new ArrayList<>();
     private String url;
+    private String message;
 
 }
