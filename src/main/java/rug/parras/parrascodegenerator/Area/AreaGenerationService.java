@@ -2,7 +2,10 @@ package rug.parras.parrascodegenerator.Area;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import rug.parras.parrascodegenerator.Area.AreaGenerator.*;
+import rug.parras.parrascodegenerator.Area.AreaGenerator.Area;
+import rug.parras.parrascodegenerator.Area.AreaGenerator.CodeWriterService;
+import rug.parras.parrascodegenerator.Area.AreaGenerator.FileGenerationService;
+import rug.parras.parrascodegenerator.Area.AreaGenerator.GameDirectoryGeneratorService;
 import rug.parras.parrascodegenerator.Area.Validation.*;
 
 @Service
@@ -30,7 +33,7 @@ public class AreaGenerationService {
     public ValidationResult createArea(Area area) {
 
         ValidationAreaResult validationAreaResult = validationAreaService.validateAreaInput(area.getAreaName());
-        ValidationIOResult validationIOResult =  validationIOService.validateFiles(area.getAreaName());
+        ValidationIOResult validationIOResult = validationIOService.validateFiles(area.getAreaName());
         if (validationAreaResult.getValidationStatus() == ValidationStatus.SUCCESS) {
             gameDirectoryGeneratorService.createAllDirectories(area.getAreaName());
             fileGenerationService.createFiles(area.getAreaName());

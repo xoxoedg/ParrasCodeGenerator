@@ -17,7 +17,7 @@ import java.io.IOException;
 public class FileGenerationService {
 
     private final BattleFactoryFileGenerator battleFactoryFileGenerator;
-    private final  ConfigurationFileGenerator configurationFileGenerator;
+    private final ConfigurationFileGenerator configurationFileGenerator;
     private final InitialMapFactoryFileGenerator initialMapFactoryFileGenerator;
     private final ItemInteractionFactoryFileGenerator itemInteractionFactoryFileGenerator;
     private final MapAfterInteractionFactoryFileGenerator mapAfterInteractionFactoryFileGenerator;

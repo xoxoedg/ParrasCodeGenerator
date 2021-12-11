@@ -13,9 +13,8 @@ import rug.parras.parrascodegenerator.Area.Validation.ValidationStatus;
 class AreaGenerationServiceTest {
 
 
-
     @Autowired
-    AreaGenerationService areaGenerationService;
+    private AreaGenerationService areaGenerationService;
 
     @Test
     void createArea() {

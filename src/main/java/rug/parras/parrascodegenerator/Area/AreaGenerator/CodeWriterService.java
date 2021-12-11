@@ -1,5 +1,6 @@
 package rug.parras.parrascodegenerator.Area.AreaGenerator;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.BattleFactory.BattleFactoryCodeGeneratorWriter;
 import rug.parras.parrascodegenerator.Area.AreaGenerator.ConfigurationCodeGenerator.ConfigurationCodeGeneratorWriter;
@@ -22,6 +23,7 @@ public class CodeWriterService {
     private final NextMapFactoryCodeWriter nextMapFactoryCodeWriter;
     private final SceneFactoryCodeWriter sceneFactoryCodeWriter;
 
+    @Autowired
     public CodeWriterService(BattleFactoryCodeGeneratorWriter battleFactoryCodeGeneratorWriter,
                              ConfigurationCodeGeneratorWriter configurationCodeGeneratorWriter,
                              InitialMapFactoryCodeWriter initialMapFactoryCodeWriter,

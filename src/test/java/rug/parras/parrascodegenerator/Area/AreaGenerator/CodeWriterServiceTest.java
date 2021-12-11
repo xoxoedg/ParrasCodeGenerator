@@ -62,6 +62,5 @@ class CodeWriterServiceTest {
         verify(mapAfterInteractionFactoryCodeWriter).writeToFile("rionnagen");
         verify(nextMapFactoryCodeWriter).writeToFile("rionnagen");
         verify(sceneFactoryCodeWriter).writeToFile("rionnagen");
-
     }
 }

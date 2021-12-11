@@ -23,7 +23,7 @@ public class GameDirectoryGeneratorService {
         this.worldMapDirectoryPathGeneratorService = worldMapDirectoryPathGeneratorService;
     }
 
-    public void  createAllDirectories(String areaName) {
+    public void createAllDirectories(String areaName) {
         battleFactoryDirectoryGeneratorService.createDirectories(areaName);
         itemInteractionDirectoryGeneratorService.createDirectories(areaName);
         sceneFactoryDirectoryGeneratorService.createDirectories(areaName);
