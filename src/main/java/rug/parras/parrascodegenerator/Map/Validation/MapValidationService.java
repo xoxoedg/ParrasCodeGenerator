@@ -38,7 +38,7 @@ public class MapValidationService {
         List<String> validCoordinates = List.of("LEFT_EDGE", "RIGHT_EDGE", "BOTTOM", "TOP");
         ValidationFieldResult validationFieldResult = new ValidationFieldResult();
         boolean validCoordinateInput = ((x.matches("-?[0-9]+") || validCoordinates.contains(x.toUpperCase()))) &&
-                ((y.matches("-?[0-9]+") || validCoordinates.contains(x.toUpperCase())));
+                ((y.matches("-?[0-9]+") || validCoordinates.contains(y.toUpperCase())));
         if (validCoordinateInput) {
             validationFieldResult.setValidationStatus(ValidationStatus.SUCCESS);
             validationFieldResult.setMessage("Valid Coordinate Input");
