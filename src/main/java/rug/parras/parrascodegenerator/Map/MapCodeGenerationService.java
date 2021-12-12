@@ -9,7 +9,7 @@ import static rug.parras.parrascodegenerator.Map.MapComponentGenerator.IMPORT_TE
 @Service
 public class MapCodeGenerationService {
 
-    MapComponentGenerator mapComponentGenerator;
+    private final MapComponentGenerator mapComponentGenerator;
 
     public MapCodeGenerationService(MapComponentGenerator mapComponentGenerator) {
         this.mapComponentGenerator = mapComponentGenerator;

@@ -4,12 +4,14 @@ import org.springframework.stereotype.Service;
 import rug.parras.parrascodegenerator.Map.Map;
 import rug.parras.parrascodegenerator.common.ValidationStatus;
 
+import java.util.List;
+
 @Service
 public class MapValidationService {
 
     private ValidationFieldResult validateMapInput(String mapName) {
         ValidationFieldResult validationFieldResult = new ValidationFieldResult();
-        boolean validMapName = mapName.matches("^[a-z]+((_[a-z]+)+)?");
+        boolean validMapName = mapName.matches("^[a-zA-Z]+((_[a-zA-Z]+)+)?");
         if (validMapName) {
             validationFieldResult.setValidationStatus(ValidationStatus.SUCCESS);
             validationFieldResult.setMessage("Valid Map Input");
@@ -21,7 +23,7 @@ public class MapValidationService {
 
     private ValidationFieldResult validateFilenameInput(String filename) {
         ValidationFieldResult validationFieldResult = new ValidationFieldResult();
-        boolean validFilename = filename.matches("[a-z]+\\.py");
+        boolean validFilename = filename.matches("[a-zA-z]+((_[a-zA-z])+)?\\.py");
         if (validFilename) {
             validationFieldResult.setValidationStatus(ValidationStatus.SUCCESS);
             validationFieldResult.setMessage("Valid Filename Input");
@@ -33,8 +35,10 @@ public class MapValidationService {
     }
 
     private ValidationFieldResult validateCoordinates(String x,String y) {
+        List<String> validCoordinates = List.of("LEFT_EDGE", "RIGHT_EDGE", "BOTTOM", "TOP");
         ValidationFieldResult validationFieldResult = new ValidationFieldResult();
-        boolean validCoordinateInput = x.matches("-?[0-9]+") && y.matches("-?[0-9]+");
+        boolean validCoordinateInput = ((x.matches("-?[0-9]+") || validCoordinates.contains(x.toUpperCase()))) &&
+                ((y.matches("-?[0-9]+") || validCoordinates.contains(x.toUpperCase())));
         if (validCoordinateInput) {
             validationFieldResult.setValidationStatus(ValidationStatus.SUCCESS);
             validationFieldResult.setMessage("Valid Coordinate Input");
@@ -48,7 +52,7 @@ public class MapValidationService {
     public ValidationResult validateInput(Map map) {
         ValidationResult validationResult = new ValidationResult();
         ValidationFieldResult validateMapInputResult = validateMapInput(map.getMapName());
-        ValidationFieldResult validationFilenameResult = validateFilenameInput(map.getFilename());
+        ValidationFieldResult validationFilenameResult = validateFilenameInput(map.getFilename().toLowerCase());
         ValidationFieldResult validationCoordinatesResult = validateCoordinates(map.getXCoordinate(), map.getYCoordinate());
         if (validationFilenameResult.getValidationStatus() == ValidationStatus.ERROR) {
             validationResult.getValidationFieldResultList().add(validateMapInputResult);

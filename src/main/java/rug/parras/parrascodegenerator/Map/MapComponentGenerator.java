@@ -3,6 +3,8 @@ package rug.parras.parrascodegenerator.Map;
 import org.springframework.stereotype.Component;
 import rug.parras.parrascodegenerator.Utils.StringOperationUtils;
 
+import java.util.Locale;
+
 @Component
 public class MapComponentGenerator {
 
@@ -45,7 +47,7 @@ public class MapComponentGenerator {
     }
 
     public String generateClass(Map map) {
-        return String.format(CLASS_TEMPLATE, StringOperationUtils.convertUnderscoreToCamelCase(map.getMapName()), map.getXCoordinate(), map.getYCoordinate());
+        return String.format(CLASS_TEMPLATE, StringOperationUtils.convertUnderscoreToCamelCase(map.getMapName()), map.getXCoordinate().toUpperCase(), map.getYCoordinate().toUpperCase());
     }
 
 }

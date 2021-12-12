@@ -31,14 +31,14 @@ class MapServiceTest {
         Map map = new Map();
         ValidationResult validationResult = new ValidationResult();
         validationResult.setValidationStatus(ValidationStatus.SUCCESS);
-        map.setFilename("mapgenerator.py");
+        map.setFilename("MapGenerator_test_SERVICE.py");
         when(mapCodeGenerationService.generateMap(map)).thenReturn("Test123");
         when(mapValidationService.validateInput(map)).thenReturn(validationResult);
         mapService.createMap(map);
         verify(mapCodeGenerationService).generateMap(map);
         verify(mapValidationService).validateInput(map);
 
-        File fileToDelete = new File("testPythonDir/mapgenerator.py");
+        File fileToDelete = new File("testPythonDir/mapgenerator_test_service.py");
         fileToDelete.delete();
 
     }
