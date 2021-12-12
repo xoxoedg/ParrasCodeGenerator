@@ -29,7 +29,7 @@ public class TreasureInteractionService {
         if (validationResult.getValidationStatus() == ValidationStatus.SUCCESS) {
             try {
                 FileOperationsUtils.writeToFile(treasureInteractionCodeGenerationService.generateTreasureInteraction(treasure),
-                        new File("testPythonDir\\" + treasure.getFileName().toLowerCase()));
+                        new File("testPythonDir/" + treasure.getFileName().toLowerCase()));
                 validationResult.setUrl("index");
                 return validationResult;
             } catch (IOException e) {

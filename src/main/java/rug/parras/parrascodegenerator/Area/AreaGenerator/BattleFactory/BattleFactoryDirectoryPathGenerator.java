@@ -8,7 +8,7 @@ import rug.parras.parrascodegenerator.Utils.StringOperationUtils;
 @Component
 public class BattleFactoryDirectoryPathGenerator extends GamePath implements DirectoryPathGenerator {
 
-    private static final String PARRAS_DIRECTIORY_PATH = "%s\\src\\characters\\battles\\%s";
+    private static final String PARRAS_DIRECTIORY_PATH = "%s/src/characters/battles/%s";
 
     @Override
     public String createDirectoryPath(String areaName) {

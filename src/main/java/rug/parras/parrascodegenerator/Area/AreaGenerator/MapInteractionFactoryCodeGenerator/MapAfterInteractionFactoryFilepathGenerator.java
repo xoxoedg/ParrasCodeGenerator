@@ -8,7 +8,7 @@ import rug.parras.parrascodegenerator.Utils.StringOperationUtils;
 @Component
 public class MapAfterInteractionFactoryFilepathGenerator extends GamePath implements FactoryFilepathGenerator {
 
-    private static final String MAP_AFTER_INTERACTION_FACTORY_FILE_GENERATOR = "%s\\src\\worldmap\\%s\\maps\\factories\\%s_map_after_interaction_factory.py";
+    private static final String MAP_AFTER_INTERACTION_FACTORY_FILE_GENERATOR = "%s/src/worldmap/%s/maps/factories/%s_map_after_interaction_factory.py";
 
     @Override
     public String generateFilename(String areaName) {

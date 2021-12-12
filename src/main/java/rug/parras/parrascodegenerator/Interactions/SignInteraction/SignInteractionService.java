@@ -30,7 +30,7 @@ public class SignInteractionService {
 
             try {
                 FileOperationsUtils.writeToFile(signInteractionCodeGenerationService.generateCodeForSignInteraction(sign),
-                        new File("testPythonDir\\" + sign.getFileName()));
+                        new File("testPythonDir/" + sign.getFileName()));
                 validationResult.setUrl("index");
                 return validationResult;
             } catch (IOException e) {

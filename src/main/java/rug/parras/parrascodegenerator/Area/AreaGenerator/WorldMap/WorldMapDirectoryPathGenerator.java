@@ -8,7 +8,7 @@ import rug.parras.parrascodegenerator.Utils.StringOperationUtils;
 @Component
 public class WorldMapDirectoryPathGenerator extends GamePath implements DirectoryPathGenerator {
 
-    private static final String PARRAS_DIRECTIORY_PATH = "%s\\src\\worldmap\\%s";
+    private static final String PARRAS_DIRECTIORY_PATH = "%s/src/worldmap/%s";
 
     @Override
     public String createDirectoryPath(String areaName) {
@@ -16,14 +16,14 @@ public class WorldMapDirectoryPathGenerator extends GamePath implements Director
     }
 
     public String createSubDirectoryMapsPath(String areaName) {
-        return createDirectoryPath(StringOperationUtils.convertSpaceToLowercaseAndUnderscore(areaName)) + "\\maps";
+        return createDirectoryPath(StringOperationUtils.convertSpaceToLowercaseAndUnderscore(areaName)) + "/maps";
     }
 
     public String createSubDirectorySpritesPath(String areaName) {
-        return createDirectoryPath(StringOperationUtils.convertSpaceToLowercaseAndUnderscore(areaName)) + "\\sprites";
+        return createDirectoryPath(StringOperationUtils.convertSpaceToLowercaseAndUnderscore(areaName)) + "/sprites";
     }
 
     public String createMapSubDirectoryFactoriesPath(String areaName) {
-        return createSubDirectoryMapsPath(StringOperationUtils.convertSpaceToLowercaseAndUnderscore(areaName)) + "\\factories";
+        return createSubDirectoryMapsPath(StringOperationUtils.convertSpaceToLowercaseAndUnderscore(areaName)) + "/factories";
     }
 }

@@ -9,7 +9,7 @@ import rug.parras.parrascodegenerator.Utils.StringOperationUtils;
 @Component
 public class ItemInteractionFactoryFilepathGenerator extends GamePath implements FactoryFilepathGenerator {
 
-    private static final String ITEM_INTERACTION_FACTORY_FILE_TEMPLATE = "%s\\src\\characters\\item_interaction\\%s\\%s_item_interaction_factory.py";
+    private static final String ITEM_INTERACTION_FACTORY_FILE_TEMPLATE = "%s/src/characters/item_interaction/%s/%s_item_interaction_factory.py";
 
     @Override
     public String generateFilename(String areaName) {

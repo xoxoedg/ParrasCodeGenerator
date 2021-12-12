@@ -8,7 +8,7 @@ import rug.parras.parrascodegenerator.Utils.StringOperationUtils;
 @Component
 public class BattleFactoryFilepathGenerator extends GamePath implements FactoryFilepathGenerator {
 
-    private static final String BATTLE_FACTORY_FILE_TEMPLATE = "%s\\src\\characters\\battles\\%s\\%s_battle_factory.py";
+    private static final String BATTLE_FACTORY_FILE_TEMPLATE = "%s/src/characters//battles//%s//%s_battle_factory.py";
 
     @Override
     public String generateFilename(String areaName) {

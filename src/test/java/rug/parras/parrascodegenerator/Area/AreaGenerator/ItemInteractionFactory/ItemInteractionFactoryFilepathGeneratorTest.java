@@ -16,7 +16,7 @@ class ItemInteractionFactoryFilepathGeneratorTest {
 
     @Test
     void generateFilename() {
-        String expectedFilename = "src\\test\\codeGeneratorTest\\src\\characters\\item_interaction\\malaiche_hills\\malaiche_hills_item_interaction_factory.py";
+        String expectedFilename = "src/test/codeGeneratorTest/src/characters/item_interaction/malaiche_hills/malaiche_hills_item_interaction_factory.py";
         String actualFilename = itemInteractionFactoryFilepathGenerator.generateFilename("MALAICHE hills");
         assertEquals(expectedFilename, actualFilename);
     }

@@ -8,7 +8,7 @@ import rug.parras.parrascodegenerator.Utils.StringOperationUtils;
 @Component
 public class ConfigurationFilepathGenerator extends GamePath implements FactoryFilepathGenerator {
 
-    private final String CONFIGURATION_FILE_TEMPLATE = "%s\\src\\worldmap\\%s\\configuration.py";
+    private final String CONFIGURATION_FILE_TEMPLATE = "%s/src/worldmap/%s/configuration.py";
 
     @Override
     public String generateFilename(String areaName) {

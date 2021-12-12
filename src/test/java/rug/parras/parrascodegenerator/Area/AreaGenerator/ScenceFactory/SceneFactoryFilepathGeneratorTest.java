@@ -17,7 +17,7 @@ class SceneFactoryFilepathGeneratorTest {
     @Test
     void generateFilename() {
 
-        String expectedSceneFactoryFilepath = "src\\test\\codeGeneratorTest\\src\\characters\\scenes\\rionnagen_top\\rionnagen_top_scene_factory.py";
+        String expectedSceneFactoryFilepath = "src/test/codeGeneratorTest/src/characters/scenes/rionnagen_top/rionnagen_top_scene_factory.py";
         String actualSceneFactoryFilepath = sceneFactoryFilepathGenerator.generateFilename("RIONNAGEN TOp");
         assertEquals(expectedSceneFactoryFilepath, actualSceneFactoryFilepath);
     }

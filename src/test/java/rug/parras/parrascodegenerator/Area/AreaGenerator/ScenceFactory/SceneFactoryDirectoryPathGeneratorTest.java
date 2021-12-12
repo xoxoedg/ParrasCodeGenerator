@@ -16,7 +16,7 @@ class SceneFactoryDirectoryPathGeneratorTest {
 
     @Test
     void createDirectoryPath() {
-        String expectedDirectoryPath = "src\\test\\codeGeneratorTest\\src\\characters\\scenes\\rionnagen";
+        String expectedDirectoryPath = "src/test/codeGeneratorTest/src/characters/scenes/rionnagen";
         String actualDirectoryPath = sceneFactoryDirectoryPathGenerator.createDirectoryPath("Rionnagen");
         assertEquals(expectedDirectoryPath, actualDirectoryPath);
 
@@ -24,14 +24,14 @@ class SceneFactoryDirectoryPathGeneratorTest {
 
     @Test
     void createSubDirectoryConversationsPath() {
-        String expectedSubDirectoryPath = "src\\test\\codeGeneratorTest\\src\\characters\\scenes\\rionnagen\\conversations";
+        String expectedSubDirectoryPath = "src/test/codeGeneratorTest/src/characters/scenes/rionnagen/conversations";
         String actualDirectoryPath = sceneFactoryDirectoryPathGenerator.createSubDirectoryConversationsPath("Rionnagen");
         assertEquals(expectedSubDirectoryPath, actualDirectoryPath);
     }
 
     @Test
     void createSubDirectoryScenesPath() {
-        String expectedSubDirectoryPath = "src\\test\\codeGeneratorTest\\src\\characters\\scenes\\rionnagen\\sprites";
+        String expectedSubDirectoryPath = "src/test/codeGeneratorTest/src/characters/scenes/rionnagen/sprites";
         String actualSubDirectoryPath = sceneFactoryDirectoryPathGenerator.createSubDirectoryScenesPath("Rionnagen");
         assertEquals(expectedSubDirectoryPath, actualSubDirectoryPath);
     }

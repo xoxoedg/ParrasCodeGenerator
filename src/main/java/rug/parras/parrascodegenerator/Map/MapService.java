@@ -29,7 +29,7 @@ public class MapService {
         ValidationResult validationResult = mapValidationService.validateInput(map);
         if (validationResult.getValidationStatus() == ValidationStatus.SUCCESS) {
             try {
-                FileOperationsUtils.writeToFile(mapCodeGenerationService.generateMap(map), new File("testPythonDir//" + map.getFilename().toLowerCase()));
+                FileOperationsUtils.writeToFile(mapCodeGenerationService.generateMap(map), new File("testPythonDir/" + map.getFilename().toLowerCase()));
                 validationResult.setUrl("index");
                 return validationResult;
             } catch (IOException e) {

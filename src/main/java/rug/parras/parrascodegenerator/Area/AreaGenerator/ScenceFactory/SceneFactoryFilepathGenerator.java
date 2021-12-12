@@ -8,7 +8,7 @@ import rug.parras.parrascodegenerator.Utils.StringOperationUtils;
 @Component
 public class SceneFactoryFilepathGenerator extends GamePath implements FactoryFilepathGenerator {
 
-    private static final String SCENE_FACTORY_FILE_TEMPLATE = "%s\\src\\characters\\scenes\\%s\\%s_scene_factory.py";
+    private static final String SCENE_FACTORY_FILE_TEMPLATE = "%s/src/characters/scenes/%s/%s_scene_factory.py";
 
     @Override
     public String generateFilename(String areaName) {

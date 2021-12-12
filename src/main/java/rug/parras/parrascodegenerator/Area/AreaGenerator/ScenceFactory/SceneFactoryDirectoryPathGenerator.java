@@ -8,7 +8,7 @@ import rug.parras.parrascodegenerator.Utils.StringOperationUtils;
 @Component
 public class SceneFactoryDirectoryPathGenerator extends GamePath implements DirectoryPathGenerator {
 
-    private static final String PARRAS_DIRECTORY_PATH = "%s\\src\\characters\\scenes\\%s";
+    private static final String PARRAS_DIRECTORY_PATH = "%s/src/characters/scenes/%s";
 
 
     @Override
@@ -17,11 +17,11 @@ public class SceneFactoryDirectoryPathGenerator extends GamePath implements Dire
     }
 
     public String createSubDirectoryConversationsPath(String areaName) {
-        return createDirectoryPath(StringOperationUtils.convertSpaceToLowercaseAndUnderscore(areaName)) + "\\conversations";
+        return createDirectoryPath(StringOperationUtils.convertSpaceToLowercaseAndUnderscore(areaName)) + "/conversations";
     }
 
     public String createSubDirectoryScenesPath(String areaName) {
-        return createDirectoryPath(StringOperationUtils.convertSpaceToLowercaseAndUnderscore(areaName)) + "\\sprites";
+        return createDirectoryPath(StringOperationUtils.convertSpaceToLowercaseAndUnderscore(areaName)) + "/sprites";
     }
 
 }

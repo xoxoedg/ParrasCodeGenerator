@@ -17,7 +17,7 @@ class NextMapFactoryFilepathGeneratorTest {
     @Test
     void generateFilename() {
 
-        String expectedFilepath = "src\\test\\codeGeneratorTest\\src\\worldmap\\wuff\\maps\\factories\\wuff_next_map_factory.py";
+        String expectedFilepath = "src/test/codeGeneratorTest/src/worldmap/wuff/maps/factories/wuff_next_map_factory.py";
         String actualFilepath = nextMapFactoryFilepathGenerator.generateFilename("WUFF");
         assertEquals(expectedFilepath, actualFilepath);
     }
