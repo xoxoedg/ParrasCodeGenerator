@@ -11,8 +11,8 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 
 class InteractionValidationServiceTest {
 
-    InteractionValidationService interactionValidationService;
-    ValidationFieldResult validationFieldResult;
+    private InteractionValidationService interactionValidationService;
+    private ValidationFieldResult validationFieldResult;
 
 
     @BeforeEach
