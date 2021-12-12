@@ -87,15 +87,16 @@ class MapValidationServiceTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"/", "lefft_edge", "Down", "right edge", "left edge" })
-    void validateInputInvalidCoordinatesY(String y) {
+    @ValueSource(strings = {"0", "10", "30000000", "-1", "-500", "LEFT_EDGE", "RIGHT_EDGE", "BOTTOM", "TOP",
+            "left_edge", "right_edge", "bottom", "top", "right_EDGE", "boTTom", "ToP"})
+    void validateInputIValidCoordinatesY(String y) {
         Map map = new Map();
         map.setFilename("test.py");
         map.setXCoordinate("5");
         map.setYCoordinate(y);
         map.setMapName("rionnagen_map");
 
-        Enum<ValidationStatus> expectedValidationStatus = ValidationStatus.ERROR;
+        Enum<ValidationStatus> expectedValidationStatus = ValidationStatus.SUCCESS;
         Enum<ValidationStatus> actualValidationStatus = new MapValidationService().validateInput(map).getValidationStatus();
 
         assertSame(expectedValidationStatus, actualValidationStatus);
