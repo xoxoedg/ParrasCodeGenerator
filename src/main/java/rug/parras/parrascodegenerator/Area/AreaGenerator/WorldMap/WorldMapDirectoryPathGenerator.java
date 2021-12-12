@@ -12,18 +12,18 @@ public class WorldMapDirectoryPathGenerator extends GamePath implements Director
 
     @Override
     public String createDirectoryPath(String areaName) {
-        return String.format(PARRAS_DIRECTIORY_PATH, path, StringOperationUtils.convertSpaceToLowercase(areaName));
+        return String.format(PARRAS_DIRECTIORY_PATH, path, StringOperationUtils.convertSpaceToLowercaseAndUnderscore(areaName));
     }
 
     public String createSubDirectoryMapsPath(String areaName) {
-        return createDirectoryPath(StringOperationUtils.convertSpaceToLowercase(areaName)) + "\\maps";
+        return createDirectoryPath(StringOperationUtils.convertSpaceToLowercaseAndUnderscore(areaName)) + "\\maps";
     }
 
     public String createSubDirectorySpritesPath(String areaName) {
-        return createDirectoryPath(StringOperationUtils.convertSpaceToLowercase(areaName)) + "\\sprites";
+        return createDirectoryPath(StringOperationUtils.convertSpaceToLowercaseAndUnderscore(areaName)) + "\\sprites";
     }
 
     public String createMapSubDirectoryFactoriesPath(String areaName) {
-        return createSubDirectoryMapsPath(StringOperationUtils.convertSpaceToLowercase(areaName)) + "\\factories";
+        return createSubDirectoryMapsPath(StringOperationUtils.convertSpaceToLowercaseAndUnderscore(areaName)) + "\\factories";
     }
 }

@@ -29,11 +29,11 @@ public class TreasureInteractionService {
         if (validationResult.getValidationStatus() == ValidationStatus.SUCCESS) {
             try {
                 FileOperationsUtils.writeToFile(treasureInteractionCodeGenerationService.generateTreasureInteraction(treasure),
-                        new File("testPythonDir\\" + treasure.getFileName()));
+                        new File("testPythonDir\\" + treasure.getFileName().toLowerCase()));
                 validationResult.setUrl("index");
                 return validationResult;
             } catch (IOException e) {
-                log.error("Error" + e.getMessage()); // Logger
+                log.error("Error" + e.getMessage());
                 validationResult.setValidationStatus(ValidationStatus.ERROR);
                 validationResult.setUrl("error");
                 validationResult.setMessage("Following Exception occurred" + e.getMessage());

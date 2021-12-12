@@ -16,7 +16,7 @@ class MapAfterInteractionFactoryFilepathGeneratorTest {
 
     @Test
     void generateFilename() {
-        String expectedMapAfterInteractionFilepath = "src\\test\\codeGeneratorTest\\src\\worldmap\\wuffteskul\\maps\\factories\\wufftes_kul_map_after_interaction_factory.py";
+        String expectedMapAfterInteractionFilepath = "src\\test\\codeGeneratorTest\\src\\worldmap\\wufftes_kul\\maps\\factories\\wufftes_kul_map_after_interaction_factory.py";
         String actualMapAfterInteractionFilepath = mapAfterInteractionFactoryFilepathGenerator.generateFilename("WUFFTES kul");
         System.out.println(actualMapAfterInteractionFilepath);
         assertEquals(expectedMapAfterInteractionFilepath, actualMapAfterInteractionFilepath);

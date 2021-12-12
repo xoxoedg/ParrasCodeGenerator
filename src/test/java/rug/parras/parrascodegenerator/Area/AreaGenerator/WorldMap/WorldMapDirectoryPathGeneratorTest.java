@@ -16,28 +16,28 @@ class WorldMapDirectoryPathGeneratorTest {
 
     @Test
     void createDirectoryPath() {
-        String expectedDirPath = "src\\test\\codeGeneratorTest\\src\\worldmap\\rionnagenmountain";
+        String expectedDirPath = "src\\test\\codeGeneratorTest\\src\\worldmap\\rionnagen_mountain";
         String actualDirPath = worldMapDirectoryPathGenerator.createDirectoryPath("rionnagen mountain");
         assertEquals(expectedDirPath, actualDirPath);
     }
 
     @Test
     void createSubDirectoryMapsPath() {
-        String expectedDirPath = "src\\test\\codeGeneratorTest\\src\\worldmap\\rionnagenmountain\\maps";
+        String expectedDirPath = "src\\test\\codeGeneratorTest\\src\\worldmap\\rionnagen_mountain\\maps";
         String actualDirPath = worldMapDirectoryPathGenerator.createSubDirectoryMapsPath("rionnagen mountain");
         assertEquals(expectedDirPath, actualDirPath);
     }
 
     @Test
     void createSubDirectorySpritesPath() {
-        String expectedDirPath = "src\\test\\codeGeneratorTest\\src\\worldmap\\rionnagenmountain\\sprites";
+        String expectedDirPath = "src\\test\\codeGeneratorTest\\src\\worldmap\\rionnagen_mountain\\sprites";
         String actualDirPath = worldMapDirectoryPathGenerator.createSubDirectorySpritesPath("rionnagen mountain");
         assertEquals(expectedDirPath, actualDirPath);
     }
 
     @Test
     void createMapSubDirectoryFactoriesPath() {
-        String expectedDirPath = "src\\test\\codeGeneratorTest\\src\\worldmap\\rionnagenmountain\\maps\\factories";
+        String expectedDirPath = "src\\test\\codeGeneratorTest\\src\\worldmap\\rionnagen_mountain\\maps\\factories";
         String actualDirPath = worldMapDirectoryPathGenerator.createMapSubDirectoryFactoriesPath("rionnagen mountain");
         assertEquals(expectedDirPath, actualDirPath);
     }

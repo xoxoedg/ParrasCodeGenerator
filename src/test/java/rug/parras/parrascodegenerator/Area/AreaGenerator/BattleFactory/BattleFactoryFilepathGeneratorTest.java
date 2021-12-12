@@ -16,7 +16,7 @@ class BattleFactoryFilepathGeneratorTest {
 
     @Test
     void generateFilename() {
-        String expectedFilename = "src\\test\\codeGeneratorTest\\src\\characters\\battles\\rionnagenwuff\\rionnagen_wuff_battle_factory.py";
+        String expectedFilename = "src\\test\\codeGeneratorTest\\src\\characters\\battles\\rionnagen_wuff\\rionnagen_wuff_battle_factory.py";
         String actualFilename = battleFactoryFilepathGenerator.generateFilename("Rionnagen wuff");
         assertEquals(expectedFilename, actualFilename);
 

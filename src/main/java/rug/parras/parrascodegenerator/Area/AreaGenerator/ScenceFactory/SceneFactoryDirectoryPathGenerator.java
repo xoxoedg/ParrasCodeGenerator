@@ -13,15 +13,15 @@ public class SceneFactoryDirectoryPathGenerator extends GamePath implements Dire
 
     @Override
     public String createDirectoryPath(String areaName) {
-        return String.format(PARRAS_DIRECTORY_PATH, path, StringOperationUtils.convertSpaceToLowercase(areaName));
+        return String.format(PARRAS_DIRECTORY_PATH, path, StringOperationUtils.convertSpaceToLowercaseAndUnderscore(areaName));
     }
 
     public String createSubDirectoryConversationsPath(String areaName) {
-        return createDirectoryPath(StringOperationUtils.convertSpaceToLowercase(areaName) + "\\conversations");
+        return createDirectoryPath(StringOperationUtils.convertSpaceToLowercaseAndUnderscore(areaName)) + "\\conversations";
     }
 
     public String createSubDirectoryScenesPath(String areaName) {
-        return createDirectoryPath(StringOperationUtils.convertSpaceToLowercase(areaName) + "\\sprites");
+        return createDirectoryPath(StringOperationUtils.convertSpaceToLowercaseAndUnderscore(areaName)) + "\\sprites";
     }
 
 }

@@ -9,7 +9,7 @@ public class InteractionValidationService {
 
     public ValidationFieldResult validateMapInput(String map) {
         validationFieldResult = new ValidationFieldResult();
-        boolean validMapInput = map.matches("[a-z]+((_[a-z]+)+)?_map_[a-z]{1,9}");
+        boolean validMapInput = map.matches("^[a-zA-Z]+((_[a-zA-Z]+)+)?");
         if (validMapInput) {
             validationFieldResult.setValidationStatus(ValidationStatus.SUCCESS);
             validationFieldResult.setMessage("Valid Map Input");
@@ -22,7 +22,7 @@ public class InteractionValidationService {
 
     public ValidationFieldResult validateAreaInput(String area) {
         validationFieldResult = new ValidationFieldResult();
-        boolean validAreaInput = area.matches("^[A-Z][a-z]+(\\s[A-Z][a-z]+)?");
+        boolean validAreaInput = area.matches("[a-zA-Z]+(( ([a-zA-Z]+))+)?");
         if (validAreaInput) {
             validationFieldResult.setValidationStatus(ValidationStatus.SUCCESS);
             validationFieldResult.setMessage("Valid Area Input");
@@ -36,7 +36,7 @@ public class InteractionValidationService {
 
     public ValidationFieldResult validateFileNameInput(String filename) {
         validationFieldResult = new ValidationFieldResult();
-        boolean validFilename = filename.matches("[a-z]+_?[a-z]+\\.py");
+        boolean validFilename = filename.matches("[a-zA-z]+((_[a-zA-z])+)?\\.py");
         if (validFilename) {
             validationFieldResult.setValidationStatus(ValidationStatus.SUCCESS);
             validationFieldResult.setMessage("Valid Filename");

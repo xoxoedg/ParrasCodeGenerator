@@ -14,15 +14,14 @@ public class ValidationAreaService {
     public ValidationAreaResult validateAreaInput(String areaName) {
 
         ValidationAreaResult validationAreaResult = new ValidationAreaResult();
-        boolean validAreaInput = areaName.matches("^[A-Z][a-z]+(\\s[A-Z][a-z]+)?");
+        boolean validAreaInput = areaName.matches("[a-zA-Z]+(( ([a-zA-Z]+))+)?");
 
         if (validAreaInput) {
             validationAreaResult.setValidationStatus(ValidationStatus.SUCCESS);
             validationAreaResult.setMessage("Valid Area Input");
         } else {
             validationAreaResult.setValidationStatus(ValidationStatus.ERROR);
-            validationAreaResult.setMessage("Invalid Area Input: Area Input must start with a Uppercase letter and the " +
-                    "delimiter must be a whitespace ");
+            validationAreaResult.setMessage("Invalid Area Input:  Delimiter must be a whitespace");
         }
         return validationAreaResult;
     }

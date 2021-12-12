@@ -49,9 +49,9 @@ class SignInteractionValidationServiceTest {
 
     @Test
     void validateInputValid() {
-        sign.setMap("wuff_map_four");
+        sign.setMap("wuff_FOUR_mAP");
         sign.setArea("Deadgead Mountain");
-        sign.setFileName("sign_interaction.py");
+        sign.setFileName("Sign_interaction_FOR_Test.py");
         sign.setDirection("UP");
         sign.setSignText("Hello");
         Enum<ValidationStatus> actualValue = signInteractionValidationService.validateInput(sign).getValidationStatus();
@@ -63,8 +63,8 @@ class SignInteractionValidationServiceTest {
     @Test
     void validateInputInvalid() {
         sign.setMap("wuff_map_four");
-        sign.setArea("Deadgead Mountain");
-        sign.setFileName("signInteraction.py"); //Error here
+        sign.setArea("Deadgead   Mountain");
+        sign.setFileName("signInteraction.txt");
         sign.setDirection("UP");
         sign.setSignText("Hello");
         Enum<ValidationStatus> actualValue = signInteractionValidationService.validateInput(sign).getValidationStatus();
@@ -72,5 +72,6 @@ class SignInteractionValidationServiceTest {
 
         assertSame(expectedValue, actualValue);
     }
+
 }
 

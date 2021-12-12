@@ -12,7 +12,7 @@ public class BattleFactoryDirectoryPathGenerator extends GamePath implements Dir
 
     @Override
     public String createDirectoryPath(String areaName) {
-        return String.format(PARRAS_DIRECTIORY_PATH, path, StringOperationUtils.convertSpaceToLowercase(areaName));
+        return String.format(PARRAS_DIRECTIORY_PATH, path, StringOperationUtils.convertSpaceToLowercaseAndUnderscore(areaName));
     }
 }
 

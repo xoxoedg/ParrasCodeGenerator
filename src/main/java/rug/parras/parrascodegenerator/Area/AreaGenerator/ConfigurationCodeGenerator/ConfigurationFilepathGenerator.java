@@ -12,7 +12,7 @@ public class ConfigurationFilepathGenerator extends GamePath implements FactoryF
 
     @Override
     public String generateFilename(String areaName) {
-        return String.format(CONFIGURATION_FILE_TEMPLATE, path, StringOperationUtils.convertSpaceToLowercase(areaName));
+        return String.format(CONFIGURATION_FILE_TEMPLATE, path, StringOperationUtils.convertSpaceToLowercaseAndUnderscore(areaName));
     }
 }
 

@@ -16,7 +16,7 @@ class ItemInteractionFactoryDirectoryPathGeneratorTest {
 
     @Test
     void createDirectoryPath() {
-        String expectedDirPath = "src\\test\\codeGeneratorTest\\src\\characters\\item_interaction\\rionnagentest";
+        String expectedDirPath = "src\\test\\codeGeneratorTest\\src\\characters\\item_interaction\\rionnagen_test";
         String actualDirPath = itemInteractionFactoryDirectoryPathGenerator.createDirectoryPath("Rionnagen test");
         assertEquals(expectedDirPath, actualDirPath);
     }

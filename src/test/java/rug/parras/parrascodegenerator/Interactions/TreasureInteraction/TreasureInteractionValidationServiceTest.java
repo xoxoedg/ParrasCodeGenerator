@@ -83,8 +83,8 @@ class TreasureInteractionValidationServiceTest {
     @ParameterizedTest
     @ValueSource(ints = {0, 1000, 123, 9999})
     void validateInputInvalid(int ints) {
-        treasure.setMap("city_market_map_one");
-        treasure.setArea("Rionnagen mountain"); // Invalid
+        treasure.setMap("city_market_one");
+        treasure.setArea("Rionnagen_mountain"); // Invalid
         treasure.setFileName("test_file.py");
         treasure.setItemOneName("Tent");
         treasure.setItemOneAmount(4);
