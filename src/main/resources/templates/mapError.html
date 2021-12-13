@@ -5,7 +5,7 @@
 <body>
 <nav th:replace="/fragments/masterTemplate :: navbar"></nav>
 
-<h1 class="welcome_message">An Error occured</h1>
+<h1 class="welcome_message" th:text="${errorReasons.message}">Wuff</h1>
 <table>
     <tr>
         <th>Error</th>

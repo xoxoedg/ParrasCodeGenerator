@@ -54,7 +54,7 @@ public class MapValidationService {
         ValidationFieldResult validateMapInputResult = validateMapInput(map.getMapName());
         ValidationFieldResult validationFilenameResult = validateFilenameInput(map.getFilename().toLowerCase());
         ValidationFieldResult validationCoordinatesResult = validateCoordinates(map.getXCoordinate(), map.getYCoordinate());
-        if (validationFilenameResult.getValidationStatus() == ValidationStatus.ERROR) {
+        if (validateMapInputResult.getValidationStatus() == ValidationStatus.ERROR) {
             validationResult.getValidationFieldResultList().add(validateMapInputResult);
         }
         if (validationFilenameResult.getValidationStatus() == ValidationStatus.ERROR) {
