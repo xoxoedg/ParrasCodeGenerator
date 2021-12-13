@@ -23,13 +23,13 @@ class WorldMapDirectoryGeneratorServiceTest {
     @Test
     void createDirectories() {
         File dirToDelete = new File("wuffti");
-        File subDirMapsToDelete = new File("wuffti\\maps");
-        File subDirSpritesToDelete = new File("wuffti\\sprites");
-        File subDirMapsFactoriesToDelete = new File("wuffti\\maps\\factories");
+        File subDirMapsToDelete = new File("wuffti/maps");
+        File subDirSpritesToDelete = new File("wuffti/sprites");
+        File subDirMapsFactoriesToDelete = new File("wuffti/maps/factories");
         when(worldMapDirectoryPathGenerator.createDirectoryPath("wuffti")).thenReturn("wuffti");
-        when(worldMapDirectoryPathGenerator.createSubDirectoryMapsPath("wuffti")).thenReturn("wuffti\\maps");
-        when(worldMapDirectoryPathGenerator.createSubDirectorySpritesPath("wuffti")).thenReturn("wuffti\\sprites");
-        when(worldMapDirectoryPathGenerator.createMapSubDirectoryFactoriesPath("wuffti")).thenReturn("wuffti\\maps\\factories");
+        when(worldMapDirectoryPathGenerator.createSubDirectoryMapsPath("wuffti")).thenReturn("wuffti/maps");
+        when(worldMapDirectoryPathGenerator.createSubDirectorySpritesPath("wuffti")).thenReturn("wuffti/sprites");
+        when(worldMapDirectoryPathGenerator.createMapSubDirectoryFactoriesPath("wuffti")).thenReturn("wuffti/maps/factories");
         worldMapDirectoryGeneratorService.createDirectories("wuffti");
         verify(worldMapDirectoryPathGenerator).createDirectoryPath("wuffti");
 
