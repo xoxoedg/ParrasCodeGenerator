@@ -3,6 +3,7 @@ package rug.parras.parrascodegenerator.Interactions.SignInteraction;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import rug.parras.parrascodegenerator.Interactions.Validation.SignInteractionValidationService;
 import rug.parras.parrascodegenerator.Interactions.Validation.ValidationResult;
 import rug.parras.parrascodegenerator.Utils.FileOperationsUtils;
 import rug.parras.parrascodegenerator.common.ValidationStatus;
@@ -29,7 +30,7 @@ public class SignInteractionService {
         if (validationResult.getValidationStatus() == ValidationStatus.SUCCESS) {
 
             try {
-                FileOperationsUtils.writeToFile(signInteractionCodeGenerationService.generateCodeForSignInteraction(sign),
+                FileOperationsUtils.writeToFile(signInteractionCodeGenerationService.generateSignInteraction(sign),
                         new File("testPythonDir/" + sign.getFileName()));
                 validationResult.setUrl("index");
                 return validationResult;

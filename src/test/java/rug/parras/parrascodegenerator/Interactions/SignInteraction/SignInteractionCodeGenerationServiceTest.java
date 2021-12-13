@@ -1,8 +1,6 @@
 package rug.parras.parrascodegenerator.Interactions.SignInteraction;
 
 import org.junit.jupiter.api.Test;
-import rug.parras.parrascodegenerator.Interactions.SignInteraction.Sign;
-import rug.parras.parrascodegenerator.Interactions.SignInteraction.SignInteractionCodeGenerationService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -40,7 +38,7 @@ class SignInteractionCodeGenerationServiceTest {
                     "        return SIGN_UP_INTERACTION_CITY_MARKET_FOREST_DIALOG.copy()";
 
 
-    private final SignInteractionCodeGenerationService signInteractionCodeGenerationService = new SignInteractionCodeGenerationService();
+    private final SignInteractionCodeGenerationService signInteractionCodeGenerationService = new SignInteractionCodeGenerationService(new SignComponentGenerator());
     private Sign sign;
 
     @Test
@@ -52,7 +50,7 @@ class SignInteractionCodeGenerationServiceTest {
                 .direction("up")
                 .fileName("signInteraction.py").build();
 
-        String builtCode = signInteractionCodeGenerationService.generateCodeForSignInteraction(sign);
+        String builtCode = signInteractionCodeGenerationService.generateSignInteraction(sign);
         assertEquals(builtCodeTemplate1, builtCode);
 
     }
@@ -66,7 +64,7 @@ class SignInteractionCodeGenerationServiceTest {
                 .direction("up")
                 .fileName("signinteraction.py").build();
 
-        String builtCode = signInteractionCodeGenerationService.generateCodeForSignInteraction(sign);
+        String builtCode = signInteractionCodeGenerationService.generateSignInteraction(sign);
         assertEquals(builtCodeTemplate2, builtCode);
 
     }

@@ -1,7 +1,7 @@
 package rug.parras.parrascodegenerator.Interactions.TreasureInteraction;
 
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import rug.parras.parrascodegenerator.Interactions.common.ItemAmountListConverter;
 import rug.parras.parrascodegenerator.Interactions.common.ItemParser;
 import rug.parras.parrascodegenerator.Interactions.common.MapParser;
@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-@Service
+@Component
 public class TreasureComponentGenerator {
 
     public static final String TIMELINE_METHOD_STRING_TEMPLATE = "RECEIVED_CHEST_";

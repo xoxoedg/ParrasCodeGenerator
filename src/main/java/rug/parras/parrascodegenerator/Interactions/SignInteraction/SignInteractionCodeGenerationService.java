@@ -1,26 +1,23 @@
 package rug.parras.parrascodegenerator.Interactions.SignInteraction;
 
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.stereotype.Component;
-import rug.parras.parrascodegenerator.Interactions.common.MapParser;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class SignInteractionCodeGenerationService {
 
-    public String generateCodeForSignInteraction(Sign sign) {
-        return Sign.SIGN_INTERACTION_IMPORT_TEMPLATE + "\n\n\n" + createSignInteractionDialog(sign) + "\n\n\n" + createSignInteractionClass(sign);
+    private final SignComponentGenerator signComponentGenerator;
+
+    @Autowired
+    public SignInteractionCodeGenerationService(SignComponentGenerator signComponentGenerator) {
+        this.signComponentGenerator = signComponentGenerator;
     }
 
-    private String createSignInteractionDialog(Sign sign) {
-        return String.format(createSignInteractionListName(sign) + " = " + Sign.SIGN_INTERACTION_LIST_TEXT_TEMPLATE, sign.getSignText());
-    }
 
-    private String createSignInteractionClass(Sign sign) {
-        return String.format(Sign.SIGN_INTERACTION_CLASS_TEMPLATE, StringUtils.capitalize(sign.getDirection()), MapParser.convertInputToMapName(sign.getMap()),
-                StringUtils.capitalize(sign.getDirection()), MapParser.convertInputToMapName(sign.getMap()), createSignInteractionListName(sign));
-    }
-
-    private String createSignInteractionListName(Sign sign) {
-        return String.format(Sign.SIGN_INTERACTION_LIST_NAME_TEMPLATE, sign.getDirection().toUpperCase(), sign.getMap().toUpperCase(), sign.getSignText());
+    public String generateSignInteraction(Sign sign) {
+        return SignComponentGenerator.SIGN_INTERACTION_IMPORT_TEMPLATE + "\n\n\n" + signComponentGenerator.createSignInteractionDialog(sign) +
+                "\n\n\n" + signComponentGenerator.createSignInteractionClass(sign);
     }
 }
+
+

@@ -5,6 +5,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import rug.parras.parrascodegenerator.Interactions.Validation.SignInteractionValidationService;
 import rug.parras.parrascodegenerator.Interactions.Validation.ValidationResult;
 import rug.parras.parrascodegenerator.common.ValidationStatus;
 
@@ -31,9 +32,9 @@ class SignInteractionServiceTest {
         ValidationResult validationResult = new ValidationResult();
         validationResult.setValidationStatus(ValidationStatus.SUCCESS);
         when(signInteractionValidationService.validateInput(sign)).thenReturn(validationResult);
-        when(signInteractionCodeGenerationService.generateCodeForSignInteraction(sign)).thenReturn("TestString1");
+        when(signInteractionCodeGenerationService.generateSignInteraction(sign)).thenReturn("TestString1");
         signInteractionService.createSignInteraction(sign);
-        verify(signInteractionCodeGenerationService, times(1)).generateCodeForSignInteraction(sign);
+        verify(signInteractionCodeGenerationService, times(1)).generateSignInteraction(sign);
         verify(signInteractionValidationService).validateInput(sign);
 
         File fileToDelete = new File(sign.getFileName());
