@@ -64,7 +64,7 @@ class MapValidationServiceTest {
         map.setYCoordinate("5");
         map.setMapName(mapName);
 
-        Enum<ValidationStatus> expectedValidationStatus = ValidationStatus.SUCCESS;
+        Enum<ValidationStatus> expectedValidationStatus = ValidationStatus.ERROR;
         Enum<ValidationStatus> actualValidationStatus = new MapValidationService().validateInput(map).getValidationStatus();
 
         assertSame(expectedValidationStatus, actualValidationStatus);

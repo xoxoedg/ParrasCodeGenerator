@@ -15,7 +15,7 @@ public class TreasureInteractionValidationService extends InteractionValidationS
     private ValidationFieldResult validationFieldResult;
     private final List<String> validItems = List.of("Potion", "potion", "Ether", "ether",
             "Serum", "serum", "Herb", "herb", "Tent", "tent",
-            "Super Potion", "super potion", "Super Ether", "super ether");
+            "Super Potion", "super potion", "Super Ether", "super ether", "Super Serum", "super serum");
 
     public ValidationFieldResult validateItem(List<String> items) {
         validationFieldResult = new ValidationFieldResult();
@@ -26,7 +26,7 @@ public class TreasureInteractionValidationService extends InteractionValidationS
         } else {
             validationFieldResult.setValidationStatus(ValidationStatus.ERROR);
             validationFieldResult.setMessage("Invalid Item Input: Items must be one of the following:" +
-                    "Potion, Ether, Serum, Herb, Tent, Super Potion, Super Ether");
+                    "Potion, Ether, Serum, Herb, Tent, Super Potion, Super Ether, Super Serum");
         }
         return validationFieldResult;
     }

@@ -25,7 +25,7 @@ class TreasureInteractionValidationServiceTest {
 
     @Test
     void validateItemValid() {
-        List<String> testItem = List.of("Tent", "Potion", "Super Potion", "serum");
+        List<String> testItem = List.of("Tent", "Potion", "Super Potion", "serum", "Super Serum");
         Enum<ValidationStatus> actualValue = treasureInteractionValidationService.validateItem(testItem).getValidationStatus();
         Enum<ValidationStatus> expectedValue = ValidationStatus.SUCCESS;
         assertSame(expectedValue, actualValue);
